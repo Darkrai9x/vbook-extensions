@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Nữ Hiệp",
+    "author": "Darkrai",
+    "version": 4,
+    "source": "https://nuhiep.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/nuhiep/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/nuhiep/plugin.zip",
+    "regexp": "(www.)?nuhiep.com/truyen/[^/]+/?$",
+    "description": "Đọc truyện trên trang Nữ Hiệp",
+    "local": "vi-VN",
+    "language": "lua"
+  },
+  "script": {
+    "detail": "detail.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua",
+    "home": "home.lua",
+    "genre": "genre.lua",
+    "search": "search.lua"
+  }
+}

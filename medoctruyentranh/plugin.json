@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "Mê Đọc Truyện Tranh",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://www.medoctruyentranh.net",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/medoctruyentranh/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/medoctruyentranh/plugin.zip",
+    "regexp": "(www.|m.)?medoctruyentranh.net/truyen-tranh/[0-9a-z-]+\\d+/?$",
+    "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh",
+    "local": "vi-VN",
+    "language": "lua",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.lua",
+    "genre": "genre.lua",
+    "detail": "detail.lua",
+    "search": "search.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua"
+  }
+}

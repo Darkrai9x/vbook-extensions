@@ -1,0 +1,332 @@
+{
+  "metadata": {
+    "author": "Darkrai",
+    "description": ""
+  },
+  "data": [
+    {
+      "name": "Bạch Ngọc Sách",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/plugin.zip",
+      "version": 1,
+      "source": "https://bachngocsach.com/reader",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/icon.png",
+      "description": "Đọc truyện trên trang bachngocsach.com/reader"
+    },
+    {
+      "name": "Truyện Full",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenfull/plugin.zip",
+      "version": 1,
+      "source": "https://truyenfull.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenfull/icon.png",
+      "description": "Đọc truyện trên trang Truyện Full"
+    },
+    {
+      "name": "Truyện CV",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/plugin.zip",
+      "version": 3,
+      "source": "https://truyencv.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/icon.png",
+      "description": "Đọc truyện trên trang Truyện CV"
+    },
+    {
+      "name": "Tàng Thư Viện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/plugin.zip",
+      "version": 1,
+      "source": "https://truyen.tangthuvien.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/icon.png",
+      "description": "Đọc truyện trên trang Tàng Thư Viện"
+    },
+    {
+      "name": "Truyện YY",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/plugin.zip",
+      "version": 3,
+      "source": "https://truyenyy.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/icon.png",
+      "description": "Đọc truyện trên trang Truyện YY"
+    },
+    {
+      "name": "Wiki Dịch",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/plugin.zip",
+      "version": 4,
+      "source": "https://wikidich.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/icon.png",
+      "description": "Đọc truyện trên trang Wiki Dịch"
+    },
+    {
+      "name": "Koanchay",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/plugin.zip",
+      "version": 4,
+      "source": "https://koanchay.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/icon.png",
+      "description": "Đọc truyện trên trang Koanchay"
+    },
+    {
+      "name": "SS Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/plugin.zip",
+      "version": 1,
+      "source": "https://sstruyen.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/icon.png",
+      "description": "Đọc truyện trên trang SS Truyện"
+    },
+    {
+      "name": "Truyện QQ",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/plugin.zip",
+      "version": 2,
+      "source": "https://truyenqq.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/icon.png",
+      "description": "Đọc truyện trên trang Truyện QQ"
+    },
+    {
+      "name": "Chivi",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/plugin.zip",
+      "version": 4,
+      "source": "https://chivi.xyz",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/icon.png",
+      "description": "Đọc truyện trên trang Chivi"
+    },
+    {
+      "name": "Net Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/plugin.zip",
+      "version": 2,
+      "source": "http://www.nettruyen.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/icon.png",
+      "description": "Đọc truyện trên trang Net Truyện"
+    },
+    {
+      "name": "Truyện VN",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
+      "version": 3,
+      "source": "https://truyenvn.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
+      "description": "Đọc truyện trên trang Truyện VN"
+    },
+    {
+      "name": "Truyện Của Tui",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencuatui/plugin.zip",
+      "version": 1,
+      "source": "https://truyencuatui.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencuatui/icon.png",
+      "description": "Đọc truyện trên trang Truyện Của Tui"
+    },
+    {
+      "name": "Wattpad",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/plugin.zip",
+      "version": 1,
+      "source": "https://www.wattpad.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/icon.png",
+      "description": "Đọc truyện trên trang Wattpad"
+    },
+    {
+      "name": "Web Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/plugin.zip",
+      "version": 2,
+      "source": "https://webtruyen.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/icon.png",
+      "description": "Đọc truyện trên trang Web Truyện"
+    },
+    {
+      "name": "nHentai",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/plugin.zip",
+      "version": 1,
+      "source": "https://nhentai.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/icon.png",
+      "description": "Đọc truyện trên trang nHentai"
+    },
+    {
+      "name": "Hako Novel",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hako/plugin.zip",
+      "version": 4,
+      "source": "https://ln.hako.re",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hako/icon.png",
+      "description": "Đọc truyện trên trang Hako"
+    },
+    {
+      "name": "Thích Đọc Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/thichdoctruyen/plugin.zip",
+      "version": 1,
+      "source": "https://thichdoctruyen.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/thichdoctruyen/icon.png",
+      "description": "Đọc truyện trên trang Thích Đọc Truyện"
+    },
+    {
+      "name": "Sàn Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/santruyen/plugin.zip",
+      "version": 2,
+      "source": "http://santruyen.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/santruyen/icon.png",
+      "description": "Đọc truyện trên trang Sàn Truyện"
+    },
+    {
+      "name": "Blog Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/plugin.zip",
+      "version": 1,
+      "source": "https://blogtruyen.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/icon.png",
+      "description": "Đọc truyện trên trang Blog Truyện"
+    },
+    {
+      "name": "TruyệnVKL",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/plugin.zip",
+      "version": 2,
+      "source": "https://truyenvkl.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/icon.png",
+      "description": "Đọc truyện trên trang TruyệnVKL"
+    },
+    {
+      "name": "Gác Sách",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/plugin.zip",
+      "version": 3,
+      "source": "https://gacsach.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/icon.png",
+      "description": "Đọc truyện trên trang Gác Sách"
+    },
+    {
+      "name": "Nữ Hiệp",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/plugin.zip",
+      "version": 4,
+      "source": "https://nuhiep.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/icon.png",
+      "description": "Đọc truyện trên trang Nữ Hiệp"
+    },
+    {
+      "name": "Mê Truyện Chữ",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
+      "version": 4,
+      "source": "https://metruyenchu.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
+      "description": "Đọc truyện trên trang Mê Truyện Chữ"
+    },
+    {
+      "name": "vTruyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/plugin.zip",
+      "version": 1,
+      "source": "https://vtruyen.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/icon.png",
+      "description": "Đọc truyện trên trang vTruyện"
+    },
+    {
+      "name": "Mê Đọc Truyện Chữ",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/plugin.zip",
+      "version": 1,
+      "source": "https://www.medoctruyenchu.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/icon.png",
+      "description": "Đọc truyện trên trang Mê Đọc Truyện Chữ"
+    },
+    {
+      "name": "Mê Đọc Truyện Tranh",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/plugin.zip",
+      "version": 1,
+      "source": "https://www.medoctruyentranh.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/icon.png",
+      "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh"
+    },
+    {
+      "name": "Truy.IN",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truy/plugin.zip",
+      "version": 1,
+      "source": "https://truy.in",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truy/icon.png",
+      "description": "Đọc truyện trên trang Truy.IN"
+    },
+    {
+      "name": "Beeng",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/plugin.zip",
+      "version": 3,
+      "source": "https://beeng.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/icon.png",
+      "description": "Đọc truyện trên trang Beeng.net"
+    },
+    {
+      "name": "Truyện Tranh Audio",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/plugin.zip",
+      "version": 1,
+      "source": "https://truyentranhaudio.online",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/icon.png",
+      "description": "Đọc truyện trên trang truyentranhaudio.online"
+    },
+    {
+      "name": "Say Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/saytruyen/plugin.zip",
+      "version": 6,
+      "source": "https://saytruyen.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/saytruyen/icon.png",
+      "description": "Đọc truyện trên trang Say Truyện"
+    },
+    {
+      "name": "HentaiVN",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/plugin.zip",
+      "version": 3,
+      "source": "https://hentaivn.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/icon.png",
+      "description": "Đọc truyện trên trang HentaiVN"
+    },
+    {
+      "name": "iSach",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/isach/plugin.zip",
+      "version": 1,
+      "source": "https://isach.info",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/isach/icon.png",
+      "description": "Đọc truyện trên trang iSach"
+    },
+    {
+      "name": "QManga",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/plugin.zip",
+      "version": 1,
+      "source": "https://qmanga.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/icon.png",
+      "description": "Đọc truyện trên trang QManga"
+    },
+    {
+      "name": "U Mê Truyện",
+      "author": "Darkrai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/umetruyen/plugin.zip",
+      "version": 1,
+      "source": "https://umetruyen.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/umetruyen/icon.png",
+      "description": "Đọc truyện trên trang U Mê Truyện"
+    },
+    {
+      "name": "Hentai2Read",
+      "author": "Nhocconsr",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentai2read/plugin.zip",
+      "version": 1,
+      "source": "https://hentai2read.com",
+      "icon": "https://hentai2read.com/apple-touch-icon.png",
+      "description": "Đọc truyện trên trang Hentai2Read"
+    }
+  ]
+}

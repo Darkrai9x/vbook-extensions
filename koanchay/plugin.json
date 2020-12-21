@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "Koanchay",
+    "author": "Darkrai",
+    "version": 4,
+    "source": "https://koanchay.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/koanchay/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/koanchay/plugin.zip",
+    "regexp": "(www.)?koanchay.com/truyen/[^/]+/?$",
+    "description": "Đọc truyện trên trang Koanchay",
+    "local": "vi-VN",
+    "language": "javascript"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "thread_num": 1,
+    "delay": 1500
+  }
+}

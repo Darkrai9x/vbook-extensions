@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "SS Truyện",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://sstruyen.com/",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/sstruyen/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/sstruyen/plugin.zip",
+    "regexp": "(www.)?sstruyen.com/[^/]+/?$",
+    "description": "Đọc truyện trên trang SS Truyện",
+    "local": "vi-VN",
+    "language": "javascript"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

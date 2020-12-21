@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "TruyệnVKL",
+    "author": "Darkrai",
+    "version": 2,
+    "source": "https://truyenvkl.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenvkl/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenvkl/plugin.zip",
+    "regexp": "(www.)?truyenvkl.com/truyen/[^/]+/?$",
+    "description": "Đọc truyện trên trang TruyệnVKL",
+    "local": "vi-VN",
+    "language": "lua"
+  },
+  "script": {
+    "home": "home.lua",
+    "genre": "genre.lua",
+    "detail": "detail.lua",
+    "page": "page.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua"
+  }
+}

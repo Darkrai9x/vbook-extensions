@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "iSach",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://isach.info",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/isach/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/isach/plugin.zip",
+    "regexp": "(www.)?isach.info/(mobile/)?story.php.story=[^/&]+/?$",
+    "description": "Đọc truyện trên trang iSach",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "Blog Truyện",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://blogtruyen.vn",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/blogtruyen/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/blogtruyen/plugin.zip",
+    "regexp": "(www.)?blogtruyen.vn/\\d+/[0-9a-z-]+/?$",
+    "description": "Đọc truyện trên trang Blog Truyện",
+    "local": "vi-VN",
+    "language": "lua",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.lua",
+    "genre": "genre.lua",
+    "detail": "detail.lua",
+    "search": "search.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua"
+  }
+}

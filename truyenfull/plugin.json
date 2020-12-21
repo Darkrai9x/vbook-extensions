@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "Truyện Full",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://truyenfull.vn",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenfull/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenfull/plugin.zip",
+    "regexp": "(www.)?truyenfull.(vn|net)/[^/]+/?$",
+    "description": "Đọc truyện trên trang Truyện Full",
+    "local": "vi-VN",
+    "language": "lua"
+  },
+  "script": {
+    "home": "home.lua",
+    "genre": "genre.lua",
+    "detail": "detail.lua",
+    "search": "search.lua",
+    "page": "page.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua"
+  }
+}

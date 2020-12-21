@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "Sàn Truyện",
+    "author": "Darkrai",
+    "version": 2,
+    "source": "http://santruyen.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/santruyen/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/santruyen/plugin.zip",
+    "regexp": "(www.)?santruyen.com/[^/]+.html$",
+    "description": "Đọc truyện trên trang Sàn Truyện",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

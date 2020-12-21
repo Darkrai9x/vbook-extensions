@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "vTruyện",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://vtruyen.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/vtruyen/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/vtruyen/plugin.zip",
+    "regexp": "(www.)?vtruyen.com/truyen/[^/]+/?$",
+    "description": "Đọc truyện trên trang vTruyện",
+    "local": "vi-VN",
+    "language": "lua"
+  },
+  "script": {
+    "detail": "detail.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua",
+    "home": "home.lua",
+    "genre": "genre.lua",
+    "search": "search.lua"
+  }
+}

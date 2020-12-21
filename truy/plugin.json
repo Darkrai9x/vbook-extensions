@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Truy.IN",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://truy.in",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truy/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truy/plugin.zip",
+    "regexp": "(www.)?truy.in/manga/[0-9a-z-]+/?$",
+    "description": "Đọc truyện trên trang Truy.IN",
+    "local": "vi-VN",
+    "language": "lua",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.lua",
+    "detail": "detail.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua"
+  }
+}

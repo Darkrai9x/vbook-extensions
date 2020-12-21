@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "Say Truyện",
+    "author": "Darkrai",
+    "version": 6,
+    "source": "https://saytruyen.net",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/saytruyen/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/saytruyen/plugin.zip",
+    "regexp": "(www.)?saytruyen.net/[^/]+.html$",
+    "description": "Đọc truyện trên trang Say Truyện",
+    "local": "vi-VN",
+    "language": "javascript",
+	"type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

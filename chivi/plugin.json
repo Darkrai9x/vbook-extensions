@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Chivi",
+    "author": "Darkrai",
+    "version": 4,
+    "source": "https://chivi.xyz/",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/chivi/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/chivi/plugin.zip",
+    "regexp": "(www.)?chivi.xyz/[^/+]+/?$",
+    "description": "Đọc truyện trên trang Chivi",
+    "local": "vi-VN",
+    "language": "lua",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.lua",
+    "detail": "detail.lua",
+    "search": "search.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua"
+  }
+}

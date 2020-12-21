@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "Truyện Tranh Audio",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://truyentranhaudio.online",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyentranhaudio/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyentranhaudio/plugin.zip",
+    "regexp": "(www.)?truyentranhaudio.online/manga-slug/[^/]+/?$",
+    "description": "Đọc truyện trên trang truyentranhaudio.online",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

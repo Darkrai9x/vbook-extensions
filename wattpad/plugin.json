@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Wattpad",
+    "author": "Darkrai",
+    "version": 1,
+    "source": "https://wattpad.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/wattpad/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/wattpad/plugin.zip",
+    "regexp": "(www.)?wattpad.com/story/\\d+.*?/?$",
+    "description": "Đọc truyện trên trang Wattpad",
+    "local": "global",
+    "language": "lua",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.lua",
+    "detail": "detail.lua",
+    "search": "search.lua",
+    "toc": "toc.lua",
+    "chap": "chap.lua"
+  }
+}

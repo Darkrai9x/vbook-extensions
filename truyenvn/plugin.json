@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "name": "Truyện VN",
+    "author": "Darkrai",
+    "version": 3,
+    "source": "https://truyenvn.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenvn/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenvn/plugin.zip",
+    "regexp": "(www.)?truyenvn.com/[^/]+/?$",
+    "description": "Đọc truyện trên trang Truyện VN",
+    "local": "vi-VN",
+    "language": "javascript",
+	"type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

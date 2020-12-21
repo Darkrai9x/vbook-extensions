@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "Web Truyện",
+    "author": "Darkrai",
+    "version": 2,
+    "source": "https://webtruyen.com",
+    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/webtruyen/icon.png",
+    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/webtruyen/plugin.zip",
+    "regexp": "(www.)?webtruyen.com/[^/]+$",
+    "description": "Đọc truyện trên trang Web Truyện",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
