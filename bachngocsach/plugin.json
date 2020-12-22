@@ -1,11 +1,9 @@
 {
     "metadata": {
         "name": "Bạch Ngọc Sách",
-        "author": "Darkrai",
+        "author": "vBook",
         "version": 1,
         "source": "https://bachngocsach.com/reader/",
-        "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/bachngocsach/icon.png",
-        "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/bachngocsach/plugin.zip",
         "regexp": "bachngocsach.com/reader/[^/]+/?$",
         "description": "Đọc truyện trên trang bachngocsach.com/reader",
         "local": "vi-VN",

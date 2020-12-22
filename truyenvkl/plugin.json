@@ -1,15 +1,14 @@
 {
   "metadata": {
     "name": "TruyệnVKL",
-    "author": "Darkrai",
-    "version": 2,
+    "author": "vBook",
+    "version": 1,
     "source": "https://truyenvkl.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenvkl/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenvkl/plugin.zip",
     "regexp": "(www.)?truyenvkl.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang TruyệnVKL",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "lua",
+    "tag": "nsfw"
   },
   "script": {
     "home": "home.lua",

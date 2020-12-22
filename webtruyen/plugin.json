@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Web Truyện",
-    "author": "Darkrai",
-    "version": 2,
+    "author": "vBook",
+    "version": 1,
     "source": "https://webtruyen.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/webtruyen/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/webtruyen/plugin.zip",
     "regexp": "(www.)?webtruyen.com/[^/]+$",
     "description": "Đọc truyện trên trang Web Truyện",
     "local": "vi-VN",

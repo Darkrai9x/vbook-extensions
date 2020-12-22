@@ -8,6 +8,7 @@ function execute(url) {
         description: doc.select("#tags").html(),
         detail: doc.select("#info").html(),
         host: "https://nhentai.net",
-        ongoing: false
+        ongoing: false,
+        nsfw: true
     });
 }

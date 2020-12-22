@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Sàn Truyện",
-    "author": "Darkrai",
-    "version": 2,
+    "author": "vBook",
+    "version": 1,
     "source": "http://santruyen.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/santruyen/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/santruyen/plugin.zip",
     "regexp": "(www.)?santruyen.com/[^/]+.html$",
     "description": "Đọc truyện trên trang Sàn Truyện",
     "local": "vi-VN",

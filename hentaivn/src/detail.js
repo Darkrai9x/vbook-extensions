@@ -22,7 +22,8 @@ function execute(url) {
             author: info.select("a[href~=tacgia]").first().text(),
             description: info.select(".content-info").html(),
             host: "https://hentaivn.net",
-            ongoing: info.select(".content-info").html().indexOf("Đã hoàn thành") === -1
+            ongoing: info.select(".content-info").html().indexOf("Đã hoàn thành") === -1,
+            nsfw: true
         });
     } else {
         var info = doc.select(".page-info");
@@ -32,7 +33,8 @@ function execute(url) {
             author: doc.select("a[href~=tacgia]").first().text(),
             description: info.html(),
             host: "https://hentaivn.net",
-            ongoing: info.html().indexOf("Đã hoàn thành") === -1
+            ongoing: info.html().indexOf("Đã hoàn thành") === -1,
+            nsfw: true
         });
     }
 }

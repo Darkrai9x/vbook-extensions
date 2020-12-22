@@ -1,17 +1,15 @@
 {
   "metadata": {
     "name": "HentaiVN",
-    "author": "Darkrai",
-    "version": 3,
+    "author": "vBook",
+    "version": 1,
     "source": "https://hentaivn.net",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/hentaivn/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/hentaivn/plugin.zip",
     "regexp": "(www.)?hentaivn.net/\\d+-[^/]+.html$",
     "description": "Đọc truyện trên trang HentaiVN",
     "local": "vi-VN",
     "language": "javascript",
     "type": "comic",
-    "18+": true
+    "tag": "nsfw"
   },
   "script": {
     "home": "home.js",

@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Wiki Dịch",
-    "author": "Darkrai",
-    "version": 4,
+    "author": "vBook",
+    "version": 1,
     "source": "https://wikidich.com/",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/wikidich/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/wikidich/plugin.zip",
     "regexp": "(www.)?wikidich.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch",
     "local": "vi-VN",

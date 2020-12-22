@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Truyện Tranh Audio",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://truyentranhaudio.online",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyentranhaudio/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyentranhaudio/plugin.zip",
     "regexp": "(www.)?truyentranhaudio.online/manga-slug/[^/]+/?$",
     "description": "Đọc truyện trên trang truyentranhaudio.online",
     "local": "vi-VN",

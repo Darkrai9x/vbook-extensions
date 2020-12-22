@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Mê Đọc Truyện Chữ",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://www.medoctruyenchu.net",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/medoctruyenchu/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/medoctruyenchu/plugin.zip",
     "regexp": "(www.|m.)?medoctruyenchu.net/tieu-thuyet/[0-9a-z-]+\\d+/?$",
     "description": "Đọc truyện trên trang Mê Đọc Truyện Chữ",
     "local": "vi-VN",

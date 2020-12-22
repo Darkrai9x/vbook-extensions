@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Truyện CV",
-    "author": "Darkrai",
-    "version": 3,
+    "author": "vBook",
+    "version": 1,
     "source": "https://truyencv.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyencv/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyencv/plugin.zip",
     "regexp": "(www.)?truyencv.com/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện CV",
     "local": "vi-VN",

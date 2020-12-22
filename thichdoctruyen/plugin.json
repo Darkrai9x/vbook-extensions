@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Thích Đọc Truyện",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://thichdoctruyen.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/thichdoctruyen/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/thichdoctruyen/plugin.zip",
     "regexp": "(www.)?thichdoctruyen.com/doc-truyen/[^/]+\\d+$",
     "description": "Đọc truyện trên trang Thích Đọc Truyện",
     "local": "vi-VN",

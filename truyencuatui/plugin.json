@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Truyện Của Tui",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://truyencuatui.net",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyencuatui/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyencuatui/plugin.zip",
     "regexp": "(www.)?(m.)?truyencuatui.net/truyen/[^/]+.html$",
     "description": "Đọc truyện trên trang Truyện Của Tui",
     "local": "vi-VN",

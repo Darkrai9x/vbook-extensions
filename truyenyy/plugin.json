@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Truyện YY",
-    "author": "Darkrai",
-    "version": 3,
+    "author": "vBook",
+    "version": 1,
     "source": "https://truyenyy.vn",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenyy/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/truyenyy/plugin.zip",
     "regexp": "(www.)?truyenyy.(com|vn)/truyen/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Truyện YY",
     "local": "vi-VN",

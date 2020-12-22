@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "U Mê Truyện",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://umetruyen.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/umetruyen/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/umetruyen/plugin.zip",
     "regexp": "(www.)?umetruyen.com/[^/]+.html$",
     "description": "Đọc truyện trên trang U Mê Truyện",
     "local": "vi-VN",

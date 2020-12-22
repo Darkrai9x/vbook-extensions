@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "Net Truyện",
-    "author": "Darkrai",
-    "version": 2,
+    "author": "vBook",
+    "version": 1,
     "source": "https://www.nettruyen.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/nettruyen/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/nettruyen/plugin.zip",
     "regexp": "(www.)?(nhattruyen.com|nettruyen.com)/truyen-tranh/[^/]+/?$",
     "description": "Đọc truyện trên trang Net Truyện",
     "local": "vi-VN",

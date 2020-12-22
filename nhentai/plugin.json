@@ -1,16 +1,15 @@
 {
   "metadata": {
     "name": "nHentai",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://nhentai.net",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/nhentai/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/nhentai/plugin.zip",
     "regexp": "(www.)?nhentai.net/g/\\d+/?$",
     "description": "Đọc truyện trên trang nHentai",
     "local": "local",
     "language": "javascript",
-    "type": "comic"
+    "type": "comic",
+    "tag": "nsfw"
   },
   "script": {
     "home": "home.js",

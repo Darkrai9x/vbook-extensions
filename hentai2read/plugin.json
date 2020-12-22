@@ -4,13 +4,12 @@
     "author": "Nhocconsr",
     "version": 1,
     "source": "https://hentai2read.com",
-    "icon": "https://hentai2read.com/apple-touch-icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/hentai2read/plugin.zip",
     "regexp": "(www.)?hentai2read.com/[^/]+/?",
     "description": "Đọc truyện trên trang Hentai2read.com",
     "local": "vi-VN",
     "language": "javascript",
-    "type": "comic"
+    "type": "comic",
+    "tag": "nsfw"
   },
   "script": {
     "home": "home.js",

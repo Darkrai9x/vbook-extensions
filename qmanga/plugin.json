@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "QManga",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://qmanga.net",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/qmanga/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/qmanga/plugin.zip",
     "regexp": "(www.)?qmanga.net/[^/]+.html$",
     "description": "Đọc truyện trên trang QManga",
     "local": "vi-VN",

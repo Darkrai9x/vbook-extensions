@@ -1,11 +1,9 @@
 {
   "metadata": {
     "name": "iSach",
-    "author": "Darkrai",
+    "author": "vBook",
     "version": 1,
     "source": "https://isach.info",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/isach/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/isach/plugin.zip",
     "regexp": "(www.)?isach.info/(mobile/)?story.php.story=[^/&]+/?$",
     "description": "Đọc truyện trên trang iSach",
     "local": "vi-VN",

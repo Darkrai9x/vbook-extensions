@@ -1,15 +1,14 @@
 {
   "metadata": {
     "name": "Koanchay",
-    "author": "Darkrai",
-    "version": 4,
+    "author": "vBook",
+    "version": 1,
     "source": "https://koanchay.com",
-    "icon": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/koanchay/icon.png",
-    "url": "https://raw.githubusercontent.com/Darkrai9x/extensions/master/koanchay/plugin.zip",
     "regexp": "(www.)?koanchay.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Koanchay",
     "local": "vi-VN",
-    "language": "javascript"
+    "language": "javascript",
+    "tag": "nsfw"
   },
   "script": {
     "home": "home.js",
