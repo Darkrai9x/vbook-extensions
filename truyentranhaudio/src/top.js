@@ -1,6 +1,6 @@
 function execute(url, page) {
     if (!page) page = '0';
-    const doc = Http.post(url).params({
+    const doc = Http.post('https://truyentranhaudio.online/wp-admin/admin-ajax.php').params({
         "action": "madara_load_more",
         "page": page,
         "template": "madara-core/content/content-archive",
@@ -17,15 +17,15 @@ function execute(url, page) {
 
     const data = [];
 
-    var el = doc.select(".page-content-listing .page-item-detail")
+    var el = doc.select(".page-listing-item .page-item-detail")
 
     for (var i = 0; i < el.size(); i++) {
         var e = el.get(i)
         data.push({
-            name: e.select(".post-title h5 a").first().text(),
-            link: e.select(".post-title h5 a").first().attr("href"),
+            name: e.select("h3.h5 a").first().text(),
+            link: e.select("h3.h5 a").first().attr("href"),
             cover: e.select(".item-thumb img").first().attr("src"),
-            description: e.select(".chapter-item .chapter").text(),
+            description: e.select(".list-chapter > div:nth-child(1) a").text(),
             host: "https://truyentranhaudio.online"
         })
     }
