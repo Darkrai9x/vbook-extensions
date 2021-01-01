@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Ngôn Phong",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.ngonphong.com",
+    "regexp": "(www.)?ngonphong.com/[^/]+/[^/]+/?$",
+    "description": "Đọc truyện trên trang ngonphong.com",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

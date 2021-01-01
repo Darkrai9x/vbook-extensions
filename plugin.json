@@ -332,6 +332,15 @@
       "icon": "https://hentai2read.com/apple-touch-icon.png",
       "description": "Đọc truyện trên trang Hentai2Read",
       "tag": "nsfw"
+    },
+    {
+      "name": "Ngôn Phong",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ngonphong/plugin.zip",
+      "version": 1,
+      "source": "https://www.ngonphong.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ngonphong/icon.png",
+      "description": "Đọc truyện trên trang ngonphong.com"
     }
   ]
 }
