@@ -9,9 +9,9 @@ if doc ~= nil then
     local novelList = {}
     local next
 
-    local last = doc:select(".pagination"):last()
+    local last = doc:select(".pagination > li.active + li"):last()
     if last ~= nil then
-        next = regexp:find(last:html(), "trang-(\\d+).*?glyphicon-menu-right")
+        next = last:text()
     end
     for i = 1, el:size() do
         local e = el:get(i - 1)
