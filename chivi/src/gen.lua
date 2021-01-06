@@ -1,18 +1,19 @@
 local url, page = ...
 
 if text:is_empty(page) then
-    page = 1
+    page = "1"
 end
-local data = http:get(url .. "&page=" .. page):table()
+local data = http:get(url .. "page=" .. page):table()
 
 if data ~= nil then
     local el = data["items"]
     local total = num:to_int(data["total"], 0)
     local currentPage = num:to_int(page, 0)
+    local offset = num:to_int(data["query"]["offset"], 0)
     local novelList = {}
     local next
 
-    if (currentPage < total) then
+    if (offset < total) then
         next = currentPage + 1
     end
     for i, v in ipairs(el) do
