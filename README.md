@@ -144,7 +144,7 @@ Response.error(message) // Trả về response thất bại với nội dung l�
 -- Browser
 
 ```javascript
-var browser = Engine:newBrowser() // Khởi tạo browser
+var browser = Engine.newBrowser() // Khởi tạo browser
 browser.launch(url, timeout) // Mở trang web với timeout, trả về Document object
 browser.callJs(script, waitTime) // Gọi Javascript function trên trang với waitTime, trả về Document object
 browser.urls() // Trả về các url đã request trên trang
