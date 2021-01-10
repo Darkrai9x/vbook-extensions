@@ -100,3 +100,55 @@ ressponse:success(data) -- Trả về response thành công với data
 ressponse:success(data, data2) -- Trả về response thành công với data, data2
 ressponse:error(message) -- Trả về response thất bại với nội dung lỗi
 ```
+
+-- Browser `engine:browser()`
+
+```lua
+local browser = engine:browser() -- Khởi tạo browser
+browser:launch(url, timeout) -- Mở trang web với timeout, trả về Document object
+browser:call_js(script, waitTime) -- Gọi Javascript function trên trang với waitTime, trả về Document object
+browser:urls() -- Trả về các url đã request trên trang
+browser:waitUrl(urls,  timeout) -- Đợi urls load với timeout
+browser:html() -- Trả về Document object của trang web
+browser:close() -- Đóng browser khi đã xử lý xong
+```
+
+## Javascript
+- Http request
+
+```javascript
+var request = Http.get(url) // Tạo request GET, return Request object
+var request = Http.post(url) // Tạo request POST, return Request object
+request.headers(headers) // Truyền tham số header dạng lua table, return Request object
+request.params(params) // Truyền tham số FormData dạng lua table, return Request object
+request.body(body) // Truyền tham số body payload string, return Request object
+request.html() // Trả về response request dạng Document object
+request.string() // Trả về response request dạng string
+request.code()// Trả về http status code của response
+```
+
+- Html parse
+
+```javascript
+Html.parse(text) // Parse html text to  Document object
+```
+
+- Response
+
+```javascript
+Response.success(data) // Trả về response thành công với data
+Response.success(data, data2) // Trả về response thành công với data, data2
+Response.error(message) // Trả về response thất bại với nội dung lỗi
+```
+
+-- Browser
+
+```javascript
+var browser = Engine:newBrowser() // Khởi tạo browser
+browser.launch(url, timeout) // Mở trang web với timeout, trả về Document object
+browser.callJs(script, waitTime) // Gọi Javascript function trên trang với waitTime, trả về Document object
+browser.urls() // Trả về các url đã request trên trang
+browser.waitUrl(urls,  timeout) // Đợi urls load với timeout
+browser.html() // Trả về Document object của trang web
+browser.close() // Đóng browser khi đã xử lý xong
+```
