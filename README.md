@@ -119,8 +119,8 @@ browser:close() -- Đóng browser khi đã xử lý xong
 ```javascript
 var request = Http.get(url) // Tạo request GET, return Request object
 var request = Http.post(url) // Tạo request POST, return Request object
-request.headers(headers) // Truyền tham số header dạng lua table, return Request object
-request.params(params) // Truyền tham số FormData dạng lua table, return Request object
+request.headers(headers) // Truyền tham số header, return Request object
+request.params(params) // Truyền tham số FormData, return Request object
 request.body(body) // Truyền tham số body payload string, return Request object
 request.html() // Trả về response request dạng Document object
 request.string() // Trả về response request dạng string
