@@ -2,7 +2,7 @@ local url = ...
 local doc = http:get(url .. "/content"):html()
 if doc ~= nil then
     local list = {}
-    local source = doc:select(".page-content > .chseed > a._active"):text()
+    local source = doc:select(".section-content > .chseed > a._active"):text()
     local ubid = regexp:find(doc:html(), 'ubid:\\s*"(.*?)"')
     local json = http:get("https://chivi.xyz/api/chaps/" .. ubid .. "/" .. source .. "?limit=30&offset=0&order=asc"):table()
 
