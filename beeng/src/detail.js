@@ -12,7 +12,7 @@ function execute(url) {
     }
 
     return Response.success({
-        name: doc.select(".detail h4").text(),
+        name: doc.select(".detail h1").text(),
         cover: doc.select(".cover img").first().attr("data-src"),
         author: doc.select(".author a").first().text(),
         description: doc.select(".shortDetail").html(),

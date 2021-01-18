@@ -190,7 +190,7 @@
       "name": "TruyệnVKL",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://truyenvkl.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/icon.png",
       "description": "Đọc truyện trên trang TruyệnVKL",
@@ -263,7 +263,7 @@
       "name": "Beeng",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://beeng.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/icon.png",
       "description": "Đọc truyện trên trang Beeng.net"

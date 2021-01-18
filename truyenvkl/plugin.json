@@ -2,9 +2,9 @@
   "metadata": {
     "name": "TruyệnVKL",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://truyenvkl.com",
-    "regexp": "(www.)?truyenvkl.com/truyen/[^/]+/?$",
+    "regexp": "(www.)?truyenvkl.com/truyen/.*?",
     "description": "Đọc truyện trên trang TruyệnVKL",
     "local": "vi-VN",
     "language": "lua",

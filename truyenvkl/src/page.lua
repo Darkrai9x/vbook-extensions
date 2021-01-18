@@ -12,8 +12,7 @@ if not listChap:isEmpty() then
         table.insert(list, url .. "/" .. i)
     end
 else
-    local bookId = doc:select("#views"):attr("data-id")
-    table.insert(list, bookId)
+    table.insert(list, text:replace(url, "(http|https)://truyenvkl.com", ""))
 end
 
 return response:success(list)

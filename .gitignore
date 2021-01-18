@@ -1,3 +1,5 @@
 # Intellij
 .idea/*
 *.iml
+*test.json
+data.json

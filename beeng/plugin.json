@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Beeng",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://beeng.net",
-    "regexp": "(www.)?beeng.net/truyen-tranh-online/[^/]+\\d+/?$",
+    "regexp": "(www.)?beeng.net/[^/]+\\d+.html",
     "description": "Đọc truyện trên trang Beeng.net",
     "local": "vi-VN",
     "language": "javascript",
