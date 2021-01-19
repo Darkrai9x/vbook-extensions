@@ -10,8 +10,8 @@ function execute(key, page) {
     for (var i = 0; i < el.size(); i++) {
         var e = el.get(i);
         data.push({
-            name: e.select("h5 a").first().text(),
-            link: e.select("h5 a").first().attr("href"),
+            name: e.select(".detail a").first().text(),
+            link: e.select(".detail a").first().attr("href"),
             cover: e.select(".cover img").first().attr("data-src"),
             description: e.select(".chapters a").first().text(),
             host: "https://beeng.net"

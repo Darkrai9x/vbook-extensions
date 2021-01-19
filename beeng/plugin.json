@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Beeng",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://beeng.net",
     "regexp": "(www.)?beeng.net/[^/]+\\d+.html",
     "description": "Đọc truyện trên trang Beeng.net",

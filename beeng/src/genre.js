@@ -1,70 +1,14 @@
 function execute() {
-    return Response.success([
-        {title: "Romance", input: "https://beeng.net/the-loai/romance-8", script: "gen.js"},
-        {title: "Comedy", input: "https://beeng.net/the-loai/comedy-4", script: "gen.js"},
-        {title: "Action", input: "https://beeng.net/the-loai/action-1", script: "gen.js"},
-        {title: "Manhua", input: "https://beeng.net/the-loai/manhua-9", script: "gen.js"},
-        {title: "Truyện Màu", input: "https://beeng.net/the-loai/truyen-mau-11", script: "gen.js"},
-        {title: "Fantasy", input: "https://beeng.net/the-loai/fantasy-5", script: "gen.js"},
-        {title: "Drama", input: "https://beeng.net/the-loai/drama-22", script: "gen.js"},
-        {title: "Adventure", input: "https://beeng.net/the-loai/adventure-2", script: "gen.js"},
-        {title: "School Life", input: "https://beeng.net/the-loai/school-life-16", script: "gen.js"},
-        {title: "Slice of life", input: "https://beeng.net/the-loai/slice-of-life-25", script: "gen.js"},
-        {title: "Shoujo", input: "https://beeng.net/the-loai/shoujo-21", script: "gen.js"},
-        {title: "Shounen", input: "https://beeng.net/the-loai/shounen-17", script: "gen.js"},
-        {title: "Supernatural", input: "https://beeng.net/the-loai/supernatural-20", script: "gen.js"},
-        {title: "Mystery", input: "https://beeng.net/the-loai/mystery-10", script: "gen.js"},
-        {title: "Seinen", input: "https://beeng.net/the-loai/seinen-47", script: "gen.js"},
-        {title: "Manga", input: "https://beeng.net/the-loai/manga-18", script: "gen.js"},
-        {title: "Ngôn Tình", input: "https://beeng.net/the-loai/ngon-tinh-13", script: "gen.js"},
-        {title: "Horror", input: "https://beeng.net/the-loai/horror-19", script: "gen.js"},
-        {title: "Harem", input: "https://beeng.net/the-loai/harem-6", script: "gen.js"},
-        {title: "Martial Arts", input: "https://beeng.net/the-loai/martial-arts-7", script: "gen.js"},
-        {title: "Webtoon", input: "https://beeng.net/the-loai/webtoon-35", script: "gen.js"},
-        {title: "Historical", input: "https://beeng.net/the-loai/historical-23", script: "gen.js"},
-        {title: "Manhwa", input: "https://beeng.net/the-loai/manhwa-33", script: "gen.js"},
-        {title: "Sci-fi", input: "https://beeng.net/the-loai/sci-fi-27", script: "gen.js"},
-        {title: "One Shot", input: "https://beeng.net/the-loai/one-shot-28", script: "gen.js"},
-        {title: "Xuyên Không", input: "https://beeng.net/the-loai/xuyen-khong-12", script: "gen.js"},
-        {title: "Tragedy", input: "https://beeng.net/the-loai/tragedy-24", script: "gen.js"},
-        {title: "Cổ Đại", input: "https://beeng.net/the-loai/co-dai-57", script: "gen.js"},
-        {title: "Chuyển Sinh", input: "https://beeng.net/the-loai/chuyen-sinh-3", script: "gen.js"},
-        {title: "Smut", input: "https://beeng.net/the-loai/smut-45", script: "gen.js"},
-        {title: "Doujinshi", input: "https://beeng.net/the-loai/doujinshi-42", script: "gen.js"},
-        {title: "Adult", input: "https://beeng.net/the-loai/adult-46", script: "gen.js"},
-        {title: "Psychological", input: "https://beeng.net/the-loai/psychological-52", script: "gen.js"},
-        {title: "Truyện Hàn (Manhwa)", input: "https://beeng.net/the-loai/truyen-han-manhwa-32", script: "gen.js"},
-        {title: "Yuri", input: "https://beeng.net/the-loai/yuri-37", script: "gen.js"},
-        {title: "Shoujo Ai", input: "https://beeng.net/the-loai/shoujo-ai-29", script: "gen.js"},
-        {title: "Mature", input: "https://beeng.net/the-loai/mature-59", script: "gen.js"},
-        {title: "Beeng.net", input: "https://beeng.net/the-loai/beengnet-80", script: "gen.js"},
-        {title: "Josei", input: "https://beeng.net/the-loai/josei-44", script: "gen.js"},
-        {title: "Comic", input: "https://beeng.net/the-loai/comic-36", script: "gen.js"},
-        {title: "Trưởng thành 18+", input: "https://beeng.net/the-loai/truong-thanh-18-26", script: "gen.js"},
-        {title: "Gender Bender", input: "https://beeng.net/the-loai/gender-bender-48", script: "gen.js"},
-        {title: "Shounen Ai", input: "https://beeng.net/the-loai/shounen-ai-31", script: "gen.js"},
-        {title: "Psycho", input: "https://beeng.net/the-loai/psycho-30", script: "gen.js"},
-        {title: "Yaoi", input: "https://beeng.net/the-loai/yaoi-41", script: "gen.js"},
-        {title: "Soft Yaoi", input: "https://beeng.net/the-loai/soft-yaoi-51", script: "gen.js"},
-        {title: "Đam Mỹ", input: "https://beeng.net/the-loai/dam-my-62", script: "gen.js"},
-        {title: "Sports", input: "https://beeng.net/the-loai/sports-34", script: "gen.js"},
-        {title: "Isekai/Dị giới/Trọng sinh", input: "https://beeng.net/the-loai/isekaidi-gioitrong-sinh-56", script: "gen.js"},
-        {title: "Mecha", input: "https://beeng.net/the-loai/mecha-50", script: "gen.js"},
-        {title: "Magic", input: "https://beeng.net/the-loai/magic-64", script: "gen.js"},
-        {title: "Anime", input: "https://beeng.net/the-loai/anime-14", script: "gen.js"},
-        {title: "18+", input: "https://beeng.net/the-loai/18-72", script: "gen.js"},
-        {title: "Full màu", input: "https://beeng.net/the-loai/full-mau-65", script: "gen.js"},
-        {title: "16+", input: "https://beeng.net/the-loai/16-58", script: "gen.js"},
-        {title: "Huyền Huyễn", input: "https://beeng.net/the-loai/huyen-huyen-60", script: "gen.js"},
-        {title: "Truyền Việt", input: "https://beeng.net/the-loai/truyen-viet-49", script: "gen.js"},
-        {title: "Trinh Thám", input: "https://beeng.net/the-loai/trinh-tham-74", script: "gen.js"},
-        {title: "Game", input: "https://beeng.net/the-loai/game-73", script: "gen.js"},
-        {title: "Trọng Sinh", input: "https://beeng.net/the-loai/trong-sinh-61", script: "gen.js"},
-        {title: "Việt Nam", input: "https://beeng.net/the-loai/viet-nam-70", script: "gen.js"},
-        {title: "Music", input: "https://beeng.net/the-loai/music-71", script: "gen.js"},
-        {title: "Hệ Thống", input: "https://beeng.net/the-loai/he-thong-79", script: "gen.js"},
-        {title: "NTR", input: "https://beeng.net/the-loai/ntr-66", script: "gen.js"},
-        {title: "Trap (Crossdressing)", input: "https://beeng.net/the-loai/trap-crossdressing-76", script: "gen.js"},
-        {title: "Tu chân - tu tiên", input: "https://beeng.net/the-loai/tu-chan-tu-tien-68", script: "gen.js"}
-    ]);
+    const doc = Http.get("https://beeng.net/the-loai").html();
+    var el = doc.select(".list-cate li a");
+    const data = [];
+    for (var i = 0; i < el.size(); i++) {
+        var e = el.get(i);
+        data.push({
+            title: e.text(),
+            input: e.attr("href"),
+            script: "gen.js"
+        });
+    }
+    return Response.success(data);
 }
