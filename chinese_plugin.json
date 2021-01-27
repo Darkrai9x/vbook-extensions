@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "author": "vBook",
+    "description": ""
+  },
+  "data": [
+    {
+      "name": "uukanshu",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/plugin.zip",
+      "version": 1,
+      "source": "https://uukanshu.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/icon.png",
+      "description": "Đọc truyện trên trang uukanshu.com"
+    }
+  ]
+}
