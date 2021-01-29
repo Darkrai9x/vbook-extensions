@@ -1,37 +1,29 @@
 local url = ...
-local doc = http:get(url .. "/content"):html()
-if doc ~= nil then
-    local list = {}
-    local source = doc:select(".section-content > .chseed > a._active"):text()
-    local ubid = regexp:find(doc:html(), 'ubid:\\s*"(.*?)"')
-    local json = http:get("https://chivi.xyz/api/chaps/" .. ubid .. "/" .. source .. "?limit=30&offset=0&order=asc"):table()
+local new_url = url .. "/content"
 
-    local data = json["chaps"]
-    local total = json["total"]
-    for k, v in ipairs(data) do
+local list = {}
+
+while (new_url ~= nil) do
+    local doc = http:get(new_url):html()
+    local el = doc:select("div.chlist._page li a")
+
+    for i = 0, el:size() - 1 do
+        local e = el:get(i)
         local chap = {
-            ["name"] = v["title"],
-            ["url"] = url .. "/-" .. v["uslug"] .. "-" .. source .. "-" .. v["scid"],
+            ["name"] = e:text(),
+            ["url"] = e:attr("href"),
             ["host"] = "https://chivi.xyz/"
         }
         table.insert(list, chap)
     end
 
-    for i = 30, total, 30 do
-        print(i .. " - " .. total)
-        local json = http:get("https://chivi.xyz/api/chaps/" .. ubid .. "/" .. source .. "?limit=30&offset=" .. i .. "&order=asc"):table()
+    local page = doc:select(".pagi"):select("a._primary._disable + a"):text()
 
-        local data = json["chaps"]
-        for k, v in ipairs(data) do
-            local chap = {
-                ["name"] = v["title"],
-                ["url"] = url .. "/-" .. v["uslug"] .. "-" .. source .. "-" .. v["scid"],
-                ["host"] = "https://chivi.xyz/"
-            }
-            table.insert(list, chap)
-        end
+    if text:is_empty(page) then
+        new_url = nil
+    else
+        new_url = url .. doc:select(".pagi"):select("a._primary._disable + a"):attr("href")
     end
-
-    return response:success(list)
 end
-return nil
+return response:success(list)
+

@@ -6,7 +6,7 @@ if doc ~= nil then
         ["cover"] = doc:select(".cover img"):first():attr("src"),
         ["host"] = "https://chivi.xyz",
         ["author"] = doc:select("[property=og:novel:author]"):attr("content"),
-        ["description"] = doc:select(".summary p"):html(),
+        ["description"] = doc:select(".section-content"):html(),
         ["detail"] = doc:select(".extra"):first():html(),
         ["ongoing"] = text:contains(doc:select(".extra"):first():html(), "Còn tiếp")
     }

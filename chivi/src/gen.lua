@@ -1,27 +1,33 @@
 local url, page = ...
 
 if text:is_empty(page) then
-    page = "1"
+    page = "0"
 end
-local data = http:get(url .. "page=" .. page):table()
+local data = http:get(url .. "take=24&skip=" .. page):table()
 
 if data ~= nil then
-    local el = data["items"]
+    local el = data["books"]
     local total = num:to_int(data["total"], 0)
-    local currentPage = num:to_int(page, 0)
-    local offset = num:to_int(data["query"]["offset"], 0)
-    local novelList = {}
-    local next
 
-    if (offset < total) then
-        next = currentPage + 1
+    local novelList = {}
+    local skip = num:to_int(page, 0)
+    local next
+    if (skip < total) then
+        next = skip + 24
     end
     for i, v in ipairs(el) do
+        local cover = v["bcover"]
+        local newcv
+        if text:contains(cover, "null") then
+            newcv = ""
+        else
+            newcv = "/covers/" .. cover
+        end
         local novel = {
-            ["name"] = v["vi_title"],
-            ["link"] = "~" .. v["slug"],
+            ["name"] = v["btitle_vi"],
+            ["link"] = "~" .. v["bslug"],
             ["description"] = v["vi_genre"],
-            ["cover"] = "/covers/" .. v["ubid"] .. "." .. v["main_cover"],
+            ["cover"] = newcv,
             ["host"] = "https://chivi.xyz"
         }
         table.insert(novelList, novel)
