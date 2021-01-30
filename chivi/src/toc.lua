@@ -22,7 +22,7 @@ while (new_url ~= nil) do
     if text:is_empty(page) then
         new_url = nil
     else
-        new_url = url .. doc:select(".pagi"):select("a._primary._disable + a"):attr("href")
+        new_url = "https://chivi.xyz" .. doc:select(".pagi"):select("a._primary._disable + a"):attr("href")
     end
 end
 return response:success(list)
