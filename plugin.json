@@ -108,7 +108,7 @@
       "name": "Truyện VN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://truyenvn.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
       "description": "Đọc truyện trên trang Truyện VN"

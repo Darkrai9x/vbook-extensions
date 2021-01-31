@@ -8,7 +8,7 @@ function execute(url) {
     }).string();
     var data = JSON.parse(json);
     var imgs  = data.mes.map(item => {
-        return item.url;
+        return item.url.replace("sv5.webtruyen.info","sv5.ghienmanga.net");
     });
     return Response.success(imgs);
 }
