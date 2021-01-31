@@ -12,6 +12,15 @@
       "source": "https://uukanshu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.com"
+    },
+    {
+      "name": "biqubu",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/biqubu/plugin.zip",
+      "version": 1,
+      "source": "https://www.biqubu.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/biqubu/icon.png",
+      "description": "Đọc truyện trên trang biqubu.com"
     }
   ]
 }
