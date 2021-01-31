@@ -2,7 +2,7 @@
   "metadata": {
     "name": "uukanshu",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://www.uukanshu.com",
     "regexp": "(www.)?uukanshu.com/b/[^/]+/?",
     "description": "Đọc truyện trên trang uukanshu.com",
@@ -13,7 +13,6 @@
   "script": {
     "home": "home.js",
     "detail": "detail.js",
-    "search": "search.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }
