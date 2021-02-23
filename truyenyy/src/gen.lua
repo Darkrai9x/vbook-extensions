@@ -3,7 +3,9 @@ local url, page = ...
 if text:is_empty(page) then
     page = 1
 end
-local doc = http:get(text:replace(url, "truyenyy.com", "truyenyy.vn") .. "/?page=" .. page):html()
+local new_url = text:replace(url, "truyenyy.com", "truyenyy.vip")
+new_url = text:replace(new_url, "truyenyy.vn", "truyenyy.vip")
+local doc = http:get(new_url .. "/?page=" .. page):html()
 
 if doc ~= nil then
     local el = doc:select(".books-list > li")
@@ -26,7 +28,7 @@ if doc ~= nil then
             cover = regexp:find_last(e:html(), "(http.*?.jpg)")
         end
         novel["cover"] = cover
-        novel["host"] = "https://truyenyy.vn"
+        novel["host"] = "https://truyenyy.vip"
         table.insert(novelList, novel)
     end
 

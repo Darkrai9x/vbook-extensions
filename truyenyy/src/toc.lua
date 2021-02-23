@@ -1,5 +1,7 @@
 local url = ...
-local doc = http:get(text:replace(url, "truyenyy.com", "truyenyy.vn")):timeout(0):html()
+local new_url = text:replace(url, "truyenyy.com", "truyenyy.vip")
+new_url = text:replace(new_url, "truyenyy.vn", "truyenyy.vip")
+local doc = http:get(new_url):timeout(0):html()
 if doc ~= nil then
     local list = {}
     local el = doc:select("tbody tr")
@@ -10,7 +12,7 @@ if doc ~= nil then
         local chap = {}
         chap["name"] = ch
         chap["url"] =  e:select("a"):first():attr("href")
-        chap["host"] = "https://truyenyy.vn"
+        chap["host"] = "https://truyenyy.vip"
         table.insert(list, chap)
     end
     return response:success(list)

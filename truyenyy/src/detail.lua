@@ -1,5 +1,7 @@
 local url = ...
-local doc = http:get(text:replace(url, "truyenyy.com", "truyenyy.vn")):html()
+local new_url = text:replace(url, "truyenyy.com", "truyenyy.vip")
+new_url = text:replace(new_url, "truyenyy.vn", "truyenyy.vip")
+local doc = http:get(new_url):html()
 if doc ~= nil then
     local book = {}
     book["name"] = doc:select("div.info h1"):text()

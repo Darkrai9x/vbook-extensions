@@ -7,7 +7,7 @@ if doc ~= nil then
         local e = el:get(i)
         local link = {}
         link["title"] = e:text()
-        link["input"] = "https://truyenyy.vn" .. e:attr("href") .. "danh-sach/"
+        link["input"] = "https://truyenyy.vip" .. e:attr("href") .. "danh-sach/"
         link["script"] = "gen.lua"
         table.insert(genre, link)
     end

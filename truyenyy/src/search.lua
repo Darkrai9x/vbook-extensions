@@ -2,7 +2,7 @@ local key, page = ...
 if text:is_empty(page) then
     page = 1
 end
-local doc = http:get("https://truyenyy.vn/tim-kiem/nang-cao/?q=" .. key .. "&page=" .. page):html()
+local doc = http:get("https://truyenyy.vip/tim-kiem/nang-cao/?q=" .. key .. "&page=" .. page):html()
 
 if doc ~= nil then
     local el = doc:select(".books-list > li")
@@ -20,7 +20,7 @@ if doc ~= nil then
         novel["link"] = e:select("a"):first():attr("href")
         novel["description"] = e:select(".book-author"):text()
         novel["cover"] = e:select("img"):first():attr("src")
-        novel["host"] = "https://truyenyy.vn"
+        novel["host"] = "https://truyenyy.vip"
         table.insert(novelList, novel)
     end
 
