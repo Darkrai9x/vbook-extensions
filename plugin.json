@@ -200,7 +200,7 @@
       "name": "Nữ Hiệp",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://nuhiep.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/icon.png",
       "description": "Đọc truyện trên trang Nữ Hiệp"
@@ -209,7 +209,7 @@
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ"
@@ -218,7 +218,7 @@
       "name": "vTruyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://vtruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/icon.png",
       "description": "Đọc truyện trên trang vTruyện"
