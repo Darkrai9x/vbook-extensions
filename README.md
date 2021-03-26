@@ -45,8 +45,10 @@ request:headers(headers) -- Truyền tham số header dạng lua table, return R
 request:params(params) -- Truyền tham số FormData dạng lua table, return Request object
 request:body(body)  -- Truyền tham số body payload string, return Request object
 request:html() -- return response request dạng Document object
+request:html(charset) -- return response request dạng Document object
 request:table() -- return response request dạng lua table object
 request:string() -- return response request dạng string
+request:string(charset) -- return response request dạng string
 request:code() -- return http status code của response
 ```
 
@@ -123,7 +125,9 @@ request.headers(headers) // Truyền tham số header, return Request object
 request.params(params) // Truyền tham số FormData, return Request object
 request.body(body) // Truyền tham số body payload string, return Request object
 request.html() // Trả về response request dạng Document object
+request.html(charset) // Trả về response request dạng Document object
 request.string() // Trả về response request dạng string
+request.string(charset) // Trả về response request dạng string
 request.code()// Trả về http status code của response
 ```
 
