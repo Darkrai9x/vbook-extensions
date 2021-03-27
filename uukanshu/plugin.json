@@ -2,9 +2,9 @@
   "metadata": {
     "name": "uukanshu",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://www.uukanshu.com",
-    "regexp": "(www.)?uukanshu.com/b/[^/]+/?",
+    "regexp": "(www.)?((uukanshu.com/b/[^/]+/?)|(sj.uukanshu.com/book.aspx.id=\\d+))",
     "description": "Đọc truyện trên trang uukanshu.com",
     "local": "vi-VN",
     "language": "javascript",
