@@ -1,5 +1,5 @@
 local url = ...
-local doc = http:get(url):header("user-agent", agent:http()):html()
+local doc = http:get(url):html()
 if doc ~= nil then
     local book = {}
     book["name"] =  doc:select("h1.h3"):text()

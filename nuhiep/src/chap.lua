@@ -1,5 +1,5 @@
 local url = ...
-local doc = http:get(url):header("user-agent", agent:http()):html()
+local doc = http:get(url):html()
 if doc ~= nil then
     local element = doc:select("div#js-read__content"):first()
     if (string.len(element:text()) < 2000) then

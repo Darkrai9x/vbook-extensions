@@ -1,5 +1,5 @@
 local url = ...
-local request = http:get(url):header("user-agent", agent:http())
+local request = http:get(url)
 local doc = request:html()
 local newUrl = request:url()
 
