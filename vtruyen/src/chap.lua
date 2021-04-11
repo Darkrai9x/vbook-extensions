@@ -1,5 +1,5 @@
 local url = ...
-local doc = http:get(url):html()
+local doc = http:get(url):header("user-agent", agent:http()):html()
 if doc ~= nil then
     local element = doc:select("div#js-read__content"):first()
     if (string.len(element:text()) < 2000) then
@@ -10,8 +10,8 @@ if doc ~= nil then
 
     local htm = element:html()
     local trash = regexp:find(htm, ".*(<br>.*?<a href=.*?/truyen/.*?)$")
-    if string.len(trash) < 500 and string.len(trash) > 100 then
-        htm = text:replace(htm, trash, "")
+    if string.len(trash) < 1000 and string.len(trash) > 100 then
+        htm = text:remove(htm, trash, false)
     end
     return response:success(htm, title)
 end

@@ -12,13 +12,13 @@ function execute(url) {
     }
 
     return Response.success({
-        name: doc.select(".post-title h3").text(),
+        name: doc.select(".post-title h1").text(),
         cover: doc.select(".summary_image img").first().attr("src"),
-        author: doc.select(".author-content a").first().text(),
+        author: doc.select(".artist-content a").first().text(),
         description: doc.select(".summary__content").html(),
         detail: doc.select(".post-content .post-content_item").html(),
         category: category,
-        ongoing: doc.select(".post-status").html().indexOf("OnGoing") != -1,
+        ongoing: doc.select(".post-status").html().indexOf("OnGoing") >= 0,
         host: "https://truyentranhaudio.online"
     });
 }

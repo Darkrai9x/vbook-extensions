@@ -1,34 +1,24 @@
 function execute(url, page) {
-    if (!page) page = '0';
-    const doc = Http.post(url).params({
-        "action": "madara_load_more",
-        "page": page,
-        "template": "madara-core/content/content-archive",
-        "vars[orderby]": "meta_value_num",
-        "vars[paged]": "1",
-        "vars[posts_per_page]": "40",
-        "vars[post_type]": "wp-manga",
-        "vars[post_status]": "publish",
-        "vars[meta_key]": "_latest_update",
-        "vars[sidebar]": "right",
-        "vars[manga_archives_item_layout]": "big_thumbnail"
-    }).html()
+    if (!page) page = '1';
+    const doc = Http.get("https://truyentranhaudio.online/page/" + page + "/?s&" + url).html()
 
+    var next = doc.select(".nav-previous a").attr("href").match(/page\/(\d+)/)
+
+    if (next) next = next[1]
+
+    const el = doc.select(".tab-content-wrap .c-tabs-item__content")
 
     const data = [];
-
-    var el = doc.select(".page-content-listing .page-item-detail")
-
     for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i)
+        var e = el.get(i);
         data.push({
-            name: e.select(".post-title h5 a").first().text(),
-            link: e.select(".post-title h5 a").first().attr("href"),
-            cover: e.select(".item-thumb img").first().attr("src"),
-            description: e.select(".chapter-item .chapter").text(),
+            name: e.select(".post-title a").first().text(),
+            link: e.select(".post-title a").first().attr("href"),
+            cover: e.select(".tab-thumb img").first().attr("src"),
+            description: e.select(".mg_author .summary-content").text(),
             host: "https://truyentranhaudio.online"
         })
     }
 
-    return Response.success(data, parseInt(page) + 1)
+    return Response.success(data, next)
 }

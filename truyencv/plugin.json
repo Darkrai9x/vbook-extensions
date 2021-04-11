@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Truyện CV",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://truyencv.com",
     "regexp": "(www.)?truyencv.com/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện CV",

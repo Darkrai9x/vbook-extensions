@@ -1,7 +1,7 @@
 local url = ...
-local htm = http:get(url)
-local doc = htm:html()
-local newUrl = htm:url()
+local request = http:get(url):header("user-agent", agent:http())
+local doc = request:html()
+local newUrl = request:url()
 
 if text:contains(newUrl, "metruyenchu.com") then
     if doc ~= nil then
@@ -11,7 +11,13 @@ if text:contains(newUrl, "metruyenchu.com") then
         end
         html:remove(doc, { "script", "div.nh-read__alert", "small.text-muted" })
         local title = doc:select("div.nh-read__title"):first():text()
-        return response:success(element:html(), title)
+
+        local htm = element:html()
+        local trash = regexp:find(htm, ".*(<br>.*?<a href=.*?/truyen/.*?)$")
+        if string.len(trash) < 1000 and string.len(trash) > 100 then
+            htm = text:remove(htm, trash, false)
+        end
+        return response:success(htm, title)
     end
 elseif text:contains(newUrl, "nuhiep.com") then
     if doc ~= nil then
@@ -21,7 +27,13 @@ elseif text:contains(newUrl, "nuhiep.com") then
         end
         html:remove(doc, { "script", "div.nh-read__alert", "small.text-muted" })
         local title = doc:select("div.nh-read__title"):first():text()
-        return response:success(element:html(), title)
+
+        local htm = element:html()
+        local trash = regexp:find(htm, ".*(<br>.*?<a href=.*?/truyen/.*?)$")
+        if string.len(trash) < 1000 and string.len(trash) > 100 then
+            htm = text:remove(htm, trash, false)
+        end
+        return response:success(htm, title)
     end
 elseif text:contains(newUrl, "vtruyen.com") then
     if doc ~= nil then
@@ -31,7 +43,13 @@ elseif text:contains(newUrl, "vtruyen.com") then
         end
         html:remove(doc, { "script", "div.nh-read__alert", "small.text-muted" })
         local title = doc:select("div.nh-read__title"):first():text()
-        return response:success(element:html(), title)
+
+        local htm = element:html()
+        local trash = regexp:find(htm, ".*(<br>.*?<a href=.*?/truyen/.*?)$")
+        if string.len(trash) < 1000 and string.len(trash) > 100 then
+            htm = text:remove(htm, trash, false)
+        end
+        return response:success(htm, title)
     end
 else
     if doc ~= nil then

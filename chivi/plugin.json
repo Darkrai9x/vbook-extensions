@@ -7,14 +7,15 @@
     "regexp": "(www.)?chivi.xyz/[^/+]+/?$",
     "description": "Đọc truyện trên trang Chivi",
     "local": "vi-VN",
-    "language": "lua",
+    "language": "javascript",
     "type": "novel"
   },
   "script": {
-    "home": "home.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }
