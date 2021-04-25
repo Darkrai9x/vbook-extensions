@@ -22,14 +22,14 @@
     "search": "<Tên script tìm kiếm truyện (không bắt buộc)>",
     "page": "<Tên script danh sách trang của mục luc (không bắt buộc)>",
     "toc": "<Tên script mục lục (bắt buộc)ó>",
-    "chap": "<Tên script nội dung chương (bắt buộc)>",
+    "chap": "<Tên script nội dung chương (bắt buộc)>"
   }
 }
 ```
 ## Icon extension
 - Tạo một ảnh `icon.png` trong thư mục của extension
 ## Script extension
-- Tạo các tệp script dặt tại thư mục `src` của extension
+- Tạo các tệp script đặt tại thư mục `src` của extension
 
 # Cấu trúc script
 Xem source code của các extension để tham khảo
@@ -82,3 +82,17 @@ browser.close() // Đóng browser khi đã xử lý xong
 Console.log() // Log data in tab logcat
 load('filename.js') // Load file js
 ```
+
+# Test extension
+- PC cài Java phiên bản 1.8 trở lên
+- Kết nối điện thoại và PC cùng 1 mạng lan.
+- Trên điện thoại chạm 7 lần vào tên phiên bản để mở tính năng nhà phát triển
+  
+  ![Version app](tutorial/1.jpg)
+- Bật `chế độ nhà phát triển` để lấy IP của điện thoại.
+
+![IP](tutorial/2.jpg)
+
+- Nhập IP vào tool trên PC
+
+![IP](tutorial/3.png)
