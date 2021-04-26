@@ -1,24 +1,31 @@
 function execute(url) {
-    const doc = Http.get(url).html()
+    const doc = Http.get(url).html();
 
-    const cate = doc.select(".genres-content a")
+    var info = doc.select("ul.manga-info");
+    const cate = info.select("li:contains(Thể loại) a[href*=danh-sach-truyen-the-loai]");
     const category = [];
     for (var i = 0; i < cate.size(); i++) {
         var e = cate.get(i)
         category.push({
             name: e.text(),
             link: e.attr("href")
-        })
+        });
     }
 
+    info.select("h3").remove();
+
+    var cover = doc.select("img.thumbnail").first().attr("src");
+    if (cover.startsWith("//")) {
+        cover = "https:" + cover;
+    }
     return Response.success({
-        name: doc.select(".post-title h1").text(),
-        cover: doc.select(".summary_image img").first().attr("src"),
-        author: doc.select(".artist-content a").first().text(),
-        description: doc.select(".summary__content").html(),
-        detail: doc.select(".post-content .post-content_item").html(),
+        name: doc.select(".info-manga").select("a [itemprop=name]").last().text(),
+        cover: cover,
+        author: doc.select("li:contains(Tác giả) a").first().text(),
+        description: doc.select(".summary-content").html(),
+        detail: info.html(),
         category: category,
-        ongoing: doc.select(".post-status").html().indexOf("OnGoing") >= 0,
+        ongoing: info.html().indexOf("Đang tiến hành") >= 0,
         host: "https://truyentranhaudio.online"
     });
 }

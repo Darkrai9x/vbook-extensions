@@ -21,7 +21,7 @@
     "detail": "<Tên script thông tin truyện (bắt buộc)>",
     "search": "<Tên script tìm kiếm truyện (không bắt buộc)>",
     "page": "<Tên script danh sách trang của mục luc (không bắt buộc)>",
-    "toc": "<Tên script mục lục (bắt buộc)ó>",
+    "toc": "<Tên script mục lục (bắt buộc)>",
     "chap": "<Tên script nội dung chương (bắt buộc)>"
   }
 }
@@ -56,6 +56,8 @@ request.code()// Trả về http status code của response
 ```javascript
 Html.parse(text) // Parse html text to  Document object
 ```
+
+Document selector using [jsoup](https://jsoup.org/cookbook/extracting-data/selector-syntax)
 
 - Response
 

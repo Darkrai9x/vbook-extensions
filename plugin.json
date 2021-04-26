@@ -263,7 +263,7 @@
       "name": "Truyện Tranh Audio",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyentranhaudio.online",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/icon.png",
       "description": "Đọc truyện trên trang truyentranhaudio.online"
