@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("wikidich.com", "wikidth.com");
     var doc = Http.get(url).html();
 
     var bookId = doc.select("input#bookId").attr("value");
@@ -19,7 +20,7 @@ function execute(url) {
     }
 
     function getChapterInPage(currentPage) {
-        return Http.get("https://wikidich.com/book/index").params({
+        return Http.get("https://wikidth.com/book/index").params({
             bookId: bookId,
             signKey: signKey,
             sign: genSign(signKey, currentPage, size),

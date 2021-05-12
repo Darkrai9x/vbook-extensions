@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Wiki Dịch",
     "author": "vBook",
-    "version": 1,
-    "source": "https://wikidich.com/",
-    "regexp": "(www.)?wikidich.com/truyen/[^/]+/?$",
+    "version": 2,
+    "source": "https://wikidth.com/",
+    "regexp": "(www.)?(wikidich.com|wikidth.com)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch",
     "local": "vi-VN",
     "language": "javascript"
@@ -19,6 +19,6 @@
   },
   "config": {
     "thread_num": 1,
-    "delay": 1500
+    "delay": 3000
   }
 }

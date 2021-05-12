@@ -53,7 +53,7 @@
       "name": "Wiki Dịch",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://wikidich.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/icon.png",
       "description": "Đọc truyện trên trang Wiki Dịch"

@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("wikidich.com", "wikidth.com");
     const doc = Http.get(url).html()
 
     var name = doc.select(".cover-info h2").text();
@@ -14,7 +15,7 @@ function execute(url) {
         author: author,
         description: doc.select("div.book-desc-detail").html(),
         detail: element.html(),
-        host: "https://wikidich.com",
+        host: "https://wikidth.com",
         ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0
     });
 }
