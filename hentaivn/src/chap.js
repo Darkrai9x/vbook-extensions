@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("hentaivn.net", "hentaivn.tv");
     const http = Http.get(url);
     const doc = http.html();
     var cookies = http.cookie();
@@ -6,7 +7,7 @@ function execute(url) {
     var isMobile = false;
 
     if (cookies) {
-        isMobile = cookies.indexOf("mobile=1") > 0;
+        isMobile = cookies.indexOf("mobile=1") >= 0;
     }
     var data = [];
     if (isMobile) {

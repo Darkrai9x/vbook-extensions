@@ -1,6 +1,6 @@
 function execute(key, page) {
     if (!page) page = '1';
-    const http = Http.get("https://hentaivn.net/tim-kiem-truyen.html");
+    const http = Http.get("https://hentaivn.tv/tim-kiem-truyen.html");
     const doc = http.params({"key": key, "page": page}).html();
 
     var cookies = http.cookie();
@@ -8,7 +8,7 @@ function execute(key, page) {
     var isMobile = false;
 
     if (cookies) {
-        isMobile = cookies.indexOf("mobile=1") > 0;
+        isMobile = cookies.indexOf("mobile=1") >= 0;
     }
 
     var next = doc.select(".pagination").select(isMobile ? "b + a" : "li:has(b) + li a").text();
@@ -25,7 +25,7 @@ function execute(key, page) {
             name: des.select("a").first().text(),
             link: des.select("a").first().attr("href"),
             cover: e.select(isMobile ? ".box-cover-2 img" : ".box-cover img").first().attr("data-src"),
-            host: "https://hentaivn.net"
+            host: "https://hentaivn.tv"
         })
     }
     return Response.success(data, next)

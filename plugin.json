@@ -281,8 +281,8 @@
       "name": "HentaiVN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/plugin.zip",
-      "version": 2,
-      "source": "https://hentaivn.net",
+      "version": 3,
+      "source": "https://hentaivn.tv",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/icon.png",
       "description": "Đọc truyện trên trang HentaiVN",
       "tag": "nsfw"

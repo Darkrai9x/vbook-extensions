@@ -8,7 +8,7 @@ function execute(url, page) {
     var isMobile = false;
 
     if (cookies) {
-        isMobile = cookies.indexOf("mobile=1") > 0;
+        isMobile = cookies.indexOf("mobile=1") >= 0;
     }
 
     var next = doc.select(".pagination").select(isMobile ? "b + a" : "li:has(b) + li a").text();
@@ -19,6 +19,8 @@ function execute(url, page) {
     for (var i = 0; i < el.size(); i++) {
         var e = el.get(i);
 
+       
+
         var des = e.select(isMobile ? ".box-description-2" : ".box-description");
 
         data.push({
@@ -26,7 +28,7 @@ function execute(url, page) {
             link: des.select("a").first().attr("href"),
             cover: e.select(isMobile ? ".box-cover-2 img" : ".box-cover img").first().attr("data-src"),
             description: des.select("p").first().text().replace( des.select("a").first().text() + " - ", ""),
-            host: "https://hentaivn.net"
+            host: "https://hentaivn.tv"
         })
     }
 
