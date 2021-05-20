@@ -99,8 +99,8 @@
       "name": "Net Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/plugin.zip",
-      "version": 1,
-      "source": "http://www.nettruyen.com",
+      "version": 2,
+      "source": "http://www.nettruyentop.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/icon.png",
       "description": "Đọc truyện trên trang Net Truyện"
     },

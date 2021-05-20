@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("nettruyen.com", "nettruyentop.com");
     var doc = Http.get(url).html();
     var el = doc.select(".page-chapter img");
     
@@ -12,7 +13,7 @@ function execute(url) {
 
         if (img) {
             if (img.startsWith("//")) {
-                img = "https:" + img;
+                img = "http:" + img;
             }
             data.push(img);
         }

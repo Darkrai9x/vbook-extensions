@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Net Truyện",
     "author": "vBook",
-    "version": 1,
-    "source": "https://www.nettruyen.com",
-    "regexp": "(www.)?(nhattruyen.com|nettruyen.com)/truyen-tranh/[^/]+/?$",
+    "version": 2,
+    "source": "https://www.nettruyentop.com",
+    "regexp": "(www.)?(nhattruyen.com|nettruyen.com|nettruyentop.com)/truyen-tranh/[^/]+/?$",
     "description": "Đọc truyện trên trang Net Truyện",
     "local": "vi-VN",
     "language": "javascript",
