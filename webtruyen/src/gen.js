@@ -14,7 +14,7 @@ function execute(url, page) {
             link: e.select(".info h3 a").first().attr("href"),
             cover: e.select(".thumb img").first().attr("data-layzr"),
             description: e.select(".last-chapter").first().text(),
-            host: "https://webtruyen.com"
+            host: "https://dtruyen.com"
         })
     }
 

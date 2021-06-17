@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("webtruyen.com", "dtruyen.com");
     var doc = Http.get(url).html();
 
     var el = doc.select("#chapters .chapters a")
@@ -8,7 +9,7 @@ function execute(url) {
         data.push({
             name: e.text(),
             url: e.attr("href"),
-            host: "https://webtruyen.com"
+            host: "https://dtruyen.com"
         })
     }
 

@@ -123,13 +123,13 @@
       "description": "Đọc truyện trên trang Wattpad"
     },
     {
-      "name": "Web Truyện",
+      "name": "D Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/plugin.zip",
-      "version": 1,
-      "source": "https://webtruyen.com",
+      "version": 2,
+      "source": "https://dtruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/icon.png",
-      "description": "Đọc truyện trên trang Web Truyện"
+      "description": "Đọc truyện trên trang D Truyện"
     },
     {
       "name": "nHentai",

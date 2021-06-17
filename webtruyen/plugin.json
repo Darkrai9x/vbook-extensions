@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "Web Truyện",
+    "name": "D Truyện",
     "author": "vBook",
-    "version": 1,
-    "source": "https://webtruyen.com",
-    "regexp": "(www.)?webtruyen.com/[^/]+$",
-    "description": "Đọc truyện trên trang Web Truyện",
+    "version": 2,
+    "source": "https://dtruyen.com",
+    "regexp": "(www.)?(webtruyen|dtruyen).com/[^/]+$",
+    "description": "Đọc truyện trên trang D Truyện",
     "local": "vi-VN",
     "language": "javascript",
     "type": "novel"

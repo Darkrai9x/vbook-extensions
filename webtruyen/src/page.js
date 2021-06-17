@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("webtruyen.com", "dtruyen.com");
     var data = [];
     var doc = Http.get(url).html();
     var pg = doc.select(".pagination li")
