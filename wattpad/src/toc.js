@@ -1,5 +1,5 @@
 function execute(url) {
-    var storyId = url.match(/\/(\\d+)-/)[1];
+    var storyId = url.match(/\/(\d+)-/)[1];
     var data = Http.get("https://www.wattpad.com/api/v3/stories/" + storyId).string();
 
     if (data) {
