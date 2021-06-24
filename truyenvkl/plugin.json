@@ -2,20 +2,20 @@
   "metadata": {
     "name": "TruyệnVKL",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://truyenvkl.com",
     "regexp": "(www.)?truyenvkl.com/truyen/.*?",
     "description": "Đọc truyện trên trang TruyệnVKL",
     "local": "vi-VN",
-    "language": "lua",
+    "language": "javascript",
     "tag": "nsfw"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "detail": "detail.lua",
-    "page": "page.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

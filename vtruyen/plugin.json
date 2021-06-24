@@ -2,19 +2,19 @@
   "metadata": {
     "name": "vTruyện",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://vtruyen.com",
     "regexp": "(www.)?vtruyen.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang vTruyện",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "javascript"
   },
   "script": {
-    "detail": "detail.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua",
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "search": "search.lua"
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js"
   }
 }

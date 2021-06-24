@@ -2,19 +2,19 @@
   "metadata": {
     "name": "Wattpad",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://wattpad.com",
     "regexp": "(www.)?wattpad.com/story/\\d+.*?/?$",
     "description": "Đọc truyện trên trang Wattpad",
     "local": "global",
-    "language": "lua",
+    "language": "javascript",
     "type": "novel"
   },
   "script": {
-    "home": "home.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

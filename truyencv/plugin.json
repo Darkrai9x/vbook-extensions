@@ -2,20 +2,19 @@
   "metadata": {
     "name": "Truyện CV",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://truyencv.com",
     "regexp": "(www.)?truyencv.com/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện CV",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "javascript"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "page": "page.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

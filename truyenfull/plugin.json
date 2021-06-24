@@ -2,20 +2,20 @@
   "metadata": {
     "name": "Truyện Full",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://truyenfull.vn",
-    "regexp": "(www.)?truyenfull.(vn|net)/[^/]+/?$",
+    "regexp": "(www.)?(truyenfull.vn|truyenfull.net)/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện Full",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "javascript"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "page": "page.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

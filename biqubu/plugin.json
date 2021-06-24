@@ -2,11 +2,11 @@
   "metadata": {
     "name": "biqubu",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://www.biqubu.com",
     "regexp": "(www.)?biqubu.com/book_[^/]+/?",
     "description": "Đọc truyện trên trang biqubu.com",
-    "local": "vi-VN",
+    "local": "zh-CN",
     "language": "javascript",
     "type": "chinese_novel"
   },

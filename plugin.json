@@ -8,7 +8,7 @@
       "name": "Bạch Ngọc Sách",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://bachngocsach.com/reader",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/icon.png",
       "description": "Đọc truyện trên trang bachngocsach.com/reader"
@@ -17,7 +17,7 @@
       "name": "Truyện Full",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenfull/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyenfull.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenfull/icon.png",
       "description": "Đọc truyện trên trang Truyện Full"
@@ -26,7 +26,7 @@
       "name": "Truyện CV",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyencv.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/icon.png",
       "description": "Đọc truyện trên trang Truyện CV"
@@ -35,7 +35,7 @@
       "name": "Tàng Thư Viện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://truyen.tangthuvien.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/icon.png",
       "description": "Đọc truyện trên trang Tàng Thư Viện"
@@ -44,7 +44,7 @@
       "name": "Truyện YY",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyenyy.vip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/icon.png",
       "description": "Đọc truyện trên trang Truyện YY"
@@ -81,7 +81,7 @@
       "name": "Truyện QQ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/plugin.zip",
-      "version": 1,
+      "version": 3,
       "source": "https://truyenqq.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/icon.png",
       "description": "Đọc truyện trên trang Truyện QQ"
@@ -117,7 +117,7 @@
       "name": "Wattpad",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://www.wattpad.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/icon.png",
       "description": "Đọc truyện trên trang Wattpad"
@@ -145,7 +145,7 @@
       "name": "Hako Novel",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hako/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://ln.hako.re",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hako/icon.png",
       "description": "Đọc truyện trên trang Hako"
@@ -154,7 +154,7 @@
       "name": "Thích Đọc Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/thichdoctruyen/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://thichdoctruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/thichdoctruyen/icon.png",
       "description": "Đọc truyện trên trang Thích Đọc Truyện"
@@ -172,7 +172,7 @@
       "name": "Blog Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://blogtruyen.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/icon.png",
       "description": "Đọc truyện trên trang Blog Truyện"
@@ -181,7 +181,7 @@
       "name": "TruyệnVKL",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyenvkl.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/icon.png",
       "description": "Đọc truyện trên trang TruyệnVKL",
@@ -191,7 +191,7 @@
       "name": "Gác Sách",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://gacsach.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/icon.png",
       "description": "Đọc truyện trên trang Gác Sách"
@@ -200,7 +200,7 @@
       "name": "Nữ Hiệp",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://nuhiep.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/icon.png",
       "description": "Đọc truyện trên trang Nữ Hiệp"
@@ -209,7 +209,7 @@
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ"
@@ -218,7 +218,7 @@
       "name": "vTruyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://vtruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/icon.png",
       "description": "Đọc truyện trên trang vTruyện"
@@ -227,7 +227,7 @@
       "name": "Mê Đọc Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://www.medoctruyenchu.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Đọc Truyện Chữ"
@@ -236,19 +236,10 @@
       "name": "Mê Đọc Truyện Tranh",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://www.medoctruyentranh.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/icon.png",
       "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh"
-    },
-    {
-      "name": "Truy.IN",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truy/plugin.zip",
-      "version": 1,
-      "source": "https://truy.in",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truy/icon.png",
-      "description": "Đọc truyện trên trang Truy.IN"
     },
     {
       "name": "Beeng",

@@ -2,20 +2,20 @@
   "metadata": {
     "name": "Blog Truyện",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://blogtruyen.vn",
     "regexp": "(www.)?blogtruyen.vn/\\d+/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Blog Truyện",
     "local": "vi-VN",
-    "language": "lua",
+    "language": "javascript",
     "type": "comic"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

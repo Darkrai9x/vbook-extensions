@@ -1,6 +1,6 @@
 # Cấu trúc của extension
 
-##Thông tin extension
+## Thông tin extension
 - Tạo một tệp với tên `plugin.json` vào thư mục của extensions, cấu trúc của tệp có dạng như sau
 ```json
 {
@@ -33,7 +33,7 @@
 
 # Cấu trúc script
 Xem source code của các extension để tham khảo
-# Các funtion bổ trợ
+# Các function bổ trợ
 
 ## Javascript
 - Http request

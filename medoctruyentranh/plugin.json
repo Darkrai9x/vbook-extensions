@@ -2,20 +2,20 @@
   "metadata": {
     "name": "Mê Đọc Truyện Tranh",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://www.medoctruyentranh.net",
     "regexp": "(www.|m.)?medoctruyentranh.net/truyen-tranh/[0-9a-z-]+\\d+/?$",
     "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh",
     "local": "vi-VN",
-    "language": "lua",
+    "language": "javascript",
     "type": "comic"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

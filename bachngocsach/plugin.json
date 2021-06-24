@@ -2,20 +2,19 @@
     "metadata": {
         "name": "Bạch Ngọc Sách",
         "author": "vBook",
-        "version": 1,
-        "source": "https://bachngocsach.com/reader/",
+        "version": 2,
+        "source": "https://bachngocsach.com/reader",
         "regexp": "bachngocsach.com/reader/[^/]+/?$",
         "description": "Đọc truyện trên trang bachngocsach.com/reader",
         "local": "vi-VN",
-        "language": "lua"
+        "language": "javascript"
     },
     "script": {
-        "home": "home.lua",
-        "genre": "genre.lua",
-        "search": "search.lua",
-        "detail": "detail.lua",
-        "page": "page.lua",
-        "toc": "toc.lua",
-        "chap": "chap.lua"
+        "home": "home.js",
+        "genre": "genre.js",
+        "search": "search.js",
+        "detail": "detail.js",
+        "toc": "toc.js",
+        "chap": "chap.js"
     }
 }

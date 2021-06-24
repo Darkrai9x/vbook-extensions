@@ -2,20 +2,20 @@
   "metadata": {
     "name": "Thích Đọc Truyện",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://thichdoctruyen.com",
     "regexp": "(www.)?thichdoctruyen.com/doc-truyen/[^/]+\\d+$",
     "description": "Đọc truyện trên trang Thích Đọc Truyện",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "javascript"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "page": "page.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

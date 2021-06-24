@@ -2,19 +2,19 @@
   "metadata": {
     "name": "Gác Sách",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://gacsach.com",
     "regexp": "(www.)?gacsach.com(/doc-sach-truc-tuyen/\\d+/.*?.html$|/[^/]+/?$)",
     "description": "Đọc truyện trên trang Gác Sách",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "javascript"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "detail": "detail.lua",
-    "search": "search.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }

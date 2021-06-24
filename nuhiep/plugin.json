@@ -2,19 +2,19 @@
   "metadata": {
     "name": "Nữ Hiệp",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://nuhiep.com",
     "regexp": "(www.)?nuhiep.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Nữ Hiệp",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "javascript"
   },
   "script": {
-    "detail": "detail.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua",
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "search": "search.lua"
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js"
   }
 }

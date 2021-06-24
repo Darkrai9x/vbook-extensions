@@ -2,19 +2,19 @@
   "metadata": {
     "name": "Hako Novel",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://ln.hako.re",
     "regexp": "(www.)?ln.hako.re/[^/]+/[^/]+/?$",
     "description": "Đọc truyện trên trang Hako",
     "local": "vi-VN",
-    "language": "lua"
+    "language": "javascript"
   },
   "script": {
-    "home": "home.lua",
-    "genre": "genre.lua",
-    "search": "search.lua",
-    "detail": "detail.lua",
-    "toc": "toc.lua",
-    "chap": "chap.lua"
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
   }
 }
