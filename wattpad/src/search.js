@@ -16,11 +16,11 @@ function execute(key, page) {
         var novelList = [];
         data.stories.forEach(v => {
             novelList.push({
-                name: v, title,
+                name: v.title,
                 link: v.url,
                 cover: v.cover,
                 description: v.user.name
-            })
+            });
         });
         return Response.success(novelList, next);
     }
