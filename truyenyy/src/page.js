@@ -6,7 +6,7 @@ function execute(url) {
 
     if (doc) {
         var page = doc.select(".pagination").last().select("a");
-        if (!page && page.size() > 0)
+        if (page && page.size() > 0)
             page = parseInt(page.get(page.size() - 2).text());
         else page = 1;
 

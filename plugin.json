@@ -23,6 +23,15 @@
       "description": "Đọc truyện trên trang Truyện Full"
     },
     {
+      "name": "Truyện TR",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/plugin.zip",
+      "version": 1,
+      "source": "https://truyentr.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/icon.png",
+      "description": "Đọc truyện trên trang Truyện TR"
+    },
+    {
       "name": "Truyện CV",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/plugin.zip",
@@ -44,7 +53,7 @@
       "name": "Truyện YY",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/plugin.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://truyenyy.vip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/icon.png",
       "description": "Đọc truyện trên trang Truyện YY"
