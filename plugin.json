@@ -53,7 +53,7 @@
       "name": "Truyện YY",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/plugin.zip",
-      "version": 5,
+      "version": 6,
       "source": "https://truyenyy.vip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/icon.png",
       "description": "Đọc truyện trên trang Truyện YY"
@@ -135,7 +135,7 @@
       "name": "D Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://dtruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/icon.png",
       "description": "Đọc truyện trên trang D Truyện"

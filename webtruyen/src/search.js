@@ -1,11 +1,11 @@
 function execute(key, page) {
     if (!page) page = '1';
-    const doc = Http.get("https://dtruyen.com/searching/" + key.toLowerCase() + "/lastupdate/all/all/" + page).html();
+    var doc = Http.get("https://dtruyen.com/searching/" + key.replace(" ", "-") + "/lastupdate/all/all/" + page).html();
 
     var next = doc.select(".pagination").select("li:has(.active) + li").select("a").text();
 
-    const el = doc.select(".list-content .list-row-img");
-    const data = [];
+    var el = doc.select(".list-content .list-row-img");
+    var data = [];
     for (var i = 0; i < el.size(); i++) {
         var e = el.get(i);
         data.push({

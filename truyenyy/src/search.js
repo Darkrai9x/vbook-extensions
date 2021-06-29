@@ -1,7 +1,5 @@
 function execute(key, page) {
     if (!page) page = '1';
-    url = url.replace("truyenyy.com", "truyenyy.vip")
-        .replace("truyenyy.vn", "truyenyy.vip");
     var doc = Http.get("https://truyenyy.vip/tim-kiem/nang-cao/")
         .params({q: key, page:page}).html();
 

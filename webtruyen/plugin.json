@@ -2,7 +2,7 @@
   "metadata": {
     "name": "D Truyện",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://dtruyen.com",
     "regexp": "(www.)?(webtruyen|dtruyen).com/[^/]+$",
     "description": "Đọc truyện trên trang D Truyện",
