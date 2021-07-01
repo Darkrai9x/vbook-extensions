@@ -32,15 +32,6 @@
       "description": "Đọc truyện trên trang Truyện TR"
     },
     {
-      "name": "Truyện CV",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/plugin.zip",
-      "version": 3,
-      "source": "https://truyencv.com",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/icon.png",
-      "description": "Đọc truyện trên trang Truyện CV"
-    },
-    {
       "name": "Tàng Thư Viện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/plugin.zip",
