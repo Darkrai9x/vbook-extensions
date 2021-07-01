@@ -1,5 +1,6 @@
 function execute(url) {
-    url = url.replace("nettruyen.com", "nettruyentop.com");
+    url = url.replace("nettruyen.com", "nettruyenvip.com");
+    url = url.replace("nettruyentop.com", "nettruyenvip.com");
     const doc = Http.get(url).html()
     var coverImg = doc.select(".detail-info img").first().attr("src");
     if (coverImg.startsWith("//")) {
@@ -11,7 +12,7 @@ function execute(url) {
         author: doc.select(".author a").first().text(),
         description: doc.select(".detail-content p").html(),
         detail: doc.select(".list-info").html(),
-        host: "http://www.nettruyentop.com",
+        host: "http://www.nettruyenvip.com",
         ongoing: doc.select(".detail-info .status").html().indexOf("Đang tiến hành") >= 0
     });
 }
