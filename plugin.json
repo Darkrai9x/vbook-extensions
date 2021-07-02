@@ -245,10 +245,10 @@
       "name": "Beeng",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/plugin.zip",
-      "version": 3,
-      "source": "https://beeng.net",
+      "version": 4,
+      "source": "https://beeng.org",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/icon.png",
-      "description": "Đọc truyện trên trang Beeng.net"
+      "description": "Đọc truyện trên trang Beeng.org"
     },
     {
       "name": "Truyện Tranh Audio",

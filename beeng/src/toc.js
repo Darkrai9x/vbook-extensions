@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("beeng.net", "beeng.org");
     var doc = Http.get(url).html();
 
     var el = doc.select(".listChapters .list a")
@@ -8,7 +9,7 @@ function execute(url) {
         data.push({
             name: e.select(".titleComic").text(),
             url: e.attr("href"),
-            host: "https://beeng.net"
+            host: "https://beeng.org"
         })
     }
 

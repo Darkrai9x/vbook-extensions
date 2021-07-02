@@ -1,5 +1,5 @@
 function execute() {
-    const doc = Http.get("https://beeng.net/the-loai").html();
+    const doc = Http.get("https://beeng.org/the-loai").html();
     var el = doc.select(".list-cate li a");
     const data = [];
     for (var i = 0; i < el.size(); i++) {

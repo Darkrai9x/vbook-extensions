@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("beeng.net", "beeng.org");
     const doc = Http.get(url).html()
 
     const cate = doc.select(".list-cate a")
@@ -18,6 +19,6 @@ function execute(url) {
         description: doc.select(".shortDetail").html(),
         detail: doc.select(".aboutThisComic").html(),
         category: category,
-        host: "https://beeng.net"
+        host: "https://beeng.org"
     });
 }

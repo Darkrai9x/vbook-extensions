@@ -1,5 +1,6 @@
 function execute(url, page) {
     if (!page) page = '1';
+    url = url.replace("beeng.net", "beeng.org");
     const doc = Http.get(url).params({"page": page}).html()
 
     var next = doc.select(".paging").select("li:has(a.active) + li").text()
@@ -14,7 +15,7 @@ function execute(url, page) {
             link: e.select(".detail h3 a").first().attr("href"),
             cover: e.select(".cover img").first().attr("data-src"),
             description: e.select(".chapters a").first().text(),
-            host: "https://beeng.net"
+            host: "https://beeng.org"
         })
     }
 

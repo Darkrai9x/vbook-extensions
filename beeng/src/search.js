@@ -1,6 +1,6 @@
 function execute(key, page) {
     if (!page) page = '1';
-    const doc = Http.get("https://beeng.net/tim-kiem").params({"q": key, "page": page}).html()
+    const doc = Http.get("https://beeng.org/tim-kiem").params({"q": key, "page": page}).html()
 
     var next = doc.select(".paging").select("li:has(a.active) + li").text()
 
@@ -14,7 +14,7 @@ function execute(key, page) {
             link: e.select(".detail a").first().attr("href"),
             cover: e.select(".cover img").first().attr("data-src"),
             description: e.select(".chapters a").first().text(),
-            host: "https://beeng.net"
+            host: "https://beeng.org"
         })
     }
 

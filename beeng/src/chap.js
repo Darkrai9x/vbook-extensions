@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("beeng.net", "beeng.org");
     var doc = Http.get(url).html();
     var el = doc.select("#lightgallery2 img");
     
