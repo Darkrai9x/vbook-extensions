@@ -3,7 +3,7 @@ function execute(url) {
 
     var detail = doc.select(".content1 div.info");
     var cover = doc.select("img").first().attr("src")
-    if (!cover) cover = doc.select("img").first().attr("data-src")
+    if (!cover) cover = doc.select("img").first().attr("data-pagespeed-high-res-src")
     var status = doc.select(".content1 .status").html()
     doc.select(".content1 div.info").remove()
 

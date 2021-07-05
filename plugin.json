@@ -72,7 +72,7 @@
       "name": "SS Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://sstruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/icon.png",
       "description": "Đọc truyện trên trang SS Truyện"
@@ -172,7 +172,7 @@
       "name": "Blog Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://blogtruyen.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/icon.png",
       "description": "Đọc truyện trên trang Blog Truyện"

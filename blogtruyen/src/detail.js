@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("m.blogtruyen.vn", "blogtruyen.vn");
     var doc = Http.get(url).html();
     if (doc) {
         doc.select(".fb-page").remove();
