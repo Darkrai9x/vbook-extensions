@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "TruyệnTR",
+    "name": "Truyện Chữ",
     "author": "vBook",
-    "version": 2,
-    "source": "https://truyentr.vn",
-    "regexp": "(www.)?truyentr.vn/truyen/[^/]+/?$",
-    "description": "Đọc truyện trên trang TruyệnTR",
+    "version": 1,
+    "source": "https://truyenchu.vn",
+    "regexp": "(www.)?(truyenchu.vn)/[^/]+/?$",
+    "description": "Đọc truyện trên trang Truyện Chữ",
     "local": "vi-VN",
     "language": "javascript"
   },
@@ -14,7 +14,6 @@
     "genre": "genre.js",
     "detail": "detail.js",
     "search": "search.js",
-    "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }

@@ -1,12 +1,8 @@
 function execute(key, page) {
     if (!page) page = '1';
 
-    var doc = Http.get("https://truyentr.vn/")
-        .params({
-            s: key,
-            post_type: 'wp-manga',
-            trang: page
-        }).html();
+    var doc = Http.get("https://truyenchu.vn/tim-kiem/")
+        .params({tukhoa: key.replace(" ", "-"), page: page}).html();
 
     if (doc) {
         var el = doc.select(".list-truyen div[itemscope]");
@@ -18,8 +14,8 @@ function execute(key, page) {
                 name: e.select(".truyen-title > a").text(),
                 link: e.select(".truyen-title > a").first().attr("href"),
                 description: e.select(".author").text(),
-                cover: e.select(".img-cover-wrap img").attr("src"),
-                host: "https://truyentr.vn",
+                cover: e.select(".cover").attr("src"),
+                host: "https://truyenchu.vn",
             });
 
         }

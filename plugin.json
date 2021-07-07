@@ -23,10 +23,19 @@
       "description": "Đọc truyện trên trang Truyện Full"
     },
     {
+      "name": "Truyện Chữ",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenchu/plugin.zip",
+      "version": 1,
+      "source": "https://truyenchu.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenchu/icon.png",
+      "description": "Đọc truyện trên trang Truyện Chữ"
+    },
+    {
       "name": "Truyện TR",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://truyentr.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/icon.png",
       "description": "Đọc truyện trên trang Truyện TR"
