@@ -2,7 +2,7 @@ load('bypass.js');
 
 function execute(url, page) {
     if (!page) page = '1';
-    url = url.replace("\\.html", "") + "/trang-" + page + ".html";
+    url = url.replace(".html", "") + "/trang-" + page + ".html";
     var doc = bypass(url, Http.get(url).html());
 
     if (doc) {

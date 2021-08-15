@@ -90,7 +90,9 @@
       "name": "Truyện QQ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/plugin.zip",
-      "version": 4,
+      "version": 5,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "https://truyenqq.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/icon.png",
       "description": "Đọc truyện trên trang Truyện QQ"
@@ -109,6 +111,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/plugin.zip",
       "version": 3,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "http://www.nettruyenvip.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/icon.png",
       "description": "Đọc truyện trên trang Net Truyện"
@@ -118,6 +122,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
       "version": 2,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "https://truyenvn.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
       "description": "Đọc truyện trên trang Truyện VN"
@@ -145,6 +151,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/plugin.zip",
       "version": 1,
+      "type": "comic",
+      "local": "en-US",
       "source": "https://nhentai.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/icon.png",
       "description": "Đọc truyện trên trang nHentai",
@@ -182,6 +190,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/plugin.zip",
       "version": 3,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "https://blogtruyen.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/icon.png",
       "description": "Đọc truyện trên trang Blog Truyện"
@@ -209,7 +219,7 @@
       "name": "Nữ Hiệp",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/plugin.zip",
-      "version": 5,
+      "version": 6,
       "source": "https://nuhiep.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/icon.png",
       "description": "Đọc truyện trên trang Nữ Hiệp"
@@ -218,7 +228,7 @@
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ"
@@ -227,7 +237,7 @@
       "name": "vTruyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/plugin.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://vtruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/icon.png",
       "description": "Đọc truyện trên trang vTruyện"
@@ -246,6 +256,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/plugin.zip",
       "version": 2,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "https://www.medoctruyentranh.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/icon.png",
       "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh"
@@ -255,6 +267,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/plugin.zip",
       "version": 4,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "https://beeng.org",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/icon.png",
       "description": "Đọc truyện trên trang Beeng.org"
@@ -282,6 +296,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/plugin.zip",
       "version": 3,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "https://hentaivn.tv",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/icon.png",
       "description": "Đọc truyện trên trang HentaiVN",
@@ -301,6 +317,8 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/plugin.zip",
       "version": 1,
+      "type": "comic",
+      "local": "vi-VN",
       "source": "https://qmanga.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/icon.png",
       "description": "Đọc truyện trên trang QManga"

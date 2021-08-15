@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Truyện QQ",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://truyenqq.net",
     "regexp": "(www.)?truyenqq.(com|net)/truyen-tranh/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Truyện QQ",

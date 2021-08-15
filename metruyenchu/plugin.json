@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Mê Truyện Chữ",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://metruyenchu.com",
     "regexp": "(www.)?metruyenchu.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Mê Truyện Chữ",

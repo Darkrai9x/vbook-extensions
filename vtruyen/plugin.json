@@ -2,7 +2,7 @@
   "metadata": {
     "name": "vTruyện",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://vtruyen.com",
     "regexp": "(www.)?vtruyen.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang vTruyện",
