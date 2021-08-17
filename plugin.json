@@ -101,7 +101,7 @@
       "name": "Chivi",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/plugin.zip",
-      "version": 6,
+      "version": 7,
       "source": "https://chivi.xyz",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/icon.png",
       "description": "Đọc truyện trên trang Chivi"
@@ -197,13 +197,13 @@
       "description": "Đọc truyện trên trang Blog Truyện"
     },
     {
-      "name": "TruyệnVKL",
+      "name": "TruyệnHD",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/plugin.zip",
-      "version": 3,
-      "source": "https://truyenvkl.com",
+      "version": 4,
+      "source": "https://s2.truyenhd.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/icon.png",
-      "description": "Đọc truyện trên trang TruyệnVKL",
+      "description": "Đọc truyện trên trang TruyệnHD",
       "tag": "nsfw"
     },
     {

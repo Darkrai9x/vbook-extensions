@@ -4,8 +4,8 @@ function execute(url, page) {
         page = '1';
         doc = Http.get(url).html().select(".theloai-thumlist");
     } else {
-        var slug = regexp.find(url, "keyword/(.*?)$")
-        doc = Http.post("https://truyenvkl.com/wp-admin/admin-ajax.php")
+        var slug = url.match(/keyword\/(.*?)$/);
+        doc = Http.post("https://s2.truyenhd.com/wp-admin/admin-ajax.php")
             .params({
                 'action': "load_more_tax",
                 'keyword_check': "",
@@ -13,7 +13,7 @@ function execute(url, page) {
                 'max_page_tax': "23",
                 'option_keyword_tax': "new-chap",
                 'term[taxonomy]': "keyword",
-                'term[slug]': slug
+                'term[slug]': slug[1]
             }).html();
     }
 
@@ -31,7 +31,7 @@ function execute(url, page) {
                 link: e.select(" a").attr("href"),
                 cover: cover,
                 description: e.select(".content p").first().text(),
-                host: "https://truyenvkl.com"
+                host: "https://s2.truyenhd.com"
             });
         }
 

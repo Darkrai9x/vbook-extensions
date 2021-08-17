@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("truyenvkl.com", "s2.truyenhd.com");
     var doc = Http.get(url).html();
     var list = [];
     var pages = doc.select(".pagination li");
@@ -14,7 +15,7 @@ function execute(url) {
         }
 
     } else {
-        list.push(url.replace("(http|https)://truyenvkl.com", ""));
+        list.push(url.replace("(http|https)://s2.truyenhd.com", ""));
     }
 
     return Response.success(list)

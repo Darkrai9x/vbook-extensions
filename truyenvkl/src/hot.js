@@ -1,12 +1,24 @@
 function execute(url, page) {
     var doc;
-    if (!page) page = '1';
-    var doc = Http.get(url + "/page/" + page).html();
+    var urls = url.split(' ');
+    if (!page) {
+        page = '1';
+        doc = Http.get(urls[0]).html().select(".theloai-thumlist");
+    } else {
+        var slug = url.match(/keyword\/(.*?)$/);
+        doc = Http.post("https://s2.truyenhd.com/wp-admin/admin-ajax.php")
+            .params({
+                'action': "load_more_page_keyword",
+                'current_page_tax': page,
+                'the_loai': urls[1],
+                'option_keyword_tax': urls[2]
+            }).html();
+    }
 
     if (doc) {
-        var el = doc.select(".theloai-thumlist li");
+        var el = doc.select("li");
         var novelList = [];
-        var next = doc.select(".pagination li.active + li").text();
+        var next = parseInt(page) + 1;
         for (var i = 0; i< el.size(); i++) {
             var e = el.get(i);
             var cover = e.select(".thumbnail img").attr("data-src");
@@ -17,7 +29,7 @@ function execute(url, page) {
                 link: e.select(" a").attr("href"),
                 cover: cover,
                 description: e.select(".content p").first().text(),
-                host: "https://truyenvkl.com"
+                host: "https://s2.truyenhd.com"
             });
         }
 

@@ -1,5 +1,6 @@
 function execute() {
     return Response.success([
-        {title: "Truyện Hot", script: "hot.js", input: "https://truyenvkl.com/tim-kiem/hot/"}
+        {title: "Truyện hot", script: "hot.js", input: "https://s2.truyenhd.com/truyen HOT top-all"},
+        {title: "Truyện sáng tác", script: "hot.js", input: "https://s2.truyenhd.com/truyen-sang-tac SANGTAC new-chap"}
     ])
 }

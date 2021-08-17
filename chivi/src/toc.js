@@ -3,7 +3,7 @@ function execute(url) {
 
     if (doc) {
         const chapList = [];
-        var el = doc.select(".chlist").last().select(".list > li > a")
+        var el = doc.select(".chlist").last().select(".list").last().select(".item > a")
 
         for (var i = 0; i < el.size(); i++) {
             var e = el.get(i);
