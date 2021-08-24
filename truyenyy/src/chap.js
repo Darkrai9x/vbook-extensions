@@ -4,7 +4,7 @@ function execute(url) {
     var doc = Http.get(url).html();
 
     if (doc) {
-        var txt = doc.select("div.inner").html();
+        var txt = doc.select("div#inner_chap_content_1").html();
 
         if (txt && txt.length < 1000) {
             if (doc.html().indexOf("btn_buy") > 0)
