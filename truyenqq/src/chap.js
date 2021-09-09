@@ -2,6 +2,7 @@ load('bypass.js');
 
 function execute(url) {
     url = url.replace("truyenqq.com", "truyenqq.net");
+    url = url.replace("truyenqq.net", "truyenqqtop.com");
     var doc = bypass(url, Http.get(url).html());
     if (doc) {
         var imgs = doc.select(".story-see-content img.lazy");

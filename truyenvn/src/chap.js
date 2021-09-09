@@ -1,7 +1,8 @@
 function execute(url) {
+    url = url.replace("truyenvn.tv", "truyenvn.tv");
     var doc = Http.get(url).html();
     var postId = doc.select("form input[name=p]").first().attr("value")
-    var json = Http.post("https://truyenvn.com/wp-admin/admin-ajax.php").params({
+    var json = Http.post("https://truyenvn.tv/wp-admin/admin-ajax.php").params({
         action:  "z_do_ajax",
         _action:  "load_imgs_for_chapter",
         p: postId

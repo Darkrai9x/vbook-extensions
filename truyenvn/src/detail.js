@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("truyenvn.tv", "truyenvn.tv");
     const doc = Http.get(url).html();
 
     return Response.success({
@@ -7,7 +8,7 @@ function execute(url) {
         author: doc.select(".author a").first().text(),
         description: doc.select(".comic-description").html(),
         detail: doc.select(".meta-data").html(),
-        host: "https://truyenvn.com",
+        host: "https://truyenvn.tv",
         ongoing: doc.select(".status").text().indexOf("Đang Cập Nhật") >= 0
     });
 }

@@ -1,6 +1,7 @@
 function execute(url) {
     url = url.replace("nettruyen.com", "nettruyenvip.com");
     url = url.replace("nettruyentop.com", "nettruyenvip.com");
+    url = url.replace("nettruyenvip.com", "nettruyenpro.com");
     var doc = Http.get(url).html();
     var el = doc.select(".page-chapter img");
     
