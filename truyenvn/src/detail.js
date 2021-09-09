@@ -1,5 +1,5 @@
 function execute(url) {
-    url = url.replace("truyenvn.tv", "truyenvn.tv");
+    url = url.replace("truyenvn.com", "truyenvn.tv");
     const doc = Http.get(url).html();
 
     return Response.success({

@@ -1,5 +1,5 @@
 function execute(url) {
-    url = url.replace("truyenvn.tv", "truyenvn.tv");
+    url = url.replace("truyenvn.com", "truyenvn.tv");
     var doc = Http.get(url).html();
     var postId = doc.select("form input[name=p]").first().attr("value")
     var json = Http.post("https://truyenvn.tv/wp-admin/admin-ajax.php").params({
