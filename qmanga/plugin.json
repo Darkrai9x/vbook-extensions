@@ -2,9 +2,9 @@
   "metadata": {
     "name": "QManga",
     "author": "vBook",
-    "version": 1,
-    "source": "https://qmanga.net",
-    "regexp": "(www.)?qmanga.net/[^/]+.html$",
+    "version": 2,
+    "source": "https://qmanga.co",
+    "regexp": "(www.)?qmanga.(net|co)/[^/]+.html$",
     "description": "Đọc truyện trên trang QManga",
     "local": "vi-VN",
     "language": "javascript",

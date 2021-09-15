@@ -2,16 +2,19 @@ function execute(url) {
     url = url.replace("webtruyen.com", "dtruyen.com");
     var doc = Http.get(url).html();
 
-    var el = doc.select("#chapters .chapters a")
+    var storyId = doc.select("#storyID").attr("value");
+
+    var chapters = JSON.parse(Http.get("https://dtruyen.com/ajax/chapters?storyID=" + storyId).string()).chapters;
+
     const data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
+
+    chapters.forEach(e => {
         data.push({
-            name: e.text(),
-            url: e.attr("href"),
-            host: "https://dtruyen.com"
+            name: e.no,
+            url: e.url,
+            host: url
         })
-    }
+    });
 
     return Response.success(data);
 }

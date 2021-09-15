@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Nữ Hiệp",
     "author": "vBook",
-    "version": 6,
+    "version": 7,
     "source": "https://nuhiep.com",
     "regexp": "(www.)?nuhiep.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Nữ Hiệp",

@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("qmanga.net", "qmanga.co");
     var doc = Http.get(url).html();
     var el = doc.select("#aniimated-thumbnial img");
     

@@ -2,9 +2,9 @@
   "metadata": {
     "name": "D Truyện",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://dtruyen.com",
-    "regexp": "(www.)?(webtruyen|dtruyen).com/[^/]+$",
+    "regexp": "(www.)?(webtruyen|dtruyen).com/[^/]+/?$",
     "description": "Đọc truyện trên trang D Truyện",
     "local": "vi-VN",
     "language": "javascript",
@@ -15,7 +15,6 @@
     "genre": "genre.js",
     "detail": "detail.js",
     "search": "search.js",
-    "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }

@@ -11,7 +11,7 @@ function execute(url) {
         doc.select("small.text-muted").remove();
          doc.select(".text-center").remove();
         var html = content.html();
-        var trash = html.match(new RegExp(/<br>.*?<a href=.*?\/truyen\/.*?$/g));
+        var trash = html.match(new RegExp(/<br>[^>]*<a href=.*?\/truyen\/.*?$/g));
         if (trash) {
             trash = trash[trash.length - 1];
             if (trash.length < 2000) {

@@ -1,8 +1,12 @@
 function execute(key, page) {
-    if (!page) page = '1';
-    var doc = Http.get("https://dtruyen.com/searching/" + key.replace(" ", "-") + "/lastupdate/all/all/" + page).html();
+    var doc;
+    if (page) {
+        doc = Http.get(page).html();
+    } else {
+        doc = Http.get("https://dtruyen.com/search/?key=" + key).html();
+    }
 
-     var next = doc.select(".pagination").select("li.active + li").text();
+    var next = doc.select(".pagination").select("li.active + li").select("a").attr("href");
 
     const el = doc.select(".list-stories .story-list")
 
