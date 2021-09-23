@@ -4,7 +4,7 @@ function execute(url) {
 
     return Response.success({
         name: doc.select("h1.name").first().text(),
-        cover: doc.select(".book img").first().attr("data-src"),
+        cover: doc.select(".book img").first().attr("src"),
         author: doc.select(".author a").first().text(),
         description: doc.select(".comic-description").html(),
         detail: doc.select(".meta-data").html(),

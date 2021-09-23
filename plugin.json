@@ -101,7 +101,7 @@
       "name": "Chivi",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/plugin.zip",
-      "version": 7,
+      "version": 8,
       "source": "https://chivi.xyz",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/icon.png",
       "description": "Đọc truyện trên trang Chivi"
@@ -121,7 +121,7 @@
       "name": "Truyện VN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
-      "version": 4,
+      "version": 5,
       "type": "comic",
       "local": "vi-VN",
       "source": "https://truyenvn.tv",
