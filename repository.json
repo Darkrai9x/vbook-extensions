@@ -1,0 +1,32 @@
+[
+  {
+    "link": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/plugin.json",
+    "author": "vBook",
+    "description": "Extension mặc định"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chinese_plugin.json",
+    "author": "vBook",
+    "description": "Extension trang chinese"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/nhocconsr/vbook-ext/master/plugin.json",
+    "author": "Nhocconsr",
+    "description": "Thích là nhích ^^"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/hajljnopera/vbook-ext/main/plugin.json",
+    "author": "hajljnopera",
+    "description": "\uD83D\uDE22\uD83D\uDE22\uD83D\uDE22"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/iChickn/vbook-extensions/main/plugin.json",
+    "author": "iChickn",
+    "description": "Có làm thì mới có ăn"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/hishirooo/vbook-ext/master/plugin.json",
+    "author": "Cá Mụp Cắn Cáp",
+    "description": ""
+  }
+]
