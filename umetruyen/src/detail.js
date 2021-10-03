@@ -11,7 +11,7 @@ function execute(url) {
         author: doc.select(".created-by").first().text(),
         description: doc.select(".description").html(),
         detail: doc.select(".detail-top .detail-top-left").html(),
-        host: "https://umetruyen.com",
+        host: "https://umetruyen.net",
         ongoing: true
     });
 }

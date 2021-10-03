@@ -11,11 +11,11 @@ function execute(url) {
                 img = "https:" + img;
             }
             if (img.startsWith("/")) {
-                img = "https://umetruyen.com" + img;
+                img = "https://umetruyen.net" + img;
             }
 
             if (!img.startsWith("http")) {
-                img = "https://umetruyen.com/" + img;
+                img = "https://umetruyen.net/" + img;
             }
             data.push(img);
         }

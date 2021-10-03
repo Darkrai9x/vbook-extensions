@@ -1,11 +1,12 @@
 function execute(url) {
     url = url.replace("truyenvkl.com", "s2.truyenhd.com");
+    url = url.replace("s2.truyenhd.com", "s3.truyenhd.com");
     var doc = Http.get(url).html();
     if (doc) {
         return Response.success({
             name: doc.select("h1").text(),
             cover: doc.select(".book3d img").first().attr("data-src"),
-            host: "https://s2.truyenhd.com",
+            host: "https://s3.truyenhd.com",
             author: doc.select("a[href*=tac-gia]").first().text(),
             description: doc.select(".gioi_thieu").html(),
             detail: doc.select("#thong_tin").html(),

@@ -1,8 +1,8 @@
 function execute() {
     return Response.success([
-        {title: "Ngôn tình", input: "https://umetruyen.com/danh-sach-truyen-the-loai-Ng%C3%B4n%20T%C3%ACnh.html", script: "gen.js"},
-        {title: "Đam mỹ", input: "https://umetruyen.com/danh-sach-truyen-the-loai-%C4%90am%20M%E1%BB%B9.html", script: "gen.js"},
-        {title: "Action", input: "https://umetruyen.com/danh-sach-truyen-the-loai-action.html", script: "gen.js"},
-        {title: "Truyện full", input: "https://umetruyen.com/truyen-da-hoan-thanh.html", script: "gen.js"}
+        {title: "Top ngày", input: "https://umetruyen.net/danh-sach-truyen.html?status=0&sort=views", script: "gen.js"},
+        {title: "Mới cập nhật", input: "https://umetruyen.net/danh-sach-truyen.html", script: "gen.js"},
+        {title: "Truyện mới", input: "https://umetruyen.net/danh-sach-truyen.html?status=0&sort=id", script: "gen.js"},
+        {title: "Truyện full", input: "https://umetruyen.net/truyen-da-hoan-thanh.html", script: "gen.js"}
     ]);
 }

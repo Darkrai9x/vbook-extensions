@@ -2,8 +2,7 @@ function execute(url) {
     var list = [];
     var doc = Http.get(url).html();
     if(doc) {
-        var name = "- " + doc.select("h1.page-title").text() + " - ";
-        Console.log(name)
+        var name = "-+ " + doc.select("h1.page-title").text() + " - ";
         var el = doc.select("div.book-nav option");
         for (var i = 2; i< el.size(); i++) {
             var e = el.get(i);

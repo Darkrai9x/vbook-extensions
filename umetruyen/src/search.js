@@ -1,28 +1,29 @@
 function execute(key, page) {
     var doc;
     if (!page) {
-        doc = Http.get("https://umetruyen.com/danh-sach-truyen.html").params({"name": key}).html();
+        doc = Http.get("https://umetruyen.net/danh-sach-truyen.html").params({"name": key}).html();
     } else {
-        doc = Http.get("https://umetruyen.com/" + page).html();
+        doc = Http.get("https://umetruyen.net/" + page).html();
     }
 
-    var next = doc.select(".pagination").select("li:has(a.active) + li").select("a").attr("href")
+     var next = doc.select(".pager").select("li.active + li").select("a").attr("href");
+    if (next) {
+        if (!next.startsWith("http")) {
+            next = "https://umetruyen.net/" + next;
+        }
+    }
 
-    const el = doc.select(".items .media")
+    const el = doc.select("#danhsachtruyen > li")
 
     const data = [];
     for (var i = 0; i < el.size(); i++) {
         var e = el.get(i);
-        var coverImg = e.select("img").first().attr("src")
-        if (coverImg.startsWith("//")) {
-            coverImg = "https:" + coverImg
-        }
         data.push({
-            name: e.select(".content-title").first().text(),
-            link: e.select("a.content-title").first().attr("href"),
-            cover: coverImg,
-            description: e.select(".last-chap").first().text(),
-            host: "https://umetruyen.com"
+            name: e.select("a.fed-list-title").first().text(),
+            link: e.select("a[itemprop=url]").first().attr("href"),
+            cover: e.select("a[itemprop=url]").first().attr("data-src"),
+            description: e.select(".fed-list-desc").first().text(),
+            host: "https://umetruyen.net"
         })
     }
 
