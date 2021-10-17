@@ -2,9 +2,9 @@ function execute(url) {
     var doc = Http.get(url).html();
     if (doc != null) {
         return Response.success({
-            "name": doc.select(".title > h1").text(),
+            "name": doc.select("h1").text(),
             "cover": doc.select(".cover img").first().attr("src"),
-            "host": "https://chivi.xyz",
+            "host": "https://chivi.app",
             "author": doc.select("[property=og:novel:author]").attr("content"),
             "description": doc.select(".section-content").html(),
             "detail": doc.select(".extra").first().html(),

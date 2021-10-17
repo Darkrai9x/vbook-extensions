@@ -8,7 +8,7 @@
       "name": "Bạch Ngọc Sách",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://bachngocsach.com/reader",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/icon.png",
       "description": "Đọc truyện trên trang bachngocsach.com/reader"
@@ -101,8 +101,8 @@
       "name": "Chivi",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/plugin.zip",
-      "version": 8,
-      "source": "https://chivi.xyz",
+      "version": 9,
+      "source": "https://chivi.app",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/icon.png",
       "description": "Đọc truyện trên trang Chivi"
     },
@@ -228,7 +228,7 @@
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 6,
+      "version": 7,
       "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ"

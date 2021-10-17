@@ -9,7 +9,7 @@ function execute(url) {
             chapList.push({
                 "name": e.title,
                 "url": storyUrl[0] + "/-" + json.sname + "/-" + e.uslug + "-" + e.chidx,
-                "host": "https://chivi.xyz"
+                "host": "https://chivi.app"
 
             });
         })

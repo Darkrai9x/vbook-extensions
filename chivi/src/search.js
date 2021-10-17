@@ -4,7 +4,7 @@ function execute(key, page) {
         page = "1";
     }
 
-    var doc = Http.get("https://chivi.xyz/search?q=" + key + "&p=" + page).html();
+    var doc = Http.get("https://chivi.app/search?q=" + key + "&p=" + page).html();
 
     const novelList = [];
     var next = "";
@@ -26,7 +26,7 @@ function execute(key, page) {
                 "link": e.select("a").first().attr("href"),
                 "description": e.select(".infos  ._author").text(),
                 "cover": e.select(".cover img").first().attr("src"),
-                "host": "https://chivi.xyz"
+                "host": "https://chivi.app"
             });
         }
     }

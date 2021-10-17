@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("chivi.xyz", "chivi.app");
     var doc = Http.get(url + "/chaps").html();
     const pageList = [];
     if (doc) {
@@ -11,7 +12,7 @@ function execute(url) {
         }
 
         for (var i = 1; i <= lastPage; i++) {
-            pageList.push(url + " https://chivi.xyz/api/chaps/" + story + "?page=" + i);
+            pageList.push(url + " https://chivi.app/api/chaps/" + story + "?page=" + i);
         }
     }
 

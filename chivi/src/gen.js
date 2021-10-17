@@ -23,7 +23,7 @@ function execute(url, page) {
                 "link": "-" + item.bslug,
                 "description": item.vauthor,
                 "cover": item.bcover ? "/covers/" + item.bcover : "",
-                "host": "https://chivi.xyz"
+                "host": "https://chivi.app"
             }
         });
     }
