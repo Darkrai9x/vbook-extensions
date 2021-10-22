@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Nhà sách miễn phí",
+    "author": "Fus",
+    "version": 1,
+    "source": "https://nhasachmienphi.com",
+    "regexp": "(www.)?nhasachmienphi.com/[a-zA-Z0-9-]+.html",
+    "description": "Thư Viện Ebook Miễn Phí",
+    "local": "vi-VN",
+    "language": "javascript",
+     "type": "ebook"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
