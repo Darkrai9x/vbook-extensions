@@ -1,8 +1,6 @@
 function execute(url, page) {
     if (!page) page = '1';
     const doc = Http.get(url+'/page/'+page).html()
-    //param chỉ dùng khi link có dạng url?key=value
-    //còn bt cứ dùng link bt
      var next = doc.select('.wp-pagenavi').select('span.current + a').text();
      var el = doc.select(".content_page .item_sach");
     const data = [];
