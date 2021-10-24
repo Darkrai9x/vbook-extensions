@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "SachHayOnline",
+    "author": "Fus",
+    "version": 1,
+    "source": "https://www.sachhayonline.com/",
+    "regexp": "(www.)?sachhayonline.com/tua-sach/[A-Za-z].+/?$",
+    "description": "Sách Hay Online: Đọc Sách Hay trực tuyến miễn phí, thư viện sách online miễn phí chọn lọc hay nhất, đọc truyện online, sách văn học, lịch sử, truyện ngắn, truyện cười",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
