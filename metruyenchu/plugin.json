@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Mê Truyện Chữ",
     "author": "vBook",
-    "version": 7,
+    "version": 8,
     "source": "https://metruyenchu.com",
     "regexp": "(www.)?metruyenchu.com/truyen/[a-zA-Z0-9-]+/?$",
     "description": "Đọc truyện trên trang Mê Truyện Chữ",

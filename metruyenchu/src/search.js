@@ -4,7 +4,7 @@ function execute(key, page) {
 
     browser.block([".*?api.truyen.onl/v2/books/search.*?"]);
 
-    browser.launch("https://metruyenchu.com/tim-kiem?q=" + key + "&page=" + page, 1000);
+    browser.launch("https://metruyenchu.com/truyen/?keyword=" + key + "&page=" + page, 1000);
     browser.waitUrl(".*?api.truyen.onl/v2/books/search.*?", 10000);
     browser.close()
 

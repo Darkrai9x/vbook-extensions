@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Ngôn Phong",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://www.ngonphong.com",
     "regexp": "(www.)?ngonphong.com/[^/]+/[^/]+/?$",
     "description": "Đọc truyện trên trang ngonphong.com",
