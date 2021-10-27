@@ -12,7 +12,7 @@ function execute(url) {
             author: doc.select("div.info .author").text(),
             description: doc.select("section#id_novel_summary").html(),
             detail: doc.select("div.info .author").html(),
-            ongoing: doc.select("div.info").html().indexOf("status=C") >= 0
+            ongoing: doc.select("div.info").html().indexOf("status=F") == -1
         });
     }
 
