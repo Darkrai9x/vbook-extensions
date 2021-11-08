@@ -1,20 +1,14 @@
 function execute(url) {
+    url = url.replace("truyentr.vn", "truyentr.info");
     var doc = Http.get(url).html();
     if (doc) {
-        var info = doc.select("div.info > div");
-        var detail = "";
-        if (info) {
-            for (var i = 0; i < info.size(); i++) {
-                detail += info.get(i).text().trim() + "<br>";
-            }
-        }
         return Response.success({
-            name: doc.select("h3.title").text(),
-            cover: doc.select("div.book img").attr("src"),
-            host: "http://truyentr.vn",
-            author: doc.select("div.info div a").first().text(),
-            description: doc.select("div.desc-text").html(),
-            detail: detail,
+            name: doc.select("h1.title").text(),
+            cover: doc.select("div.book-thumb img").attr("src"),
+            host: "http://truyentr.info",
+            author: doc.select(".book-info > .content1 > .info a").first().text(),
+            description: doc.select("div.book-desc").html(),
+            detail: doc.select(".book-info > .content1 > .info"),
             ongoing: doc.select("div.info").html().indexOf(">Đang ra<") > 0
         });
     }

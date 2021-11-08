@@ -4,7 +4,7 @@ function execute(url, page) {
 
     browser.block([".*?api.truyen.onl/v2/books.*?"]);
 
-    browser.launch(url + "&page=" + page, 1000);
+    browser.launch(url + "/" + page, 1000);
     browser.waitUrl(".*?api.truyen.onl/v2/books.*?", 10000);
     browser.close()
 

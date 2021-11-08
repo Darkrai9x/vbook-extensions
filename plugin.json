@@ -35,7 +35,7 @@
       "name": "Truyện TR",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyentr.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/icon.png",
       "description": "Đọc truyện trên trang Truyện TR"
@@ -228,7 +228,7 @@
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 8,
+      "version": 9,
       "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ"
