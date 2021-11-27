@@ -1,23 +1,23 @@
 function execute(key, page) {
     if (!page) page = '1';
 
-    var doc = Http.get("https://ln.hako.re/tim-kiem").params({keywords: key, page: page}).html();
-    if (doc) {
-        var el = doc.select(".sect-body .thumb-item-flow");
-        var novelList = [];
-        var next = doc.select(".pagination-footer a.current + a").text()
-
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
-            novelList.push({
-                name: e.select(".series-title a").text(),
-                link: e.select(".series-title a").attr("href"),
-                description: e.select(".chapter-title").text(),
-                cover: e.select(".img-in-ratio").attr("data-bg"),
-                host: "https://ln.hako.re"
-            });
-
+    let response = fetch("https://ln.hako.re/tim-kiem", {
+        method: "GET",
+        queries: {
+            keywords: key,
+            page: page
         }
+    });
+    if (response.ok) {
+        let doc = response.html();
+        let next = doc.select(".pagination-footer a.current + a").text()
+        let novelList = doc.select(".sect-body .thumb-item-flow").map(e => ({
+            name: e.select(".series-title a").text(),
+            link: e.select(".series-title a").attr("href"),
+            description: e.select(".chapter-title").text(),
+            cover: e.select(".img-in-ratio").attr("data-bg"),
+            host: "https://ln.hako.re"
+        }));
 
         return Response.success(novelList, next);
     }

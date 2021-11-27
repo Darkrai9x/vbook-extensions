@@ -1,16 +1,15 @@
 function execute(url) {
-    var doc = Http.get(url).html();
-    if (doc) {
-        var list = [];
-        var sections = doc.select(".volume-list");
-        for (var i = 0; i < sections.size(); i++) {
-            var section = sections.get(i);
-            var sectionName = section.select(".sect-title").text();
-            var chapters = section.select(".list-chapters li");
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
+        let list = [];
+        doc.select(".volume-list").forEach(section => {
+            let sectionName = section.select(".sect-title").text();
+            let chapters = section.select(".list-chapters li");
 
-            for (var j = 0; j < chapters.size(); j++) {
-                var chapter = chapters.get(j);
-                var name = chapter.select(".chapter-name a").text()
+            for (let j = 0; j < chapters.size(); j++) {
+                let chapter = chapters.get(j);
+                let name = chapter.select(".chapter-name a").text()
                 if (j === 0)
                     name = sectionName + " " + name;
                 list.push({
@@ -20,7 +19,7 @@ function execute(url) {
                 });
 
             }
-        }
+        })
         return Response.success(list)
     }
 }

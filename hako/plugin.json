@@ -2,11 +2,12 @@
   "metadata": {
     "name": "Hako Novel",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://ln.hako.re",
     "regexp": "(www.)?ln.hako.re/[^/]+/[^/]+/?$",
     "description": "Đọc truyện trên trang Hako",
     "locale": "vi_VN",
+    "type": "novel",
     "language": "javascript"
   },
   "script": {

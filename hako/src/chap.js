@@ -1,6 +1,7 @@
 function execute(url) {
-    var doc = Http.get(url).html();
-    if (doc) {
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
         doc.select(".note-reg").remove();
         return Response.success(doc.select("div#chapter-content").html());
     }

@@ -10,7 +10,7 @@ function execute(url) {
             host: "https://ln.hako.re",
             author: doc.select(".series-information .info-item a").first().text(),
             description: doc.select(".summary-content").html(),
-            detail: doc.select(".series-information .info-item"),
+            detail: doc.select(".series-information .info-item").html(),
             ongoing: doc.select(".series-information .info-item").html().indexOf("truyen-dang-tien-hanh") > 0
         });
     }
