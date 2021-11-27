@@ -1,18 +1,14 @@
 function execute(url) {
-    var storyUrl = url.split(" ");
-    var data = Http.get(storyUrl[1]).string();
+    let storyUrl = url.split(" ");
+    let response = fetch(storyUrl[1]);
 
-    if (data) {
-        const chapList = [];
-        var json = JSON.parse(data);
-        json.chaps.forEach(e => {
-            chapList.push({
-                "name": e.title,
-                "url": storyUrl[0] + "/-" + json.sname + "/-" + e.uslug + "-" + e.chidx,
-                "host": "https://chivi.app"
-
-            });
-        })
+    if (response.ok) {
+        let data = response.json();
+        let chapList = data.chaps.map(e => ({
+            "name": e.title,
+            "url": storyUrl[0] + "/-" + data.sname + "/-" + e.uslug + "-" + e.chidx,
+            "host": "https://chivi.app"
+        }));
         return Response.success(chapList);
     }
 

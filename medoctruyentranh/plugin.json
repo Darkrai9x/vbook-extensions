@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Mê Đọc Truyện Tranh",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://www.medoctruyentranh.net",
     "regexp": "(www.|m.)?medoctruyentranh.net/truyen-tranh/[0-9a-z-]+\\d+/?$",
     "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "type": "comic"
   },

@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Wattpad",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://wattpad.com",
     "regexp": "(www.)?wattpad.com/story/\\d+.*?/?$",
     "description": "Đọc truyện trên trang Wattpad",
-    "local": "global",
+    "locale": "global",
     "language": "javascript",
     "type": "novel"
   },

@@ -11,8 +11,8 @@
     "source": "<Địa chỉ trang nguồn>",
     "regexp": "<RegExp khớp với URL của trang truyện>",
     "description": "<Mô tả về extension>",
-    "local": "<Quốc gia áp dụng của extension>",
-    "language": "javascript",
+    "locale": "<Quốc gia áp dụng của extension - Ex: vi_VN, en_US, zh_CN>",
+    "tag": "<Thêm nsfw nếu là trang 18+>",
     "type": "<Thể loại của extension, comic/novel/chinese_novel>"
   },
   "script": {
@@ -39,22 +39,34 @@ Xem source code của các extension để tham khảo
 - Http request
 
 ```javascript
-var request = Http.get(url) // Tạo request GET, return Request object
-var request = Http.post(url) // Tạo request POST, return Request object
-request.headers(headers) // Truyền tham số header, return Request object
-request.params(params) // Truyền tham số FormData, return Request object
-request.body(body) // Truyền tham số body payload string, return Request object
-request.html() // Trả về response request dạng Document object
-request.html(charset) // Trả về response request dạng Document object
-request.string() // Trả về response request dạng string
-request.string(charset) // Trả về response request dạng string
-request.code()// Trả về http status code của response
+var response = fetch(url) // GET equest http return Response
+var response = fetch(url, {
+  method: "POST", // GET, POST, PUT, DELETE, PATCH
+  headers: {
+    "aaa": "xxx",
+    "bbb": "yyy"
+  },
+  body: {
+    "aaa": "xxx",
+    "bbb": "yyy"
+  }
+}) // Full request http với options return Response
+let status = response.status; // Http status code
+let isSuccess = response.ok; // Check request success (status >= 200 && status < 300)
+let headers = response.headers; // Trả về header của response
+
+let doc = response.html() // Trả về response request dạng Document object
+let doc = response.html(charset) // Trả về response request dạng Document object
+let text = response.text() // Trả về response request dạng string
+let text = response.text(charset) // Trả về response request dạng string
+let json = response.json() // Trả về response request dạng JSONObject
 ```
 
 - Html parse
 
 ```javascript
-Html.parse(text) // Parse html text to  Document object
+Html.parse(text) // Chuyển html text sang Document object
+Html.clean(text, ["div", "p"]) // Clean html trừ các thẻ được liệt kê
 ```
 
 Document selector using [jsoup](https://jsoup.org/cookbook/extracting-data/selector-syntax)

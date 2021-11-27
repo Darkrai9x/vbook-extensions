@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Koanchay",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://koanchay.com",
     "regexp": "(www.)?koanchay.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Koanchay",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "tag": "nsfw"
   },

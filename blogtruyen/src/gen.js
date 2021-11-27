@@ -1,31 +1,31 @@
 function execute(id, page) {
     if (!page) page = '1';
 
-    var doc = Http.get("https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory")
-        .params({
+    let response = fetch("https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory", {
+        method: "GET",
+        queries: {
             id: id,
             orderBy: "5",
             p: page
-        })
-        .html();
-    if (doc) {
-        var el = doc.select(".list .tiptip");
-        var novelList = [];
+        }
+    });
+    if (response.ok) {
+        let doc = response.html();
+        let novelList = [];
 
-        var next = doc.select(".paging > .current_page + .page").last().text();
+        let next = doc.select(".paging > .current_page + .page").last().text();
 
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
-            var id = e.attr("data-tiptip");
+        doc.select(".list .tiptip").forEach(e => {
+            let id = e.attr("data-tiptip");
 
-            var info = doc.select("#" + id);
+            let info = doc.select("#" + id);
             novelList.push({
                 name: e.select("a").text(),
                 link: e.select("a").attr("href"),
                 cover: info.select("img").attr("src"),
                 host: "https://blogtruyen.vn"
             });
-        }
+        });
 
         return Response.success(novelList, next);
     }

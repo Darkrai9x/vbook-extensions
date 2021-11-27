@@ -2,11 +2,12 @@
   "metadata": {
     "name": "Tàng Thư Viện",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://truyen.tangthuvien.vn",
     "regexp": "(www.)?(m.)?(truyen|ngontinh).tangthuvien.vn/doc-truyen/[^/]+$",
     "description": "Đọc truyện trên trang Tàng Thư Viện",
-    "local": "vi-VN",
+    "locale": "vi_VN",
+    "type": "novel",
     "language": "javascript"
   },
   "script": {

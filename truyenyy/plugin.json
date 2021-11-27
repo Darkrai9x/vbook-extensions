@@ -2,11 +2,12 @@
   "metadata": {
     "name": "Truyện YY",
     "author": "vBook",
-    "version": 8,
+    "version": 9,
     "source": "https://truyenyy.vip",
     "regexp": "(www.)?truyenyy.(com|vn|vip)/truyen/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Truyện YY",
-    "local": "vi-VN",
+    "locale": "vi_VN",
+    "type": "novel",
     "language": "javascript"
   },
   "script": {

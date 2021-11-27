@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Blog Truyện",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://blogtruyen.vn",
     "regexp": "(www.)?(m\\.)?blogtruyen.vn/\\d+/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Blog Truyện",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "type": "comic"
   },

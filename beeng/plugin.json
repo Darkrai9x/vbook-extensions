@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Beeng",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://beeng.org",
     "regexp": "(www.)?(beeng.net|beeng.org)/[^/]+\\d+.html",
     "description": "Đọc truyện trên trang Beeng.org",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "type": "comic"
   },

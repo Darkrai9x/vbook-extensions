@@ -2,10 +2,10 @@ function execute(url, page) {
     if (!page) page = '1';
     var browser = Engine.newBrowser();
 
-    browser.block([".*?api.truyen.onl/v2/books?sort_by.*?"]);
+    browser.block([".*?api.truyen.onl/v2/books\\?sort_by.*?"]);
 
-    browser.launch(url + "&page=" + page, 1000);
-    browser.waitUrl(".*?api.truyen.onl/v2/books?sort_by.*?", 10000);
+    browser.launchAsync(url + "?page=" + page);
+    browser.waitUrl(".*?api.truyen.onl/v2/books\\?sort_by.*?", 10000);
     browser.close()
 
     var urls = JSON.parse(browser.urls());
@@ -13,7 +13,7 @@ function execute(url, page) {
     var next = "";
     urls.forEach(requestUrl => {
         if (requestUrl.indexOf("api.truyen.onl/v2/books") >= 0) {
-            var response = JSON.parse(Http.get(requestUrl).string());
+            var response = fetch(requestUrl).json();
             next = response._extra._pagination._next;
             response._data.forEach(book => {
                 novelList.push({

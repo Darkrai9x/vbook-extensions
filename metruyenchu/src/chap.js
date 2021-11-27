@@ -1,7 +1,8 @@
 function execute(url) {
-    var doc = Http.get(url).html();
+    var response = fetch(url);
 
-    if (doc) {
+    if (response.ok) {
+        var doc = response.html();
         var content = doc.select("#js-read__content").first();
         if (content.text().length < 2000) {
             return Response.error(url);

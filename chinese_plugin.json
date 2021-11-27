@@ -8,19 +8,23 @@
       "name": "uukanshu",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/plugin.zip",
-      "version": 6,
+      "version": 7,
       "source": "https://uukanshu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/icon.png",
-      "description": "Đọc truyện trên trang uukanshu.com"
+      "description": "Đọc truyện trên trang uukanshu.com",
+      "type": "novel",
+      "locale": "zh_CN"
     },
     {
       "name": "biqubu",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/biqubu/plugin.zip",
-      "version": 1,
+      "version": 3,
       "source": "https://www.biqubu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/biqubu/icon.png",
-      "description": "Đọc truyện trên trang biqubu.com"
+      "description": "Đọc truyện trên trang biqubu.com",
+      "type": "novel",
+      "locale": "zh_CN"
     }
   ]
 }

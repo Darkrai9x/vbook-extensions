@@ -12,7 +12,7 @@ function execute(url) {
     var chapters = [];
     urls.forEach(requestUrl => {
         if (requestUrl.indexOf("api.truyen.onl/v2/chapters") >= 0) {
-            var response = JSON.parse(Http.get(requestUrl).string());
+            var response = fetch(requestUrl).json();
             response._data.chapters.forEach(chapter => {
                 chapters.push({
                     name: chapter.name,

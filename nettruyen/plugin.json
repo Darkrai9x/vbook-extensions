@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Net Truyện",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "http://www.nettruyenpro.com",
     "regexp": "(www.)?(nhattruyen.com|nettruyen.com|nettruyentop.com|nettruyenvip.com|nettruyenpro.com)/truyen-tranh/[^/]+/?$",
     "description": "Đọc truyện trên trang Net Truyện",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "type": "comic"
   },

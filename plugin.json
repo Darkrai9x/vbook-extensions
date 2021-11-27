@@ -8,10 +8,12 @@
       "name": "Bạch Ngọc Sách",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://bachngocsach.com/reader",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/icon.png",
-      "description": "Đọc truyện trên trang bachngocsach.com/reader"
+      "description": "Đọc truyện trên trang bachngocsach.com/reader",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Truyện Full",
@@ -20,79 +22,95 @@
       "version": 3,
       "source": "https://truyenfull.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenfull/icon.png",
-      "description": "Đọc truyện trên trang Truyện Full"
+      "description": "Đọc truyện trên trang Truyện Full",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenchu/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://truyenchu.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenchu/icon.png",
-      "description": "Đọc truyện trên trang Truyện Chữ"
+      "description": "Đọc truyện trên trang Truyện Chữ",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Truyện TR",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://truyentr.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/icon.png",
-      "description": "Đọc truyện trên trang Truyện TR"
+      "description": "Đọc truyện trên trang Truyện TR",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Tàng Thư Viện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://truyen.tangthuvien.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/icon.png",
-      "description": "Đọc truyện trên trang Tàng Thư Viện"
+      "description": "Đọc truyện trên trang Tàng Thư Viện",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Truyện YY",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/plugin.zip",
-      "version": 8,
+      "version": 9,
       "source": "https://truyenyy.vip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/icon.png",
-      "description": "Đọc truyện trên trang Truyện YY"
+      "description": "Đọc truyện trên trang Truyện YY",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Wiki Dịch",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://wikidich.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/icon.png",
-      "description": "Đọc truyện trên trang Wiki Dịch"
+      "description": "Đọc truyện trên trang Wiki Dịch",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Koanchay",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://koanchay.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/icon.png",
       "description": "Đọc truyện trên trang Koanchay",
-      "tag": "nsfw"
+      "tag": "nsfw",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "SS Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://sstruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/icon.png",
-      "description": "Đọc truyện trên trang SS Truyện"
+      "description": "Đọc truyện trên trang SS Truyện",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Truyện QQ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/plugin.zip",
-      "version": 6,
+      "version": 7,
       "type": "comic",
-      "local": "vi-VN",
+      "locale": "vi_VN",
       "source": "http://truyenqqtop.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/icon.png",
       "description": "Đọc truyện trên trang Truyện QQ"
@@ -101,18 +119,20 @@
       "name": "Chivi",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/plugin.zip",
-      "version": 9,
+      "version": 10,
       "source": "https://chivi.app",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/icon.png",
-      "description": "Đọc truyện trên trang Chivi"
+      "description": "Đọc truyện trên trang Chivi",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Net Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/plugin.zip",
-      "version": 4,
+      "version": 5,
       "type": "comic",
-      "local": "vi-VN",
+      "locale": "vi_VN",
       "source": "http://www.nettruyenpro.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/icon.png",
       "description": "Đọc truyện trên trang Net Truyện"
@@ -121,9 +141,9 @@
       "name": "Truyện VN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
-      "version": 6,
+      "version": 7,
       "type": "comic",
-      "local": "vi-VN",
+      "locale": "vi_VN",
       "source": "https://truyenvn.tv",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
       "description": "Đọc truyện trên trang Truyện VN"
@@ -132,27 +152,30 @@
       "name": "Wattpad",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://www.wattpad.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/icon.png",
-      "description": "Đọc truyện trên trang Wattpad"
+      "description": "Đọc truyện trên trang Wattpad",
+      "type": "novel"
     },
     {
       "name": "D Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/plugin.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://dtruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/webtruyen/icon.png",
-      "description": "Đọc truyện trên trang D Truyện"
+      "description": "Đọc truyện trên trang D Truyện",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "nHentai",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/plugin.zip",
-      "version": 1,
+      "version": 2,
       "type": "comic",
-      "local": "en-US",
+      "locale": "en_US",
       "source": "https://nhentai.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/icon.png",
       "description": "Đọc truyện trên trang nHentai",
@@ -162,36 +185,42 @@
       "name": "Hako Novel",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hako/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://ln.hako.re",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hako/icon.png",
-      "description": "Đọc truyện trên trang Hako"
+      "description": "Đọc truyện trên trang Hako",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Thích Đọc Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/thichdoctruyen/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://thichdoctruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/thichdoctruyen/icon.png",
-      "description": "Đọc truyện trên trang Thích Đọc Truyện"
+      "description": "Đọc truyện trên trang Thích Đọc Truyện",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Sàn Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/santruyen/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "http://santruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/santruyen/icon.png",
-      "description": "Đọc truyện trên trang Sàn Truyện"
+      "description": "Đọc truyện trên trang Sàn Truyện",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Blog Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/plugin.zip",
-      "version": 3,
+      "version": 4,
       "type": "comic",
-      "local": "vi-VN",
+      "locale": "vi_VN",
       "source": "https://blogtruyen.vn",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/icon.png",
       "description": "Đọc truyện trên trang Blog Truyện"
@@ -200,84 +229,85 @@
       "name": "TruyệnHD",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/plugin.zip",
-      "version": 5,
+      "version": 6,
       "source": "https://s2.truyenhd.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/icon.png",
       "description": "Đọc truyện trên trang TruyệnHD",
-      "tag": "nsfw"
+      "tag": "nsfw",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Gác Sách",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/plugin.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://gacsach.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/icon.png",
-      "description": "Đọc truyện trên trang Gác Sách"
+      "description": "Đọc truyện trên trang Gác Sách",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Nữ Hiệp",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/plugin.zip",
-      "version": 8,
+      "version": 7,
       "source": "https://nuhiep.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nuhiep/icon.png",
-      "description": "Đọc truyện trên trang Nữ Hiệp"
+      "description": "Đọc truyện trên trang Nữ Hiệp",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 10,
+      "version": 11,
       "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
-      "description": "Đọc truyện trên trang Mê Truyện Chữ"
+      "description": "Đọc truyện trên trang Mê Truyện Chữ",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "vTruyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/plugin.zip",
-      "version": 7,
+      "version": 8,
       "source": "https://vtruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/icon.png",
-      "description": "Đọc truyện trên trang vTruyện"
+      "description": "Đọc truyện trên trang vTruyện",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Mê Đọc Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://www.medoctruyenchu.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/icon.png",
-      "description": "Đọc truyện trên trang Mê Đọc Truyện Chữ"
+      "description": "Đọc truyện trên trang Mê Đọc Truyện Chữ",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "Mê Đọc Truyện Tranh",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/plugin.zip",
-      "version": 2,
+      "version": 3,
       "type": "comic",
-      "local": "vi-VN",
+      "locale": "vi_VN",
       "source": "https://www.medoctruyentranh.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/icon.png",
       "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh"
     },
     {
-      "name": "Beeng",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/plugin.zip",
-      "version": 4,
-      "type": "comic",
-      "local": "vi-VN",
-      "source": "https://beeng.org",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/beeng/icon.png",
-      "description": "Đọc truyện trên trang Beeng.org"
-    },
-    {
       "name": "Truyện Tranh Audio",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://truyentranhaudio.online",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/icon.png",
       "description": "Đọc truyện trên trang truyentranhaudio.online"
@@ -286,18 +316,20 @@
       "name": "Say Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/saytruyen/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://saytruyen.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/saytruyen/icon.png",
-      "description": "Đọc truyện trên trang Say Truyện"
+      "description": "Đọc truyện trên trang Say Truyện",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "HentaiVN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/plugin.zip",
-      "version": 3,
+      "version": 4,
       "type": "comic",
-      "local": "vi-VN",
+      "locale": "vi_VN",
       "source": "https://hentaivn.tv",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/icon.png",
       "description": "Đọc truyện trên trang HentaiVN",
@@ -307,18 +339,20 @@
       "name": "iSach",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/isach/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://isach.info",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/isach/icon.png",
-      "description": "Đọc truyện trên trang iSach"
+      "description": "Đọc truyện trên trang iSach",
+      "type": "novel",
+      "locale": "vi_VN"
     },
     {
       "name": "QManga",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/plugin.zip",
-      "version": 2,
+      "version": 3,
       "type": "comic",
-      "local": "vi-VN",
+      "locale": "vi_VN",
       "source": "https://qmanga.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/icon.png",
       "description": "Đọc truyện trên trang QManga"
@@ -327,29 +361,35 @@
       "name": "U Mê Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/umetruyen/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://umetruyen.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/umetruyen/icon.png",
-      "description": "Đọc truyện trên trang U Mê Truyện"
+      "description": "Đọc truyện trên trang U Mê Truyện",
+      "type": "comic",
+      "locale": "vi_VN"
     },
     {
       "name": "Hentai2Read",
       "author": "Nhocconsr",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentai2read/plugin.zip",
-      "version": 1,
+      "version": 2,
       "source": "https://hentai2read.com",
       "icon": "https://hentai2read.com/apple-touch-icon.png",
       "description": "Đọc truyện trên trang Hentai2Read",
-      "tag": "nsfw"
+      "tag": "nsfw",
+      "type": "comic",
+      "locale": "vi_VN"
     },
     {
       "name": "Ngôn Phong",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ngonphong/plugin.zip",
-      "version": 2,
+      "version": 3,
       "source": "https://www.ngonphong.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ngonphong/icon.png",
-      "description": "Đọc truyện trên trang ngonphong.com"
+      "description": "Đọc truyện trên trang ngonphong.com",
+      "type": "comic",
+      "locale": "vi_VN"
     }
   ]
 }

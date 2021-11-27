@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Hentai2Read",
     "author": "Nhocconsr",
-    "version": 1,
+    "version": 2,
     "source": "https://hentai2read.com",
     "regexp": "(www.)?hentai2read.com/[^/]+/?",
     "description": "Đọc truyện trên trang Hentai2read.com",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "type": "comic",
     "tag": "nsfw"

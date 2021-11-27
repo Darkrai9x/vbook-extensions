@@ -1,7 +1,6 @@
 function execute(url) {
-    var doc = Http.get(url).html();
-
-    if (doc)
-        return Response.success(doc.select("#noi-dung").html());
+    let response = fetch(url);
+    if (response.ok)
+        return Response.success(response.html().select("#noi-dung").html());
     return null;
 }

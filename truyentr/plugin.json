@@ -2,11 +2,12 @@
   "metadata": {
     "name": "TruyệnTR",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://truyentr.info",
     "regexp": "(www.)?truyentr.(vn|info)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang TruyệnTR",
-    "local": "vi-VN",
+    "locale": "vi_VN",
+    "type": "novel",
     "language": "javascript"
   },
   "script": {

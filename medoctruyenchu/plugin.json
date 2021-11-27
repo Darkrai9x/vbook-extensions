@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Mê Đọc Truyện Chữ",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://www.medoctruyenchu.net",
     "regexp": "(www.|m.)?medoctruyenchu.net/tieu-thuyet/[0-9a-z-]+\\d+/?$",
     "description": "Đọc truyện trên trang Mê Đọc Truyện Chữ",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "type": "novel"
   },

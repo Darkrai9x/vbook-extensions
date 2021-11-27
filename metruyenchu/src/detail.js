@@ -1,6 +1,8 @@
 function execute(url) {
-    var doc = Http.get(url).html();
-    if (doc) {
+    var response = fetch(url);
+
+    if (response.ok) {
+        var doc = response.html();
         var detailElements = doc.select("div.page-content div.media-body")
         var author = detailElements.select("ul li").first().text();
         var status = detailElements.select("ul li").get(1).text();

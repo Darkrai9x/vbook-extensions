@@ -1,12 +1,13 @@
 function execute(url) {
     url = url.replace("m.blogtruyen.vn", "blogtruyen.vn");
-    var doc = Http.get(url).html();
-    if (doc) {
-        var list = [];
-        var name = doc.select("title").text().replace(/\s*\|\s*BlogTruyen.Com/, "");
-        var el = doc.select("#list-chapters .title a");
-        for (var i = el.size() - 1; i >= 0; i--) {
-            var e = el.get(i);
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
+        let list = [];
+        let name = doc.select("title").text().replace(/\s*\|\s*BlogTruyen.Com/, "");
+        let el = doc.select("#list-chapters .title a");
+        for (let i = el.length - 1; i >= 0; i--) {
+            let e = el[i];
             list.push({
                 name: e.text().replace(new RegExp("^" + name + " "), ""),
                 url: e.attr("href"),

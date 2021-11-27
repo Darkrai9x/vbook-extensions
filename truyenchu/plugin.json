@@ -2,11 +2,12 @@
   "metadata": {
     "name": "Truyện Chữ",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://truyenchu.vn",
     "regexp": "(www.)?(truyenchu.vn)/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện Chữ",
-    "local": "vi-VN",
+    "locale": "vi_VN",
+    "type": "novel",
     "language": "javascript"
   },
   "script": {

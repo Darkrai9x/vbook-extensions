@@ -2,11 +2,11 @@
   "metadata": {
     "name": "iSach",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://isach.info",
     "regexp": "(www.)?isach.info/(mobile/)?story.php.story=[^/&]+/?$",
     "description": "Đọc truyện trên trang iSach",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
     "type": "novel"
   },

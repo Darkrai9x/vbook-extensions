@@ -4,7 +4,7 @@ function execute(key, page) {
 
     browser.block([".*?api.truyen.onl/v2/books/search.*?"]);
 
-    browser.launch("https://metruyenchu.com/truyen/?keyword=" + key + "&page=" + page, 1000);
+    browser.launchAsync("https://metruyenchu.com/truyen/?keyword=" + key + "&page=" + page);
     browser.waitUrl(".*?api.truyen.onl/v2/books/search.*?", 10000);
     browser.close()
 
@@ -13,7 +13,7 @@ function execute(key, page) {
     var next = "";
     urls.forEach(requestUrl => {
         if (requestUrl.indexOf("api.truyen.onl/v2/books") >= 0) {
-            var response = JSON.parse(Http.get(requestUrl).string());
+            var response = fetch(requestUrl).json();
             next = response._extra._pagination._next;
             response._data.forEach(book => {
                 novelList.push({

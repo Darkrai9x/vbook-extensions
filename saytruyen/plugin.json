@@ -2,11 +2,11 @@
   "metadata": {
     "name": "Say Truyện",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://saytruyen.net",
     "regexp": "(www.)?saytruyen.net/[^/]+.html$",
     "description": "Đọc truyện trên trang Say Truyện",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript",
 	"type": "comic"
   },

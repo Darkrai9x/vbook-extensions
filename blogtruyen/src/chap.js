@@ -1,14 +1,10 @@
 function execute(url) {
     url = url.replace("m.blogtruyen.vn", "blogtruyen.vn");
-    var doc = Http.get(url).html();
-
-    var imgs = doc.select("article#content img");
-    var data = [];
-    for (var i = 0; i < imgs.size(); i++) {
-        var e = imgs.get(i)
-        data.push({
-            link: e.attr("src"),
-        });
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
+        var imgs = doc.select("article#content img").map(e => e.attr("src"));
+        return Response.success(imgs);
     }
-    return Response.success(data);
+    return null;
 }

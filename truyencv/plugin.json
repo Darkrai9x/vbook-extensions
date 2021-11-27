@@ -6,7 +6,7 @@
     "source": "https://truyencv.com",
     "regexp": "(www.)?truyencv.com/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện CV",
-    "local": "vi-VN",
+    "locale": "vi_VN",
     "language": "javascript"
   },
   "script": {

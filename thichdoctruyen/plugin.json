@@ -2,11 +2,12 @@
   "metadata": {
     "name": "Thích Đọc Truyện",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://thichdoctruyen.com",
     "regexp": "(www.)?thichdoctruyen.com/doc-truyen/[^/]+\\d+$",
     "description": "Đọc truyện trên trang Thích Đọc Truyện",
-    "local": "vi-VN",
+    "locale": "vi_VN",
+    "type": "novel",
     "language": "javascript"
   },
   "script": {

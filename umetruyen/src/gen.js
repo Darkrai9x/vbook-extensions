@@ -1,32 +1,23 @@
 function execute(url, page) {
-    var doc;
     if (!page) {
-        doc = Http.get(url).html()
-    } else {
-        doc = Http.get("https://umetruyen.net/" + page).html()
+        page = "1";
     }
 
+    let response = fetch(url + "?page=" + page);
 
-    var next = doc.select(".pager").select("li.active + li").select("a").attr("href");
-    if (next) {
-        if (!next.startsWith("http")) {
-            next = "https://umetruyen.net/" + next;
-        }
-    }
+    if (response.ok) {
+        let doc = response.html();
+        let next = doc.select(".pager").select("li.active + li").text();
 
-    const el = doc.select("#danhsachtruyen > li")
-
-    const data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
-        data.push({
-            name: e.select("a.fed-list-title").first().text(),
-            link: e.select("a[itemprop=url]").first().attr("href"),
-            cover: e.select("a[itemprop=url]").first().attr("data-src"),
-            description: e.select(".fed-list-desc").first().text(),
+        let novelList = doc.select(".listing .page-item-detail").map(e => ({
+            name: e.select("h3 a").first().text(),
+            link: e.select("h3 a").first().attr("href"),
+            cover: e.select("img").first().attr("src"),
+            description: e.select(".chapter").first().text(),
             host: "https://umetruyen.net"
-        })
+        }))
+        return Response.success(novelList, next)
     }
 
-    return Response.success(data, next)
+    return null;
 }
