@@ -4,11 +4,12 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         doc.select("h1").remove();
-        let cvData = Html.parse(Html.clean(doc.select("article cv-data").outerHtml(), ["cv-data", "em"]))
+        let cvData = [];
+        Html.parse(Html.clean(doc.select("article cv-data").outerHtml(), ["cv-data", "em"]))
             .select("cv-data")
-            .map(e => e.html())
-            .join("<br>");
-        return Response.success(cvData);
+            .forEach(e => cvData.push(e.html()));
+        let htm = cvData.join("<br>");
+        return Response.success(htm);
     }
     return null;
 }

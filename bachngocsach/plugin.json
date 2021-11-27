@@ -2,7 +2,7 @@
     "metadata": {
         "name": "Bạch Ngọc Sách",
         "author": "vBook",
-        "version": 4,
+        "version": 5,
         "source": "https://bachngocsach.com/reader",
         "regexp": "bachngocsach.com/reader/[^/]+/?$",
         "description": "Đọc truyện trên trang bachngocsach.com/reader",

@@ -9,7 +9,8 @@ function execute(key, page) {
         let result = pageRegex.exec(nextPage);
         if (result) next = result[1];
 
-        let novelList = doc.select(".list .book").map(e => ({
+        let novelList = [];
+        doc.select(".list .book").forEach(e => novelList.push({
             "name": e.select(".infos  ._title").text(),
             "link": e.select("a").first().attr("href"),
             "description": e.select(".infos  ._author").text(),

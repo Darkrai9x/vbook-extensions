@@ -7,7 +7,8 @@ function execute(url, page) {
         let next = doc.select(".pager-next").last().select("a").attr("href").match(/page=(\d+)/);
         if (next) next = next[1];
 
-        let novelList = doc.select("ul.content-grid > li > div").map(e => ({
+        let novelList = [];
+        doc.select("ul.content-grid > li > div").forEach(e => novelList.push({
             name: e.select("div.recent-truyen a").text(),
             link: e.select("div.recent-truyen a").attr("href"),
             cover: e.select("div.recent-anhbia img").attr("src"),

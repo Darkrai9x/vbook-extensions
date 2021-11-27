@@ -3,7 +3,8 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
 
-        let list = doc.select("#mucluc-list .chuong-item a").map(e => ({
+        let list = [];
+        doc.select("#mucluc-list .chuong-item a").forEach(e => list.push({
             name: e.select(".chuong-name").text(),
             url: e.attr("href"),
             host: "https://bachngocsach.com"

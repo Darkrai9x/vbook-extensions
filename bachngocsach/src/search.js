@@ -6,7 +6,8 @@ function execute(key, page) {
         let next = doc.select(".pager-next").last().select("a").attr("href").match(/page=(\d+)/);
         if (next) next = next[1];
 
-        let novelList = doc.select("div.view-content li.search-row").map(e => ({
+        let novelList = [];
+        doc.select("div.view-content li.search-row").forEach(e => novelList.push({
             name: e.select("div.search-truyen a").text(),
             link: e.select("div.search-truyen a").attr("href"),
             cover: e.select("div.search-anhbia img").attr("src"),

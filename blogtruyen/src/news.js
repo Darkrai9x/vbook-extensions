@@ -8,7 +8,8 @@ function execute(url, page) {
 
         let next = doc.select(".pagination").select("li:has(.glyphicon-step-forward)").last().select("a").attr("href").match(/-(\d+)/);
         if (next) next = next[1]; else next = '';
-        let novelList = doc.select(".list-mainpage .storyitem").map(e => ({
+        let novelList = [];
+        doc.select(".list-mainpage .storyitem").forEach(e => novelList.push({
             name: e.select(".title a").attr("title"),
             link: e.select(".title a").first().attr("href"),
             description: e.select(".statictis").last().text(),
