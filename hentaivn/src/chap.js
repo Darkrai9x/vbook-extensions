@@ -1,34 +1,36 @@
 function execute(url) {
     url = url.replace("hentaivn.net", "hentaivn.tv");
-    const http = Http.get(url);
-    const doc = http.html();
-    var cookies = http.cookie();
+    url = url.replace("hentaivn.tv", "hentaivn.moe");
+    let response = fetch(url);
 
-    var isMobile = false;
+    if (response.ok) {
+        let doc = response.html();
 
-    if (cookies) {
-        isMobile = cookies.indexOf("mobile=1") >= 0;
-    }
-    var data = [];
-    if (isMobile) {
-        doc.select("noscript").remove();
-        var el = doc.select("#image img");
+        let isMobile = doc.select(".header-logo").size() !== 0;
+        let data = [];
+        if (isMobile) {
+            doc.select("noscript").remove();
+            let el = doc.select("#image img");
 
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
-            var img = e.attr("data-cfsrc");
-            if (!img) {
-                img = e.attr("src")
+            for (let i = 0; i < el.size(); i++) {
+                let e = el.get(i);
+                let img = e.attr("data-cfsrc");
+                if (!img) {
+                    img = e.attr("src")
+                }
+                data.push(img);
+
             }
-            data.push(img);
-
+        } else {
+            let el = doc.select("#image img");
+            for (let i = 0; i < el.size(); i++) {
+                let e = el.get(i);
+                data.push(e.attr("src"));
+            }
         }
-    } else {
-        var el = doc.select("#image img");
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
-            data.push(e.attr("src"));
-        }
+        return Response.success(data);
     }
-    return Response.success(data);
+
+    return null;
+
 }
