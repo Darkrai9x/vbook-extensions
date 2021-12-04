@@ -1,14 +1,15 @@
 function execute() {
-    const doc = Http.get("https://saytruyen.net").html();
-    const el = doc.select("#list_theloai a");
-    const data = [];
-    for (var i = 4; i < el.size(); i++) {
-        var e = el.get(i);
-        data.push({
-           title: e.text(),
-           input: "https://saytruyen.net"+e.attr('href'),
-           script: 'cat.js'
-        });
+    let response = fetch("https://saytruyen.net/genre");
+    if (response.ok) {
+        let doc = response.html();
+        doc.select(".number-story").remove();
+        let genre = [];
+        doc.select(".page-genres a").forEach(e => genre.push({
+            title: e.text(),
+            input: e.attr("href"),
+            script: "gen.js"
+        }));
+        return Response.success(genre);
     }
-    return Response.success(data);
+    return null;
 }

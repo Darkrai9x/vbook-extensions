@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Say Truyện",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://saytruyen.net",
     "regexp": "(www.)?saytruyen.net/[^/]+.html$",
     "description": "Đọc truyện trên trang Say Truyện",

@@ -1,22 +1,24 @@
 function execute(url, page) {
-    if (!page) page = '1';
-    const doc = Http.get(url + '?status=0&page='+page+'&name=&genre=&sort=last_update').html();
-
-    var next = doc.select("ul.pager").select("li.active + li").text();
-
-    const el = doc.select("ul#danhsachtruyen > li");
-
-    const data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
-        data.push({
-            name: e.select(".info-bottom a").first().text(),
-            link: e.select(".info-bottom a").first().attr("href"),
-            cover: e.select("a").first().attr("data-src"),
-            description: e.select(".info-bottom span").text().replace(/\ :.*/g, ""),
-            host: "https://saytruyen.net"
-        })
+    if (!page) {
+        page = "1";
     }
 
-    return Response.success(data, next)
+    let response = fetch(url + "?page=" + page);
+
+    if (response.ok) {
+        let doc = response.html();
+        let next = doc.select(".pager").select("li.active + li").text();
+
+        let novelList = [];
+        doc.select(".listing .page-item-detail").forEach(e => novelList.push({
+            name: e.select("h3 a").first().text(),
+            link: e.select("h3 a").first().attr("href"),
+            cover: e.select("img").first().attr("src"),
+            description: e.select(".chapter").first().text(),
+            host: "https://saytruyen.net"
+        }))
+        return Response.success(novelList, next)
+    }
+
+    return null;
 }

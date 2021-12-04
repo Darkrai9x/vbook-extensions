@@ -1,23 +1,28 @@
 function execute(url, page) {
-    if (!page) page = '1';
-    const genre = url.split('.')[1].split('-')[5];
-    const doc = Http.get('https://saytruyen.net/danh-sach-truyen.html?status=0&page='+page+'&name=&genre='+genre+'&sort=last_update').html();
-
-    var next = doc.select("ul.pager").select("li.active + li").text()
-
-    const el = doc.select("ul#danhsachtruyen > li")
-
-    const data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
-        data.push({
-            name: e.select(".info-bottom a").first().text(),
-            link: e.select(".info-bottom a").first().attr("href"),
-            cover: e.select("a").first().attr("data-src"),
-            description: e.select(".info-bottom span").text().replace(/\ :.*/g, ""),
-            host: "https://saytruyen.net"
-        })
+    if (!page) {
+        page = "1";
     }
 
-    return Response.success(data, next)
+    let response = fetch(url + "?page=" + page);
+
+    if (response.ok) {
+        let doc = response.html();
+        let next = doc.select(".pager").select("li.active + li").text();
+
+        let novelList = [];
+        doc.select(".manga-content .page-item-detail").forEach(e => {
+            let cover = e.select("img").first().attr("data-src");
+            if (!cover) cover = e.select("img").first().attr("src");
+            novelList.push({
+                name: e.select("h3 a").first().text(),
+                link: e.select("h3 a").first().attr("href"),
+                cover: cover,
+                description: e.select(".chapter").first().text(),
+                host: "https://saytruyen.net"
+            });
+        })
+        return Response.success(novelList, next)
+    }
+
+    return null;
 }

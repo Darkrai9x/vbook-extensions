@@ -1,16 +1,21 @@
 function execute(url) {
-    var doc = Http.get(url).html();
+    let response = fetch(url);
 
-    var el = doc.select("ul#list-chapter > li").select("a");
-    const data = [];
-    for (var i = el.size() - 1; i >= 0; i--) {
-        var e = el.get(i);
-        data.push({
-            name: e.text(),
-            url: e.attr("href"),
-            host: "https://saytruyen.net"
-        })
+    if (response.ok) {
+        let doc = response.html();
+
+        let el = doc.select(".list-chapter .list-item > li").select("a");
+        const data = [];
+        for (let i = el.size() - 1; i >= 0; i--) {
+            let e = el.get(i);
+            data.push({
+                name: e.text(),
+                url: e.attr("href"),
+                host: "https://saytruyen.net"
+            })
+        }
+
+        return Response.success(data);
     }
-
-    return Response.success(data);
+    return null;
 }
