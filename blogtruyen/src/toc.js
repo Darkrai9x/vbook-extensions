@@ -7,7 +7,7 @@ function execute(url) {
         let name = doc.select("title").text().replace(/\s*\|\s*BlogTruyen.Com/, "");
         let el = doc.select("#list-chapters .title a");
         for (let i = el.length - 1; i >= 0; i--) {
-            let e = el[i];
+            let e = el.get(i);
             list.push({
                 name: e.text().replace(new RegExp("^" + name + " "), ""),
                 url: e.attr("href"),
