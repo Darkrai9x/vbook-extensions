@@ -7,7 +7,7 @@ function execute(url) {
         let el = doc.select(".box-list-chapter a");
         let data = [];
         for (let i = el.length - 1; i >= 0; i--) {
-            let e = el[i];
+            let e = el.get(i);
             data.push({
                 name: e.text(),
                 url: e.attr("href"),
