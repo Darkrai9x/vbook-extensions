@@ -2,7 +2,7 @@ load('bypass.js');
 
 function execute(key, page) {
     if (!page) page = '1';
-    var url = "http://truyenqqtop.com/tim-kiem/trang-" + page + ".html?q=" + key;
+    var url = "http://truyenqqvip.com/tim-kiem/trang-" + page + ".html?q=" + key;
     var doc = bypass(url, Http.get(url).html());
 
     if (doc) {
@@ -16,7 +16,7 @@ function execute(key, page) {
                 link: e.select(".title-book a").first().attr("href"),
                 description: e.select(".episode-book").text(),
                 cover: e.select("img.story-cover").attr("src"),
-                host: "https://truyenqqtop.com"
+                host: "https://truyenqqvip.com"
             });
         }
 

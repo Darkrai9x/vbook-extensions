@@ -16,7 +16,7 @@ function execute(url, page) {
                 link: e.select(".title-book a").first().attr("href"),
                 description: e.select(".episode-book").text(),
                 cover: e.select("img.story-cover").attr("src"),
-                host: "https://truyenqqtop.com"
+                host: "https://truyenqqvip.com"
             });
         }
 

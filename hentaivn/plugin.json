@@ -3,7 +3,7 @@
     "name": "HentaiVN",
     "author": "vBook",
     "version": 5,
-    "source": "https://hentaivn.tv",
+    "source": "https://hentaivn.moe",
     "regexp": "(www.)?hentaivn.(net|tv|moe)/\\d+-[^/]+.html$",
     "description": "Đọc truyện trên trang HentaiVN",
     "locale": "vi_VN",

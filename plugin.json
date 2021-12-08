@@ -108,10 +108,10 @@
       "name": "Truyện QQ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/plugin.zip",
-      "version": 7,
+      "version": 8,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "http://truyenqqtop.com",
+      "source": "http://truyenqqvip.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenqq/icon.png",
       "description": "Đọc truyện trên trang Truyện QQ"
     },

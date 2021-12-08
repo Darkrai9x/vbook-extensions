@@ -3,6 +3,7 @@ load('bypass.js');
 function execute(url) {
     url = url.replace("truyenqq.com", "truyenqq.net");
     url = url.replace("truyenqq.net", "truyenqqtop.com");
+    url = url.replace("truyenqqtop.com", "truyenqqvip.com");
     var doc = bypass(url, Http.get(url).html());
     if(doc) {
         var list = [];
@@ -12,7 +13,7 @@ function execute(url) {
             list.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://truyenqqtop.com",
+                host: "https://truyenqqvip.com",
             });
         }
         return Response.success(list);
