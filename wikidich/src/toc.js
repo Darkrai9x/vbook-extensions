@@ -42,7 +42,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: link,
-                host: "https://wikidich.net"
+                host: "https://wikidth.net"
             })
         }
 
