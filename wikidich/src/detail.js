@@ -1,5 +1,6 @@
 function execute(url) {
     url = url.replace("wikidich.com", "wikidth.com");
+    url = url.replace("wikidth.com", "wikidth.net");
     const doc = Http.get(url).html()
 
     var name = doc.select(".cover-info h2").text();
