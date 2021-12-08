@@ -1,7 +1,8 @@
 function execute(url) {
-    url = url.replace("nettruyen.com", "nettruyenvip.com");
-    url = url.replace("nettruyentop.com", "nettruyenvip.com");
-    url = url.replace("nettruyenvip.com", "nettruyenpro.com");
+    url = url.replace("nettruyen.com", "nettruyengo.com");
+    url = url.replace("nettruyentop.com", "nettruyengo.com");
+    url = url.replace("nettruyenvip.com", "nettruyengo.com");
+    url = url.replace("nettruyenpro.com", "nettruyengo.com");
     var doc = Http.get(url).html();
     var el = doc.select(".page-chapter img");
     
