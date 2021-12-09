@@ -1,5 +1,6 @@
 function execute(url) {
     url = url.replace("truyenvn.com", "truyenvn.tv");
+    url = url.replace("truyenvn.tv", "truyenvn.vip");
     var doc = Http.get(url).html();
     var el = doc.select(".content-text img");
     var imgs = [];

@@ -1,5 +1,6 @@
 function execute(url) {
     url = url.replace("truyenvn.com", "truyenvn.tv");
+    url = url.replace("truyenvn.tv", "truyenvn.vip");
     var doc = Http.get(url).html();
 
     var el = doc.select("#chapterList a")
@@ -9,7 +10,7 @@ function execute(url) {
         data.push({
             name: e.select("span").first().text(),
             url: e.attr("href"),
-            host: "https://truyenvn.tv"
+            host: "https://truyenvn.vip"
         })
     }
 
