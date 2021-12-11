@@ -4,7 +4,7 @@ function execute(url, page) {
 
     browser.block([".*?api.truyen.onl/v2/books\\?sort_by.*?"]);
 
-    browser.launchAsync(url + "?page=" + page);
+    browser.launchAsync(url + "&page=" + page);
     browser.waitUrl(".*?api.truyen.onl/v2/books\\?sort_by.*?", 10000);
     browser.close()
 
