@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("umetruyen.net", "umetruyen.org")
     let response = fetch(url);
     if (response.ok) {
 
@@ -11,7 +12,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://umetruyen.net"
+                host: "https://umetruyen.org"
             })
         }
         return Response.success(data);

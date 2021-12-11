@@ -2,9 +2,9 @@
   "metadata": {
     "name": "U Mê Truyện",
     "author": "vBook",
-    "version": 6,
-    "source": "https://umetruyen.net",
-    "regexp": "(www.)?umetruyen.(com|net)/[^/]+.html$",
+    "version": 7,
+    "source": "https://umetruyen.org",
+    "regexp": "(www.)?umetruyen.(com|net|org)/[^/]+.html$",
     "description": "Đọc truyện trên trang U Mê Truyện",
     "locale": "vi_VN",
     "language": "javascript",

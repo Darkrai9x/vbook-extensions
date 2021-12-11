@@ -1,5 +1,5 @@
 function execute() {
-    let response = fetch("https://umetruyen.net/genre");
+    let response = fetch("https://umetruyen.org/genre");
     if (response.ok) {
         let doc = response.html();
         doc.select(".number-story").remove();

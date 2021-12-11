@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("umetruyen.net", "umetruyen.org")
     let response = fetch(url);
 
     if (response.ok) {
@@ -9,8 +10,8 @@ function execute(url) {
             author: doc.select(".author-content").first().text(),
             description: doc.select(".description-summary").html(),
             detail: doc.select(".post-content .post-content_item").html(),
-            host: "https://umetruyen.net",
-            ongoing: doc.select(".post-content .post-content_item").text().indexOf("OnGoing") != -1
+            host: "https://umetruyen.org",
+            ongoing: doc.select(".post-content .post-content_item").text().indexOf("OnGoing") !== -1
         });
     }
     return null;

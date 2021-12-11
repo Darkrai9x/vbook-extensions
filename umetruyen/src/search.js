@@ -2,7 +2,7 @@ function execute(key, page) {
     if (!page) {
         page = "1";
     }
-    let response = fetch("https://umetruyen.net/search?s=" + key + "&page=" + page);
+    let response = fetch("https://umetruyen.org/search?s=" + key + "&page=" + page);
     if (response.ok) {
         let doc = response.html();
         let next = doc.select(".pager").select("li.active + li").text();
@@ -13,7 +13,7 @@ function execute(key, page) {
             link: e.select("h3 a").first().attr("href"),
             cover: e.select("img").first().attr("src"),
             description: e.select(".chapter").first().text(),
-            host: "https://umetruyen.net"
+            host: "https://umetruyen.org"
         }))
         return Response.success(novelList, next)
     }
