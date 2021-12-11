@@ -18,7 +18,7 @@ function execute(url, page) {
             link: e.select("a").first().attr("href"),
             cover: coverImg,
             description: e.select(".chapter-commic-tab").first().text(),
-            host: "https://qmanga.co"
+            host: "https://qmanga2.net"
         })
     }
 
