@@ -16,7 +16,7 @@ function execute(url) {
         author: author,
         description: doc.select("div.book-desc-detail").html(),
         detail: element.html(),
-        host: "https://wikidth.com",
+        host: "https://wikidth.net",
         ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0
     });
 }
