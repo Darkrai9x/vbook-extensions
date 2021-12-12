@@ -17,7 +17,7 @@ function execute(url) {
         }
 
     } else {
-        list.push(url.replace("(http|https)://truyenhd1.com", ""));
+        list.push(url.replace(/(http|https):\/\/truyenhd1.com/, ""));
     }
 
     return Response.success(list)

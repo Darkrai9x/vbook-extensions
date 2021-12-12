@@ -3,7 +3,7 @@
     "name": "TruyệnHD",
     "author": "vBook",
     "version": 7,
-    "source": "https://s3.truyenhd.com",
+    "source": "https://truyenhd1.com",
     "regexp": "(www.)?(truyenvkl.com|s2.truyenhd.com|s3.truyenhd.com|truyenhd1.com)/truyen/.*?",
     "description": "Đọc truyện trên trang TruyệnVKL",
     "locale": "vi_VN",
