@@ -2,9 +2,9 @@
   "metadata": {
     "name": "TruyệnHD",
     "author": "vBook",
-    "version": 6,
+    "version": 7,
     "source": "https://s3.truyenhd.com",
-    "regexp": "(www.)?(truyenvkl.com|s2.truyenhd.com|s3.truyenhd.com)/truyen/.*?",
+    "regexp": "(www.)?(truyenvkl.com|s2.truyenhd.com|s3.truyenhd.com|truyenhd1.com)/truyen/.*?",
     "description": "Đọc truyện trên trang TruyệnVKL",
     "locale": "vi_VN",
     "type": "novel",
