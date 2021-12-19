@@ -2,8 +2,8 @@ function execute(url) {
     const doc = Http.get(url).html().select(".wrap-detail.pc")
 
     var detail = doc.select(".content1 div.info");
-    var cover = doc.select("img").first().attr("src")
-    if (!cover) cover = doc.select("img").first().attr("data-pagespeed-high-res-src")
+    var cover = doc.select("img").first().attr("data-pagespeed-high-res-src")
+    if (!cover) cover = doc.select("img").first().attr("src")
     var status = doc.select(".content1 .status").html()
     doc.select(".content1 div.info").remove()
 
