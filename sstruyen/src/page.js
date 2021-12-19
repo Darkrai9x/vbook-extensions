@@ -8,7 +8,7 @@ function execute(url) {
     }
 
     if (lastPage) lastPage = parseInt(lastPage);
-    else lastPage = 0;
+    else lastPage = 1;
 
     var data = [];
     for (var i = 0; i < lastPage; i++) {
