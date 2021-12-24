@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Truyện YY",
     "author": "vBook",
-    "version": 9,
+    "version": 10,
     "source": "https://truyenyy.vip",
     "regexp": "(www.)?truyenyy.(com|vn|vip)/truyen/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Truyện YY",

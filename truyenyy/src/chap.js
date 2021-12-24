@@ -1,31 +1,31 @@
 function execute(url) {
     url = url.replace("truyenyy.com", "truyenyy.vip")
         .replace("truyenyy.vn", "truyenyy.vip");
-    var doc = Http.get(url).html();
+    let doc = Http.get(url).html();
 
     if (doc) {
-        var txt = doc.select("div#inner_chap_content_1").html();
-
-        if (txt && txt.length < 1000) {
+        let txt = doc.select("div#inner_chap_content_1").html();
+        let contentTxt = doc.select("div#inner_chap_content_1").text();
+        if (contentTxt && contentTxt.length < 1000) {
             if (doc.html().indexOf("btn_buy") > 0)
                 return Response.error(url);
             if (txt.indexOf("/login/") > 0)
                 return Response.error(url);
 
-            var id = doc.html().match(/chap_id=(.*?)&/)[1];
-            var varId = doc.html().match(/chapter-content-get\/(.*?)\//)[1];
-            var loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/" + varId + "/?chap_id=" + id + "&part=0";
-            var content = loadChapterContent(loadUrl);
+            let id = doc.html().match(/chap_id=(.*?)&/)[1];
+
+            let loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=0";
+            let content = loadChapterContent(loadUrl);
             txt = ""
             if (content) {
                 txt = clearContent(content.content);
                 if (content.ok) {
-                    loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/" + varId + "/?chap_id=" + id + "&part=1";
+                    loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=1";
                     content = loadChapterContent(loadUrl);
                     if (content) {
                         txt += clearContent(content.content);
                         if (content.ok) {
-                            loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/" + varId + "/?chap_id=" + id + "&part=2";
+                            loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=2";
                             content = loadChapterContent(loadUrl);
                             if (content) {
                                 txt += clearContent(content.content);
@@ -42,7 +42,7 @@ function execute(url) {
 }
 
 function loadChapterContent(url) {
-    var content = Http.get(url).string();
+    let content = Http.get(url).string();
     if (content) {
         return JSON.parse(content);
     }
@@ -58,5 +58,5 @@ function clearContent(content) {
             .replace(/<[a-z]{2,} style=.*?>.*?<\/[a-z]{2,}>/g, "")
             .replace(/<\/?[a-z]{2,}>/g, "");
     }
-    return content;
+    return "";
 }
