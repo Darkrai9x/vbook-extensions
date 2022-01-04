@@ -1,7 +1,7 @@
 function execute(key, page) {
     if (!page) page = '0';
 
-    var doc = Http.get("https://gacsach.com/find-book").params({
+    var doc = Http.get("https://gacsach.club/find-book").params({
         title: key,
         page: page
     }).html();
@@ -15,7 +15,7 @@ function execute(key, page) {
             novelList.push({
                 name: e.text(),
                 link: e.attr("href"),
-                host: "https://gacsach.com"
+                host: "https://gacsach.club"
             });
         }
 

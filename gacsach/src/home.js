@@ -3,7 +3,7 @@ function execute() {
         {
             title: "Mới cập nhật",
             script: "news.js",
-            input: "https://gacsach.com"
+            input: "https://gacsach.club"
         }
     ])
 }

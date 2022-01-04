@@ -17,7 +17,7 @@ function execute(url, page) {
             }
             novelList = data.books.map(item => {
                 return {
-                    "name": item.vtitle,
+                    "name": item.vname,
                     "link": "-" + item.bslug,
                     "description": item.vauthor,
                     "cover": item.bcover ? "/covers/" + item.bcover : "",

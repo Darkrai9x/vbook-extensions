@@ -8,7 +8,7 @@ function execute() {
         var e = el.get(i);
         genre.push({
             title: e.text(),
-            input: "https://gacsach.com" + e.attr("href"),
+            input: "https://gacsach.club" + e.attr("href"),
             script: "gen.js"
         });
     }

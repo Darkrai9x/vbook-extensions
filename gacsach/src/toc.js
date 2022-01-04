@@ -1,11 +1,13 @@
 function execute(url) {
-    var list = [];
-    var doc = Http.get(url).html();
-    if(doc) {
-        var name = "-+ " + doc.select("h1.page-title").text() + " - ";
-        var el = doc.select("div.book-nav option");
-        for (var i = 2; i< el.size(); i++) {
-            var e = el.get(i);
+    url = url.replace("gacsach.com", "gacsach.club");
+    let response = fetch(url);
+    if(response.ok) {
+        let doc = response.html();
+        let name = "-+ " + doc.select("h1.page-title").text() + " - ";
+        let el = doc.select("div.book-nav option");
+        let list = [];
+        for (let i = 2; i< el.size(); i++) {
+            let e = el.get(i);
             list.push({
                 name: e.text().replace(new RegExp(name), ""),
                 url: e.attr("value").match(/(http.*?)$/)[1],
