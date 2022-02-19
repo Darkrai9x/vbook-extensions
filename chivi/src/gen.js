@@ -2,10 +2,10 @@ function execute(url, page) {
     if (!page) page = "1";
     page = parseInt(page)
 
-    let response = fetch(url + "&page=" + page + "&take=24");
+    let response = fetch(url + "&pg=" + page + "&lm=24");
     if (response.ok) {
 
-        let data = response.json();
+        let data = response.json().props;
         let next = "";
 
         let novelList = [];
@@ -24,9 +24,8 @@ function execute(url, page) {
                     "host": "https://chivi.app"
                 }
             });
+            return Response.success(novelList, next);
         }
-
-        return Response.success(novelList, next);
     }
 
     return null;

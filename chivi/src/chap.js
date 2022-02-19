@@ -3,11 +3,10 @@ function execute(url) {
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
-        doc.select("h1").remove();
+        doc.select("#L0").remove();
         let cvData = [];
-        Html.parse(Html.clean(doc.select("article cv-data").outerHtml(), ["cv-data", "em"]))
-            .select("cv-data")
-            .forEach(e => cvData.push(e.html()));
+        doc.select("cv-data")
+            .forEach(e => cvData.push(e.text()));
         let htm = cvData.join("<br>");
         return Response.success(htm);
     }

@@ -14,7 +14,7 @@ function execute(url) {
         }
         const pageList = [];
         for (let i = 1; i <= lastPage; i++) {
-            pageList.push(url + " https://chivi.app/api/chaps/" + story + "?page=" + i);
+            pageList.push(url + " https://chivi.app/api/chaps/" + story + "?pg=" + i);
         }
 
         return Response.success(pageList);
