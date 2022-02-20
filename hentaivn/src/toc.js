@@ -1,7 +1,11 @@
 function execute(url) {
     url = url.replace("hentaivn.net", "hentaivn.tv");
     url = url.replace("hentaivn.tv", "hentaivn.moe");
-    let response = fetch(url);
+    let response = fetch(url, {
+        headers: {
+            "referer": "https://hentaivn.moe"
+        }
+    });
     if (response.ok) {
         let doc = response.html();
         let isMobile = doc.select(".header-logo").size() !== 0;
