@@ -390,6 +390,17 @@
       "description": "Đọc truyện trên trang ngonphong.com",
       "type": "comic",
       "locale": "vi_VN"
+    },
+    {
+      "name": "LustAveland",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lustaveland/plugin.zip",
+      "version": 1,
+      "source": "https://lustaveland.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lustaveland/icon.png",
+      "description": "Đọc truyện trên trang LustAveland",
+      "type": "novel",
+      "locale": "vi_VN"
     }
   ]
 }
