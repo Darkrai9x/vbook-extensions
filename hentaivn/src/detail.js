@@ -7,7 +7,6 @@ function execute(url) {
             "referer": "https://hentaivn.moe"
         }
     });
-       Console.log(url)
     if (response.ok) {
         let doc = response.html();
 
