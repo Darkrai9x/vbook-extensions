@@ -6,7 +6,7 @@
     "source": "https://www.truyenhayvn.com",
     "regexp": "(www.)?truyenhayvn.com/[^/]+/?$",
     "description": "Đọc truyện trên trang TruyenHayVN",
-    "local": "vi-VN",
+    "locale": "vi-VN",
     "language": "javascript",
     "type": "novel"
   },
