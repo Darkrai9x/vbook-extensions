@@ -401,6 +401,17 @@
       "description": "Đọc truyện trên trang LustAveland",
       "type": "novel",
       "locale": "vi_VN"
+    },
+    {
+      "name": "TruyenHayVN",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenhayvn/plugin.zip",
+      "version": 1,
+      "source": "https://www.truyenhayvn.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenhayvn/icon.png",
+      "description": "Đọc truyện trên trang TruyenHayVN",
+      "type": "novel",
+      "locale": "vi_VN"
     }
   ]
 }

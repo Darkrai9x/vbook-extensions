@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "TruyenHayVN",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.truyenhayvn.com",
+    "regexp": "(www.)?truyenhayvn.com/[^/]+/?$",
+    "description": "Đọc truyện trên trang TruyenHayVN",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
