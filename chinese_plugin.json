@@ -12,7 +12,7 @@
       "source": "https://uukanshu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.com",
-      "type": "novel",
+      "type": "chinese_novel",
       "locale": "zh_CN"
     },
     {
@@ -23,7 +23,18 @@
       "source": "https://www.biqubu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/biqubu/icon.png",
       "description": "Đọc truyện trên trang biqubu.com",
-      "type": "novel",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
+    },
+    {
+      "name": "qiushubang",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qiushubang/plugin.zip",
+      "version": 1,
+      "source": "http://www.qiushubang.me",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qiushubang/icon.png",
+      "description": "Đọc truyện trên trang qiushubang.me",
+      "type": "chinese_novel",
       "locale": "zh_CN"
     }
   ]

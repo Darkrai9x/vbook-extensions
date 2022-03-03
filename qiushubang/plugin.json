@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "qiushubang",
+    "author": "vBook",
+    "version": 1,
+    "source": "http://www.qiushubang.me",
+    "regexp": "(www.|m.)qiushubang.me/\\d+/?$",
+    "description": "Đọc truyện trên trang qiushubang.me",
+    "local": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
