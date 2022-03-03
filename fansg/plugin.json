@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "fansg",
+    "author": "vBook",
+    "version": 1,
+    "source": "http://m.fansg.com",
+    "regexp": "(www.|m.)fansg.com/.*?book_.*?.html?$",
+    "description": "Đọc truyện trên trang fansg.com",
+    "local": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

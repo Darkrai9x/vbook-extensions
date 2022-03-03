@@ -36,6 +36,17 @@
       "description": "Đọc truyện trên trang qiushubang.me",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "fansg",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/fansg/plugin.zip",
+      "version": 1,
+      "source": "http://m.fansg.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/fansg/icon.png",
+      "description": "Đọc truyện trên trang fansg.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }

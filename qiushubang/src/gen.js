@@ -7,6 +7,7 @@ function execute(url, page) {
         let doc = response.html('gbk');
 
         let bookList = [];
+        let next = doc.select(".page").select("strong + a").text();
         doc.select(".listRightBottom ul li").forEach(e => {
             bookList.push({
                 name: e.select("h2 a").first().text(),
@@ -16,7 +17,7 @@ function execute(url, page) {
                 host: "http://www.qiushubang.me"
             });
         })
-        return Response.success(bookList);
+        return Response.success(bookList, next);
     }
 
     return null;
