@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "name": "bqxs520",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.bqxs520.com",
+    "regexp": "(www.|m.)?bqxs520.com/\\d+/?",
+    "description": "Đọc truyện trên trang bqxs520.com",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

@@ -47,6 +47,17 @@
       "description": "Đọc truyện trên trang fansg.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "bqxs520",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bqxs520/plugin.zip",
+      "version": 1,
+      "source": "http://www.bqxs520.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bqxs520/icon.png",
+      "description": "Đọc truyện trên trang bqxs520.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }
