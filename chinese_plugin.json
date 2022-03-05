@@ -58,6 +58,17 @@
       "description": "Đọc truyện trên trang bqxs520.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "KeepShu",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/keepshu/plugin.zip",
+      "version": 1,
+      "source": "https://www.keepshu.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/keepshu/icon.png",
+      "description": "Đọc truyện trên trang www.keepshu.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }

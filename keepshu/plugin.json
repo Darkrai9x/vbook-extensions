@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "name": "KeepShu",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.keepshu.com",
+    "regexp": "(www.|m.)keepshu.com/[a-z]+_\\d+.html$",
+    "description": "Đọc truyện trên trang keepshu.com",
+    "local": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
