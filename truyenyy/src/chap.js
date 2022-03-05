@@ -1,9 +1,10 @@
 function execute(url) {
     url = url.replace("truyenyy.com", "truyenyy.vip")
         .replace("truyenyy.vn", "truyenyy.vip");
-    let doc = Http.get(url).html();
 
-    if (doc) {
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
         let txt = doc.select("div#inner_chap_content_1").html();
         let contentTxt = doc.select("div#inner_chap_content_1").text();
         if (contentTxt && contentTxt.length < 1000) {
@@ -42,9 +43,9 @@ function execute(url) {
 }
 
 function loadChapterContent(url) {
-    let content = Http.get(url).string();
-    if (content) {
-        return JSON.parse(content);
+    let response = fetch(url);
+    if (response.ok) {
+        return response.json();
     }
     return null;
 }

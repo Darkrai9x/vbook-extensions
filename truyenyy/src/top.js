@@ -11,11 +11,14 @@ function execute(url, page) {
         var next = "";
         if (isMobile) {
             next = doc.select(".pagination").select("li.active + li").text();
-            doc.select(".weui-cells > a.weui-cell").forEach(e => {
+            doc.select(".weui-panel__bd > a").forEach(e => {
+                let cover = e.select("img.weui-media-box__thumb").first().attr("data-src");
+                if (!cover) cover = e.select("img.weui-media-box__thumb").first().attr("src");
                 novelList.push({
                     name: e.select("h3").text(),
                     link: e.attr("href"),
-                    description: e.select("h4").text(),
+                    cover: cover,
+                    description: e.select(".weui-media-box__bd .small").first().text(),
                     host: "https://truyenyy.vip",
                 });
             });
