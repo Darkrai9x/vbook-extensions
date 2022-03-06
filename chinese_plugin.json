@@ -69,6 +69,17 @@
       "description": "Đọc truyện trên trang www.keepshu.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "gongzicp",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gongzicp/plugin.zip",
+      "version": 1,
+      "source": "https://www.gongzicp.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gongzicp/icon.png",
+      "description": "Đọc truyện trên trang www.gongzicp.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }
