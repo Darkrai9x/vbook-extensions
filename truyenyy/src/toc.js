@@ -14,6 +14,7 @@ function execute(url) {
                 chapList.push({
                     name: name,
                     url: e.attr("href"),
+                    pay: e.select("img[data-src~=vip]").length > 0,
                     host: "https://truyenyy.vip",
                 });
             })
@@ -24,6 +25,7 @@ function execute(url) {
                 chapList.push({
                     name: ch,
                     url: e.select("a").first().attr("href"),
+                    pay: e.select("img[data-src~=vip]").length > 0,
                     host: "https://truyenyy.vip",
                 });
             });
