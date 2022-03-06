@@ -4,7 +4,7 @@
     "author": "vBook",
     "version": 1,
     "source": "https://www.gongzicp.com",
-    "regexp": "(www.|m.)gongzicp.com/novel-\\d+.html?$",
+    "regexp": "(www.|m.)gongzicp.com/novel-\\d+.html$",
     "description": "Đọc truyện trên trang gongzicp.com",
     "local": "zh-CN",
     "language": "javascript",
