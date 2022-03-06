@@ -7,7 +7,6 @@ function execute() {
         {title: "历史军事", input: "https://www.mibiquge.com/fl/4/", script: "gen.js"},
         {title: "游戏竞技", input: "https://www.mibiquge.com/fl/5/", script: "gen.js"},
         {title: "科幻未来", input: "https://www.mibiquge.com/fl/6/", script: "gen.js"},
-        {title: "排行榜单", input: "https://www.mibiquge.com/ph/", script: "gen.js"},
         {title: "完本小说", input: "https://www.mibiquge.com/qb/", script: "gen.js"}
     ]);
 }
