@@ -80,6 +80,17 @@
       "description": "Đọc truyện trên trang www.gongzicp.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "mibiquge",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/mibiquge/plugin.zip",
+      "version": 1,
+      "source": "https://www.mibiquge.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/mibiquge/icon.png",
+      "description": "Đọc truyện trên trang www.mibiquge.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }
