@@ -6,17 +6,17 @@ function execute(url, page) {
     var doc = bypass(url, Http.get(url).html());
 
     if (doc) {
-        var el = doc.select("ul.list-stories .story-item");
+        var el = doc.select("#main_homepage .list_grid li");
         var novelList = [];
-        var next = doc.select(".pagination-list").select("li:has(a.is-current) + li").last().select("a").text();
+        var next = doc.select(".page_redirect").select("a:has(p.active) + a").last().text();
         for (var i = 0; i < el.size(); i++) {
             var e = el.get(i);
             novelList.push({
-                name: e.select(".title-book").text(),
-                link: e.select(".title-book a").first().attr("href"),
-                description: e.select(".episode-book").text(),
-                cover: e.select("img.story-cover").attr("src"),
-                host: "https://truyenqqvip.com"
+                name: e.select(".book_name").text(),
+                link: e.select(".book_name a").first().attr("href"),
+                description: e.select(".last_chapter").text(),
+                cover: e.select(".book_avatar img").attr("data-src"),
+                host: "http://truyenqqpro.com"
             });
         }
 

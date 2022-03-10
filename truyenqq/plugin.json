@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Truyện QQ",
     "author": "vBook",
-    "version": 8,
-    "source": "http://truyenqqvip.com",
-    "regexp": "(www.)?(truyenqq|truyenqqtop|truyenqqvip).(com|net)/truyen-tranh/[0-9a-z-]+/?$",
+    "version": 9,
+    "source": "http://truyenqqpro.com",
+    "regexp": "(www.)?(truyenqq|truyenqqtop|truyenqqvip|truyenqqpro).(com|net)/truyen-tranh/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Truyện QQ",
     "locale": "vi_VN",
     "language": "javascript",
