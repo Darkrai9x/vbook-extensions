@@ -1,7 +1,7 @@
 function execute(url) {
     url = url.replace("wikidich.com", "wikidth.com");
     url = url.replace("wikidth.com", "wikidth.net");
-    url = url.replace("wikidth.net", "wikidth.org");
+    url = url.replace("wikidth.org", "wikidth.net");
     let response = fetch(url);
 
     if (response.ok) {
@@ -20,7 +20,7 @@ function execute(url) {
             author: author,
             description: doc.select("div.book-desc-detail").html(),
             detail: element.html(),
-            host: "https://wikidth.org",
+            host: "https://wikidth.net",
             ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0
         });
     }

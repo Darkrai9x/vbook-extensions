@@ -1,5 +1,5 @@
 function execute() {
-    let response = fetch("https://wikidth.org/");
+    let response = fetch("https://wikidth.net/");
 
     if (response.ok) {
         let doc = response.html();
@@ -7,7 +7,7 @@ function execute() {
         doc.select("div.tag-tabs .tag-tab a").forEach(e => {
             data.push({
                 title: e.text(),
-                input: 'https://wikidth.org' + e.attr('href'),
+                input: 'https://wikidth.net' + e.attr('href'),
                 script: 'gen.js'
             });
         });

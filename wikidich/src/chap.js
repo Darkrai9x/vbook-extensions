@@ -1,7 +1,7 @@
 function execute(url) {
     url = url.replace("wikidich.com", "wikidth.com");
     url = url.replace("wikidth.com", "wikidth.net");
-    url = url.replace("wikidth.net", "wikidth.org");
+    url = url.replace("wikidth.org", "wikidth.net");
 
     let response = fetch(url);
     if (response.ok) {

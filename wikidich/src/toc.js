@@ -1,6 +1,7 @@
 function execute(url) {
     url = url.replace("wikidich.com", "wikidth.com");
     url = url.replace("wikidth.com", "wikidth.net");
+    url = url.replace("wikidth.org", "wikidth.net");
     var doc = Http.get(url).html();
 
     var bookId = doc.select("input#bookId").attr("value");
