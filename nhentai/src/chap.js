@@ -6,7 +6,7 @@ function execute(url) {
     for (var i = 0; i < el.size(); i++) {
         var e = el.get(i);
        
-        data.push(e.select("img").attr("data-src").replace("t.nhentai.net", "i.nhentai.net").replace(/(\d+)t/, "$1"));
+        data.push(e.select("img").attr("data-src").replace(/t(\d+?).nhentai.net/g, "i$1.nhentai.net").replace(/(\d+)t/, "$1"));
         
     }
     return Response.success(data);

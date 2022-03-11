@@ -173,7 +173,7 @@
       "name": "nHentai",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/plugin.zip",
-      "version": 2,
+      "version": 3,
       "type": "comic",
       "locale": "en_US",
       "source": "https://nhentai.net",
