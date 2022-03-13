@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "shubao45",
+    "author": "vBook",
+    "version": 1,
+    "source": "http://m.shubao45.com",
+    "regexp": "m.shubao45.com/\\d+_\\d+/?$",
+    "description": "Đọc truyện trên trang m.shubao45.com",
+    "local": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

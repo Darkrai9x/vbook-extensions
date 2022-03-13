@@ -91,6 +91,17 @@
       "description": "Đọc truyện trên trang www.mibiquge.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "shubao45",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/shubao45/plugin.zip",
+      "version": 1,
+      "source": "http://m.shubao45.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/shubao45/icon.png",
+      "description": "Đọc truyện trên trang m.shubao45.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }
