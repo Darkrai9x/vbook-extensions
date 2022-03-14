@@ -12,6 +12,7 @@ function execute(url) {
         let data = [];
         if (isMobile) {
             let getUrl = doc.html().match(/(list-showchapter-mobile.php.*?)\"/)[1];
+            
             doc = fetch("https://hentaivn.moe/" + getUrl).html();
             let el = doc.select(".episodes a")
             for (let i = el.size() - 1; i >= 0; i--) {
@@ -23,8 +24,10 @@ function execute(url) {
                 })
             }
         } else {
-           
-            let el = doc.select(".listing a")
+           let getUrl = doc.html().match(/(list-showchapter.php.*?)\"/)[1];
+            
+            doc = fetch("https://hentaivn.moe/" + getUrl).html();
+            let el = doc.select("a")
             for (let i = el.size() - 1; i >= 0; i--) {
                 let e = el.get(i);
                 data.push({
