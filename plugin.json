@@ -423,6 +423,17 @@
       "description": "Read novel",
       "type": "novel",
       "locale": "en_US"
+    },
+    {
+      "name": "ReadManga.Org",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/readmanga/plugin.zip",
+      "version": 1,
+      "source": "https://readmanga.org",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/readmanga/icon.png",
+      "description": "Read manga",
+      "type": "comic",
+      "locale": "en_US"
     }
   ]
 }

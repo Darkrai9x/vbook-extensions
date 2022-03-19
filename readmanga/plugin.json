@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "ReadManga.Org",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://readmanga.org",
+    "regexp": "readmanga.org/[^/]+?",
+    "description": "Read manga",
+    "local": "en_US",
+    "language": "javascript",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
