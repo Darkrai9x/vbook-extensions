@@ -2,6 +2,7 @@ function execute(url) {
     url = url.replace("truyenvkl.com", "s2.truyenhd.com");
     url = url.replace("s2.truyenhd.com", "s3.truyenhd.com");
     url = url.replace("s3.truyenhd.com", "truyenhd1.com");
+    url = url.replace("truyenhd1.com", "truyenhdz.com");
     var doc = Http.get(url).html();
     if (doc) {
         doc.select(".title-chap").remove();
@@ -10,7 +11,7 @@ function execute(url) {
             var password = doc.select("#password").attr("value");
             var postId = doc.select("#data").attr("data-id");
             if (password) {
-                htm = Http.post("https://truyenhd1.com/wp-admin/admin-ajax.php")
+                htm = Http.post("https://truyenhdz.com/wp-admin/admin-ajax.php")
                     .params({
                         'action': "user_pass_chap",
                         'post_id': postId,

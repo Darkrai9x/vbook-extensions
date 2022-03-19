@@ -2,6 +2,7 @@ function execute(url) {
     url = url.replace("truyenvkl.com", "s2.truyenhd.com");
     url = url.replace("s2.truyenhd.com", "s3.truyenhd.com");
     url = url.replace("s3.truyenhd.com", "truyenhd1.com");
+    url = url.replace("truyenhd1.com", "truyenhdz.com");
     var doc = Http.get(url).html();
     var list = [];
     var pages = doc.select(".pagination li");
@@ -17,7 +18,7 @@ function execute(url) {
         }
 
     } else {
-        list.push(url.replace(/(http|https):\/\/truyenhd1.com/, ""));
+        list.push(url.replace(/(http|https):\/\/truyenhdz.com/, ""));
     }
 
     return Response.success(list)

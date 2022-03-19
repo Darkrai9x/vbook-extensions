@@ -1,14 +1,15 @@
 function execute(url) {
     url = url.replace("s3.truyenhd.com", "truyenhd1.com");
+    url = url.replace("truyenhd1.com", "truyenhdz.com");
     var list = [];
     var el;
-    if (url.indexOf("truyenhd1.com") > 0) {
+    if (url.indexOf("truyenhdz.com") > 0) {
         var doc = Http.get(url).html();
         el = doc.select(".listchap").last().select("li a");
     } else {
-        var doc = Http.get("https://truyenhd1.com" + url).html();
+        var doc = Http.get("https://truyenhdz.com" + url).html();
         var bookId = doc.select("#views").attr("data-id");
-        var ajaxDoc = Http.post("https://truyenhd1.com/wp-admin/admin-ajax.php").params({
+        var ajaxDoc = Http.post("https://truyenhdz.com/wp-admin/admin-ajax.php").params({
             "action": "all_chap",
             "id": bookId
         }).html();
@@ -21,8 +22,8 @@ function execute(url) {
                 for (var i = 1; i <= page; i++) {
                     list.push({
                         name: "Phần " + i,
-                        url: "https://truyenhd1.com" + url + "/" + i,
-                        host: "https://truyenhd1.com"
+                        url: "https://truyenhdz.com" + url + "/" + i,
+                        host: "https://truyenhdz.com"
                     });
                 }
                 return Response.success(list);
@@ -36,7 +37,7 @@ function execute(url) {
             list.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://truyenhd1.com"
+                host: "https://truyenhdz.com"
             });
         }
         return Response.success(list);

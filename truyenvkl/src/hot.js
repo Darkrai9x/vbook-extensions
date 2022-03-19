@@ -6,7 +6,7 @@ function execute(url, page) {
         doc = Http.get(urls[0]).html().select(".theloai-thumlist");
     } else {
         var slug = url.match(/keyword\/(.*?)$/);
-        doc = Http.post("https://truyenhd1.com/wp-admin/admin-ajax.php")
+        doc = Http.post("https://truyenhdz.com/wp-admin/admin-ajax.php")
             .params({
                 'action': "load_more_page_keyword",
                 'current_page_tax': page,
@@ -29,7 +29,7 @@ function execute(url, page) {
                 link: e.select(" a").attr("href"),
                 cover: cover,
                 description: e.select(".content p").first().text(),
-                host: "https://truyenhd1.com"
+                host: "https://truyenhdz.com"
             });
         }
 
