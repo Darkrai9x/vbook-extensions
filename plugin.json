@@ -412,6 +412,17 @@
       "description": "Đọc truyện trên trang TruyenHayVN",
       "type": "novel",
       "locale": "vi_VN"
+    },
+    {
+      "name": "LightNovel Reader",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lightnovelreader/plugin.zip",
+      "version": 1,
+      "source": "https://lightnovelreader.org",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lightnovelreader/icon.png",
+      "description": "Read novel",
+      "type": "novel",
+      "locale": "en_US"
     }
   ]
 }
