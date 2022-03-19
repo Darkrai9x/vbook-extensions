@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "LightNovel Reader",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://lightnovelreader.org",
+    "regexp": "lightnovelreader.org/[^/]+?",
+    "description": "Read novel",
+    "local": "en-US",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
