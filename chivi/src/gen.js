@@ -15,12 +15,18 @@ function execute(url, page) {
             if (page < total) {
                 next = page + 1;
             }
+            
             novelList = data.books.map(item => {
+                let coverImg =  item.scover
+                if (coverImg.startsWith("//")) {
+                    coverImg = "http:" + coverImg;
+                }
+                
                 return {
                     "name": item.vname,
                     "link": "-" + item.bslug,
                     "description": item.vauthor,
-                    "cover": item.bcover ? "/covers/" + item.bcover : "",
+                    "cover": coverImg,
                     "host": "https://chivi.app"
                 }
             });
