@@ -3,10 +3,9 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let coverImg =  doc.select(".cover source").first().attr("srcset")
-        if (coverImg.startsWith("//")) {
-            coverImg = "http:" + coverImg;
+        if (coverImg.startsWith("/")) {
+            coverImg = "https://chivi.app" + coverImg;
         }
-
         return Response.success({
             "name": doc.select("h1").text(),
             "cover": coverImg,

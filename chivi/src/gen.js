@@ -17,16 +17,12 @@ function execute(url, page) {
             }
             
             novelList = data.books.map(item => {
-                let coverImg =  item.scover
-                if (coverImg.startsWith("//")) {
-                    coverImg = "http:" + coverImg;
-                }
-                
+
                 return {
                     "name": item.vname,
                     "link": "-" + item.bslug,
                     "description": item.vauthor,
-                    "cover": coverImg,
+                    "cover": item.bcover ? "/covers/" + item.bcover : "",
                     "host": "https://chivi.app"
                 }
             });
