@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Hako Novel",
     "author": "vBook",
-    "version": 6,
+    "version": 7,
     "source": "https://ln.hako.re",
     "regexp": "(www.)?ln.hako.re/[^/]+/[^/]+/?$",
     "description": "Đọc truyện trên trang Hako",
