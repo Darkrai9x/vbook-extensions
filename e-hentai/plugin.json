@@ -1,12 +1,11 @@
 {
   "metadata": {
-    "name": "nHentai",
+    "name": "E Hentai",
     "author": "vBook",
-    "version": 4,
-    "source": "https://nhentai.net",
-    "regexp": "(www.)?nhentai.net/g/\\d+/?$",
-    "description": "Đọc truyện trên trang nHentai",
-    "locale": "locale",
+    "version": 1,
+    "source": "https://e-hentai.org",
+    "regexp": "(www.)?e-hentai.org/g/\\d+/[a-z0-9]+/?",
+    "description": "Đọc truyện trên trang e-hentai.org",
     "language": "javascript",
     "type": "comic",
     "tag": "nsfw"

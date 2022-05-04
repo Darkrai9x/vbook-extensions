@@ -173,7 +173,7 @@
       "name": "nHentai",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nhentai/plugin.zip",
-      "version": 3,
+      "version": 4,
       "type": "comic",
       "locale": "en_US",
       "source": "https://nhentai.net",
@@ -434,6 +434,17 @@
       "description": "Read manga",
       "type": "comic",
       "locale": "en_US"
+    },
+    {
+      "name": "E Hentai",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/e-hentai/plugin.zip",
+      "version": 1,
+      "source": "https://e-hentai.org",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/e-hentai/icon.png",
+      "description": "Đọc truyện 18+ trên trang e-hentai.org",
+      "tag": "nsfw",
+      "type": "comic"
     }
   ]
 }
