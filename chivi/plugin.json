@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Chivi",
     "author": "vBook",
-    "version": 16,
+    "version": 17,
     "source": "https://chivi.app",
     "regexp": "(www.)?chivi.(xyz|app)/[^/+]+/?$",
     "description": "Đọc truyện trên trang Chivi",
@@ -14,6 +14,7 @@
     "home": "home.js",
     "detail": "detail.js",
     "search": "search.js",
+    "genre": "genre.js",
     "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js"
