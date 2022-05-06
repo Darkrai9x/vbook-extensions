@@ -3,6 +3,7 @@ function execute(url, page) {
     page = parseInt(page)
 
     let response = fetch(url + "&pg=" + page + "&lm=24");
+    console.log(url + "&pg=" + page + "&lm=24")
     if (response.ok) {
 
         let data = response.json().props;
@@ -19,9 +20,9 @@ function execute(url, page) {
             novelList = data.books.map(item => {
 
                 return {
-                    "name": item.vname,
+                    "name": item.btitle_vi,
                     "link": "-" + item.bslug,
-                    "description": item.vauthor,
+                    "description": item.author_vi,
                     "cover": item.bcover ? "/covers/" + item.bcover : "",
                     "host": "https://chivi.app"
                 }

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qiushubang",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "http://www.qiushubang.me",
     "regexp": "(www.|m.)qiushubang(.com|.me)/\\d+/?$",
     "description": "Đọc truyện trên trang qiushubang.me",
