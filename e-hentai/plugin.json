@@ -2,7 +2,7 @@
   "metadata": {
     "name": "E Hentai",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://e-hentai.org",
     "regexp": "(www.)?e-hentai.org/g/\\d+/[a-z0-9]+/?",
     "description": "Đọc truyện trên trang e-hentai.org",
