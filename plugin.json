@@ -445,6 +445,17 @@
       "description": "Đọc truyện 18+ trên trang e-hentai.org",
       "tag": "nsfw",
       "type": "comic"
+    },
+    {
+      "name": "Hentai Image",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentai-img/plugin.zip",
+      "version": 1,
+      "source": "https://hentai-img.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentai-img/icon.png",
+      "description": "Xem ảnh 18+ trên trang hentai-img.com",
+      "tag": "nsfw",
+      "type": "comic"
     }
   ]
 }
