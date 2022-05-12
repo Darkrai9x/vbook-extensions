@@ -9,10 +9,14 @@ function execute(url) {
         let response = fetch("https://chivi.app" + next);
         if (response.ok) {
             let doc = response.html();
+            console.log(doc)
             next = doc.select("a.m-btn._fill.navi-item._primary").last().attr("href");
-            console.log(next)
-            console.log(part1)
-            doc.select("#L0").remove();
+            // console.log(next)
+            // console.log(part1)
+            try {
+                doc.select("#L0").remove();
+            }
+            catch(err) {}
             doc.select("cv-line")
                 .forEach(e => cvData.push(e.text()));
         } else {
