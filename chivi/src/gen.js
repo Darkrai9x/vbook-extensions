@@ -6,7 +6,7 @@ function execute(url, page) {
     console.log(url + "&pg=" + page + "&lm=24")
     if (response.ok) {
 
-        let data = response.json().props;
+        let data = response.json();
         let next = "";
 
         let novelList = [];
