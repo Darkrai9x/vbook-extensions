@@ -1,4 +1,5 @@
-function execute(url) {
+   function execute(url) {
+    url = url.replace("ln.hako.re","ln.hako.vn");
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();

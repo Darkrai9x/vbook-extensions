@@ -1,7 +1,7 @@
 function execute(key, page) {
     if (!page) page = '1';
 
-    let response = fetch("https://ln.hako.re/tim-kiem", {
+    let response = fetch("https://ln.hako.vn/tim-kiem", {
         method: "GET",
         queries: {
             keywords: key,
@@ -18,7 +18,7 @@ function execute(key, page) {
                 link: e.select(".series-title a").attr("href"),
                 description: e.select(".chapter-title").text(),
                 cover: e.select(".img-in-ratio").attr("data-bg"),
-                host: "https://ln.hako.re"
+                host: "https://ln.hako.vn"
             });
         });
 
