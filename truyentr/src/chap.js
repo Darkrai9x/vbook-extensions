@@ -1,5 +1,5 @@
 function execute(url) {
-    url = url.replace("truyentr.vn", "truyentr.info");
+    url = url.replace("truyentr.vn", "truyentr.org").replace("truyentr.info", "truyentr.org");
     var doc = Http.get(url).html();
     if (doc) {
         doc.select("noscript").remove();

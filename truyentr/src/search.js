@@ -1,7 +1,7 @@
 function execute(key, page) {
     if (!page) page = '1';
 
-    var doc = Http.get("https://truyentr.info/")
+    var doc = Http.get("https://truyentr.org/")
         .params({
             s: key,
             post_type: 'wp-manga',
@@ -19,7 +19,7 @@ function execute(key, page) {
                 link: e.select(".truyen-title > a").first().attr("href"),
                 description: e.select(".author").text(),
                 cover: e.select(".img-cover-wrap img").attr("src"),
-                host: "https://truyentr.info",
+                host: "https://truyentr.org",
             });
 
         }

@@ -1,5 +1,4 @@
 load('bypass.js');
-
 function execute(url, page) {
     if (!page) page = '1';
     url = url.replace(".html", "") + "/trang-" + page + ".html";
@@ -15,7 +14,7 @@ function execute(url, page) {
                 name: e.select(".book_name").text(),
                 link: e.select(".book_name a").first().attr("href"),
                 description: e.select(".last_chapter").text(),
-                cover: e.select(".book_avatar img").attr("data-src"),
+                cover: e.select(".book_avatar img").attr("src"),
                 host: "http://truyenqqpro.com"
             });
         }

@@ -15,7 +15,7 @@ function execute(key, page) {
                 name: e.select(".book_name").text(),
                 link: e.select(".book_name a").first().attr("href"),
                 description: e.select(".last_chapter").text(),
-                cover: e.select(".book_avatar img").attr("data-src"),
+                cover: e.select(".book_avatar img").attr("src"),
                 host: "http://truyenqqpro.com"
             });
         }
