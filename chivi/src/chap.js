@@ -26,9 +26,8 @@ function locRac(content, total_parts) {
     content = content.split("$\t$\t$\n")[0];
     content = content.replace(/\n/g,"<br>").replace(/\t/g,"");
     let heading = content.split("<br>")[0];
-    // if(heading.includes("/"+total_parts+"]")){
-    //     content = content.replace(heading + "<br>","");
-    // }
-    content = content.replace(heading + "<br>","");
+    if(heading.includes("/"+total_parts+"]")){
+        content = content.replace(heading + "<br>","");
+    }
     return content;
 }
