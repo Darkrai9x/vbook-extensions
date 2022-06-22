@@ -3,10 +3,11 @@ function execute(url) {
     let response = fetch(storyUrl[1]);
     if (response.ok) {
         let data = response.json();
-        var sname = data.props.chseed.sname;
-        let chapList = data.props.chpage.chaps.map(e => ({
+        console.log(data)
+        var sname = storyUrl[2];
+        let chapList = data.chaps.map(e => ({
             "name": e.title,
-            "url": storyUrl[0] + "/-" + sname + "/" + e.chidx + "-" + e.uslug,
+            "url": "https://chivi.app/api/chaps/" + storyUrl[0] + "/" + sname + "/" + e.chidx + "?parts=" + e.parts,
             "host": "https://chivi.app"
         }));
         return Response.success(chapList);

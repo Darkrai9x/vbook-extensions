@@ -1,31 +1,34 @@
 function execute(url) {
-    if(url.slice(-1) === "/")
-        url = url.slice(0, -1)
-    url = url.replace("chivi.xyz", "chivi.app");
-    let cvData = [];
-    let part1 = url.replace("https://chivi.app", "");
-    var next = part1;
-    while (next.replace(next.split(/[/ ]+/).pop().split("-")[0],"").replace(/-/g,"").includes(part1.replace(part1.split(/[/ ]+/).pop().split("-")[0],"").replace(/-/g,""))) {
-        let response = fetch("https://chivi.app" + next);
-        if (response.ok) {
-            let doc = response.html();
-            // console.log(doc.select("article.article"))
-            next = doc.select("a.m-btn._fill.navi-item._primary").last().attr("href");
-            // console.log(next)
-            // console.log(part1)
-            try {
-                doc.select("#L0").remove();
-            }
-            catch(err) {}
-            doc.select("cv-line")
-                .forEach(e => cvData.push(e.text()));
-        } else {
-            return null;
+    let total_parts = url.split("?parts=")[1];
+    if(total_parts<1) total_parts = 1;
+    url = url.split("?parts=")[0];
+    let cvdata = "";
+    for(let i = 0; i < total_parts; i++){
+        let response_parts = fetch(url+"/"+i);
+        console.log(url+"/"+i)
+        if (response_parts.ok) {
+            let cvdata_i = response_parts.json().cvdata;
+            cvdata = cvdata + locRac(cvdata_i, total_parts);
         }
     }
-    if (cvData) {
-        let htm = cvData.join("<br>");
-        return Response.success(htm);
+    if(cvdata){
+        return Response.success(cvdata);
     }
     return null;
+}
+
+function locRac(content, total_parts) {
+    content = content.replace(/〉/g,"").replace(/〈/g,"");
+    const regex1 = /\ǀ(\d+)\ǀ(\d+)\ǀ(\d+)\t/g;
+    const regex2 = /(\d+)\t/g;
+    const regex3 = /\ǀ(\d+)\ǀ(\d+)\ǀ(\d+)\n/g;
+    content = content.replace(regex1, "").replace(regex2, "").replace(regex3, "<br>")
+    content = content.split("$\t$\t$\n")[0];
+    content = content.replace(/\n/g,"<br>").replace(/\t/g,"");
+    let heading = content.split("<br>")[0];
+    // if(heading.includes("/"+total_parts+"]")){
+    //     content = content.replace(heading + "<br>","");
+    // }
+    content = content.replace(heading + "<br>","");
+    return content;
 }

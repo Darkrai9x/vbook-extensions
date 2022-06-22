@@ -11,10 +11,10 @@ function execute(key, page) {
 
         let novelList = [];
         doc.select("book-list > a").forEach(e => novelList.push({
-            "name": e.select("._vname").text(),
+            "name": e.select("._title").text(),
             "link": e.select("a").first().attr("href"),
-            "description": e.select(".infos  ._author").text(),
-            "cover": e.select(".cover img").first().attr("src"),
+            "description": e.select(".infos .info").get(1).text(),
+            "cover": "https://chivi.app" + e.select("source").first().attr("srcset"),
             "host": "https://chivi.app"
         }));
 
