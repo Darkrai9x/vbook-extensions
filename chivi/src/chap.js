@@ -12,6 +12,8 @@ function execute(url) {
         }
     }
     if(cvdata){
+        let heading = cvdata.split("<br>")[0];
+        cvdata = cvdata.replace(heading + "<br>","");
         return Response.success(cvdata);
     }
     return null;
