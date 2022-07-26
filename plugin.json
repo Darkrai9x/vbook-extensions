@@ -130,10 +130,10 @@
       "name": "Net Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/plugin.zip",
-      "version": 10,
+      "version": 11,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "http://www.nettruyenco.com",
+      "source": "http://www.nettruyenme.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/icon.png",
       "description": "Đọc truyện trên trang Net Truyện"
     },

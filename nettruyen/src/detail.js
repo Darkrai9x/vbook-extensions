@@ -6,6 +6,7 @@ function execute(url) {
     url = url.replace("nettruyengo.com", "nettruyenmoi.com");
     url = url.replace("nettruyenmoi.com", "nettruyenone.com");
     url = url.replace("nettruyenone.com", "nettruyenco.com");
+    url = url.replace("nettruyenco.com", "nettruyenme.com");
     const doc = Http.get(url).html()
     var coverImg = doc.select(".detail-info img").first().attr("src");
     if (coverImg.startsWith("//")) {

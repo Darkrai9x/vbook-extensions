@@ -6,6 +6,7 @@ function execute(url) {
     url = url.replace("nettruyengo.com", "nettruyenmoi.com");
     url = url.replace("nettruyenmoi.com", "nettruyenone.com");
     url = url.replace("nettruyenone.com", "nettruyenco.com");
+    url = url.replace("nettruyenco.com", "nettruyenme.com");
     var doc = Http.get(url).html();
 
      var el = doc.select("div.list-chapter li.row .chapter a")
