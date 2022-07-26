@@ -39,7 +39,14 @@ function execute(url) {
         }
         return Response.success(txt);
     }
-    return null;
+
+    let el1 =""
+    var browser = Engine.newBrowser() // Khởi tạo browser
+    let doc2 = browser.launch(url, 4500) // Mở trang web với timeout, trả về Document object
+    el1 = doc2.select(".chap-content")
+    browser.close()
+    el1 = el1.html()
+    return Response.success(el1);
 }
 
 function loadChapterContent(url) {
