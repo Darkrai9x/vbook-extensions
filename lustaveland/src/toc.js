@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("lustaveland.com", "luvevaland.com");
     let response = fetch(url);
 
     if (response.ok) {
@@ -9,7 +10,7 @@ function execute(url) {
             chapList.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://lustaveland.com"
+                host: "https://luvevaland.com"
             })
         })
         return Response.success(chapList);

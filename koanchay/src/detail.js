@@ -2,6 +2,13 @@ function execute(url) {
     url = url.replace("koanchay.com", "koanchay.net");
     const doc = Http.get(url).html()
 
+
+    if (doc.select("[name=code]").length > 0) {
+        return Response.error("Bạn phải nhập mã eden để có thể đọc.");
+    } else if (doc.select("[data-action=login]").length > 0) {
+        return Response.error("Bạn phải đăng nhập để có thể đọc.");
+    }
+
     var name = doc.select(".cover-info h2").text();
     var author = doc.html().match(/tac-gia.*?>(.*?)</);
     if (author) author = author[1];

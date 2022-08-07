@@ -15,7 +15,7 @@ function execute(url, page) {
                 link: e.select(".book__list-name a").first().attr("href"),
                 cover: e.select(".book__list-image img").first().attr("data-src"),
                 description: e.select(".book__list-author").text() + " " + e.select(".book__list-chaper").text(),
-                host: "https://lustaveland.com"
+                host: "https://luvevaland.com"
             })
         });
 

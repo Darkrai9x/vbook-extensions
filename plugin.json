@@ -85,7 +85,7 @@
       "name": "Koanchay",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/plugin.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://koanchay.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/icon.png",
       "description": "Đọc truyện trên trang Koanchay",
@@ -392,13 +392,13 @@
       "locale": "vi_VN"
     },
     {
-      "name": "LustAveland",
+      "name": "Luvevaland",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lustaveland/plugin.zip",
-      "version": 1,
-      "source": "https://lustaveland.com",
+      "version": 2,
+      "source": "https://luvevaland.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lustaveland/icon.png",
-      "description": "Đọc truyện trên trang LustAveland",
+      "description": "Đọc truyện trên trang Luvevaland",
       "type": "novel",
       "locale": "vi_VN"
     },

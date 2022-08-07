@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "LustAveland",
+    "name": "Luvevaland",
     "author": "vBook",
-    "version": 1,
-    "source": "https://lustaveland.com",
-    "regexp": "(www.)?lustaveland.com/(truyen|truyen-tranh)/[^/]+/?$",
-    "description": "Đọc truyện trên trang LustAveland",
+    "version": 2,
+    "source": "https://luvevaland.com",
+    "regexp": "(www.)?(lustaveland.com|luvevaland.com)/(truyen|truyen-tranh|tieu-thuyet)/[^/]+/?$",
+    "description": "Đọc truyện trên trang Luvevaland",
     "local": "vi-VN",
     "language": "javascript",
     "type": "novel"
