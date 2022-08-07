@@ -1,5 +1,5 @@
 function execute(url) {
-    url = url.replace("lustaveland.com", "luvevaland.com");
+    url = url.replace("lustaveland.com", "luvevaland.co");
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -17,7 +17,7 @@ function execute(url) {
             description: doc.select("#home").html(),
             detail: info.select(".book__detail-text").html(),
             ongoing: info.html().indexOf("Truyện Full") === -1,
-            host: "https://luvevaland.com",
+            host: "https://luvevaland.co",
             type: doc.select(".breadcrumb__container").html().indexOf("truyen-tranh") > 0 ? "comic" : "novel"
         });
     }

@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Luvevaland",
     "author": "vBook",
-    "version": 2,
-    "source": "https://luvevaland.com",
-    "regexp": "(www.)?(lustaveland.com|luvevaland.com)/(truyen|truyen-tranh|tieu-thuyet)/[^/]+/?$",
+    "version": 3,
+    "source": "https://luvevaland.co",
+    "regexp": "(www.)?(lustaveland.com|luvevaland.co)/(truyen|truyen-tranh|tieu-thuyet)/[^/]+/?$",
     "description": "Đọc truyện trên trang Luvevaland",
     "local": "vi-VN",
     "language": "javascript",
