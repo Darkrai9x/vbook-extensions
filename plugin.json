@@ -350,10 +350,10 @@
       "name": "QManga",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/plugin.zip",
-      "version": 5,
+      "version": 6,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "https://qmanga3.com",
+      "source": "https://qmanga3.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/icon.png",
       "description": "Đọc truyện trên trang QManga"
     },
