@@ -2,9 +2,9 @@
   "metadata": {
     "name": "SS Truyện",
     "author": "vBook",
-    "version": 4,
-    "source": "https://sstruyen.com",
-    "regexp": "(www.)?sstruyen.com/[^/]+/?$",
+    "version": 5,
+    "source": "https://sstruyen.vn",
+    "regexp": "(www.)?sstruyen.(com|vn)/[^/]+/?$",
     "description": "Đọc truyện trên trang SS Truyện",
     "locale": "vi_VN",
     "type": "novel",
