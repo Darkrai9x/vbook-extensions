@@ -1,8 +1,12 @@
 function execute(url) {
-    var response = fetch(url);
+    let response = fetch(url, {
+        headers: {
+            'user-agent': UserAgent.android()
+        }
+    });
 
     if (response.ok) {
-        var doc = response.html();
+        let doc = response.html();
         var content = doc.select("#js-read__content").first();
         if (content.text().length < 2000) {
             return Response.error(url);
@@ -10,7 +14,7 @@ function execute(url) {
         doc.select("script").remove();
         doc.select("div.nh-read__alert").remove();
         doc.select("small.text-muted").remove();
-         doc.select(".text-center").remove();
+        doc.select(".text-center").remove();
         var html = content.html();
         var trash = html.match(new RegExp(/<br>[^>]*<a href=.*?\/truyen\/.*?$/g));
         if (trash) {

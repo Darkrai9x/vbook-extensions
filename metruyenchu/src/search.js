@@ -1,6 +1,7 @@
 function execute(key, page) {
     if (!page) page = '1';
     var browser = Engine.newBrowser();
+    browser.setUserAgent(UserAgent.android());
 
     browser.block([".*?api.truyen.onl/v2/books/search.*?"]);
 
@@ -13,7 +14,11 @@ function execute(key, page) {
     var next = "";
     urls.forEach(requestUrl => {
         if (requestUrl.indexOf("api.truyen.onl/v2/books") >= 0) {
-            var response = fetch(requestUrl).json();
+            var response = fetch(requestUrl, {
+                headers: {
+                    'user-agent': UserAgent.android()
+                }
+            }).json();
             next = response._extra._pagination._next;
             response._data.forEach(book => {
                 novelList.push({

@@ -7,11 +7,12 @@ function execute(url) {
         let doc = response.html();
         let txt = doc.select("div#inner_chap_content_1").html();
         let contentTxt = doc.select("div#inner_chap_content_1").text();
-        if (contentTxt && contentTxt.length < 1000) {
+        if (!contentTxt || contentTxt.length < 1000) {
+    
             if (doc.html().indexOf("btn_buy") > 0)
-                return Response.error(url);
-            if (txt.indexOf("/login/") > 0)
-                return Response.error(url);
+                return Response.error("Bạn phải vào trang nguồn trả phí trước để đọc chương này.");
+            if (doc.html().indexOf("/auth/login") > 0)
+                return Response.error("Bạn phải vào trang nguồn đăng nhập trước để đọc chương này.");
 
             let id = doc.html().match(/chap_id=(.*?)&/)[1];
 

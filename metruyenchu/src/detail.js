@@ -1,29 +1,21 @@
 function execute(url) {
-    var response = fetch(url);
+    let response = fetch(url, {
+        headers: {
+            'user-agent': UserAgent.android()
+        }
+    });
 
     if (response.ok) {
-        var doc = response.html();
-        var detailElements = doc.select("div.page-content div.media-body")
-        var author = detailElements.select("ul li").first().text();
-        var status = detailElements.select("ul li").get(1).text();
-        var genreElements = detailElements.select("a[href*=truyen?genre]");
-        var detail = author + "<br>";
-        var infoElements = detailElements.select(".list-unstyled").get(1).select("li");
-        for (var i = 0; i < infoElements.size(); i++) {
-            detail += infoElements.get(i).text() + ", ";
-        }
-        detail += status;
-        return Response.success(
-            {
-                name: doc.select("h1.h3").text(),
-                cover: doc.select("div.nh-thumb img").attr("src"),
-                host: "https://metruyenchu.com",
-                author: author,
-                description: doc.select("div#nav-intro .content").html(),
-                detail: detail,
-                ongoing: detail.indexOf("Đang ra") >= 0
-            }
-        );
+        let doc = response.html();
+        return Response.success({
+            name: doc.select("h1").text(),
+            cover: doc.select(".nh-thumb--150 img").first().attr("src"),
+            host: "https://metruyenchu.com",
+            author: doc.select("a[href*=tac-gia]").text(),
+            description: doc.select("div#nav-intro .content").html(),
+            detail: doc.select("a[href*=tac-gia]").text() + "<br>" + doc.select(".border-danger").text(),
+            ongoing: doc.select(".border-danger").text().indexOf("Đang ra") >= 0
+        });
     }
     return null;
 }
