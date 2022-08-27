@@ -1,6 +1,6 @@
 function execute(key, page) {
     if (!page) page = '1';
-    let response = fetch("https://hentaivn.fun/tim-kiem-truyen.html" + "?key=" + key + "&page=" + page);
+    let response = fetch("https://hentaivn.la/tim-kiem-truyen.html" + "?key=" + key + "&page=" + page);
 
     if (response.ok) {
 
@@ -21,7 +21,7 @@ function execute(key, page) {
                 name: des.select("a").first().text(),
                 link: des.select("a").first().attr("href"),
                 cover: e.select(isMobile ? ".box-cover-2 img" : ".box-cover img").first().attr("data-src"),
-                host: "https://hentaivn.fun"
+                host: "https://hentaivn.la"
             })
         }
         return Response.success(data, next)
