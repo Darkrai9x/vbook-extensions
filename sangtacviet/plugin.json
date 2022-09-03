@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "name": "Sáng Tác Việt",
+        "author": "vBook",
+        "version": 1,
+        "source": "https://sangtacviet.pro",
+        "regexp": "(www.)?sangtacviet.pro/truyen/([a-zA-Z0-9])+/\\d+/\\d+/?$",
+        "description": "",
+        "locale": "vi-VN",
+        "language": "javascript",
+        "type": "novel"
+    },
+    "script": {
+        "home": "home.js",
+        "genre": "genre.js",
+        "search": "search.js",
+        "detail": "detail.js",
+        "toc": "toc.js",
+        "chap": "chap.js"
+    }
+}
