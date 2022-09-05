@@ -88,5 +88,6 @@ function execute(url) {
             newContent += content[i];
         }
     }
+    newContent = newContent.replace("<p>", "");
     return Response.success(newContent);
 }
