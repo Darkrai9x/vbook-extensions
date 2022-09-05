@@ -19,15 +19,6 @@ function execute(url) {
     }
 
     browser.close()
-    content = content.replace(/<i.*?>(.*?)<\/i>/g, '$1')
-        .replace(/<span.*?>(.*?)<\/span>(<br>)?/g, "")
-        .replace(/<a href=.*?<\/a>/g, "")
-        .replace(/ +/g, " ")
-        .replace(/<br>/g, "\n")
-        .replace(/\n+/g, "<br>")
-        .replace(/\u201c/g, "")
-        .replace(/\u201d/g, "")
-        .replace(/&(nbsp|amp|quot|lt|gt|bp|emsp);/g, "");
 
     let charMap = {
         'Ҋ': 'U',
@@ -88,6 +79,16 @@ function execute(url) {
             newContent += content[i];
         }
     }
-    newContent = newContent.replace("<p>", "");
+    newContent = newContent.replace(/<p>/g, "")
+        .replace(/&lt;p&gt;/g, "")
+        .replace(/<i.*?>(.*?)<\/i>/g, '$1')
+        .replace(/<span.*?>(.*?)<\/span>(<br>)?/g, "")
+        .replace(/<a href=.*?<\/a>/g, "")
+        .replace(/ +/g, " ")
+        .replace(/<br>/g, "\n")
+        .replace(/\n+/g, "<br>")
+        .replace(/\u201c/g, "")
+        .replace(/\u201d/g, "")
+        .replace(/&(nbsp|amp|quot|lt|gt|bp|emsp);/g, "");
     return Response.success(newContent);
 }
