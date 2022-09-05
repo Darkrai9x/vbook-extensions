@@ -3,13 +3,12 @@ function execute(url) {
         url = url + "/";
     let browser = Engine.newBrowser();
     browser.launchAsync(url);
-    browser.waitUrl(".*?index.php.*?sajax=getchapterlist.*?", 10000);
 
     var retry = 0;
     let chapList = [];
     while (retry < 5) {
-        sleep(2000);
-        let doc = browser.html();
+        sleep(2000)
+        let doc = browser.callJs("document.getElementById('chaptercontainerinner').scrollIntoView();", 100);
         var el = doc.select("#chaptercontainerinner a");
         if (el.length > 0) {
             el.forEach(e => {
