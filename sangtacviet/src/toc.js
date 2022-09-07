@@ -4,26 +4,80 @@ function execute(url) {
     let browser = Engine.newBrowser();
     browser.launchAsync(url);
 
+    let injectJs = "function loadFuckkChapter(b){var a=new XMLHttpRequest;a.open(\"GET\",b,!0),a.onreadystatechange=function(){if(4==a.readyState&&200==a.status){var b=document.createElement(\"a\");b.className=\"fukkkkkk\",b.text=a.responseText,document.body.appendChild(b)}},a.send()}";
+    function loadToc(url) {
+        browser.callJs(injectJs + "loadFuckkChapter('/" + url + "');", 100);
+        var retry = 0;
+        var json = '';
+        while (retry < 5) {
+            sleep(2000)
+            let doc = browser.html();
+            var data = doc.select("a.fukkkkkk");
+            if (data.length > 0) {
+                json = data.text();
+                break;
+            }
+            retry++;
+        }
+        return json;
+    }
+
+    var json = '';
     var retry = 0;
-    let chapList = [];
     while (retry < 5) {
         sleep(2000)
-        let doc = browser.callJs("document.getElementById('chaptercontainerinner').scrollIntoView();", 100);
-        var el = doc.select("#chaptercontainerinner a");
-        if (el.length > 0) {
-            el.forEach(e => {
-                chapList.push({
-                    name: e.text(),
-                    url: e.attr("href"),
-                    pay: e.select(".vip").length > 0,
-                    host: "https://sangtacviet.pro",
-                });
-            });
+        let doc = browser.html().html();
+        var loadUrl = doc.match(/(index.php.*?getchapterlist.*?)'/);
+        if (url) {
+            json = loadToc(loadUrl[1])
             break;
         }
         retry++;
     }
-
     browser.close()
-    return Response.success(chapList);
+    if (json) {
+        let list = [];
+        let source = url.split('/')[4];
+        let data = JSON.parse(json);
+        let chapList = data.data;
+        let list1 = ['biqugeinfo', 'biqugexs', 'uuxs', 'zwdu'];
+        let list12 = ['69shuorg', 'xbiquge',];
+        let start;
+        if (chapList) {
+            chapList = chapList.split("-//-")
+            if (source === 'uukanshu') {
+                start = chapList.length - 1
+            } else if (list12.includes(source) === true) {
+                start = 12
+            } else if (source === 'biqugese') {
+                start = 10
+            } else if (source === 'biqugebz') {
+                start = 9
+            } else if (source === '69shu') {
+                start = 5
+            } else if (list1.includes(source) === true) {
+                start = 1
+            } else {
+                start = 0
+            }
+            let end = (source === "uukanshu") ? -1 : chapList.length;
+            let step = (source === "uukanshu") ? -1 : 1;
+            for (; start !== end; start += step) {
+                let chap = chapList[start].split("-/-");
+                let name = chap[2];
+                if (name) {
+                    list.push({
+                        name: name.replace('\n', '').trim()
+                            .replace(/\s\s+/g, ' ')
+                            .replace(/([\t\n]+|<br>|&nbsp;)/g, "")
+                            .replace(/Thứ ([\d\,]+) chương/, "Chương $1:"),
+                        url: url + "/" + chap[1],
+                        host: "https://sangtacviet.pro"
+                    });
+                }
+            }
+        }
+        return Response.success(list);
+    }
+    return null;
 }

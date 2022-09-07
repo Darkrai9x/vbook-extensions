@@ -12,6 +12,7 @@ function execute(url) {
         let doc = browser.html();
         var text = doc.select("#content-container > .contentbox").text();
         if (text.indexOf('Đang tải nội dung chương') === -1) {
+            doc.select("i[hd]").remove();
             content = doc.select("#content-container > .contentbox").html();
             break;
         }
