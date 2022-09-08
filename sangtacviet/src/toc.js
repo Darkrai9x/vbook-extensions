@@ -4,9 +4,10 @@ function execute(url) {
     let browser = Engine.newBrowser();
     browser.launchAsync(url);
 
-    let injectJs = "function loadFuckkChapter(b){var a=new XMLHttpRequest;a.open(\"GET\",b,!0),a.onreadystatechange=function(){if(4==a.readyState&&200==a.status){var b=document.createElement(\"a\");b.className=\"fukkkkkk\",b.text=a.responseText,document.body.appendChild(b)}},a.send()}";
+    let injectJs = "function loadFuckkChapter(b){var a=new XMLHttpRequest;a.open(\"GET\",b,!0),a.onreadystatechange=function(){if(4==a.readyState&&200==a.status){var b=document.createElement(\"a\");b.className=\"fukkkkkk\",b.text=a.responseText,document.body.appendChild(b)}},a.send()};";
+
     function loadToc(url) {
-        browser.callJs(injectJs + "loadFuckkChapter('/" + url + "');", 100);
+        browser.callJs(injectJs + "loadFuckkChapter('" + url + "');", 100);
         var retry = 0;
         var json = '';
         while (retry < 5) {
@@ -22,14 +23,26 @@ function execute(url) {
         return json;
     }
 
+    function waitTocUrl() {
+        browser.waitUrl(".*?index.php.*?sajax=getchapterlist.*?", 10000);
+        var urls = JSON.parse(browser.urls());
+        var json = '';
+        urls.forEach(requestUrl => {
+            if (requestUrl.indexOf("getchapterlist") >= 0 && !json) {
+                json = loadToc(requestUrl.replace("https://sangtacviet.pro", ""));
+            }
+        });
+        return json;
+    }
+
     var json = '';
     var retry = 0;
     while (retry < 5) {
         sleep(2000)
-        let doc = browser.html().html();
-        var loadUrl = doc.match(/(index.php.*?getchapterlist.*?)'/);
-        if (url) {
-            json = loadToc(loadUrl[1])
+        let doc = browser.html();
+        if (doc.select("#chaptercontainerinner").length > 0) {
+            browser.callJs("document.getElementById('chaptercontainerinner').scrollIntoView();", 100);
+            json = waitTocUrl();
             break;
         }
         retry++;
