@@ -1,5 +1,5 @@
 function execute(url) {
-    url = url.replace("koanchay.com", "koanchay.net");
+    url = url.replace("koanchay.net", "koanchay.com");
     const doc = Http.get(url).html()
 
 
@@ -22,7 +22,7 @@ function execute(url) {
         author: author,
         description: doc.select("div.book-desc-detail").html(),
         detail: element.html(),
-        host: "https://koanchay.net",
+        host: "https://koanchay.com",
         ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0,
         nsfw: true
     });

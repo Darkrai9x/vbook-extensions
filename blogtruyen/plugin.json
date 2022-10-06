@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Blog Truyện",
     "author": "vBook",
-    "version": 6,
+    "version": 7,
     "source": "https://blogtruyen.vn",
     "regexp": "(www.)?(m\\.)?blogtruyen.vn/\\d+/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Blog Truyện",

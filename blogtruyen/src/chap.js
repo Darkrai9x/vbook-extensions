@@ -4,7 +4,12 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         var imgs = [];
-        doc.select("article#content img").forEach(e => imgs.push(e.attr("src")));
+        doc.select("#content > img").forEach(e => {
+            let url = e.attr("src");
+            if (!url.contains("donate.png") && !url.contains("creblogtruyen.jpg")) {
+                imgs.push(url);
+            }
+        });
         return Response.success(imgs);
     }
     return null;
