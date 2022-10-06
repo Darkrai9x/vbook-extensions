@@ -6,7 +6,7 @@ function execute(url) {
         var imgs = [];
         doc.select("#content > img").forEach(e => {
             let url = e.attr("src");
-            if (!url.contains("donate.png") && !url.contains("creblogtruyen.jpg")) {
+            if (url.indexOf("donate.png") === -1 && url.indexOf("creblogtruyen.jpg") === -1) {
                 imgs.push(url);
             }
         });
