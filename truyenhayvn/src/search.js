@@ -1,7 +1,7 @@
 function execute(key, page) {
     if (!page) page = '1';
 
-    let response = fetch("https://www.truyenhayvn.com/search", {
+    let response = fetch("https://1.truyenhayvn.com/search", {
         method: "GET",
         queries: {keyword: key, page: page}
     });
@@ -16,7 +16,7 @@ function execute(key, page) {
                 link: e.select(".store-title > a").first().attr("href"),
                 description: e.select(".author").text(),
                 cover: e.select("img").first().attr("data-src").replace("180/90", "217/300"),
-                host: "https://www.truyenhayvn.com",
+                host: "https://1.truyenhayvn.com",
             });
         });
         return Response.success(novelList, next);

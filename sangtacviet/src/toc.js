@@ -2,9 +2,28 @@ function execute(url) {
     if (url.slice(-1) !== "/")
         url = url + "/";
     let browser = Engine.newBrowser();
+    browser.block([".*?index.php.*?sajax=getchapterlist.*?"]);
     browser.launchAsync(url);
-
-    let injectJs = "function loadFuckkChapter(b){var a=new XMLHttpRequest;a.open(\"GET\",b,!0),a.onreadystatechange=function(){if(4==a.readyState&&200==a.status){var b=document.createElement(\"a\");b.className=\"fukkkkkk\",b.text=a.responseText,document.body.appendChild(b)}},a.send()};";
+    let injectJs = "function loadFuckkChapter(url) {\n" +
+        "    var chapterfetcher = new XMLHttpRequest();\n" +
+        "    var password = randomString();\n" +
+        "    chapterfetcher.open(\"GET\", url, true);\n" +
+        "    chapterfetcher.onreadystatechange = function() {\n" +
+        "        if (4 == chapterfetcher.readyState && 200 == chapterfetcher.status) {\n" +
+        "            var x = JSON.parse(chapterfetcher.responseText);\n" +
+        "            if (x.code == 1) {\n" +
+        "                if (x.enckey) {\n" +
+        "                    eval(atob(x.enckey));\n" +
+        "                }\n" +
+        "            }\n" +
+        "            var fakeElement = document.createElement(\"a\");\n" +
+        "            fakeElement.className = \"fukkkkkk\";\n" +
+        "            fakeElement.text = x.data;\n" +
+        "            document.body.appendChild(fakeElement);\n" +
+        "        }\n" +
+        "    };\n" +
+        "    chapterfetcher.send();\n" +
+        "};";
 
     function loadToc(url) {
         browser.callJs(injectJs + "loadFuckkChapter('" + url + "');", 100);
@@ -24,6 +43,7 @@ function execute(url) {
     }
 
     function waitTocUrl() {
+        browser.block([]);
         browser.waitUrl(".*?index.php.*?sajax=getchapterlist.*?", 10000);
         var urls = JSON.parse(browser.urls());
         var json = '';
@@ -48,11 +68,11 @@ function execute(url) {
         retry++;
     }
     browser.close()
+
     if (json) {
         let list = [];
         let source = url.split('/')[4];
-        let data = JSON.parse(json);
-        let chapList = data.data;
+        let chapList = json;
         let list1 = ['biqugeinfo', 'biqugexs', 'uuxs', 'zwdu'];
         let list12 = ['69shuorg', 'xbiquge',];
         let start;

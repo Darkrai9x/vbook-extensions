@@ -395,8 +395,8 @@
       "name": "TruyenHayVN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenhayvn/plugin.zip",
-      "version": 1,
-      "source": "https://www.truyenhayvn.com",
+      "version": 2,
+      "source": "https://1.truyenhayvn.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenhayvn/icon.png",
       "description": "Đọc truyện trên trang TruyenHayVN",
       "type": "novel",
@@ -445,6 +445,17 @@
       "description": "Xem ảnh 18+ trên trang hentai-img.com",
       "tag": "nsfw",
       "type": "comic"
+    },
+    {
+      "name": "Sáng Tác Việt",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/plugin.zip",
+      "version": 5,
+      "source": "https://sangtacviet.pro",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/icon.png",
+      "description": "",
+      "type": "novel",
+      "locale": "vi_VN"
     }
   ]
 }
