@@ -1,25 +1,68 @@
 function execute(url) {
-    if (url.slice(-1) !== "/")
-        url = url + "/";
-    let browser = Engine.newBrowser();
-    browser.launchAsync(url);
-    browser.waitUrl(".*?index.php.*?sajax=readchapter.*?", 10000);
-
-    var retry = 0;
     var content = '';
-    while (retry < 5) {
-        sleep(2000);
-        let doc = browser.html();
-        var text = doc.select("#content-container > .contentbox").text();
-        if (text.indexOf('Đang tải nội dung chương') === -1) {
-            doc.select("i[hd]").remove();
-            content = doc.select("#content-container > .contentbox").html();
-            break;
-        }
-        retry++;
-    }
+    if (url.indexOf("----/----") === -1) {
+        if (url.slice(-1) !== "/")
+            url = url + "/";
+        let browser = Engine.newBrowser();
+        browser.launchAsync(url);
+        browser.waitUrl(".*?index.php.*?sajax=readchapter.*?", 10000);
 
-    browser.close()
+        var retry = 0;
+        while (retry < 5) {
+            sleep(1000);
+            let doc = browser.html();
+            var text = doc.select("#content-container > .contentbox").text();
+            if (text.indexOf('Đang tải nội dung chương') === -1) {
+                doc.select("i[hd]").remove();
+                content = doc.select("#content-container > .contentbox").html();
+                break;
+            }
+            retry++;
+        }
+
+        browser.close();
+    } else {
+        let urlPart = url.split("----/----");
+        let chapIndex = parseInt(urlPart[1]);
+        let browser = Engine.newBrowser();
+        browser.launchAsync(urlPart[0]);
+
+        var retry = 0;
+        while (retry < 5) {
+            sleep(1000)
+            let doc = browser.html();
+            if (doc.select("#chaptercontainerinner").length > 0) {
+                browser.callJs("document.getElementById('chaptercontainerinner').scrollIntoView();", 100);
+                break;
+            }
+            retry++;
+        }
+
+        retry = 0;
+        while (retry < 5) {
+            sleep(1000)
+            let doc = browser.html();
+            if (doc.select("a.listchapitem").length > 0) {
+                browser.callJs("document.getElementsByClassName('listchapitem')[" + chapIndex + "].click()", 100);
+                break;
+            }
+            retry++;
+        }
+
+        retry = 0;
+        while (retry < 5) {
+            sleep(1000);
+            let doc = browser.html();
+            var text = doc.select("#content-container > .contentbox").text();
+            if (text.indexOf('Đang tải nội dung chương') === -1) {
+                doc.select("i[hd]").remove();
+                content = doc.select("#content-container > .contentbox").html();
+                break;
+            }
+            retry++;
+        }
+        browser.close()
+    }
 
     let charMap = {
         'Ҋ': 'U',
@@ -70,7 +113,7 @@ function execute(url) {
         'ҷ': 'R',
         'Ҹ': 'S',
         'ҹ': 'b'
-    }
+    };
     var newContent = '';
     for (let i = 0; i < content.length; i++) {
         let newChar = charMap[content[i]];
