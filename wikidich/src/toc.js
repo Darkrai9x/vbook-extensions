@@ -2,6 +2,7 @@ function execute(url) {
     url = url.replace("wikidich.com", "wikidth.com");
     url = url.replace("wikidth.com", "wikidth.net");
     url = url.replace("wikidth.org", "wikidth.net");
+    url = url.replace("wikidth.net", "wikisach.com");
     var doc = Http.get(url).html();
 
     var bookId = doc.select("input#bookId").attr("value");
@@ -22,7 +23,7 @@ function execute(url) {
     }
 
     function getChapterInPage(currentPage) {
-        return Http.get("https://wikidth.net/book/index").params({
+        return Http.get("https://wikisach.com/book/index").params({
             bookId: bookId,
             signKey: signKey,
             sign: genSign(signKey, currentPage, size),
@@ -43,7 +44,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: link,
-                host: "https://wikidth.net"
+                host: "https://wikisach.com"
             })
         }
 
