@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("saytruyen.net", "saytruyen.tv");
     let response = fetch(url);
 
     if (response.ok) {
@@ -9,7 +10,7 @@ function execute(url) {
             author: doc.select(".author-content").first().text(),
             description: doc.select(".description-summary").html(),
             detail: doc.select(".post-content .post-content_item").html(),
-            host: "https://saytruyen.net",
+            host: "https://saytruyen.tv",
             ongoing: doc.select(".post-content").text().indexOf("OnGoing") >= 0
         });
     }

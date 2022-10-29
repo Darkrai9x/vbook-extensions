@@ -2,7 +2,7 @@ function execute(key, page) {
     if (!page) {
         page = "1";
     }
-    let response = fetch("https://saytruyen.net/search?s=" + key + "&page=" + page);
+    let response = fetch("https://saytruyen.tv/search?s=" + key + "&page=" + page);
     if (response.ok) {
         let doc = response.html();
         let next = doc.select(".pager").select("li.active + li").text();
@@ -13,7 +13,7 @@ function execute(key, page) {
             link: e.select("h3 a").first().attr("href"),
             cover: e.select("img").first().attr("src"),
             description: e.select(".chapter").first().text(),
-            host: "https://saytruyen.net"
+            host: "https://saytruyen.tv"
         }))
         return Response.success(novelList, next)
     }

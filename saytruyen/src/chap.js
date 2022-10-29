@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("saytruyen.net", "saytruyen.tv");
     let response = fetch(url);
     if (response.ok) {
 

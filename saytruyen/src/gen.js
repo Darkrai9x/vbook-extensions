@@ -15,7 +15,7 @@ function execute(url, page) {
             link: e.select("h3 a").first().attr("href"),
             cover: e.select("img").first().attr("src"),
             description: e.select(".chapter").first().text(),
-            host: "https://saytruyen.net"
+            host: "https://saytruyen.tv"
         }))
         return Response.success(novelList, next)
     }

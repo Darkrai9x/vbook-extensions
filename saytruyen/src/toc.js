@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("saytruyen.net", "saytruyen.tv");
     let response = fetch(url);
 
     if (response.ok) {
@@ -11,7 +12,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://saytruyen.net"
+                host: "https://saytruyen.tv"
             })
         }
 
