@@ -5,7 +5,7 @@ function execute(key, page) {
 
     browser.block([".*?api.truyen.onl/v2/books/search.*?"]);
 
-    browser.launchAsync("https://metruyenchu.com/truyen/?keyword=" + key + "&page=" + page);
+    browser.launchAsync("https://mtccv.com/truyen/?keyword=" + key + "&page=" + page);
     browser.waitUrl(".*?api.truyen.onl/v2/books/search.*?", 10000);
     browser.close()
 
@@ -26,7 +26,7 @@ function execute(key, page) {
                     link: "/truyen/" + book.slug,
                     description: book.author_name,
                     cover: book['poster']['default'],
-                    host: "https://metruyenchu.com"
+                    host: "https://mtccv.com"
                 })
             });
         }

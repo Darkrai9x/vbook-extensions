@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("metruyenchu.com", "mtccv.com");
     let response = fetch(url, {
         headers: {
             'user-agent': UserAgent.android()

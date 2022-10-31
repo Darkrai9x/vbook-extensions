@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("metruyenchu.com", "mtccv.com");
     let response = fetch(url, {
         headers: {
             'user-agent': UserAgent.android()
@@ -10,7 +11,7 @@ function execute(url) {
         return Response.success({
             name: doc.select("h1").text(),
             cover: doc.select(".nh-thumb--150 img").first().attr("src"),
-            host: "https://metruyenchu.com",
+            host: "https://mtccv.com",
             author: doc.select("a[href*=tac-gia]").text(),
             description: doc.select("div#nav-intro .content").html(),
             detail: doc.select("a[href*=tac-gia]").text() + "<br>" + doc.select(".border-danger").text(),

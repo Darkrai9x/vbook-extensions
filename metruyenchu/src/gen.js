@@ -26,7 +26,7 @@ function execute(url, page) {
                     link: "/truyen/" + book.slug,
                     description: book.author_name,
                     cover: book['poster']['default'],
-                    host: "https://metruyenchu.com"
+                    host: "https://mtccv.com"
                 })
             });
         }
