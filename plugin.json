@@ -229,8 +229,8 @@
       "name": "TruyệnHD",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/plugin.zip",
-      "version": 9,
-      "source": "https://truyenhdd.com",
+      "version": 10,
+      "source": "https://truyenhdx.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvkl/icon.png",
       "description": "Đọc truyện trên trang TruyệnHD",
       "tag": "nsfw",
@@ -252,8 +252,8 @@
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 14,
-      "source": "https://mtccv.com",
+      "version": 15,
+      "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ",
       "type": "novel",
@@ -445,17 +445,6 @@
       "description": "Xem ảnh 18+ trên trang hentai-img.com",
       "tag": "nsfw",
       "type": "comic"
-    },
-    {
-      "name": "Sáng Tác Việt",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/plugin.zip",
-      "version": 6,
-      "source": "https://sangtacviet.pro",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/icon.png",
-      "description": "",
-      "type": "novel",
-      "locale": "vi_VN"
     }
   ]
 }
