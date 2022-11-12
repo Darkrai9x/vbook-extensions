@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Mê Truyện Chữ",
     "author": "vBook",
-    "version": 15,
+    "version": 16,
     "source": "https://metruyenchu.com",
-    "regexp": "(www.)?(metruyenchu|mtccv).com/truyen/[a-zA-Z0-9-]+/?$",
+    "regexp": "(www.)?(metruyenchu|mtccv|metruyencv).com/truyen/[a-zA-Z0-9-]+/?$",
     "description": "Đọc truyện trên trang Mê Truyện Chữ",
     "locale": "vi_VN",
     "language": "javascript"

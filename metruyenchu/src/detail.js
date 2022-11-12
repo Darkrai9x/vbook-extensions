@@ -14,7 +14,7 @@ function execute(url) {
             host: "https://metruyenchu.com",
             author: doc.select("a[href*=tac-gia]").text(),
             description: doc.select("div#nav-intro .content").html(),
-            detail: doc.select("a[href*=tac-gia]").text() + "<br>" + doc.select(".border-danger").text(),
+            detail: doc.select("a[href*=tac-gia]").text() + "<br>" + doc.select(".border-danger").text() + "<br>" + doc.select(".nh-section__body > div > ul.list-unstyled").first().text().replace("/n", " "),
             ongoing: doc.select(".border-danger").text().indexOf("Đang ra") >= 0
         });
     }
