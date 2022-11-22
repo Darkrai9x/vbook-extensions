@@ -8,6 +8,7 @@ function execute(url) {
     url = url.replace("nettruyenone.com", "nettruyenco.com");
     url = url.replace("nettruyenco.com", "nettruyenme.com");
     url = url.replace("nettruyenme.com", "nettruyenin.com");
+    url = url.replace("nettruyenin.com", "nettruyenon.com");
     var doc = Http.get(url).html();
     var el = doc.select(".page-chapter img");
     
