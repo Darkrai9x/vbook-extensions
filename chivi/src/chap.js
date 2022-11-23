@@ -1,7 +1,10 @@
 function execute(url) {
-    let total_parts = url.split("?parts=")[1];
-    if(total_parts<1) total_parts = 1;
-    url = url.split("?parts=")[0];
+    url = url.split("/")
+    let total_parts = url.pop();
+    total_parts =  parseInt(total_parts, 10) + 1;
+    url = url.join("/")
+    console.log(url)
+    console.log(total_parts)
     let cvdata = "";
     for(let i = 0; i < total_parts; i++){
         let response_parts = fetch(url+"/"+i);
@@ -12,8 +15,8 @@ function execute(url) {
         }
     }
     if(cvdata){
-        let heading = cvdata.split("<br>")[0];
-        cvdata = cvdata.replace(heading + "<br>","");
+        // let heading = cvdata.split("<br>")[0];
+        // cvdata = cvdata.replace(heading + "<br>","");
         return Response.success(cvdata);
     }
     return null;

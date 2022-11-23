@@ -28,5 +28,10 @@
     "link": "https://raw.githubusercontent.com/Moleys/vbook-ext/main/plugin.json",
     "author": "Moleys",
     "description": "🧐"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/dat-bi/ext-vbook/main/plugin.json",
+    "author": "Đạt Bi",
+    "description": "1509"
   }
 ]
