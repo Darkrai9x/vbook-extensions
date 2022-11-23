@@ -4,7 +4,8 @@ function execute(url) {
         let doc = response.html();
         let coverImg =  doc.select(".cover source").first().attr("srcset")
         if (coverImg.startsWith("/")) {
-            coverImg = "https://chivi.app" + coverImg;
+            // coverImg = "https://chivi.app" + coverImg;
+            coverImg = "https:" + coverImg;
         }
         let author = doc.select("[property=og:novel:author]").attr("content");
         return Response.success({
