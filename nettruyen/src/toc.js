@@ -9,6 +9,7 @@ function execute(url) {
     url = url.replace("nettruyenco.com", "nettruyenme.com");
     url = url.replace("nettruyenme.com", "nettruyenin.com");
     url = url.replace("nettruyenin.com", "nettruyenon.com");
+    url = url.replace("nettruyenon.com", "nettruyentv.com");
     var doc = Http.get(url).html();
 
      var el = doc.select("div.list-chapter li.row .chapter a")
@@ -18,7 +19,7 @@ function execute(url) {
         data.push({
             name: e.text(),
             url: e.attr("href"),
-            host: "https://www.nettruyenon.com"
+            host: "https://www.nettruyentv.com"
         })
     }
 
