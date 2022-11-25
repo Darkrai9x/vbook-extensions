@@ -1,5 +1,5 @@
 function execute(key, page) {
-    const doc = Http.get("https://truyenvn.vip/danh-sach-truyen?q=" + key).html();
+    const doc = Http.get("https://truyenvnhot.com/danh-sach-truyen?q=" + key).html();
 
     const el = doc.select(".comics-grid .entry")
 
@@ -11,7 +11,7 @@ function execute(key, page) {
             link: e.select("h3.name a").first().attr("href"),
             cover: e.select("img").first().attr("data-src"),
             description: e.select("h4 a").text(),
-            host: "https://truyenvn.vip"
+            host: "https://truyenvnhot.com"
         })
     }
 
