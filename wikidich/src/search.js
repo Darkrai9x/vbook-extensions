@@ -1,6 +1,6 @@
 function execute(key, page) {
     if (!page) page = '0';
-    let response = fetch("https://wikisach.info/tim-kiem?q=" + key + "&qs=1" + "&start=" + page + "&vo=1");
+    let response = fetch("https://wikisach.org/tim-kiem?q=" + key + "&qs=1" + "&start=" + page + "&vo=1");
 
     if (response.ok) {
         let doc = response.html();
@@ -13,7 +13,7 @@ function execute(key, page) {
                 link: e.select(".info-col > a").first().attr("href"),
                 cover: e.select(".cover-col img").attr("src"),
                 description: e.select(".book-author").text(),
-                host: "https://wikisach.info"
+                host: "https://wikisach.org"
             });
         });
 

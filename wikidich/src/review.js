@@ -14,11 +14,11 @@ function execute(url, page) {
         if (next) next = next[1];
 
         const data = [];
-        doc.select(".book-list > .book-item").forEach(e => {
+        doc.select("#commentList .book-item").forEach(e => {
             data.push({
                 name: e.select(".book-title").text(),
-                link: e.select(".info-col > a").first().attr("href"),
-                cover: e.select(".cover-col img").attr("src"),
+                link: e.select("a.book-cover").first().attr("href"),
+                cover: e.select(".book-cover img").attr("src"),
                 description: e.select(".book-author").text(),
                 host: "https://wikisach.org"
             });

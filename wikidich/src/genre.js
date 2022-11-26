@@ -1,5 +1,5 @@
 function execute() {
-    let response = fetch("https://wikisach.info/");
+    let response = fetch("https://wikisach.org/");
 
     if (response.ok) {
         let doc = response.html();
@@ -7,7 +7,7 @@ function execute() {
         doc.select("div.tag-tabs .tag-tab a").forEach(e => {
             data.push({
                 title: e.text(),
-                input: 'https://wikisach.info' + e.attr('href'),
+                input: 'https://wikisach.org' + e.attr('href'),
                 script: 'gen.js'
             });
         });
