@@ -2,10 +2,10 @@
   "metadata": {
     "name": "Wiki Dịch",
     "author": "vBook",
-    "version": 12,
+    "version": 13,
     "source": "https://wikisach.org",
     "regexp": "(www.)?(wikidich.com|wikidth.com|wikidth.net|wikidth.org|wikinam.net|wikinu.net|wikisach.com|wikidichz.net|wikisach.info|wikisach.org)/truyen/[^/]+/?$",
-    "description": "Đọc truyện trên trang Wiki Dịch",
+    "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
     "locale": "vi_VN",
     "type": "novel",
     "language": "javascript"
