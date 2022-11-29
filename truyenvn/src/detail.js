@@ -2,6 +2,7 @@ function execute(url) {
     url = url.replace("truyenvn.com", "truyenvn.tv");
     url = url.replace("truyenvn.tv", "truyenvn.vip");
     url = url.replace("truyenvn.vip", "truyenvnhot.com");
+    url = url.replace("truyenvnhot.com", "truyenvnpro.com");
     const doc = Http.get(url).html();
 
     return Response.success({

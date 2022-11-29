@@ -1,17 +1,19 @@
 function execute(key, page) {
-    const doc = Http.get("https://truyenvnhot.com/danh-sach-truyen?q=" + key).html();
-
-    const el = doc.select(".comics-grid .entry")
+    var browser = Engine.newBrowser();
+    browser.setUserAgent(UserAgent.android());
+    var doc = browser.launch("https://truyenvnpro.com/wp-admin/admin-ajax.php?action=resultautosearch&key=" + key, 3000);
+    browser.close()
+    const el = doc.select(".align-items-center")
 
     const data = [];
     for (var i = 0; i < el.size(); i++) {
         var e = el.get(i);
         data.push({
-            name: e.select("h3.name a").first().text(),
-            link: e.select("h3.name a").first().attr("href"),
-            cover: e.select("img").first().attr("data-src"),
-            description: e.select("h4 a").text(),
-            host: "https://truyenvnhot.com"
+            name: e.text(),
+            link: e.attr("href"),
+            cover: e.select("img").attr("src"),
+            description: null,
+            host: "https://truyenvnpro.com"
         })
     }
 
