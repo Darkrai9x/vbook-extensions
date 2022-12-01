@@ -1,5 +1,6 @@
 function execute(url) {
     url = url.replace("koanchay.net", "koanchay.com");
+    url = url.replace("koanchay.com", "koanchay.info");
     var doc = Http.get(url).html();
 
     var bookId = doc.select("input#bookId").attr("value");
@@ -20,7 +21,7 @@ function execute(url) {
     }
 
     function getChapterInPage(currentPage) {
-        return Http.get("https://koanchay.com/book/index").params({
+        return Http.get("https://koanchay.info/book/index").params({
             bookId: bookId,
             signKey: signKey,
             sign: genSign(signKey, currentPage, size),
@@ -41,7 +42,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: link,
-                host: "https://koanchay.com"
+                host: "https://koanchay.info"
             })
         }
 
