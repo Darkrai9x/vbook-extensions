@@ -21,7 +21,7 @@ function execute(url, page) {
                 link: des.select("a").first().attr("href"),
                 cover: e.select(isMobile ? ".box-cover-2 img" : ".box-cover img").first().attr("data-src"),
                 description: des.select("p").first().text().replace(des.select("a").first().text() + " - ", ""),
-                host: "https://hentaivn.la"
+                host: "https://hentaivn.in"
             })
         }
 
