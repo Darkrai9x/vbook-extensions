@@ -11,7 +11,7 @@ function execute(url) {
         author: doc.select(".author a").first().text(),
         description: doc.select(".comic-description").html(),
         detail: doc.select(".meta-data").html(),
-        host: "https://truyenvnhot.com",
+        host: "https://truyenvnpro.com",
         ongoing: doc.select(".status").text().indexOf("Đang Cập Nhật") >= 0
     });
 }

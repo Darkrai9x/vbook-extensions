@@ -1,6 +1,6 @@
 function execute(key, page) {
     if (!page) page = '0';
-    const doc = Http.get("https://koanchay.com/tim-kiem?q=" + key + "&qs=1" + "&start=" + page + "&vo=1").html();
+    const doc = Http.get("https://koanchay.info/tim-kiem?q=" + key + "&qs=1" + "&start=" + page + "&vo=1").html();
 
     var next = doc.select(".pagination").select("li.active + li").select("a").attr("href").match(/start=(\d+)/)
     if (next) next = next[1]
@@ -15,7 +15,7 @@ function execute(key, page) {
             link: e.select(".info-col > a").first().attr("href"),
             cover: e.select(".cover-col img").attr("src"),
             description: e.select(".book-author").text(),
-            host: "https://koanchay.com"
+            host: "https://koanchay.info"
         })
     }
 

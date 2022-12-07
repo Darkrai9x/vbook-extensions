@@ -3,9 +3,10 @@ function execute(url) {
     url = url.replace("hentaivn.tv", "hentaivn.moe");
     url = url.replace("hentaivn.moe", "hentaivn.fun");
     url = url.replace("hentaivn.fun", "hentaivn.la");
+    url = url.replace("hentaivn.la", "hentaivn.in");
     let response = fetch(url, {
         headers: {
-            "referer": "https://hentaivn.la"
+            "referer": "https://hentaivn.in"
         }
     });
 

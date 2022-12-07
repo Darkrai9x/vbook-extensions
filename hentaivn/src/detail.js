@@ -3,10 +3,10 @@ function execute(url) {
     url = url.replace("hentaivn.tv", "hentaivn.moe");
     url = url.replace("hentaivn.moe", "hentaivn.fun");
     url = url.replace("hentaivn.fun", "hentaivn.la");
-
+    url = url.replace("hentaivn.la", "hentaivn.in");
     let response = fetch(url, {
         headers: {
-            "referer": "https://hentaivn.la"
+            "referer": "https://hentaivn.in"
         }
     });
     if (response.ok) {
@@ -21,7 +21,7 @@ function execute(url) {
                 cover: doc.select(".page-ava img").first().attr("src"),
                 author: doc.select("a[href~=tacgia]").first().text(),
                 description: info.first().html(),
-                host: "https://hentaivn.la",
+                host: "https://hentaivn.in",
                 ongoing: info.html().indexOf("Đã hoàn thành") === -1,
                 nsfw: true
             });
@@ -33,7 +33,7 @@ function execute(url) {
                 cover: doc.select(".content-images-1 img").first().attr("src"),
                 author: fullInfo.select("a[href~=tacgia]").text(),
                 description: fullInfo.html(),
-                host: "https://hentaivn.la",
+                host: "https://hentaivn.in",
                 ongoing: fullInfo.html().indexOf("Đã hoàn thành") === -1,
                 nsfw: true
             });
