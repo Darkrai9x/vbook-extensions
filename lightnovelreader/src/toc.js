@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("lightnovelreader.org", "lightnovelreader.me");
     let response = fetch(url);
 
     if (response.ok) {
@@ -11,7 +12,7 @@ function execute(url) {
             chapList.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://lightnovelreader.org"
+                host: "https://lightnovelreader.me"
             });
         }
         return Response.success(chapList);

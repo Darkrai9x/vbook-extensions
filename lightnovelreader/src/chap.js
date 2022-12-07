@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("lightnovelreader.org", "lightnovelreader.me");
     let response = fetch(url);
 
     if (response.ok) {

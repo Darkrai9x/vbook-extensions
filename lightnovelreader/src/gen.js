@@ -15,7 +15,7 @@ function execute(url, page) {
                 link: e.select(".category-name a").first().attr("href"),
                 cover: e.select(".category-img img").first().attr("src"),
                 description: e.select(".category-feature-content-text span").text(),
-                host: "https://lightnovelreader.org"
+                host: "https://lightnovelreader.me"
             })
         });
 
