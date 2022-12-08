@@ -1,4 +1,5 @@
 function execute(url) {
+    url = url.replace("lightnovelreader.org", "lightnovelreader.me");
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -10,7 +11,7 @@ function execute(url) {
             description: doc.select(".empty-box").last().html(),
             detail: doc.select(".novels-detail-right").html(),
             ongoing: doc.select(".novels-detail-right li").html().indexOf("Ongoing") >= -1,
-            host: "https://lightnovelreader.org"
+            host: "https://lightnovelreader.me"
         });
     }
     return null;

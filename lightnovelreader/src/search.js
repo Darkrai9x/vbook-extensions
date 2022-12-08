@@ -1,6 +1,6 @@
 function execute(key, page) {
 
-    let response = fetch("https://lightnovelreader.org/search/autocomplete", {
+    let response = fetch("https://lightnovelreader.me/search/autocomplete", {
         method: "GET",
         queries: {
             dataType: "json",
@@ -17,7 +17,7 @@ function execute(key, page) {
                 link: e.link,
                 cover: e.image,
                 description: e.overview,
-                host: "https://lightnovelreader.org"
+                host: "https://lightnovelreader.me"
             })
         });
 
