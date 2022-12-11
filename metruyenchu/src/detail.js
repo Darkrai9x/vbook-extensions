@@ -1,5 +1,5 @@
 function execute(url) {
-    url = url.replace("mtccv.com", "metruyenchu.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img,"https://metruyencv.com")
     let response = fetch(url, {
         headers: {
             'user-agent': UserAgent.android()
@@ -11,7 +11,7 @@ function execute(url) {
         return Response.success({
             name: doc.select("h1").text(),
             cover: doc.select(".nh-thumb--150 img").first().attr("src"),
-            host: "https://metruyenchu.com",
+            host: "https://metruyencv.com",
             author: doc.select("a[href*=tac-gia]").text(),
             description: doc.select("div#nav-intro .content").html(),
             detail: doc.select("a[href*=tac-gia]").text() + "<br>" + doc.select(".border-danger").text() + "<br>" + doc.select(".nh-section__body > div > ul.list-unstyled").first().text().replace("/n", " "),
