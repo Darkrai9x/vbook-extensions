@@ -18,7 +18,7 @@ function execute(url, page) {
                 link: e.select(".name a").first().attr("href"),
                 cover: e.select("img").first().attr("data-src"),
                 description: e.select("h4 a").text(),
-                host: "https://truyenvnpro.com"
+                host: "https://truyenvnhot.com"
             })
         }
     return Response.success(data, next)

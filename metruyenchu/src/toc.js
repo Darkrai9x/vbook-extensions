@@ -1,5 +1,5 @@
 function execute(url) {
-    url = url.replace("mtccv.com", "metruyenchu.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img,"https://metruyencv.com")
     var browser = Engine.newBrowser();
     browser.setUserAgent(UserAgent.android());
 

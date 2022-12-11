@@ -1,7 +1,7 @@
 function execute(key, page) {
     var browser = Engine.newBrowser();
     browser.setUserAgent(UserAgent.android());
-    var doc = browser.launch("https://truyenvnpro.com/wp-admin/admin-ajax.php?action=resultautosearch&key=" + key, 3000);
+    var doc = browser.launch("https://truyenvnhot.com/wp-admin/admin-ajax.php?action=resultautosearch&key=" + key, 3000);
     browser.close()
     const el = doc.select(".align-items-center")
 
@@ -13,7 +13,7 @@ function execute(key, page) {
             link: e.attr("href"),
             cover: e.select("img").attr("src"),
             description: null,
-            host: "https://truyenvnpro.com"
+            host: "https://truyenvnhot.com"
         })
     }
 

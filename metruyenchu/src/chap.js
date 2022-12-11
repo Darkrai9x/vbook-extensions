@@ -1,14 +1,10 @@
 function execute(url) {
-    url = url.replace("mtccv.com", "metruyenchu.com");
-    let response = fetch(url, {
-        headers: {
-            'user-agent': UserAgent.android()
-        }
-    });
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img,"https://metruyencv.com")
+    let response = fetch(url);
 
     if (response.ok) {
         let doc = response.html();
-        var content = doc.select("#js-read__content").first();
+        var content = doc.select("#article").first();
         if (content.text().length < 2000) {
             return Response.error(url);
         }
@@ -17,14 +13,14 @@ function execute(url) {
         doc.select("small.text-muted").remove();
         doc.select(".text-center").remove();
         var html = content.html();
-        var trash = html.match(new RegExp(/<br>[^>]*<a href=.*?\/truyen\/.*?$/g));
+        var trash = html.match(new RegExp(/====================.*?<a href=.*?\/truyen\/.*?$/g));
         if (trash) {
             trash = trash[trash.length - 1];
+            console.log(trash)
             if (trash.length < 2000) {
                 html = html.replace(trash, "");
             }
         }
-        html = html.replace(/^Chương \d+.{1,100}<br>/g, "");
         return Response.success(html);
     }
     return null;
