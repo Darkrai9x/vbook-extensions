@@ -22,8 +22,8 @@ function execute(url) {
                 nsfw: true
             });
         } else {
-            let nameInfo = fetch("https://hentaivn.la/" + doc.html().match(/(list-info-ten-mobile.php.*?)\"/)[1]).html();
-            let fullInfo = fetch("https://hentaivn.la/" + doc.html().match(/(list-info-all-mobile.php.*?)\"/)[1]).html();
+            let nameInfo = fetch("https://hentaivn.life/" + doc.html().match(/(list-info-ten-mobile.php.*?)\"/)[1]).html();
+            let fullInfo = fetch("https://hentaivn.life/" + doc.html().match(/(list-info-all-mobile.php.*?)\"/)[1]).html();
             return Response.success({
                 name: nameInfo.select("h3").first().text(),
                 cover: doc.select(".content-images-1 img").first().attr("src"),
