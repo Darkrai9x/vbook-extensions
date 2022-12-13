@@ -18,7 +18,7 @@ function execute(url, page) {
             link: e.select("h3 a").first().attr("href"),
             cover: coverImg,
             description: e.select(".chapter a").first().text(),
-            host: "https://www.nettruyenmin.com"
+            host: "https://www.nettruyenking.com"
         })
     }
 
