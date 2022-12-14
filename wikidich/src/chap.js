@@ -5,6 +5,7 @@ function execute(url) {
     url = url.replace("wikidth.net", "wikisach.com");
     url = url.replace("wikisach.com", "wikisach.info");
     url = url.replace("wikisach.info", "wikisach.org");
+    url = url.replace("wikisach.org", "wikisach.net");
 
     let response = fetch(url);
     if (response.ok) {

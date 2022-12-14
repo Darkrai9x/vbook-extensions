@@ -20,7 +20,7 @@ function execute(url, page) {
                 link: e.select(".info-col > a").first().attr("href"),
                 cover: e.select(".cover-col img").attr("src"),
                 description: e.select(".book-author").text(),
-                host: "https://wikisach.org"
+                host: "https://wikisach.net"
             });
         });
 
