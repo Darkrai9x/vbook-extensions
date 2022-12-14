@@ -12,7 +12,7 @@ function execute(url) {
             author: doc.select(".author-content").first().text(),
             description: doc.select(".description-summary").html(),
             detail: doc.select(".post-content .post-content_item").html(),
-            host: "https://saytruyen.tv",
+            host: "https://saytruyenvip.com",
             ongoing: doc.select(".post-content").text().indexOf("OnGoing") >= 0
         });
     }
