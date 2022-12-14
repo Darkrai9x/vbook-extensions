@@ -4,7 +4,7 @@
     "author": "vBook",
     "version": 14,
     "source": "https://wikisach.net",
-    "regexp": "(www.)?(wikidich|wikidth|wikidth|wikidth|wikinam|wikinu|wikisach|wikidichz|wikisach|wikisach).(net|com|info|org)/truyen/[^/]+/?$",
+    "regexp": "(www.)?(wikidich|wikidth|wikinam|wikinu|wikidichz|wikidich3|wikisach).(net|com|info|org)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
     "locale": "vi_VN",
     "type": "novel",
