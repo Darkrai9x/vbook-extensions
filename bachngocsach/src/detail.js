@@ -1,4 +1,6 @@
 function execute(url) {
+    url = url.replace("bachngocsach.com", "truyenbns.com");
+
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();

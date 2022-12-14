@@ -14,7 +14,7 @@ function execute(url, page) {
                 link: e.select("a.term-truyen-a").attr("href"),
                 cover: e.select(".term-anhbia-a > img").attr("src"),
                 description: e.select(".term-tacgia").text(),
-                host: "https://bachngocsach.com"
+                host: "https://truyenbns.com"
             });
         });
 
