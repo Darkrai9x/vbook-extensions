@@ -17,7 +17,7 @@ function execute(url, page) {
                 link: e.select(".book_name a").first().attr("href"),
                 description: e.select(".last_chapter").text(),
                 cover: cover,
-                host: "http://truyenqqpro.com"
+                host: "https://truyenqqvip.com"
             });
         })
 

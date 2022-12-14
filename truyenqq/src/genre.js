@@ -1,52 +1,19 @@
+load('bypass.js');
+
 function execute() {
-    return Response.success([
-        {title: "Action", input: "http://truyenqqpro.com/the-loai/action-26.html", script: "gen.js"},
-        {title: "Adventure", input: "http://truyenqqpro.com/the-loai/adventure-27.html", script: "gen.js"},
-        {title: "Anime", input: "http://truyenqqpro.com/the-loai/anime-62.html", script: "gen.js"},
-        {title: "Chuyển Sinh", input: "http://truyenqqpro.com/the-loai/chuyen-sinh-91.html", script: "gen.js"},
-        {title: "Cổ Đại", input: "http://truyenqqpro.com/the-loai/co-dai-90.html", script: "gen.js"},
-        {title: "Comedy", input: "http://truyenqqpro.com/the-loai/comedy-28.html", script: "gen.js"},
-        {title: "Comic", input: "http://truyenqqpro.com/the-loai/comic-60.html", script: "gen.js"},
-        {title: "Demons", input: "http://truyenqqpro.com/the-loai/demons-99.html", script: "gen.js"},
-        {title: "Detective", input: "http://truyenqqpro.com/the-loai/detective-100.html", script: "gen.js"},
-        {title: "Doujinshi", input: "http://truyenqqpro.com/the-loai/doujinshi-96.html", script: "gen.js"},
-        {title: "Drama", input: "http://truyenqqpro.com/the-loai/drama-29.html", script: "gen.js"},
-        {title: "Fantasy", input: "http://truyenqqpro.com/the-loai/fantasy-30.html", script: "gen.js"},
-        {title: "Gender Bender", input: "http://truyenqqpro.com/the-loai/gender-bender-45.html", script: "gen.js"},
-        {title: "Harem", input: "http://truyenqqpro.com/the-loai/harem-47.html", script: "gen.js"},
-        {title: "Historical", input: "http://truyenqqpro.com/the-loai/historical-51.html", script: "gen.js"},
-        {title: "Horror", input: "http://truyenqqpro.com/the-loai/horror-44.html", script: "gen.js"},
-        {title: "Huyền Huyễn", input: "http://truyenqqpro.com/the-loai/huyen-huyen-468.html", script: "gen.js"},
-        {title: "Isekai", input: "http://truyenqqpro.com/the-loai/isekai-85.html", script: "gen.js"},
-        {title: "Josei", input: "http://truyenqqpro.com/the-loai/josei-54.html", script: "gen.js"},
-        {title: "Mafia", input: "http://truyenqqpro.com/the-loai/mafia-69.html", script: "gen.js"},
-        {title: "Magic", input: "http://truyenqqpro.com/the-loai/magic-58.html", script: "gen.js"},
-        {title: "Manhua", input: "http://truyenqqpro.com/the-loai/manhua-35.html", script: "gen.js"},
-        {title: "Manhwa", input: "http://truyenqqpro.com/the-loai/manhwa-49.html", script: "gen.js"},
-        {title: "Martial Arts", input: "http://truyenqqpro.com/the-loai/martial-arts-41.html", script: "gen.js"},
-        {title: "Mature", input: "http://truyenqqpro.com/the-loai/mature-48.html", script: "gen.js"},
-        {title: "Military", input: "http://truyenqqpro.com/the-loai/military-101.html", script: "gen.js"},
-        {title: "Mystery", input: "http://truyenqqpro.com/the-loai/mystery-39.html", script: "gen.js"},
-        {title: "Ngôn Tình", input: "http://truyenqqpro.com/the-loai/ngon-tinh-87.html", script: "gen.js"},
-        {title: "One shot", input: "http://truyenqqpro.com/the-loai/one-shot-95.html", script: "gen.js"},
-        {title: "Psychological", input: "http://truyenqqpro.com/the-loai/psychological-40.html", script: "gen.js"},
-        {title: "Romance", input: "http://truyenqqpro.com/the-loai/romance-36.html", script: "gen.js"},
-        {title: "School Life", input: "http://truyenqqpro.com/the-loai/school-life-37.html", script: "gen.js"},
-        {title: "Sci-fi", input: "http://truyenqqpro.com/the-loai/sci-fi-43.html", script: "gen.js"},
-        {title: "Seinen", input: "http://truyenqqpro.com/the-loai/seinen-42.html", script: "gen.js"},
-        {title: "Shoujo", input: "http://truyenqqpro.com/the-loai/shoujo-38.html", script: "gen.js"},
-        {title: "Shoujo Ai", input: "http://truyenqqpro.com/the-loai/shoujo-ai-98.html", script: "gen.js"},
-        {title: "Shounen", input: "http://truyenqqpro.com/the-loai/shounen-31.html", script: "gen.js"},
-        {title: "Shounen Ai", input: "http://truyenqqpro.com/the-loai/shounen-ai-86.html", script: "gen.js"},
-        {title: "Slice of life", input: "http://truyenqqpro.com/the-loai/slice-of-life-46.html", script: "gen.js"},
-        {title: "Smut", input: "http://truyenqqpro.com/the-loai/smut-97.html", script: "gen.js"},
-        {title: "Sports", input: "http://truyenqqpro.com/the-loai/sports-57.html", script: "gen.js"},
-        {title: "Supernatural", input: "http://truyenqqpro.com/the-loai/supernatural-32.html", script: "gen.js"},
-        {title: "Tragedy", input: "http://truyenqqpro.com/the-loai/tragedy-52.html", script: "gen.js"},
-        {title: "Trọng Sinh", input: "http://truyenqqpro.com/the-loai/trong-sinh-82.html", script: "gen.js"},
-        {title: "Truyện Màu", input: "http://truyenqqpro.com/the-loai/truyen-mau-92.html", script: "gen.js"},
-        {title: "Xuyên Không", input: "http://truyenqqpro.com/the-loai/xuyen-khong-88.html", script: "gen.js"},
-        {title: "Yaoi", input: "http://truyenqqpro.com/the-loai/yaoi-70.html", script: "gen.js"},
-        {title: "Yuri", input: "http://truyenqqpro.com/the-loai/yuri-75.html", script: "gen.js"}
-    ]);
+    let doc = bypass("https://truyenqqvip.com/index.html", fetch("https://truyenqqvip.com/index.html").html());
+    if (doc) {
+        let genres = [];
+
+        doc.select(".book_tags_content").first().select("a").forEach(e => {
+            genres.push({
+                title: e.text(),
+                input: e.attr("href"),
+                script: "gen.js"
+            })
+        });
+        return Response.success(genres);
+    }
+
+    return null;
 }
