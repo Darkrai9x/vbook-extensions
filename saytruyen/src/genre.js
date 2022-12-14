@@ -1,5 +1,5 @@
 function execute() {
-    let response = fetch("https://saytruyen.tv/genre");
+    let response = fetch("https://saytruyenvip.com/genre");
     if (response.ok) {
         let doc = response.html();
         doc.select(".number-story").remove();
