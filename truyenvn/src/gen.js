@@ -1,27 +1,30 @@
 function execute(url, page) {
     if (!page) page = 1
-    var browser = Engine.newBrowser();
-    browser.setUserAgent(UserAgent.android());
-    var doc = browser.launch(url + "/page/" + page, 3000);
-    browser.close()
-    if(doc){
-    var next = doc.select(".z-pagination").select(".next").select("a").attr("href").match(/page\/(\d+)/)
-    if (next) next = next[1]
+    let browser = Engine.newBrowser();
+    browser.launchAsync(url + "/page/" + page);
+    let retry = 0;
+    let doc;
+    while (retry < 5) {
+        sleep(1000);
+        doc = browser.html();
+        if (doc.select(".comics-grid .entry").size() > 0) break;
+    }
+    browser.close();
+    if (doc) {
+        let next = doc.select(".z-pagination").select(".next").select("a").attr("href").match(/page\/(\d+)/);
+        if (next) next = next[1];
 
-    const el = doc.select(".comics-grid .entry")
-
-    const data = [];
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
+        const data = [];
+        doc.select(".comics-grid .entry").forEach(e => {
             data.push({
                 name: e.select(".name a").first().text(),
                 link: e.select(".name a").first().attr("href"),
                 cover: e.select("img").first().attr("data-src"),
                 description: e.select("h4 a").text(),
-                host: "https://truyenvnhot.com"
-            })
-        }
-    return Response.success(data, next)
+                host: "https://truyenvnhot.net"
+            });
+        });
+        return Response.success(data, next);
     }
     return null
 }

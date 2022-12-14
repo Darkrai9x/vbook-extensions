@@ -1,21 +1,28 @@
 function execute(key, page) {
-    var browser = Engine.newBrowser();
-    browser.setUserAgent(UserAgent.android());
-    var doc = browser.launch("https://truyenvnhot.com/wp-admin/admin-ajax.php?action=resultautosearch&key=" + key, 3000);
-    browser.close()
-    const el = doc.select(".align-items-center")
+    let browser = Engine.newBrowser();
+    browser.launchAsync("https://truyenvnhot.net/danh-sach-truyen?q="  + key);
+    let retry = 0;
+    let doc;
+    while (retry < 5) {
+        sleep(1000);
+        doc = browser.html();
+        if (doc.select(".comics-grid .entry").size() > 0) break;
+    }
+    browser.close();
+    if (doc) {
+        const data = [];
+        doc.select(".comics-grid .entry").forEach(e => {
+            data.push({
+                name: e.select("h3.name a").first().text(),
+                link: e.select("h3.name a").first().attr("href"),
+                cover: e.select("img").first().attr("data-src"),
+                description: e.select("h4 a").text(),
+                host: "https://truyenvnhot.net"
+            });
+        });
 
-    const data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
-        data.push({
-            name: e.text(),
-            link: e.attr("href"),
-            cover: e.select("img").attr("src"),
-            description: null,
-            host: "https://truyenvnhot.com"
-        })
+        return Response.success(data);
     }
 
-    return Response.success(data)
+    return null;
 }
