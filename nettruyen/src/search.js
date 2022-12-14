@@ -1,26 +1,32 @@
 function execute(key, page) {
     if (!page) page = '1';
-    const doc = Http.get("https://www.nettruyenmin.com/tim-truyen").params({"keyword": key, "page": page}).html();
 
-    var next = doc.select(".pagination").select("li.active + li").text()
+    let response = fetch("https://www.nettruyenking.com/tim-truyen", {
+        method: "GET",
+        queries: {"keyword": key, "page": page}
+    });
 
-    const el = doc.select(".items .item")
+    if (response.ok) {
+        let doc = response.html();
+        let next = doc.select(".pagination").select("li.active + li").text();
 
-    const data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
-        var coverImg = e.select(".image img").first().attr("data-original")
-        if (coverImg.startsWith("//")) {
-            coverImg = "https:" + coverImg
-        }
-        data.push({
-            name: e.select("h3 a").first().text(),
-            link: e.select("h3 a").first().attr("href"),
-            cover: coverImg,
-            description: e.select(".chapter a").first().text(),
-            host: "https://www.nettruyenmin.com"
-        })
+        let data = [];
+        doc.select(".items .item").forEach(e => {
+            let coverImg = e.select(".image img").first().attr("data-original");
+            if (coverImg.startsWith("//")) {
+                coverImg = "https:" + coverImg;
+            }
+            data.push({
+                name: e.select("h3 a").first().text(),
+                link: e.select("h3 a").first().attr("href"),
+                cover: coverImg,
+                description: e.select(".chapter a").first().text(),
+                host: "https://www.nettruyenking.com"
+            });
+        });
+
+        return Response.success(data, next);
     }
 
-    return Response.success(data, next)
+    return null;
 }

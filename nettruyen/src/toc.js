@@ -11,18 +11,23 @@ function execute(url) {
     url = url.replace("nettruyenin.com", "nettruyenon.com");
     url = url.replace("nettruyenon.com", "nettruyentv.com");
     url = url.replace("nettruyentv.com", "nettruyenmin.com");
-    var doc = Http.get(url).html();
+    url = url.replace("nettruyenmin.com", "nettruyenking.com");
+    let response = fetch(url);
 
-     var el = doc.select("div.list-chapter li.row .chapter a")
-    const data = [];
-    for (var i = el.size() - 1; i >= 0 ; i--) {
-        var e = el.get(i);
-        data.push({
-            name: e.text(),
-            url: e.attr("href"),
-            host: "https://www.nettruyenmin.com"
-        })
+    if (response.ok) {
+        let doc = response.html();
+        let el = doc.select("div.list-chapter li.row .chapter a");
+        const data = [];
+        for (let i = el.size() - 1; i >= 0; i--) {
+            let e = el.get(i);
+            data.push({
+                name: e.text(),
+                url: e.attr("href"),
+                host: "https://www.nettruyenking.com"
+            })
+        }
+        return Response.success(data);
     }
 
-    return Response.success(data);
+    return null;
 }

@@ -11,23 +11,25 @@ function execute(url) {
     url = url.replace("nettruyenin.com", "nettruyenon.com");
     url = url.replace("nettruyenon.com", "nettruyentv.com");
     url = url.replace("nettruyentv.com", "nettruyenmin.com");
-    var doc = Http.get(url).html();
-    var el = doc.select(".page-chapter img");
-    
-    var data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
-        var img = e.attr("data-original");
-        if (!img) {
-            img = e.attr("src");
-        }
+    url = url.replace("nettruyenmin.com", "nettruyenking.com");
 
-        if (img) {
-            if (img.startsWith("//")) {
-                img = "http:" + img;
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
+        let data = [];
+        doc.select(".page-chapter img").forEach(e => {
+            let img = e.attr("data-original");
+            if (!img) {
+                img = e.attr("src");
             }
-            data.push(img);
-        }
+            if (img) {
+                if (img.startsWith("//")) {
+                    img = "http:" + img;
+                }
+                data.push(img);
+            }
+        });
+        return Response.success(data);
     }
-    return Response.success(data);
+    return null;
 }
