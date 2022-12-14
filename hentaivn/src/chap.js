@@ -1,8 +1,8 @@
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img,"https://hentaivn.life")
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, "https://hentaivn.de")
     let response = fetch(url, {
         headers: {
-            "referer": "https://hentaivn.life"
+            "referer": "https://hentaivn.de"
         }
     });
 

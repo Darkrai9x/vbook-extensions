@@ -316,10 +316,10 @@
       "name": "HentaiVN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/plugin.zip",
-      "version": 12,
+      "version": 13,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "https://hentaivn.in",
+      "source": "https://hentaivn.de",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/icon.png",
       "description": "Đọc truyện trên trang HentaiVN",
       "tag": "nsfw"
