@@ -7,6 +7,7 @@ function execute(url, page) {
     while (retry < 5) {
         sleep(1000);
         doc = browser.html();
+        retry++;
         if (doc.select(".comics-grid .entry").size() > 0) break;
     }
     browser.close();
