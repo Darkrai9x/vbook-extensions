@@ -4,7 +4,7 @@ function execute(url) {
     url = url.replace("wikidth.org", "wikidth.net");
     url = url.replace("wikidth.net", "wikisach.com");
     url = url.replace("wikisach.com", "wikisach.info");
-    url = url.replace("wikisach.info", "wikisach.org");
+    url = url.replace("wikisach.info", "wikisach.net");
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -24,7 +24,7 @@ function execute(url) {
             author: author,
             description: doc.select("div.book-desc-detail").html() +"<br>🔶🔶🔶🔶🔶<br> REVIEW <br>🔶🔶🔶🔶🔶<br>" +review,
             detail: element.html(),
-            host: "https://wikisach.org",
+            host: "https://wikisach.net",
             ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0
         });
     }
@@ -32,7 +32,7 @@ function execute(url) {
 }
 function getReview (reviewUrl){
         var reviewAll ="";
-        let doc = Http.get("https://wikisach.org" + reviewUrl).html();
+        let doc = Http.get("https://wikisach.net" + reviewUrl).html();
              var el = doc.select(".comment-content-msg")
         for (var i = 0; i < el.size(); i++) {
             var e = el.get(i).text();
