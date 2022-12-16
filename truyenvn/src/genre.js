@@ -1,5 +1,6 @@
+load('config.js')
 function execute() {
-    let response = fetch("https://truyenvnhot.net/the-loai-truyen");
+    let response = fetch( BASE_URL + "/the-loai-truyen");
     if (response.ok) {
         let doc = response.html();
         let genres = [];

@@ -1,5 +1,6 @@
+load('config.js')
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, "https://truyenvnhot.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
     let response = fetch(url);
     if (response.ok) {
@@ -12,7 +13,7 @@ function execute(url) {
             data.push({
                 name: e.select("span").first().text(),
                 url: e.attr("href"),
-                host: "https://truyenvnhot.net"
+                host: BASE_URL
             });
         }
 
