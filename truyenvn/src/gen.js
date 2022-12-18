@@ -1,8 +1,7 @@
-load('config.js')
 function execute(url, page) {
     if (!page) page = 1
     let browser = Engine.newBrowser();
-    browser.launchAsync( BASE_URL + url + "/page/" + page);
+    browser.launchAsync(url + "/page/" + page);
     let retry = 0;
     let doc;
     while (retry < 5) {
@@ -23,7 +22,7 @@ function execute(url, page) {
                 link: e.select(".name a").first().attr("href"),
                 cover: e.select("img").first().attr("data-src"),
                 description: e.select("h4 a").text(),
-                host: BASE_URL
+                host: "https://truyenvnhot.net"
             });
         });
         return Response.success(data, next);
