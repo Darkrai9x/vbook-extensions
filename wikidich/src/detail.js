@@ -1,6 +1,11 @@
-load('config.js');
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+    url = url.replace("wikidich.com", "wikidth.com");
+    url = url.replace("wikidth.com", "wikidth.net");
+    url = url.replace("wikidth.org", "wikidth.net");
+    url = url.replace("wikidth.net", "wikisach.com");
+    url = url.replace("wikisach.com", "wikisach.info");
+    url = url.replace("wikisach.info", "wikisach.org");
+    url = url.replace("wikisach.org", "wikisach.net");
 
     let response = fetch(url);
     if (response.ok) {
@@ -21,7 +26,7 @@ function execute(url) {
             author: author,
             description: doc.select("div.book-desc-detail").html() +"<br>🔶🔶🔶🔶🔶<br> REVIEW <br>🔶🔶🔶🔶🔶<br>" +review,
             detail: element.html(),
-            host: BASE_URL,
+            host: "https://wikisach.net",
             ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0
         });
     }
@@ -29,7 +34,7 @@ function execute(url) {
 }
 function getReview (reviewUrl){
         var reviewAll ="";
-        let doc = Http.get(BASE_URL + reviewUrl).html();
+        let doc = Http.get("https://wikisach.net" + reviewUrl).html();
              var el = doc.select(".comment-content-msg")
         for (var i = 0; i < el.size(); i++) {
             var e = el.get(i).text();

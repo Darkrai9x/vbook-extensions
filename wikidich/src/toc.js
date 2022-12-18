@@ -1,6 +1,11 @@
-load('config.js');
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+    url = url.replace("wikidich.com", "wikidth.com");
+    url = url.replace("wikidth.com", "wikidth.net");
+    url = url.replace("wikidth.org", "wikidth.net");
+    url = url.replace("wikidth.net", "wikisach.com");
+    url = url.replace("wikisach.com", "wikisach.info");
+    url = url.replace("wikisach.info", "wikisach.org");
+    url = url.replace("wikisach.org", "wikisach.net");
 
     var doc = Http.get(url).html();
 
@@ -22,7 +27,7 @@ function execute(url) {
     }
 
     function getChapterInPage(currentPage) {
-        return Http.get(BASE_URL + "/book/index").params({
+        return Http.get("https://wikisach.net/book/index").params({
             bookId: bookId,
             signKey: signKey,
             sign: genSign(signKey, currentPage, size),
@@ -43,7 +48,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: link,
-                host: BASE_URL
+                host: "https://wikisach.net"
             })
         }
 

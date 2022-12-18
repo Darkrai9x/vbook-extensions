@@ -1,7 +1,6 @@
-load('config.js');
 function execute(url, page) {
     if (!page) page = '0';
-    let response = fetch(BASE_URL + url, {
+    let response = fetch(url, {
         method: "GET",
         queries: {
             start: page
@@ -21,7 +20,7 @@ function execute(url, page) {
                 link: e.select("a.book-cover").first().attr("href"),
                 cover: e.select(".book-cover img").attr("src"),
                 description: e.select(".book-author").text(),
-                host: BASE_URL
+                host: "https://wikisach.net"
             });
         });
 

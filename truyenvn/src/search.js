@@ -1,6 +1,5 @@
 load('config.js');
 function execute(key, page) {
-    key  = encodeURIComponent(key)
     let browser = Engine.newBrowser();
     browser.launchAsync( BASE_URL + "/danh-sach-truyen?q="  + key);
     let retry = 0;
