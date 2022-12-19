@@ -3,7 +3,7 @@
     "name": "Wiki Dịch",
     "author": "vBook",
     "version": 15,
-    "source": "https://wikisach.net",
+    "source": "https://wikidich6.com",
     "regexp": "(www.)?wiki(.*?)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
     "locale": "vi_VN",
