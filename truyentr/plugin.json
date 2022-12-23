@@ -2,9 +2,9 @@
   "metadata": {
     "name": "TruyệnTR",
     "author": "vBook",
-    "version": 5,
-    "source": "https://truyentr.org",
-    "regexp": "(www.)?truyentr.(vn|info|org)/truyen/[^/]+/?$",
+    "version": 6,
+    "source": "https://truyenazz.vn",
+    "regexp": "(www.)?(truyentr|truyenazz).(vn|info|org)/[^/]+/?$",
     "description": "Đọc truyện trên trang TruyệnTR",
     "locale": "vi_VN",
     "type": "novel",

@@ -1,7 +1,9 @@
 function execute(key, page) {
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     if (!page) page = '1';
 
-    var doc = Http.get("https://truyentr.org/")
+    var doc = Http.get(BASE_URL)
         .params({
             s: key,
             post_type: 'wp-manga',
@@ -19,7 +21,7 @@ function execute(key, page) {
                 link: e.select(".truyen-title > a").first().attr("href"),
                 description: e.select(".author").text(),
                 cover: e.select(".img-cover-wrap img").attr("src"),
-                host: "https://truyentr.org",
+                host: BASE_URL,
             });
 
         }

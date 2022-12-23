@@ -1,15 +1,15 @@
 function execute(url) {
-    url = url.replace("truyentr.vn", "truyentr.org").replace("truyentr.info", "truyentr.org");
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     var doc = Http.get(url).html();
     if (doc) {
         return Response.success({
             name: doc.select("h1.title").text(),
-            cover: doc.select("div.book-thumb img").attr("src"),
-            host: "http://truyentr.org",
-            author: doc.select(".book-info > .content1 > .info a").first().text(),
-            description: doc.select("div.book-desc").html(),
-            detail: doc.select(".book-info > .content1 > .info"),
-            ongoing: doc.select("div.info").html().indexOf(">Đang ra<") > 0
+            cover: doc.select(".col-12.col-md-4.text-center img").attr("data-src"),
+            host: BASE_URL,
+            author: doc.select(".content1 > div > p:nth-child(1)").text(),
+            description: doc.select("#more").html(),
+            detail: doc.select(".content1 > div > p:nth-child(2)").html(),
         });
     }
     return null;
