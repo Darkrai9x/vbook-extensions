@@ -1,8 +1,8 @@
 load('bypass.js');
-
+load('config.js');
 function execute(key, page) {
     if (!page) page = '1';
-    var url = "https://truyenqqvip.com/tim-kiem/trang-" + page + ".html?q=" + key;
+    var url = BASE_URL +"/tim-kiem/trang-" + page + ".html?q=" + key;
     var doc = bypass(url, fetch(url).html());
 
     if (doc) {
@@ -18,7 +18,7 @@ function execute(key, page) {
                 link: e.select(".book_name a").first().attr("href"),
                 description: e.select(".last_chapter").text(),
                 cover: cover,
-                host: "https://truyenqqvip.com"
+                host: BASE_URL 
             });
         });
         return Response.success(novelList, next)

@@ -1,11 +1,7 @@
 load('bypass.js');
-
+load('config.js');
 function execute(url) {
-    url = url.replace("truyenqq.com", "truyenqq.net");
-    url = url.replace("truyenqq.net", "truyenqqtop.com");
-    url = url.replace("truyenqqtop.com", "truyenqqvip.com");
-    url = url.replace("truyenqqvip.com", "truyenqqpro.com");
-    url = url.replace("truyenqqpro.com", "truyenqqvip.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     var doc = bypass(url, fetch(url).html());
     if (doc) {
         var imgs = doc.select(".chapter_content img.lazy");
