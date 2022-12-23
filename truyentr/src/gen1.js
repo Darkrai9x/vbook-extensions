@@ -2,7 +2,7 @@ function execute(url, page) {
     load('config.js');
     if (!page) page = 1;
 
-    var response = fetch("https://truyenazz.vn/ajax/list-story-category", {
+    var response = fetch("https://truyenazz.vn/ajax/list-story", {
         method : "POST",
         body : {
             page : page,

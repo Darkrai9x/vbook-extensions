@@ -1,11 +1,7 @@
 load('bypass.js');
-
+load('config.js');
 function execute(url) {
-    url = url.replace("truyenqq.com", "truyenqq.net");
-    url = url.replace("truyenqq.net", "truyenqqtop.com");
-    url = url.replace("truyenqqtop.com", "truyenqqvip.com");
-    url = url.replace("truyenqqvip.com", "truyenqqpro.com");
-    url = url.replace("truyenqqpro.com", "truyenqqvip.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
     var doc = bypass(url, Http.get(url).html());
     if (doc) {
@@ -16,7 +12,7 @@ function execute(url) {
         return Response.success({
             name: doc.select("h1[itemprop=name]").text(),
             cover: cover,
-            host: "https://truyenqqvip.com",
+            host: BASE_URL,
             author: doc.select("a.org").text(),
             description: doc.select("div.story-detail-info").html(),
             detail: doc.select(".book_info div.txt").first().html(),
