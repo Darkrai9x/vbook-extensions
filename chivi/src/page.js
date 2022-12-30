@@ -4,10 +4,14 @@ function execute(url) {
 
     if (response.ok) {
         let doc = response.html();
-        let story = doc.html().split('<script type=\"application\/json\" sveltekit:data-type=\"data\" sveltekit:data-url=\"')[2].split('"')[0]
-        let book_id = doc.html().split(',\"body\":\"{\\\"nvinfo\\\":{\\\"id\\\":')[1].split(',')[0];
+        let story = doc.html().split('<script type=\"application\/json\" data-sveltekit-fetched data-url=\"')[1].split('"')[0].split("/")
+        let temp = story.pop()
+        story= story.join("/")
 
-        let sname = doc.select('script[type="application/json"]').last().attr("sveltekit:data-url").split("/")[4]
+        console.log(story)
+        let book_id = doc.html().split('data-url="/api/seeds/')[1].split('"')[0].split("/")[0];
+
+        let sname = doc.select('script[type="application/json"]').last().attr("data-url").split("/")[4]
 
 
         // let sname = story.split(/[/ ]+/).pop();
@@ -19,7 +23,7 @@ function execute(url) {
         }
         const pageList = [];
         for (let i = 1; i <= lastPage; i++) {
-            pageList.push(book_id + " https://chivi.app" + story + "/"  + sname +"/" + i +" " + sname);
+            pageList.push(book_id + " https://chivi.app/api/seeds/" + book_id + "/"  + sname +"/" + i +" " + sname);
         }
         return Response.success(pageList);
     }
