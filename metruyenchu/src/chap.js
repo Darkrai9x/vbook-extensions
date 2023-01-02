@@ -20,16 +20,17 @@ function execute(url) {
                 retry++;
             }
 
-            browser.callJs("function sortChildren(t){return[].slice.call(t).sort((function(t,e){return parseInt(getComputedStyle(t).order)>parseInt(getComputedStyle(e).order)?1:-1}))}function trimContent(t){return t.substring(1,t.length-1)}let s=\"\",trash=document.getElementById(\"article\").getElementsByTagName(\"div\");for(let t=trash.length-1;t>=0;t--)trash[t].parentNode.removeChild(trash[t]);trash=document.getElementById(\"article\").getElementsByTagName(\"script\");for(let t=trash.length-1;t>=0;t--)trash[t].parentNode.removeChild(trash[t]);let parent=sortChildren(document.getElementById(\"article\").children);for(let t=0;t<parent.length;t++){let e=sortChildren(parent[t].children);for(let t=0;t<e.length;t++){let n=getComputedStyle(e[t],\":before\");n&&\"none\"!=n.content&&(s+=trimContent(n.content)),\"rtl\"==getComputedStyle(e[t]).direction?s+=e[t].textContent.split(\"\").reverse().join(\"\"):s+=e[t].textContent;let r=getComputedStyle(e[t],\":after\");r&&\"none\"!=r.content&&(s+=trimContent(r.content))}s+=\"<br>\"}document.getElementById(\"article\").innerHTML=s;", 200);
+            browser.callJs("function sortChildren(e){return[].slice.call(e).sort(function(e,t){return parseInt(getComputedStyle(e).order)>parseInt(getComputedStyle(t).order)?1:-1})}function trimContent(e){return e.substring(1,e.length-1)}let s=\"\",trash=document.getElementById(\"article\").getElementsByTagName(\"div\");for(let index=trash.length-1;index>=0;index--)trash[index].parentNode.removeChild(trash[index]);trash=document.getElementById(\"article\").getElementsByTagName(\"script\");for(let index=trash.length-1;index>=0;index--)trash[index].parentNode.removeChild(trash[index]);let parent=sortChildren(document.getElementById(\"article\").children);for(let i=0;i<parent.length;i++){let e=sortChildren(parent[i].children);for(let t=0;t<e.length;t++){let n=getComputedStyle(e[t],\":before\");n&&\"none\"!=n.content&&(s+=trimContent(n.content));\"rtl\"==getComputedStyle(e[t]).direction?s+=e[t].textContent.split(\"\").reverse().join(\"\"):s+=e[t].textContent;let r=getComputedStyle(e[t],\":after\");r&&\"none\"!=r.content&&(s+=trimContent(r.content))}s+=\"<br>\"}let newBody=document.createElement(\"fakearticle\");newBody.innerHTML=s,document.body.appendChild(newBody);", 200);
             sleep(100);
-            doc = browser.html();
+            content = browser.html().select("fakearticle");
             browser.close();
         }
-        doc.select("script").remove();
-        doc.select("div.nh-read__alert").remove();
-        doc.select("small.text-muted").remove();
-        doc.select(".text-center").remove();
-        var html = doc.select("#article").first().html().replace(/&nbsp;/g, " ");
+
+        content.select("script").remove();
+        content.select("div.nh-read__alert").remove();
+        content.select("small.text-muted").remove();
+        content.select(".text-center").remove();
+        var html = content.html().replace(/&nbsp;/g, " ");
         var trash = html.match(new RegExp(/====================.*?<a href=.*?\/truyen\/.*?$/g));
         if (trash) {
             trash = trash[trash.length - 1];
