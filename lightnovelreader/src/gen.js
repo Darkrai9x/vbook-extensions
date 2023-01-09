@@ -1,6 +1,8 @@
 function execute(url, page) {
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     if (!page) page = '1';
-    let response = fetch(url + "/" + page);
+    let response = fetch(BASE_URL + url + "/" + page);
 
     if (response.ok) {
 
@@ -15,7 +17,7 @@ function execute(url, page) {
                 link: e.select(".category-name a").first().attr("href"),
                 cover: e.select(".category-img img").first().attr("src"),
                 description: e.select(".category-feature-content-text span").text(),
-                host: "https://lightnovelreader.me"
+                host: BASE_URL
             })
         });
 

@@ -1,6 +1,7 @@
 function execute(key, page) {
+    load('config.js');
     if (!page) page = '1';
-    const doc = Http.get("https://qmanga3.net/tim-kiem").params({"q": key, "page": page}).html();
+    const doc = Http.get( BASE_URL + "/tim-kiem").params({"q": key, "page": page}).html();
 
     var next = doc.select(".pagination").select("li.active + li").text()
 
@@ -18,7 +19,7 @@ function execute(key, page) {
             link: e.select("a").first().attr("href"),
             cover: coverImg,
             description: e.select(".chapter-commic-tab").first().text(),
-            host: "https://qmanga3.net"
+            host: BASE_URL
         })
     }
 
