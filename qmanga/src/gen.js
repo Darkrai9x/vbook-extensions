@@ -1,6 +1,7 @@
 function execute(url, page) {
+    load('config.js');
     if (!page) page = '1';
-    const doc = Http.get(url).params({"page": page}).html()
+    const doc = Http.get(BASE_URL + url).params({"page": page}).html()
 
     var next = doc.select(".pagination").select("li.active + li").text()
 
@@ -18,7 +19,7 @@ function execute(url, page) {
             link: e.select("a").first().attr("href"),
             cover: coverImg,
             description: e.select(".chapter-commic-tab").first().text(),
-            host: "https://qmanga3.net"
+            host: BASE_URL
         })
     }
 

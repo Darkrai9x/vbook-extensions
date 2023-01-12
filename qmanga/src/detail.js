@@ -1,8 +1,6 @@
 function execute(url) {
-    url = url.replace("qmanga.net", "qmanga.co");
-    url = url.replace("qmanga.co", "qmanga2.net");
-    url = url.replace("qmanga2.net", "qmanga3.com");
-    url = url.replace("qmanga3.com", "qmanga3.net");
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -12,7 +10,7 @@ function execute(url) {
             author: doc.select(".area-writer a").first().text(),
             description: doc.select(".desc-commic-detail").html(),
             detail: doc.select(".area-writer").html() + doc.select(".area-drawer").html() + doc.select(".status_commic").html(),
-            host: "https://qmanga3.com",
+            host: BASE_URL,
             ongoing: doc.select(".status_commic").html().indexOf("Đang tiến hành") >= 0
         });
     }

@@ -1,5 +1,6 @@
 function execute(url) {
-    url = url.replace("lightnovelreader.org", "lightnovelreader.me");
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -11,7 +12,7 @@ function execute(url) {
             description: doc.select(".empty-box").last().html(),
             detail: doc.select(".novels-detail-right").html(),
             ongoing: doc.select(".novels-detail-right li").html().indexOf("Ongoing") >= -1,
-            host: "https://lightnovelreader.me"
+            host: BASE_URL
         });
     }
     return null;
