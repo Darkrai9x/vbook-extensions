@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Mê Truyện CV",
     "author": "vBook",
-    "version": 19,
+    "version": 20,
     "source": "https://metruyencv.com",
     "regexp": "(www.)?(metruyenchu|mtccv|metruyencv).com/truyen/[a-zA-Z0-9-]+/?$",
     "description": "Đọc truyện trên trang Mê Truyện CV",

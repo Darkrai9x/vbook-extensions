@@ -8,10 +8,10 @@
       "name": "Bạch Ngọc Sách",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/plugin.zip",
-      "version": 6,
-      "source": "https://truyenbns.com/reader",
+      "version": 7,
+      "source": "https://bachngocsach.com.vn/reader",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/icon.png",
-      "description": "Đọc truyện trên trang truyenbns.com/reader",
+      "description": "Đọc truyện trên trang bachngocsach.com.vn/reader",
       "type": "novel",
       "locale": "vi_VN"
     },
@@ -252,7 +252,7 @@
       "name": "Mê Truyện Chữ",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 19,
+      "version": 20,
       "source": "https://metruyenchu.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ",
@@ -445,6 +445,17 @@
       "description": "Xem ảnh 18+ trên trang hentai-img.com",
       "tag": "nsfw",
       "type": "comic"
+    },
+    {
+      "name": "Cứu Truyện",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/plugin.zip",
+      "version": 1,
+      "source": "https://cuutruyen.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/icon.png",
+      "description": "Xem ảnh 18+ trên trang Cứu Truyện",
+      "type": "comic",
+      "locale": "vi_VN"
     }
   ]
 }

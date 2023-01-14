@@ -1,5 +1,6 @@
+load('host.js');
 function execute(url) {
-    url = url.replace("bachngocsach.com", "truyenbns.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, HOST);
 
     let response = fetch(url);
     if (response.ok) {

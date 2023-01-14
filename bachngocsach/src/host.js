@@ -1,0 +1,1 @@
+const HOST = "https://bachngocsach.com.vn"

@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Cứu Truyện",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://cuutruyen.net",
+    "regexp": "(www.)?cuutruyen.net/mangas/\\d+/?",
+    "description": "Đọc truyện trên trang Cứu Truyện",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
