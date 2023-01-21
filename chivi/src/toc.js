@@ -11,7 +11,7 @@ function execute(url) {
             if(parts > 0) parts = parts -1;
             chapList.push({
                 "name": e.title,
-                "url": "https://chivi.app/api/chaps/" + storyUrl[0] + "/" + sname + "/" + e.chidx + "/" + parts,
+                "url": "https://chivi.app/_db/chaps/" + storyUrl[0] + "/" + sname + "/" + e.chidx + "/" + parts,
                 "host": "https://chivi.app"
             });
         });

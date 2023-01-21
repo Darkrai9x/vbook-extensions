@@ -1,4 +1,6 @@
 function execute(url) {
+    url = url.replace("/chivi.app/api/","/chivi.app/_db/")
+
     url = url.split("/")
     let total_parts = url.pop();
     total_parts =  parseInt(total_parts, 10) + 1;

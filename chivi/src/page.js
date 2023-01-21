@@ -9,7 +9,7 @@ function execute(url) {
         story= story.join("/")
 
         console.log(story)
-        let book_id = doc.html().split('data-url="/api/seeds/')[1].split('"')[0].split("/")[0];
+        let book_id = doc.html().split('data-url="/_db/seeds/')[1].split('"')[0].split("/")[0];
 
         let sname = doc.select('script[type="application/json"]').last().attr("data-url").split("/")[4]
 
@@ -23,7 +23,7 @@ function execute(url) {
         }
         const pageList = [];
         for (let i = 1; i <= lastPage; i++) {
-            pageList.push(book_id + " https://chivi.app/api/seeds/" + book_id + "/"  + sname +"/" + i +" " + sname);
+            pageList.push(book_id + " https://chivi.app/_db/seeds/" + book_id + "/"  + sname +"/" + i +" " + sname);
         }
         return Response.success(pageList);
     }

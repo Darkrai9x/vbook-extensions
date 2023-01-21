@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Chivi",
     "author": "vBook",
-    "version": 23,
+    "version": 24,
     "source": "https://chivi.app",
     "regexp": "(www.)?chivi.(xyz|app)/[^/+]+/?$",
     "description": "Đọc truyện trên trang Chivi",

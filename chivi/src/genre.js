@@ -9,7 +9,7 @@ function execute() {
         menu.forEach(e => {
             if(e.text() !== "Tất cả" )
             {
-                let input = "https://chivi.app/api/books" + encodeURI("?genres=" + e.text());
+                let input = "https://chivi.app/_db/books" + encodeURI("?genres=" + e.text());
                 nav.push({ 
                     title: e.text(), 
                     input: input, 
