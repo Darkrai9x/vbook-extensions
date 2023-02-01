@@ -1,5 +1,6 @@
 function execute(url) {
-    url = url.replace("umetruyen.net", "umetruyen.org")
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
 
     if (response.ok) {
@@ -10,7 +11,7 @@ function execute(url) {
             author: doc.select(".author-content").first().text(),
             description: doc.select(".description-summary").html(),
             detail: doc.select(".post-content .post-content_item").html(),
-            host: "https://umetruyen.org",
+            host: BASE_URL,
             ongoing: doc.select(".post-content .post-content_item").text().indexOf("OnGoing") !== -1
         });
     }

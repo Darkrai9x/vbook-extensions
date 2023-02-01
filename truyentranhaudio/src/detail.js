@@ -1,31 +1,16 @@
 function execute(url) {
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, "https://truyentranhaudio.org");
     const doc = Http.get(url).html();
-
-    var info = doc.select("ul.manga-info");
-    const cate = info.select("li:contains(Thể loại) a[href*=danh-sach-truyen-the-loai]");
-    const category = [];
-    for (var i = 0; i < cate.size(); i++) {
-        var e = cate.get(i)
-        category.push({
-            name: e.text(),
-            link: e.attr("href")
-        });
-    }
-
-    info.select("h3").remove();
-
-    var cover = doc.select("img.thumbnail").first().attr("src");
+    var cover = doc.select(".detail-info > div > div.col-xs-4.col-image > img").first().attr("src");
     if (cover.startsWith("//")) {
         cover = "https:" + cover;
     }
     return Response.success({
-        name: doc.select(".info-manga").select("a [itemprop=name]").last().text(),
+        name: doc.select("#item-detail > h1").text(),
         cover: cover,
-        author: doc.select("li:contains(Tác giả) a").first().text(),
-        description: doc.select(".summary-content").html(),
-        detail: info.html(),
-        category: category,
-        ongoing: info.html().indexOf("Đang tiến hành") >= 0,
-        host: "https://truyentranhaudio.online"
+        author: null,
+        description: doc.select("#item-detail > div.detail-content").html(),
+        detail: null,
+        host: "https://truyentranhaudio.org"
     });
 }

@@ -1,5 +1,6 @@
 function execute() {
-    let response = fetch("https://umetruyen.org/genre");
+    load('config.js');
+    let response = fetch(BASE_URL + "/genre");
     if (response.ok) {
         let doc = response.html();
         doc.select(".number-story").remove();

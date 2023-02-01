@@ -1,9 +1,9 @@
 function execute(key, page) {
     var doc;
     if (!page) {
-        doc = Http.get("https://truyentranhaudio.online/danh-sach-truyen.html?name=" + key).html();
+        doc = Http.get("https://truyentranhaudio.org/danh-sach-truyen.html?name=" + key).html();
     } else {
-        doc = Http.get("https://truyentranhaudio.online/" + page).html();
+        doc = Http.get("https://truyentranhaudio.org/" + page).html();
     }
 
     var next = doc.select("li:has(a.active) + li").select("a").attr("href");
@@ -22,7 +22,7 @@ function execute(key, page) {
             link: e.select("a").last().attr("href"),
             cover: cover,
             description: e.select(".chapter-title").text(),
-            host: "https://truyentranhaudio.online"
+            host: "https://truyentranhaudio.org"
         })
     }
 
