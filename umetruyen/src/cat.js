@@ -2,8 +2,8 @@ function execute(url, page) {
     if (!page) {
         page = "1";
     }
-
-    let response = fetch(url + "?page=" + page);
+    load('config.js');
+    let response = fetch(BASE_URL + "?page=" + page);
 
     if (response.ok) {
         let doc = response.html();
@@ -18,7 +18,7 @@ function execute(url, page) {
                 link: e.select("h3 a").first().attr("href"),
                 cover: cover,
                 description: e.select(".chapter").first().text(),
-                host: "https://umetruyen.org"
+                host: BASE_URL
             });
         })
         return Response.success(novelList, next)

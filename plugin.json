@@ -296,10 +296,10 @@
       "name": "Truyện Tranh Audio",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/plugin.zip",
-      "version": 4,
-      "source": "https://truyentranhaudio.online",
+      "version": 5,
+      "source": "https://truyentranhaudio.org",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentranhaudio/icon.png",
-      "description": "Đọc truyện trên trang truyentranhaudio.online"
+      "description": "Đọc truyện trên trang truyentranhaudio.org"
     },
     {
       "name": "Say Truyện",
@@ -350,8 +350,8 @@
       "name": "U Mê Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/umetruyen/plugin.zip",
-      "version": 7,
-      "source": "https://umetruyen.org",
+      "version": 8,
+      "source": "https://umetruyenvip.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/umetruyen/icon.png",
       "description": "Đọc truyện trên trang U Mê Truyện",
       "type": "comic",

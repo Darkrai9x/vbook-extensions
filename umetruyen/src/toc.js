@@ -1,5 +1,6 @@
 function execute(url) {
-    url = url.replace("umetruyen.net", "umetruyen.org")
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
     if (response.ok) {
 
@@ -12,7 +13,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://umetruyen.org"
+                host: BASE_URL
             })
         }
         return Response.success(data);

@@ -1,5 +1,6 @@
 function execute(url) {
-    url = url.replace("umetruyen.net", "umetruyen.org")
+    load('config.js');
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -11,11 +12,11 @@ function execute(url) {
                     img = "https:" + img;
                 }
                 if (img.startsWith("/")) {
-                    img = "https://umetruyen.org" + img;
+                    img = BASE_URL + img;
                 }
 
                 if (!img.startsWith("http")) {
-                    img = "https://umetruyen.org/" + img;
+                    img = BASE_URL + "/" + img;
                 }
                 data.push(img);
             }
