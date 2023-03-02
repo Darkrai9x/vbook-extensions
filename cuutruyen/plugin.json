@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Cứu Truyện",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://cuutruyen.net",
     "regexp": "(www.)?cuutruyen.net/mangas/\\d+/?",
     "description": "Đọc truyện trên trang Cứu Truyện",

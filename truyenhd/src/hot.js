@@ -3,27 +3,26 @@ function execute(url, page) {
     var urls = url.split(' ');
     if (!page) {
         page = '1';
-        doc = Http.get(urls[0]).html().select(".theloai-thumlist");
+        doc = fetch(urls[0]).html().select(".theloai-thumlist");
     } else {
-        var slug = url.match(/keyword\/(.*?)$/);
-        doc = Http.post("https://truyenhdx.com/wp-admin/admin-ajax.php")
-            .params({
+        doc = Html.parse("<table>" + fetch("https://truyenhdx.com/wp-admin/admin-ajax.php", {
+            method: 'POST',
+            body: {
                 'action': "load_more_page_keyword",
                 'current_page_tax': page,
                 'the_loai': urls[1],
                 'option_keyword_tax': urls[2]
-            }).html();
+            }
+        }).text() + "</table>");
     }
 
     if (doc) {
-        var el = doc.select("li");
-        var novelList = [];
-        var next = parseInt(page) + 1;
-        for (var i = 0; i< el.size(); i++) {
-            var e = el.get(i);
+        let novelList = [];
+        let next = parseInt(page) + 1;
+        doc.select("tr").forEach(e => {
             var cover = e.select(".thumbnail img").attr("data-src");
             if (!cover)
-                cover = e.select(".thumbnail img").attr("src");
+                cover = e.select("img").attr("src");
             novelList.push({
                 name: e.select("h2").last().text(),
                 link: e.select(" a").attr("href"),
@@ -31,8 +30,7 @@ function execute(url, page) {
                 description: e.select(".content p").first().text(),
                 host: "https://truyenhdx.com"
             });
-        }
-
+        });
         return Response.success(novelList, next);
     }
     return null;
