@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
     if (!page) page = '1';
     let response = fetch(url, {
@@ -21,7 +22,7 @@ function execute(url, page) {
                 link: e.select("h3 a").first().attr("href"),
                 cover: coverImg,
                 description: e.select(".chapter a").first().text(),
-                host: "https://www.nettruyenking.com"
+                host: BASE_URL
             });
         });
 
