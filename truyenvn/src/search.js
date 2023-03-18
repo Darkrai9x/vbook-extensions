@@ -1,6 +1,7 @@
+load('config.js');
 function execute(key, page) {
     let browser = Engine.newBrowser();
-    browser.launchAsync("https://truyenvnhot.net/danh-sach-truyen?q="  + key);
+    browser.launchAsync(BASE_URL + "/danh-sach-truyen?q="  + key);
     let retry = 0;
     let doc;
     while (retry < 5) {
@@ -18,7 +19,7 @@ function execute(key, page) {
                 link: e.select("h3.name a").first().attr("href"),
                 cover: e.select("img").first().attr("data-src"),
                 description: e.select("h4 a").text(),
-                host: "https://truyenvnhot.net"
+                host: BASE_URL
             });
         });
 

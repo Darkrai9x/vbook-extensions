@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
     if (!page) page = 1
     let browser = Engine.newBrowser();
@@ -22,7 +23,7 @@ function execute(url, page) {
                 link: e.select(".name a").first().attr("href"),
                 cover: e.select("img").first().attr("data-src"),
                 description: e.select("h4 a").text(),
-                host: "https://truyenvnhot.net"
+                host: BASE_URL
             });
         });
         return Response.success(data, next);

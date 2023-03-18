@@ -1,5 +1,6 @@
+load('config.js');
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, "https://truyenvnhot.net")
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL)
 
     let response = fetch(url);
     if (response.ok) {
@@ -11,7 +12,7 @@ function execute(url) {
             author: doc.select(".author a").first().text(),
             description: doc.select(".comic-description").html(),
             detail: doc.select(".meta-data").html(),
-            host: "http://truyenvnhot.net",
+            host: BASE_URL,
             ongoing: doc.select(".status").text().indexOf("Đang Cập Nhật") >= 0
         });
     }
