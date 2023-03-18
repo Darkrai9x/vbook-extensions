@@ -1,8 +1,9 @@
+load('config.js');
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, "https://hentaivn.de")
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL)
     let response = fetch(url, {
         headers: {
-            "referer": "https://hentaivn.de"
+            "referer": BASE_URL
         }
     });
     if (response.ok) {
@@ -12,27 +13,27 @@ function execute(url) {
         if (isMobile) {
             let getUrl = doc.html().match(/(list-showchapter-mobile.php.*?)\"/)[1];
 
-            doc = fetch("https://hentaivn.de/" + getUrl).html();
+            doc = fetch(BASE_URL + "/" + getUrl).html();
             let el = doc.select(".episodes a")
             for (let i = el.size() - 1; i >= 0; i--) {
                 let e = el.get(i);
                 data.push({
                     name: e.text(),
                     url: e.attr("href"),
-                    host: "https://hentaivn.de"
+                    host: BASE_URL
                 })
             }
         } else {
             let getUrl = doc.html().match(/(list-showchapter.php.*?)\"/)[1];
 
-            doc = fetch("https://hentaivn.de/" + getUrl).html();
+            doc = fetch(BASE_URL + "/" + getUrl).html();
             let el = doc.select("a")
             for (let i = el.size() - 1; i >= 0; i--) {
                 let e = el.get(i);
                 data.push({
                     name: e.text(),
                     url: e.attr("href"),
-                    host: "https://hentaivn.de"
+                    host: BASE_URL
                 })
             }
         }
