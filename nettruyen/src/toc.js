@@ -1,17 +1,6 @@
+load('config.js');
 function execute(url) {
-    url = url.replace("nettruyen.com", "nettruyenmoi.com");
-    url = url.replace("nettruyentop.com", "nettruyenmoi.com");
-    url = url.replace("nettruyenvip.com", "nettruyenmoi.com");
-    url = url.replace("nettruyenpro.com", "nettruyenmoi.com");
-    url = url.replace("nettruyengo.com", "nettruyenmoi.com");
-    url = url.replace("nettruyenmoi.com", "nettruyenone.com");
-    url = url.replace("nettruyenone.com", "nettruyenco.com");
-    url = url.replace("nettruyenco.com", "nettruyenme.com");
-    url = url.replace("nettruyenme.com", "nettruyenin.com");
-    url = url.replace("nettruyenin.com", "nettruyenon.com");
-    url = url.replace("nettruyenon.com", "nettruyentv.com");
-    url = url.replace("nettruyentv.com", "nettruyenmin.com");
-    url = url.replace("nettruyenmin.com", "nettruyenking.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
 
     if (response.ok) {
@@ -23,7 +12,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://www.nettruyenking.com"
+                host: BASE_URL
             })
         }
         return Response.success(data);

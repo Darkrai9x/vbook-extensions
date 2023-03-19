@@ -2,8 +2,8 @@
   "metadata": {
     "name": "Truyện VN",
     "author": "vBook",
-    "version": 13,
-    "source": "https://truyenvnhot.net",
+    "version": 14,
+    "source": "https://truyenvnhot.tv",
     "regexp": "(www.)?truyenvn(hot|pro)?.(com|tv|vip|net)/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện VN",
     "locale": "vi_VN",

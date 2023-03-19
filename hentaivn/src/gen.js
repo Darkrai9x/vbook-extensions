@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
     if (!page) page = '1';
     let response = fetch(url + "?page=" + page);
@@ -21,7 +22,7 @@ function execute(url, page) {
                 link: des.select("a").first().attr("href"),
                 cover: e.select(isMobile ? ".box-cover-2 img" : ".box-cover img").first().attr("data-src"),
                 description: des.select("p").first().text().replace(des.select("a").first().text() + " - ", ""),
-                host: "https://hentaivn.de"
+                host: BASE_URL
             })
         }
 

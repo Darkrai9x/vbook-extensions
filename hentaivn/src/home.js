@@ -1,8 +1,9 @@
+load('config.js');
 function execute() {
     return Response.success([
-        {title: "Truyện mới", input: "https://hentaivn.de/danh-sach.html", script: "gen.js"},
-        {title: "Chương mới", input: "https://hentaivn.de/chap-moi.html", script: "gen.js"},
-        {title: "Full màu", input: "https://hentaivn.de/the-loai-37-full_color.html", script: "gen.js"},
-        {title: "Không che", input: "https://hentaivn.de/the-loai-99-khong_che.html", script: "gen.js"}
+        {title: "Truyện mới", input: BASE_URL + "/danh-sach.html", script: "gen.js"},
+        {title: "Chương mới", input: BASE_URL + "/chap-moi.html", script: "gen.js"},
+        {title: "Full màu", input: BASE_URL + "/the-loai-37-full_color.html", script: "gen.js"},
+        {title: "Không che", input: BASE_URL + "/the-loai-99-khong_che.html", script: "gen.js"}
     ]);
 }

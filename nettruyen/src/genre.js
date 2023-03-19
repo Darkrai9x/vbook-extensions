@@ -1,5 +1,7 @@
+load('config.js');
+
 function execute() {
-    let response = fetch("https://www.nettruyenking.com/tim-truyen");
+    let response = fetch(BASE_URL + "/tim-truyen");
     if (response.ok) {
         let doc = response.html();
         let genres = [];
