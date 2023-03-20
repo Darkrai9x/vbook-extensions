@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "shubl",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://shubl.com",
+    "regexp": "(m.|www.)?shubl.com/book/book_detail/\\d+/?$",
+    "description": "Đọc truyện trên trang shubl.com",
+    "local": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
