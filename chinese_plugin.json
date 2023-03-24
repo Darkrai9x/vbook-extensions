@@ -113,6 +113,17 @@
       "description": "Đọc truyện trên trang shubl.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "Dizishu (弟子小说网)",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/dizishu/plugin.zip",
+      "version": 1,
+      "source": "https://www.dizishu.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/dizishu/icon.png",
+      "description": "Đọc truyện trên trang dizishu.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }

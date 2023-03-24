@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Dizishu (弟子小说网)",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.dizishu.com",
+    "regexp": "(www.|m.)?dizishu.com/b/\\d+/?",
+    "description": "Đọc truyện trên trang dizishu.com",
+    "locale": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
