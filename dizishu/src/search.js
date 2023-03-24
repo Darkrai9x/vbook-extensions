@@ -1,2 +1,0 @@
-function execute(key, page) {
-}

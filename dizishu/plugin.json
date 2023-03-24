@@ -14,7 +14,6 @@
     "home": "home.js",
     "genre": "genre.js",
     "detail": "detail.js",
-    "search": "search.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }
