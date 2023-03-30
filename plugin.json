@@ -453,7 +453,7 @@
       "version": 2,
       "source": "https://cuutruyen.net",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/icon.png",
-      "description": "Xem ảnh 18+ trên trang Cứu Truyện",
+      "description": "Đọc truyện trên trang Cứu Truyện",
       "type": "comic",
       "locale": "vi_VN"
     },
@@ -464,7 +464,7 @@
       "version": 1,
       "source": "https://www.ocumoe.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ocumoe/icon.png",
-      "description": "Xem ảnh 18+ trên trang Ổ Cú Mèo",
+      "description": "Đọc truyện trên trang Ổ Cú Mèo",
       "type": "comic",
       "locale": "vi_VN"
     }
