@@ -15,7 +15,7 @@ function execute(url, page) {
                 name: e.select(".book-info h4").text(),
                 link: e.select(".book-info a").first().attr("href"),
                 cover: e.select(".book-img img").attr("src"),
-                description: e.select(".book-info .author").text() + e.select(".book-info .tag"),
+                description: e.select(".book-info .author").text() + e.select(".book-info .tag").text(),
                 host: "https://www.dizishu.com"
             });
         });
