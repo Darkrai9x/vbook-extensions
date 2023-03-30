@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Ổ Cú Mèo",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.ocumoe.com",
+    "regexp": "(www.)?ocumoe.com/truyen-tranh/[^/]+/?$",
+    "description": "Đọc truyện trên trang Ổ Cú Mèo",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
