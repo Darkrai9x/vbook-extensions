@@ -1,21 +1,26 @@
+load('config.js');
 function execute(key, page) {
     if (!page) page = '0';
 
-    var doc = Http.get("https://gacsach.club/find-book").params({
-        title: key,
-        page: page
-    }).html();
+    let response = fetch(BASE_URL + '/find-book', {
+        method: 'GET',
+        queries : {
+            title: key,
+            page: page
+        }
+    });
 
-    if (doc) {
-        var el = doc.select(".view-content a");
-        var novelList = [];
-        var next = doc.select(".pager li.pager-current + li").last().select("a").text();
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
+    if (response.ok) {
+        let doc = response.html();
+        let el = doc.select(".view-content a");
+        let novelList = [];
+        let next = doc.select(".pager li.pager-current + li").last().select("a").text();
+        for (let i = 0; i < el.size(); i++) {
+            let e = el.get(i);
             novelList.push({
                 name: e.text(),
                 link: e.attr("href"),
-                host: "https://gacsach.club"
+                host: BASE_URL
             });
         }
 

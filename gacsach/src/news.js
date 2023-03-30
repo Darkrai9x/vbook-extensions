@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url) {
     let response = fetch(url);
     if (response.ok) {
@@ -9,7 +10,7 @@ function execute(url) {
                 link: e.select(".smimg").first().select("a").attr("href"),
                 cover: e.select(".smimg").first().select("a img").attr("src"),
                 description: e.select(".smauthor").text(),
-                host: "https://gacsach.club"
+                host: BASE_URL
             });
         });
         return Response.success(novelList);

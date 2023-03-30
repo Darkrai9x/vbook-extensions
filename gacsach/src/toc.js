@@ -1,5 +1,6 @@
+load('config.js');
 function execute(url) {
-    url = url.replace("gacsach.com", "gacsach.club");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
     if(response.ok) {
         let doc = response.html();
@@ -11,7 +12,7 @@ function execute(url) {
             list.push({
                 name: e.text().replace(new RegExp(name), ""),
                 url: e.attr("value").match(/(http.*?)$/)[1],
-                host: "https://gacsach.com",
+                host: "BASE_URL",
             });
         }
         return Response.success(list);

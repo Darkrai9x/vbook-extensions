@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
     if (!page) page = '0';
 
@@ -13,7 +14,7 @@ function execute(url, page) {
                 link: e.select(".tvtitle a").attr("href"),
                 cover: e.select(".tvanh img").attr("src"),
                 description: e.select(".tvauthor").text(),
-                host: "https://gacsach.club"
+                host: BASE_URL
             });
         });
 
