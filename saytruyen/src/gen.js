@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
     if (!page) {
         page = "1";
@@ -15,7 +16,7 @@ function execute(url, page) {
             link: e.select("h3 a").first().attr("href"),
             cover: e.select("img").first().attr("src"),
             description: e.select(".chapter").first().text(),
-            host: "https://saytruyenvip.com"
+            host: BASE_URL
         }))
         return Response.success(novelList, next)
     }

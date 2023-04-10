@@ -1,5 +1,6 @@
+load('config.js');
 function execute() {
-    let response = fetch("https://saytruyenvip.com/genre");
+    let response = fetch(BASE_URL + "/genre");
     if (response.ok) {
         let doc = response.html();
         doc.select(".number-story").remove();

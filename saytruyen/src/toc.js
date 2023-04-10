@@ -1,6 +1,6 @@
+load('config.js');
 function execute(url) {
-    url = url.replace("saytruyen.net", "saytruyen.tv");
-    url = url.replace("saytruyen.tv", "saytruyenvip.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
     let response = fetch(url);
 
@@ -14,7 +14,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://saytruyenvip.com"
+                host: BASE_URL
             })
         }
 
