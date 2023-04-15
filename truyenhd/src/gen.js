@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
     var doc;
     if (!page) {
@@ -5,7 +6,7 @@ function execute(url, page) {
         doc = fetch(url).html().select(".theloai-thumlist");
     } else {
         let slug = url.match(/keyword\/(.*?)$/);
-        doc = Html.parse("<table>" + fetch("https://truyenhdx.com/wp-admin/admin-ajax.php", {
+        doc = Html.parse("<table>" + fetch(BASE_URL + "/wp-admin/admin-ajax.php", {
             method: 'POST',
             body: {
                 'action': "load_more_tax",
@@ -31,7 +32,7 @@ function execute(url, page) {
                 link: e.select(" a").attr("href"),
                 cover: cover,
                 description: e.select(".content p").first().text(),
-                host: "https://truyenhdx.com"
+                host: BASE_URL
             });
         });
         return Response.success(novelList, next);

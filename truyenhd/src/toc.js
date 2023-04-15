@@ -1,49 +1,51 @@
+load('config.js');
+
 function execute(url) {
-    url = url.replace("s3.truyenhd.com", "truyenhd1.com");
-    url = url.replace("truyenhd1.com", "truyenhdz.com");
-    url = url.replace("truyenhdz.com", "truyenhdd.com");
-    url = url.replace("truyenhdd.com", "truyenhdx.com");
-    var list = [];
-    var el;
-    if (url.indexOf("truyenhdx.com") > 0) {
-        var doc = Http.get(url).html();
-        el = doc.select(".listchap").last().select("li a");
-    } else {
-        var doc = Http.get("https://truyenhdx.com" + url).html();
-        var bookId = doc.select("#views").attr("data-id");
-        var ajaxDoc = Http.post("https://truyenhdx.com/wp-admin/admin-ajax.php").params({
-            "action": "all_chap",
-            "id": bookId
-        }).html();
-        el = ajaxDoc.select("a");
-        if (el.isEmpty()) {
-            var page = doc.select("#pagination").text().match(/1\/(\\d+)/);
+    let list = [];
+    let response = fetch(BASE_URL + "/wp-admin/admin-ajax.php", {
+        method: 'POST',
+        body: JSON.parse(url)
+    });
+    if (response.ok) {
+        let doc = response.html();
+        let el = doc.select('.listchap li');
+        if (el.length > 0) {
+            el.forEach(e => {
+                list.push({
+                    name: e.select('a').text(),
+                    url: e.select('a').attr('href'),
+                    pay: e.select("img").attr('alt') === 'vip',
+                    host: BASE_URL
+                });
+            });
+        } else {
+            doc.select('a').forEach(e => {
+                list.push({
+                    name: e.text(),
+                    url: e.attr('href'),
+                    host: BASE_URL
+                });
+            });
+        }
+
+        if (list.length === 0) {
+            let page = doc.select("#pagination").text().match(/1\/(\\d+)/);
             if (page) {
                 page = parseInt(page);
 
-                for (var i = 1; i <= page; i++) {
+                for (let i = 1; i <= page; i++) {
                     list.push({
                         name: "Phần " + i,
-                        url: "https://truyenhdx.com" + url + "/" + i,
-                        host: "https://truyenhdx.com"
+                        url: BASE_URL + url + "/" + i,
+                        host: BASE_URL
                     });
                 }
                 return Response.success(list);
             }
         }
-    }
 
-    if (el) {
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
-            list.push({
-                name: e.text(),
-                url: e.attr("href"),
-                host: "https://truyenhdx.com"
-            });
-        }
+
         return Response.success(list);
     }
-
     return null;
 }

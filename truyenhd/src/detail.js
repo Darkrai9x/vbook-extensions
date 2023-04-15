@@ -1,16 +1,14 @@
+load('config.js');
+
 function execute(url) {
-    url = url.replace("truyenvkl.com", "s2.truyenhd.com");
-    url = url.replace("s2.truyenhd.com", "s3.truyenhd.com");
-    url = url.replace("s3.truyenhd.com", "truyenhd1.com");
-    url = url.replace("truyenhd1.com", "truyenhdz.com");
-    url = url.replace("truyenhdz.com", "truyenhdd.com");
-    url = url.replace("truyenhdd.com", "truyenhdx.com");
-    var doc = Http.get(url).html();
-    if (doc) {
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
         return Response.success({
             name: doc.select("h1").text(),
             cover: doc.select(".book3d img").first().attr("data-src"),
-            host: "https://truyenhdx.com",
+            host: BASE_URL,
             author: doc.select("a[href*=tac-gia]").first().text(),
             description: doc.select(".gioi_thieu").html(),
             detail: doc.select("#thong_tin").html(),
