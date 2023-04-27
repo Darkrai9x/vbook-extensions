@@ -1,1 +1,1 @@
-const BASE_URL = 'https://qmanga5.net';
+const BASE_URL = 'https://qmanga5.com';
