@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Net Truyện",
     "author": "vBook",
-    "version": 18,
-    "source": "https://www.nettruyenvi.com",
-    "regexp": "(www.)?(nhattruyen.com|nettruyen.com|nettruyentop.com|nettruyenvip.com|nettruyenpro.com|nettruyengo.com|nettruyenmoi.com|nettruyenone.com|nettruyenco.com|nettruyenme.com|nettruyenin.com|nettruyenon.com|nettruyentv.com|nettruyenmin.com|nettruyenking.com|nettruyenvi.com)/truyen-tranh/[^/]+/?$",
+    "version": 19,
+    "source": "https://www.nettruyenplus.com",
+    "regexp": "(www.)?(nhattruyen|nettruyen|nettruyentop|nettruyenvip|nettruyenpro|nettruyengo|nettruyenmoi|nettruyenone|nettruyenco|nettruyenme|nettruyenin|nettruyenon|nettruyentv|nettruyenmin|nettruyenking|nettruyenvi|nettruyenplus).(com|vn)/truyen-tranh/[^/]+/?$",
     "description": "Đọc truyện trên trang Net Truyện",
     "locale": "vi_VN",
     "language": "javascript",

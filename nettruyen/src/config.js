@@ -1,1 +1,1 @@
-const BASE_URL = 'https://www.nettruyenvi.com';
+const BASE_URL = 'https://www.nettruyenplus.com';
