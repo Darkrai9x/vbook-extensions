@@ -1,1 +1,1 @@
-const BASE_URL = 'https://truyenqqmoi.com';
+const BASE_URL = 'https://truyenqqq.vn';
