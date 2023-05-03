@@ -1,1 +1,1 @@
-const BASE_URL = "https://hentaivn.run"
+const BASE_URL = "https://hentaivn.team"

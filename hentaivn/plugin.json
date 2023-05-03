@@ -2,9 +2,9 @@
   "metadata": {
     "name": "HentaiVN",
     "author": "vBook",
-    "version": 14,
-    "source": "https://hentaivn.run",
-    "regexp": "(www.)?hentaivn.(net|tv|moe|fun|la|in|life|de|run)/\\d+-[^/]+.html$",
+    "version": 15,
+    "source": "https://hentaivn.team",
+    "regexp": "(www.)?hentaivn.(net|tv|moe|fun|la|in|life|de|run|team)/\\d+-[^/]+.html$",
     "description": "Đọc truyện trên trang HentaiVN",
     "locale": "vi_VN",
     "language": "javascript",
