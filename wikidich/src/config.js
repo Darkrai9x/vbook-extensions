@@ -1,1 +1,1 @@
-const BASE_URL = 'https://wikidich8.com';
+const BASE_URL = 'https://wikisach.net';
