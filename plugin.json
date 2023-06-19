@@ -75,9 +75,21 @@
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/plugin.zip",
       "version": 18,
-      "source": "https://wikidich8.com",
+      "source": "https://wikidich1.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/icon.png",
       "description": "Đọc truyện trên trang Wiki Dịch",
+      "type": "novel",
+      "locale": "vi_VN"
+    },
+    ,
+    {
+      "name": "Wikidich App",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich-app/plugin.zip",
+      "version": 1,
+      "source": "https://wikidich1.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich-app/icon.png",
+      "description": "Đọc truyện trên trang app Wiki Dịch",
       "type": "novel",
       "locale": "vi_VN"
     },
