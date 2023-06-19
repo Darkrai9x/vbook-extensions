@@ -27,7 +27,7 @@ function execute(key, page) {
         let lastPage = data.last_page;
         let currentPage = parseInt(page);
         if (currentPage < lastPage) {
-            return Response.success(books, parseInt(page) + 1);
+            return Response.success(books,  Math.trunc(parseInt(page) + 1) + "");
         } else {
             return Response.success(books, null);
         }
