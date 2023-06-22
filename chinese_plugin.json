@@ -124,6 +124,17 @@
       "description": "Đọc truyện trên trang dizishu.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "Chuandaipc (蓝色小说)",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chuandaipc/plugin.zip",
+      "version": 1,
+      "source": "https://www.chuandaipc.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chuandaipc/icon.png",
+      "description": "Đọc truyện trên trang chuandaipc.com",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }

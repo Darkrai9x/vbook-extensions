@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Chuandaipc (蓝色小说)",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.chuandaipc.com",
+    "regexp": "(www.)?chuandaipc.com/a/\\d+_\\d+/?$",
+    "description": "Đọc truyện trên trang chuandaipc",
+    "local": "zh_CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
