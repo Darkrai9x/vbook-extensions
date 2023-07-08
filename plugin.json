@@ -350,10 +350,10 @@
       "name": "QManga",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/plugin.zip",
-      "version": 8,
+      "version": 9,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "https://qmanga5.com",
+      "source": "https://qmanga8.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/qmanga/icon.png",
       "description": "Đọc truyện trên trang QManga"
     },
@@ -477,6 +477,17 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ocumoe/icon.png",
       "description": "Đọc truyện trên trang Ổ Cú Mèo",
       "type": "comic",
+      "locale": "vi_VN"
+    },
+    {
+      "name": "Sáng Tác Việt",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/plugin.zip",
+      "version": 7,
+      "source": "https://sangtacviet.vip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/icon.png",
+      "description": "Đọc truyện trên trang Sáng Tác Việt",
+      "type": "novel",
       "locale": "vi_VN"
     }
   ]

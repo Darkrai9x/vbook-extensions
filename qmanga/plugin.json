@@ -2,8 +2,8 @@
   "metadata": {
     "name": "QManga",
     "author": "vBook",
-    "version": 8,
-    "source": "https://qmanga5.com",
+    "version": 9,
+    "source": "https://qmanga8.com",
     "regexp": "(www.)?qmanga.*?(net|co|com)/[^/]+.html$",
     "description": "Đọc truyện trên trang QManga",
     "locale": "vi_VN",
