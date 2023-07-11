@@ -489,6 +489,17 @@
       "description": "Đọc truyện trên trang Sáng Tác Việt",
       "type": "novel",
       "locale": "vi_VN"
+    },
+    {
+      "name": "TruyệnCV",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/plugin.zip",
+      "version": 1,
+      "source": "https://metruyencv.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/icon.png",
+      "description": "Đọc truyện trên trang TruyệnCV",
+      "type": "novel",
+      "locale": "vi_VN"
     }
   ]
 }

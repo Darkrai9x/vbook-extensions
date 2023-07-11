@@ -6,9 +6,9 @@
     "source": "https://api.truyenreview.com",
     "regexp": "(www.)?api.truyenreview.com/book/[^/]+/?$",
     "description": "Đọc truyện trên App Wiki Dịch",
-    "local": "vi-VN",
     "language": "javascript",
-    "type": "novel"
+    "type": "novel",
+    "locale": "vi_VN"
   },
   "script": {
     "home": "home.js",

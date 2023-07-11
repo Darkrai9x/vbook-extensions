@@ -2,12 +2,13 @@
   "metadata": {
     "name": "Truyện CV",
     "author": "vBook",
-    "version": 3,
-    "source": "https://truyencv.com",
-    "regexp": "(www.)?truyencv.com/[^/]+/?$",
+    "version": 1,
+    "source": "https://metruyencv.com",
+    "regexp": "(www.)?api.mottruyen.com/story/.*?$",
     "description": "Đọc truyện trên trang Truyện CV",
     "locale": "vi_VN",
-    "language": "javascript"
+    "language": "javascript",
+    "encrypt": true
   },
   "script": {
     "home": "home.js",
