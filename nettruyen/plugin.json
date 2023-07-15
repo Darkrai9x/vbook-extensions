@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Net Truyện",
     "author": "vBook",
-    "version": 21,
+    "version": 22,
     "source": "https://www.nettruyenmax.com",
     "regexp": "(www.)?(nhattruyen|nettruyen|nettruyentop|nettruyenvip|nettruyenpro|nettruyengo|nettruyenmoi|nettruyenone|nettruyenco|nettruyenme|nettruyenin|nettruyenon|nettruyentv|nettruyenmin|nettruyenking|nettruyenvi|nettruyenplus|nettruyenmax).(com|vn)/truyen-tranh/[^/]+/?$",
     "description": "Đọc truyện trên trang Net Truyện",

@@ -6,7 +6,12 @@ function execute(url, page) {
         page = "1";
     }
 
-    let path = url + "&page=" + page + "&count=50";
+    let path = "";
+    if (url.endsWith("?")) {
+        path = url + "page=" + page + "&count=10"
+    } else {
+        path = url + "&page=" + page + "&count=10"
+    }
     let response = fetch(BASE_URL + path, {
         headers: createHeaders(path)
     });

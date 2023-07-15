@@ -1,4 +1,4 @@
-load('host.js');
+load('config.js');
 function execute(url, page) {
     if (!page) page = '0';
 
@@ -14,7 +14,7 @@ function execute(url, page) {
             link: e.select("div.recent-truyen a").attr("href"),
             cover: e.select("div.recent-anhbia img").attr("src"),
             description: e.select("div.recent-chuong a").text(),
-            host: HOST
+            host: BASE_URL
         }));
         return Response.success(novelList, next);
     }

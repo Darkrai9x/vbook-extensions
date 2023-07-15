@@ -6,7 +6,7 @@ function execute(key, page) {
         page = "1";
     }
 
-    let path = "/search/book?q=" + encodeURIComponent(key) + "&total_chapter=-1&time_filter=0&month=0&year=0&page=" + page + "&sort=0&count=50";
+    let path = "/search/book?q=" + encodeURIComponent(key) + "&total_chapter=-1&time_filter=0&month=0&year=0&page=" + page + "&sort=0&count=10";
     let response = fetch(BASE_URL + path, {
         headers: createHeaders(path)
     });

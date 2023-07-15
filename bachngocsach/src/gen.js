@@ -1,4 +1,4 @@
-load('host.js');
+load('config.js');
 function execute(url, page) {
     if (!page) page = '0';
     let response = fetch(url + "/?page=" + page);
@@ -15,7 +15,7 @@ function execute(url, page) {
                 link: e.select("a.term-truyen-a").attr("href"),
                 cover: e.select(".term-anhbia-a > img").attr("src"),
                 description: e.select(".term-tacgia").text(),
-                host: HOST
+                host: BASE_URL
             });
         });
 
