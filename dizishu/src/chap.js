@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url) {
 
     let bookId = getBookId(url);
@@ -9,7 +10,7 @@ function execute(url) {
     let hou = '.html';
     let xid = Math.floor(bookId / 1000)
 
-    let urlData = 'https://www.dizishu.com/files/article/html' + ssid + '/' + xid + '/' + bookId + '/' + chapId + hou;
+    let urlData = BASE_URL + '/files/article/html' + ssid + '/' + xid + '/' + bookId + '/' + chapId + hou;
 
     let response = fetch(urlData);
     if (response.ok) {

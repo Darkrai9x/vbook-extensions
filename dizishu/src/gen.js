@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
 
     if (!page) page = 1;
@@ -16,7 +17,7 @@ function execute(url, page) {
                 link: e.select(".book-info a").first().attr("href"),
                 cover: e.select(".book-img img").attr("src"),
                 description: e.select(".book-info .author").text() + e.select(".book-info .tag").text(),
-                host: "https://www.dizishu.com"
+                host: BASE_URL
             });
         });
 

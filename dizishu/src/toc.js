@@ -1,9 +1,9 @@
+load('config.js');
 function execute(url) {
-
 
     let bookId = parseInt(/b\/(\d+)\/?$/.exec(url)[1]);
     let xid = Math.floor(bookId / 1000)
-    let dataUrl = 'https://www.dizishu.com/files/' + xid + '/' + bookId + '/' + bookId + '.json';
+    let dataUrl = BASE_URL + '/files/' + xid + '/' + bookId + '/' + bookId + '.json';
 
     let response = fetch(dataUrl);
     if (response.ok) {
@@ -14,7 +14,7 @@ function execute(url) {
         json.list.forEach(item => {
             chapters.push({
                 name: item.chaptername,
-                url: 'https://www.dizishu.com/b/' + bookId + '/' + item.chapterid + '.html',
+                url: BASE_URL + '/b/' + bookId + '/' + item.chapterid + '.html',
             })
         });
 
