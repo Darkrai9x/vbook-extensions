@@ -1,19 +1,20 @@
+load("config.js");
 function execute(url) {
-    var doc = Http.get(url).html();
-    if (doc) {
-        var id = doc.select("input[name=story_id]").attr("value");
-        doc = Http.get("https://truyen.tangthuvien.vn/story/chapters?story_id=" + id).html();
-        if (doc) {
-            var list = [];
-            var el = doc.select("li a");
-            for (var i = 0; i < el.size(); i++) {
-                var e = el.get(i)
+    let response = fetch(url);
+    if (response.ok) {
+        let doc = response.html();
+        let id = doc.select("input[name=story_id]").attr("value");
+        response = fetch(BASE_URL + "/story/chapters?story_id=" + id);
+        if (response.ok) {
+            doc = response.html();
+            let list = [];
+            doc.select("li a").forEach(e => {
                 list.push({
                     name: e.text(),
                     url: e.attr("href"),
-                    host: "http://truyen.tangthuvien.vn"
+                    host: BASE_URL
                 });
-            }
+            });
             return Response.success(list);
         }
     }
