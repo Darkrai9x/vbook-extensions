@@ -10,29 +10,21 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
 
-        let isMobile = doc.select(".header-logo").size() !== 0;
-        let data = [];
-        if (isMobile) {
-            doc.select("noscript").remove();
-            let el = doc.select("#image img");
-
-            for (let i = 0; i < el.size(); i++) {
-                let e = el.get(i);
-                let img = e.attr("data-cfsrc");
-                if (!img) {
-                    img = e.attr("src")
-                }
-                data.push(img);
-
+        let newUrl = BASE_URL +"/" + /(list-loadchapter.php.*?)"/.exec(doc.html())[1];
+        response = fetch(newUrl, {
+           method:"GET",
+            headers: {
+               "Referer": url
             }
-        } else {
-            let el = doc.select("#image img");
-            for (let i = 0; i < el.size(); i++) {
-                let e = el.get(i);
+        });
+        if (response.ok) {
+            doc = response.html();
+            let data = [];
+            doc.select("img").forEach(e => {
                 data.push(e.attr("src"));
-            }
+            });
+            return Response.success(data);
         }
-        return Response.success(data);
     }
 
     return null;
