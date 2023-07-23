@@ -18,7 +18,7 @@ function execute(url, page) {
                 link: e.select("h3 a").first().attr("href"),
                 cover: cover,
                 description: e.select(".chapter").first().text(),
-                host: "https://saytruyenvip.com"
+                host: "https://saytruyenhay.com"
             });
         })
         return Response.success(novelList, next)
