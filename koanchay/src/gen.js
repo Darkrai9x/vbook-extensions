@@ -1,3 +1,5 @@
+load("config.js");
+
 function execute(url, page) {
     if (!page) page = '0';
     let response = fetch(url, {
@@ -14,22 +16,19 @@ function execute(url, page) {
             return Response.error("Bạn phải đăng nhập để có thể đọc.");
         }
 
-        var next = doc.select(".pagination").select("li.active + li").select("a").attr("href").match(/start=(\d+)/);
-        if (next) next = next[1]
-
-        let el = doc.select(".book-list > .book-item")
+        let next = doc.select(".pagination").select("li.active + li").select("a").attr("href").match(/start=(\d+)/);
+        if (next) next = next[1];
 
         let data = [];
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
+        doc.select(".book-list > .book-item").forEach(e => {
             data.push({
                 name: e.select(".book-title").text(),
                 link: e.select(".info-col > a").first().attr("href"),
                 cover: e.select(".cover-col img").attr("src"),
                 description: e.select(".book-author").text(),
-                host: "https://koanchay.info"
-            })
-        }
+                host: BASE_URL
+            });
+        });
 
         return Response.success(data, next);
     }

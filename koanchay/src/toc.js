@@ -1,6 +1,7 @@
+load("config.js");
+
 function execute(url) {
-    url = url.replace("koanchay.net", "koanchay.com");
-    url = url.replace("koanchay.com", "koanchay.info");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     var doc = Http.get(url).html();
 
     var bookId = doc.select("input#bookId").attr("value");
