@@ -2,40 +2,52 @@ load('config.js');
 
 function execute(url) {
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
-
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
-        var reviewUrl = doc.select(".book-info-bottom > a:nth-child(3)").attr("href") + "";
-        if (reviewUrl.includes("review/truyen")) {
-            var review = getReview(reviewUrl)
-        }
-        let name = doc.select(".cover-info h2").text();
-        let author = doc.select(".cover-info").html().match(/tac-gia.*?>(.*?)</);
-        if (author) author = author[1];
 
-        let element = doc.select("div.cover-info").first();
-        element.select("h2,span,i").remove();
+        let genres = [];
+        doc.select(".book-desc > p").first().select("a").forEach(e => {
+            genres.push({
+                title: e.text(),
+                input: BASE_URL + e.attr('href'),
+                script: "gen.js"
+            });
+        });
+
+        let detail = '';
+        doc.select(".cover-info > div").first().select("p").first().remove();
+        doc.select(".cover-info > div").first().select("p").forEach(e => {
+            detail += e.text() + "<br>";
+        });
+
+        let bookId = doc.select("input[name=bookId]").first().attr("value");
+
+        let name = doc.select(".cover-info h2").text();
+        let author = doc.select(".cover-info a[href*=tac-gia]").text();
+
         return Response.success({
             name: name,
             cover: doc.select("div.book-info img").first().attr("src"),
             author: author,
-            description: doc.select("div.book-desc").html() + (review ? ("<br>🔶🔶🔶🔶🔶<br> REVIEW <br>🔶🔶🔶🔶🔶<br>" + review) : ""),
-            detail: element.html(),
+            description: doc.select("div.book-desc-detail").html(),
+            detail: detail,
             host: BASE_URL,
-            ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0
+            ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0,
+            nsfw: true,
+            genres: genres,
+            suggests: [
+                {
+                    title: "Cùng thể loại",
+                    input: doc.select(".desktop-similar-books").html(),
+                    script: "similar.js"
+                }
+            ],
+            comment: {
+                input: BASE_URL + "/comment?bookId=" + bookId + "&chapterId=&start=0&order=newest",
+                script: "comment.js"
+            }
         });
     }
     return null;
-}
-
-function getReview(reviewUrl) {
-    var reviewAll = "";
-    let doc = Http.get(BASE_URL + reviewUrl).html();
-    var el = doc.select(".comment-content-msg")
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i).text();
-        reviewAll = reviewAll + e + "<br>/////////////////<br>"
-    }
-    return reviewAll
 }
