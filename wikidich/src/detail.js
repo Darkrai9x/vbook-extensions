@@ -26,6 +26,21 @@ function execute(url) {
         let name = doc.select(".cover-info h2").text();
         let author = doc.select(".cover-info a[href*=tac-gia]").text();
 
+        let comments = [];
+        let review = doc.select("a[href*=/review/truyen]").attr("href");
+        if (review) {
+            comments.push({
+                title: "Đánh giá",
+                input: BASE_URL + review,
+                script: "book_review.js"
+            });
+        }
+
+        comments.push({
+            title: "Bình luận",
+            input: BASE_URL + "/comment?bookId=" + bookId + "&chapterId&order=newest",
+            script: "comment.js"
+        });
         return Response.success({
             name: name,
             cover: doc.select("div.book-info img").first().attr("src"),
@@ -34,7 +49,6 @@ function execute(url) {
             detail: detail,
             host: BASE_URL,
             ongoing: doc.select(".cover-info").html().indexOf("Còn tiếp") > 0,
-            nsfw: true,
             genres: genres,
             suggests: [
                 {
@@ -43,10 +57,7 @@ function execute(url) {
                     script: "similar.js"
                 }
             ],
-            comment: {
-                input: BASE_URL + "/comment?bookId=" + bookId + "&chapterId=&start=0&order=newest",
-                script: "comment.js"
-            }
+            comments: comments
         });
     }
     return null;

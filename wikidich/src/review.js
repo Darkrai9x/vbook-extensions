@@ -11,7 +11,7 @@ function execute(url, page) {
     if (response.ok) {
         let doc = response.html();
 
-        var next = doc.select(".pagination").select("li.active + li").select("a").attr("href").match(/start=(\d+)/);
+        let next = doc.select(".pagination").select("li.active + li").select("a").attr("href").match(/start=(\d+)/);
         if (next) next = next[1];
 
         const data = [];
