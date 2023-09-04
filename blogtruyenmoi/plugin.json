@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Blog Truyện Mới",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://blogtruyenmoi.com",
+    "regexp": "(www.)?(m\\.)?blogtruyenmoi.com/\\d+/[0-9a-z-]+/?$",
+    "description": "Đọc truyện trên trang Blog Truyện Mới",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

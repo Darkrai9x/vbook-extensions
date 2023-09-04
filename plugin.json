@@ -237,6 +237,17 @@
       "description": "Đọc truyện trên trang Blog Truyện"
     },
     {
+      "name": "Blog Truyện Mới",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyenmoi/plugin.zip",
+      "version": 1,
+      "type": "comic",
+      "locale": "vi_VN",
+      "source": "https://blogtruyenmoi.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyenmoi/icon.png",
+      "description": "Đọc truyện trên trang Blog Truyện Mới"
+    },
+    {
       "name": "TruyệnHD",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenhd/plugin.zip",
