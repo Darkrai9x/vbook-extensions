@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Truyện VN",
     "author": "vBook",
-    "version": 18,
-    "source": "https://truyenvnmoi.net",
-    "regexp": "(www.)?truyenvn(hot|pro|moi)?.(com|tv|vip|net)/[^/]+/?$",
+    "version": 199,
+    "source": "https://truyenvnhay.com",
+    "regexp": "(www.)?truyenvn(hot|pro|moi|hay)?.(com|tv|vip|net)/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện VN",
     "locale": "vi_VN",
     "language": "javascript",
