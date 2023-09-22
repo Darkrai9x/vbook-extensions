@@ -1,1 +1,1 @@
-const BASE_URL = 'http://lnreader.org';
+const BASE_URL = 'https://readlightnovel.app';
