@@ -2,9 +2,9 @@
   "metadata": {
     "name": "LightNovel Reader",
     "author": "vBook",
-    "version": 3,
-    "source": "http://lnreader.org",
-    "regexp": "(lightnovelreader|lnreader).(org|me)/[^/]+?",
+    "version": 4,
+    "source": "https://readlightnovel.app",
+    "regexp": "(lightnovelreader|lnreader|readlightnovel).(org|me|app)/[^/]+?",
     "description": "Read novel",
     "local": "en-US",
     "language": "javascript",
