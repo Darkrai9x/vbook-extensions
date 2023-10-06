@@ -15,7 +15,7 @@ function execute(url, page) {
                 link: e.select("a").first().attr("href"),
                 description: e.select("[itemprop=author]").text(),
                 cover: e.select(".tabtruyen-img").attr("src"),
-                host: "https://thichdoctruyen.com",
+                host: "https://thichdoctruyen.vip",
             });
 
         }

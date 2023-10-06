@@ -5,7 +5,7 @@ function execute(url) {
         return Response.success({
             name: doc.select("h1.h1truyen").text(),
             cover: doc.select("div.book img[itemprop=image]").attr("src"),
-            host: "https://thichdoctruyen.com",
+            host: "https://thichdoctruyen.vip",
             author: doc.select("a[itemprop=author]").text(),
             description: doc.select("div#viewtomtat2").html(),
             detail: doc.select("div#thongtintruyen1 .truyenp1").html(),

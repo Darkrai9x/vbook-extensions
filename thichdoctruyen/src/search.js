@@ -1,7 +1,7 @@
 function execute(key, page) {
     if (!page) page = '1';
 
-    var doc = Http.get("https://thichdoctruyen.com/tim-truyen/search.php")
+    var doc = Http.get("https://thichdoctruyen.vip/tim-truyen/search.php")
         .params({keysearch: key, page: page}).html();
 
     if (doc) {
@@ -16,7 +16,7 @@ function execute(key, page) {
                 link: e.select("a").first().attr("href"),
                 description: e.select("[itemprop=author]").text(),
                 cover: e.select(".tabtruyen-img").attr("src"),
-                host: "https://thichdoctruyen.com",
+                host: "https://thichdoctruyen.vip",
             });
 
         }
