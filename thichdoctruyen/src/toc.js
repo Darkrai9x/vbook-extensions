@@ -2,7 +2,8 @@ function execute(url) {
     url = url.replace("thichdoctruyen.com", "thichdoctruyen.vip")
     let response = fetch(url);
     if (response.ok) {
-        const doc = response.html();
+        let doc = response.html();
+        doc.select(".phantranga").remove();
         const list = [];
         let el = doc.select("#dschuong a");
         for (let i = 0; i < el.size(); i++) {

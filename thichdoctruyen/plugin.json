@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Thích Đọc Truyện",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://thichdoctruyen.vip",
     "regexp": "(www.)?thichdoctruyen.vip/doc-truyen/[^/]+\\d+$",
     "description": "Đọc truyện trên trang Thích Đọc Truyện",
