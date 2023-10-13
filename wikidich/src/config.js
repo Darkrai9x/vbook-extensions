@@ -1,4 +1,4 @@
-let BASE_URL = 'https://wikidich1.com';
+let BASE_URL = 'https://wikisach.net';
 try {
     if (CONFIG_URL) {
         BASE_URL = CONFIG_URL;
