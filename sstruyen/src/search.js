@@ -4,14 +4,11 @@ function execute(key, page) {
     if (response.ok) {
         let doc = response.html();
 
-        var next = doc.select(".pagination").select(".next").select("a").attr("href").match(/trang-(\d+)/)
-        if (next) next = next[1]
-
         const data = [];
 
-        doc.select(".grid-items .inner-item").forEach(e => {
+        doc.select(".table-list tr").forEach(e => {
             data.push({
-                name: e.select(".name-book").text(),
+                name: e.select(".info h3 a").text(),
                 link: e.select("a").first().attr("href"),
                 cover: e.select("img").first().attr("src"),
                 description: e.select(".rate").text(),
@@ -19,7 +16,7 @@ function execute(key, page) {
             });
         });
 
-        return Response.success(data, next);
+        return Response.success(data);
     }
 
     return null;
