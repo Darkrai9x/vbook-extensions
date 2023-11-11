@@ -24,10 +24,7 @@ function execute(url) {
                 })
             }
         } else {
-            let getUrl = doc.html().match(/(list-showchapter.php.*?)\"/)[1];
-
-            doc = fetch(BASE_URL + "/" + getUrl).html();
-            let el = doc.select("a")
+            let el = doc.select(".listing a")
             for (let i = el.size() - 1; i >= 0; i--) {
                 let e = el.get(i);
                 data.push({

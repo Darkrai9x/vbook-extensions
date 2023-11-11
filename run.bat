@@ -1,1 +1,1 @@
- C:\Users\longv\.jdks\corretto-11.0.20\bin\java --module-path D:\javafx-sdk-19\lib --add-modules javafx.controls,javafx.fxml,javafx.web -jar E:\Projects\vbook\vbook-extensions\ExtensionMaker.jar
+C:\"Program Files"\Java\jdk-21\bin\java.exe --module-path javafx-sdk-21.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.web -jar ExtensionMaker.jar
