@@ -11,7 +11,7 @@ function execute(url) {
         } else if (doc.select("[data-action=login]").length > 0) {
             return Response.error("Bạn phải đăng nhập để có thể đọc.");
         }
-
+        let comments = [];
         let genres = [];
         doc.select(".book-desc > p").first().select("a").forEach(e => {
             genres.push({
@@ -20,6 +20,14 @@ function execute(url) {
                 script: "gen.js"
             });
         });
+        let review = doc.select("a[href*=/review/truyen]").attr("href");
+        if (review) {
+            comments.push({
+                title: "Đánh giá",
+                input: BASE_URL + review,
+                script: "book_review.js"
+            });
+        }
 
         let detail = '';
         doc.select(".cover-info > div").first().select("p").first().remove();
@@ -32,7 +40,11 @@ function execute(url) {
         let name = doc.select(".cover-info h2").text();
         let author = doc.html().match(/tac-gia.*?>(.*?)</);
         if (author) author = author[1];
-
+        comments.push({
+            title: "Bình luận",
+            input: BASE_URL + "/comment?bookId=" + bookId + "&chapterId&order=newest",
+            script: "comment.js"
+        });
         return Response.success({
             name: name,
             cover: doc.select("div.book-info img").first().attr("src"),
@@ -50,10 +62,7 @@ function execute(url) {
                     script: "similar.js"
                 }
             ],
-            comment: {
-                input: BASE_URL + "/comment?bookId=" + bookId + "&chapterId=&start=0&order=newest",
-                script: "comment.js"
-            }
+            comments: comments
         });
     }
     return null;
