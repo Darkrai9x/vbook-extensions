@@ -1,7 +1,6 @@
+load('config.js');
 function execute(url, page) {
     if (!page) page = '1';
-    url = url.replace("truyenyy.com", "truyenyy.vip")
-        .replace("truyenyy.vn", "truyenyy.vip");
 
     let response = fetch(url + "/?page=" + page);
     if (response.ok) {
@@ -16,7 +15,7 @@ function execute(url, page) {
                     name: e.select("h3").text(),
                     link: e.attr("href"),
                     description: e.select("h4").text(),
-                    host: "https://truyenyy.vip",
+                    host: BASE_URL,
                 });
             });
         } else {
@@ -33,7 +32,7 @@ function execute(url, page) {
                     link: e.select("a").first().attr("href"),
                     description: e.select(".book-author").text(),
                     cover: cover,
-                    host: "https://truyenyy.vip",
+                    host: BASE_URL,
                 });
             });
         }

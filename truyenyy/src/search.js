@@ -1,6 +1,7 @@
+load('config.js');
 function execute(key, page) {
     if (!page) page = '1';
-    let response = fetch("https://truyenyy.vip/tim-kiem/nang-cao/", {
+    let response = fetch(BASE_URL + "/tim-kiem/nang-cao/", {
         method: "GET",
         queries: {
             q: key, page: page
@@ -21,7 +22,7 @@ function execute(key, page) {
                     name: e.select("p").first().text(),
                     link: e.attr("href"),
                     description: e.select(".weui-cell__ft").text(),
-                    host: "https://truyenyy.vip",
+                    host: BASE_URL,
                 })
             });
         } else {
@@ -39,7 +40,7 @@ function execute(key, page) {
                     link: e.select("a").first().attr("href"),
                     description: e.select(".book-author").text(),
                     cover: cover,
-                    host: "https://truyenyy.vip",
+                    host: BASE_URL,
                 })
             });
         }

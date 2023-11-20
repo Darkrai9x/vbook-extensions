@@ -1,6 +1,6 @@
+load('config.js');
 function execute(url) {
-    url = url.replace("truyenyy.com", "truyenyy.vip")
-        .replace("truyenyy.vn", "truyenyy.vip");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
     let response = fetch(url);
     if (response.ok) {
@@ -16,18 +16,18 @@ function execute(url) {
 
             let id = doc.html().match(/chap_id=(.*?)&/)[1];
 
-            let loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=0";
+            let loadUrl = BASE_URL + "/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=0";
             let content = loadChapterContent(loadUrl);
             txt = ""
             if (content) {
                 txt = clearContent(content.content);
                 if (content.ok) {
-                    loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=1";
+                    loadUrl = BASE_URL + "/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=1";
                     content = loadChapterContent(loadUrl);
                     if (content) {
                         txt += clearContent(content.content);
                         if (content.ok) {
-                            loadUrl = "https://truyenyy.vip/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=2";
+                            loadUrl = BASE_URL + "/web-api/novel/chapter-content-get/?chap_id=" + id + "&part=2";
                             content = loadChapterContent(loadUrl);
                             if (content) {
                                 txt += clearContent(content.content);

@@ -1,6 +1,6 @@
+load('config.js');
 function execute(url) {
-    url = url.replace("truyenyy.com", "truyenyy.vip")
-        .replace("truyenyy.vn", "truyenyy.vip");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
     let response = fetch(url);
     if (response.ok) {
@@ -15,7 +15,7 @@ function execute(url) {
                     name: name,
                     url: e.attr("href"),
                     pay: e.select("img[data-src~=vip]").length > 0,
-                    host: "https://truyenyy.vip",
+                    host: BASE_URL,
                 });
             })
         } else {
@@ -26,7 +26,7 @@ function execute(url) {
                     name: ch,
                     url: e.select("a").first().attr("href"),
                     pay: e.select("img[data-src~=vip]").length > 0,
-                    host: "https://truyenyy.vip",
+                    host: BASE_URL,
                 });
             });
         }
