@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "ixunshu",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://ixunshu.net",
+    "regexp": "(www.)?ixunshu.net/xs/\\d+/?$",
+    "description": "",
+    "local": "zh-CN",
+    "language": "javascript",
+    "type": "chinese_novel"
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

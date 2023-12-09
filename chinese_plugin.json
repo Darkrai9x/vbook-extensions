@@ -135,6 +135,17 @@
       "description": "Đọc truyện trên trang chuandaipc.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
+    },
+    {
+      "name": "ixunshu",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ixunshu/plugin.zip",
+      "version": 1,
+      "source": "https://ixunshu.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ixunshu/icon.png",
+      "description": "Đọc truyện trên trang ixunshu.net",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }
