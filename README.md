@@ -32,7 +32,185 @@
 - Tạo các tệp script đặt tại thư mục `src` của extension
 
 # Cấu trúc script
-Xem source code của các extension để tham khảo
+
+```javascript
+
+// home trả về các tab hiển thị ở phần khám phá
+// home.js
+function execute() {
+    return Response.success([
+        {title, input, script},
+    ]);
+}
+// title: Tiêu đề hiển thị
+// script: script dùng để lấy content
+// input: Giá trị đầu vào của script
+
+// Kết quả của home.js sẽ gọi sang script với ở đây ví dụ tên file là homecontent.js
+// url = input
+// page = <rỗng>
+// homecontent.js - page đầu
+function execute(url, page) {
+    return Response.success([
+        { name, link, host, cover, description }
+    ], next);
+}
+// name: Tên truyện
+// link: url của truyện
+// host:<optional> domain của link, nếu link đã bao gồm domain thì không cần
+// cover: url của ảnh cover
+// description: mô tả thêm
+
+// Kết quả của page đầu sẽ tiếp tục làm input của page tiếp theo
+// url = input từ home.js
+// page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
+// homecontent.js - page 2
+function execute(url, page) {
+    return Response.success([
+        { name, link, host, cover, description }
+    ], next);
+}
+```
+
+```javascript
+// genre trả về danh sách các thể loại
+// genre.js
+function execute() {
+    return Response.success([
+        {title, input, script},
+    ]);
+}
+// title: Tiêu đề hiển thị
+// script: script dùng để lấy content
+// input: Giá trị đầu vào của script
+
+// Kết quả của genre.js sẽ gọi sang script với ở đây ví dụ tên file là genrecontent.js
+// url = input
+// page = <rỗng>
+// genrecontent.js - page đầu
+function execute(url, page) {
+    return Response.success([
+        { name, link, host, cover, description }
+    ], next);
+}
+// name: Tên truyện
+// link: url của truyện
+// host:<optional> domain của link, nếu link đã bao gồm domain thì không cần
+// cover: url của ảnh cover
+// description: mô tả thêm
+
+// Kết quả của page đầu sẽ tiếp tục làm input của page tiếp theo
+// url = input từ genre.js
+// page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
+// genrecontent.js - page 2
+function execute(url, page) {
+    return Response.success([
+        { name, link, host, cover, description }
+    ], next);
+}
+```
+
+```javascript
+// detail: Lấy thông tin hiển thị của truyện
+// detail.js
+// url: url của truyện, url sẽ tự động được bỏ ký tự / ở cuối
+function execute(url) {
+    return Response.success(
+        {
+            name,
+            cover,
+            host,
+            author,
+            description,
+            detail,
+            ongoing,
+            genres: [{ title, input, script }],
+            suggests: [{ title, input, script }],
+            comments: [{ title, input, script }],
+        }
+    );
+}
+// name: Tên truyện
+// cover: Url cover
+// host: domain của trang
+// author: Tên tác giả
+// description: Mô tả của truyện
+// detail: Thông tin của truyện
+// ongoing: true/false, Trạng thái đang ra của truyện
+// genres: <optional>: Trả về list script genre của truyện, cách dùng tương tự mục list genre
+// suggests: <optional>: Trả về list script truyện liên quan, cách dùng tương tự phần genre
+// comments: <optional>: Trả về list script comments
+// comment.js
+// function execute(input, next) {
+//     return Response.success([
+//         {name, content, description}
+//     ], next);
+// }
+
+```
+
+```javascript
+// search trả về kết quả tìm kiếm, trường hợp không có sẽ dùng google seach
+// search.js
+// key = key search
+// page = <rỗng>
+// search.js - page đầu
+function execute(key, page) {
+    return Response.success([
+        { name, link, host, cover, description }
+    ], next);
+}
+// name: Tên truyện
+// link: url của truyện
+// host:<optional> domain của link, nếu link đã bao gồm domain thì không cần
+// cover: url của ảnh cover
+// description: mô tả thêm
+
+// Kết quả của page đầu sẽ tiếp tục làm input của page tiếp theo
+// key = key search
+// page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
+// search.js - page 2
+function execute(key, page) {
+    return Response.success([
+        { name, link, host, cover, description }
+    ], next);
+}
+
+```
+
+```javascript
+// page trả về danh sách các trang của mục lục nếu mục lục được phân thành nhiều trang
+// page.js
+// url = url truyện giống detail
+function execute(url) {
+    return Response.success([page1, page2]);
+}
+
+```
+
+```javascript
+// toc: Trả về mục lục trên từng page
+// toc.js
+// url: path trả về từ page, nếu không có page thì url là url giống ở detail
+function execute(url) {
+    return Response.success([
+        { name, url, host }
+    ]);
+}
+// name: Tên chương
+// url: url của chương
+// host:<optional> domain của url, nếu url đã bao gồm domain thì không cần
+```
+
+```javascript
+// chap: trả về nội dung của chương truyện
+// chap.js
+// url: url trả về từ toc
+function execute(url) {
+    return Response.success(content);
+}
+```
+
 # Các function bổ trợ
 
 ## Javascript
