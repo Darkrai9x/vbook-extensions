@@ -127,17 +127,6 @@
       "description": "Đọc truyện trên trang Truyện QQ"
     },
     {
-      "name": "Chivi",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/plugin.zip",
-      "version": 24,
-      "source": "https://chivi.app",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chivi/icon.png",
-      "description": "Đọc truyện trên trang Chivi",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
       "name": "Net Truyện",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/plugin.zip",
@@ -291,28 +280,6 @@
       "description": "Đọc truyện trên trang vTruyện",
       "type": "novel",
       "locale": "vi_VN"
-    },
-    {
-      "name": "Mê Đọc Truyện Chữ",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/plugin.zip",
-      "version": 3,
-      "source": "https://www.medoctruyenchu.net",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyenchu/icon.png",
-      "description": "Đọc truyện trên trang Mê Đọc Truyện Chữ",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "Mê Đọc Truyện Tranh",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/plugin.zip",
-      "version": 3,
-      "type": "comic",
-      "locale": "vi_VN",
-      "source": "https://www.medoctruyentranh.net",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/medoctruyentranh/icon.png",
-      "description": "Đọc truyện trên trang Mê Đọc Truyện Tranh"
     },
     {
       "name": "Truyện Tranh Audio",
@@ -469,17 +436,6 @@
       "type": "comic"
     },
     {
-      "name": "Cứu Truyện",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/plugin.zip",
-      "version": 2,
-      "source": "https://cuutruyen.net",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/icon.png",
-      "description": "Đọc truyện trên trang Cứu Truyện",
-      "type": "comic",
-      "locale": "vi_VN"
-    },
-    {
       "name": "Ổ Cú Mèo",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ocumoe/plugin.zip",
@@ -488,17 +444,6 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ocumoe/icon.png",
       "description": "Đọc truyện trên trang Ổ Cú Mèo",
       "type": "comic",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "Sáng Tác Việt",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/plugin.zip",
-      "version": 7,
-      "source": "https://sangtacviet.vip",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sangtacviet/icon.png",
-      "description": "Đọc truyện trên trang Sáng Tác Việt",
-      "type": "novel",
       "locale": "vi_VN"
     },
     {
