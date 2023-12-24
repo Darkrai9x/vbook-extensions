@@ -1,12 +1,13 @@
+load("config.js");
 function execute(url) {
-    var htm = "";
-    if (url.indexOf("sj.uukanshu.com") !== -1) {
-        var doc = Http.get(url).html();
+    let htm = "";
+    if (url.indexOf("sj.") !== -1) {
+        let doc = fetch(url).html();
         doc.select(".ad_content").remove();
         doc.select("div.box").remove();
         htm = doc.select("#bookContent").html();
     } else {
-        var doc = Http.get(url).html("gb2312");
+        let doc = fetch(url).html("gb2312");
         doc.select(".ad_content").remove();
         htm = doc.select("#contentbox").html();
     }

@@ -1,38 +1,36 @@
+load("config.js");
+
 function execute(url) {
-    if (url.indexOf("sj.uukanshu.com") === -1) {
-        var bookId = url.match(/\/b\/(\d+)\/?$/)[1];
-        url = "https://sj.uukanshu.com/book.aspx?id=" + bookId;
+    if (url.indexOf("sj.") === -1) {
+        let bookId = url.match(/\/b\/(\d+)\/?$/)[1];
+        url = MOBILE_URL + "/book.aspx?id=" + bookId;
     }
-    var doc = Http.get(url).html();
+    let doc = fetch(url).html();
 
     if (doc) {
 
-        var el = doc.select("#chapterList a")
         var data = [];
-        for (var i = 0; i < el.size(); i++) {
-            var e = el.get(i);
+        doc.select("#chapterList a").forEach(e => {
             data.push({
                 name: e.select("a").text(),
                 url: e.attr("href"),
-                host: "https://sj.uukanshu.com"
-            })
-        }
+                host: MOBILE_URL
+            });
+        });
 
-        var page = doc.select(".pages a").last().attr("href").match(/page=(\d+)/);
+        let page = doc.select(".pages a").last().attr("href").match(/page=(\d+)/);
         if (page) {
             page = parseInt(page[1]);
             if (page > 1) {
-                for (var p = 2; p <= page; p++) {
-                    doc = Http.get(url + "&page=" + p).html();
-                    var el = doc.select("#chapterList a")
-                    for (var i = 0; i < el.size(); i++) {
-                        var e = el.get(i);
+                for (let p = 2; p <= page; p++) {
+                    doc = fetch(url + "&page=" + p).html();
+                    doc.select("#chapterList a").forEach(e => {
                         data.push({
                             name: e.select("a").text(),
                             url: e.attr("href"),
-                            host: "https://sj.uukanshu.com"
-                        })
-                    }
+                            host: MOBILE_URL
+                        });
+                    });
                 }
             }
         }

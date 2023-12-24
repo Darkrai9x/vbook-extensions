@@ -1,12 +1,14 @@
+load("config.js");
+
 function execute(url) {
-    if (url.indexOf("sj.uukanshu.com") === -1) {
-        var bookId = url.match(/\/b\/(\d+)\/?$/)[1];
-        url = "https://sj.uukanshu.com/book.aspx?id=" + bookId;
+    if (url.indexOf("sj.") === -1) {
+        let bookId = url.match(/\/b\/(\d+)\/?$/)[1];
+        url = MOBILE_URL + "/book.aspx?id=" + bookId;
     }
-    var doc = Http.get(url).html();
+    let doc = fetch(url).html();
     if (doc) {
-        var info = doc.select(".book-info");
-        var coverImg = info.select(".pic img").first().attr("src");
+        let info = doc.select(".book-info");
+        let coverImg = info.select(".pic img").first().attr("src");
         if (coverImg.startsWith("//")) {
             coverImg = "https:" + coverImg;
         }
@@ -16,7 +18,7 @@ function execute(url) {
             author: info.select("dd").first().text().replace("作者：", ""),
             description: info.select(".desc").text(),
             detail: info.select("dd").html(),
-            host: "https://sj.uukanshu.com"
+            host: MOBILE_URL
         });
     }
 

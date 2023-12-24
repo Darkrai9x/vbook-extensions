@@ -1,12 +1,10 @@
+load("config.js");
+
 function execute(url, page) {
-    const doc = Http.get(url).html();
-
-    const el = doc.select(".listc .phright .bookcon")
-
+    const doc = fetch(DESKTOP_URL + url).html();
     const data = [];
-    for (var i = 0; i < el.size(); i++) {
-        var e = el.get(i);
-        var coverImg = e.select("img").first().attr("src");
+    doc.select(".listc .phright .bookcon").forEach(e => {
+        let coverImg = e.select("img").first().attr("src");
         if (coverImg.startsWith("//")) {
             coverImg = "https:" + coverImg;
         }
@@ -15,9 +13,9 @@ function execute(url, page) {
             link: e.select("a").first().attr("href"),
             cover: coverImg,
             description: e.select(".last").first().text(),
-            host: "https://www.uukanshu.com"
-        })
-    }
+            host: DESKTOP_URL
+        });
+    });
 
     return Response.success(data)
 }

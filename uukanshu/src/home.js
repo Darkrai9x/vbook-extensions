@@ -9,6 +9,6 @@ function execute() {
         { title: "女生同人", input: "/list/tongren", script: "gen.js" },
         { title: "二次元", input: "/list/erciyuan", script: "gen.js" },
         { title: "全本小说", input: "/list/quanben", script: "gen.js" },
-        { title: "排行榜", input: "https://www.uukanshu.com/rank-1-1.html", script: "rank.js" }
+        { title: "排行榜", input: "/rank-1-1.html", script: "rank.js" }
     ]);
 }
