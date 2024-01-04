@@ -38,5 +38,10 @@
     "link": "https://raw.githubusercontent.com/duongden/vbook/main/plugin.json",
     "author": "Đường đen",
     "description": "amateur"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/SoulGodEve9x9/Vbook-ext/Nahona/plugin.json",
+    "author": "Nahona",
+    "description": "Nahona"
   }
 ]
