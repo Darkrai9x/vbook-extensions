@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Bàn Long",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://banlong.us",
+    "regexp": "(www.)?banlong.us/truyen/[0-9a-z-]+/?",
+    "description": "Đọc truyện trên banlong.us",
+    "local": "vi-VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}

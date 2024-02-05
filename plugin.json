@@ -138,17 +138,6 @@
       "description": "Đọc truyện trên trang Net Truyện"
     },
     {
-      "name": "Truyện VN",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
-      "version": 21,
-      "type": "comic",
-      "locale": "vi_VN",
-      "source": "https://truyenvnhay.tv",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
-      "description": "Đọc truyện trên trang Truyện VN"
-    },
-    {
       "name": "Wattpad",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/plugin.zip",
@@ -454,6 +443,17 @@
       "source": "https://metruyencv.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyencv/icon.png",
       "description": "Đọc truyện trên trang TruyệnCV",
+      "type": "novel",
+      "locale": "vi_VN"
+    },
+    {
+      "name": "Bàn Long",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/banlong/plugin.zip",
+      "version": 1,
+      "source": "https://banlong.us",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/banlong/icon.png",
+      "description": "Đọc truyện trên trang banlong.us",
       "type": "novel",
       "locale": "vi_VN"
     }
