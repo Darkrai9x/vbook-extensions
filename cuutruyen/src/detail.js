@@ -1,8 +1,9 @@
+load('config.js');
 function execute(url) {
 
     let chapterId = /mangas\/(\d+)\/?/.exec(url)[1];
 
-    let response = fetch("https://kakarot.cuutruyen.net/api/v2/mangas/" + chapterId);
+    let response = fetch(BASE_URL + "/api/v2/mangas/" + chapterId);
 
     if (response.ok) {
         let json = response.json();

@@ -425,6 +425,17 @@
       "type": "comic"
     },
     {
+      "name": "Cứu Truyện",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/plugin.zip",
+      "version": 3,
+      "source": "https://cuutruyent9sv7.xyz",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/icon.png",
+      "description": "Đọc truyện trên trang Cứu Truyện",
+      "type": "comic",
+      "locale": "vi_VN"
+    },
+    {
       "name": "Ổ Cú Mèo",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ocumoe/plugin.zip",

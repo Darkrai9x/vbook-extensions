@@ -1,3 +1,4 @@
+load('config.js');
 function execute(url, page) {
 
     if (!page) page = '1';
@@ -21,7 +22,7 @@ function execute(url, page) {
         json.data.forEach(item => {
             novels.push({
                 name: item.name,
-                link: "https://cuutruyen.net/mangas/" + item.id,
+                link: BASE_URL + "/mangas/" + item.id,
                 cover: item.cover_url,
                 description: "C. " + item.newest_chapter_number
             })
