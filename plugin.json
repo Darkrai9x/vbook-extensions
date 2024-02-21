@@ -138,6 +138,17 @@
       "description": "Đọc truyện trên trang Net Truyện"
     },
     {
+      "name": "Truyện VN",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
+      "version": 22,
+      "type": "comic",
+      "locale": "vi_VN",
+      "source": "https://truyenvn.fun",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
+      "description": "Đọc truyện trên trang Truyện VN"
+    },
+    {
       "name": "Wattpad",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wattpad/plugin.zip",

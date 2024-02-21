@@ -2,12 +2,12 @@ load('config.js');
 function execute(input) {
     let doc = Html.parse(input);
     let books = [];
-    doc.select(".entry.text-center").forEach(e => {
+    doc.select(".related-reading-wrap").forEach(e => {
         books.push({
-            name: e.select("h2 a").text(),
-            link: e.select("h2 a").attr("href"),
+            name: e.select(".widget-title").first().text(),
+            link: e.select("a").first().attr("href"),
             cover: e.select("img").first().attr("data-src"),
-            description: "Lượt xem: " + e.select(".bg-info").text(),
+            description: e.select(".post-on").text(),
             host: BASE_URL
         })
     });
