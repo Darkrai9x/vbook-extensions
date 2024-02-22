@@ -4,8 +4,14 @@ function execute(url) {
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
-        var imgs = [];
-        doc.select(".reading-content img[id^=image]").forEach(e => imgs.push(e.attr("data-src").trim()));
+        let imgs = [];
+        doc.select(".reading-content img[id^=image]").forEach(e => {
+            let url = e.attr("data-src").trim();
+            if (!url) {
+                url = e.attr("src").trim();
+            }
+            imgs.push(url);
+        });
         return Response.success(imgs);
     }
     return null;
