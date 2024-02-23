@@ -1,16 +1,12 @@
 load('config.js');
 function execute(url, page) {
     if (!page) page = '1';
-    let response = fetch(url, {
-        method: "GET",
-        queries: {
-            page : page
-        }
-    });
+    let response = fetch(url + "/page/" + page);
     if (response.ok) {
         let doc = response.html();
         let comiclist = [];
-        let next = doc.select(".pager").select('li.active + li').text();
+        let next = /page\/(\d+)/.exec(doc.select(".nextpostslink").attr('href'));
+        if (next) next = next[1];
         doc.select(".page-item-detail").forEach(e => {
             comiclist.push({
                 name: e.select("h3 a").text(),
