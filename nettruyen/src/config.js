@@ -1,4 +1,4 @@
-let BASE_URL = 'https://www.nettruyenbb.com';
+let BASE_URL = 'https://www.nettruyenee.com';
 try {
     if (CONFIG_URL) {
         BASE_URL = CONFIG_URL;
