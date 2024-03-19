@@ -2,8 +2,8 @@
   "metadata": {
     "name": "Wiki Dịch",
     "author": "vBook",
-    "version": 21,
-    "source": "https://wikisach.net",
+    "version": 22,
+    "source": "https://truyenwikidich.net",
     "regexp": "(www.)?wiki(.*?)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
     "locale": "vi_VN",
