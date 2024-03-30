@@ -2,8 +2,8 @@
   "metadata": {
     "name": "Net Truyện",
     "author": "vBook",
-    "version": 29,
-    "source": "https://www.nettruyenff.com",
+    "version": 30,
+    "source": "https://www.nettruyenhh.com",
     "regexp": "(www.)?nettruyen[a-z]*.(com|vn|net)/truyen-tranh/[^/]+/?$",
     "description": "Đọc truyện trên trang Net Truyện",
     "locale": "vi_VN",
