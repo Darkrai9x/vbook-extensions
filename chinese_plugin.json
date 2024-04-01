@@ -5,11 +5,11 @@
   },
   "data": [
     {
-      "name": "uukanshu",
+      "name": "zhaoshuyuan",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/plugin.zip",
-      "version": 8,
-      "source": "https://uukanshu.net",
+      "version": 9,
+      "source": "https://www.zhaoshuyuan.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.net",
       "type": "chinese_novel",

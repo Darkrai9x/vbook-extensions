@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "name": "uukanshu",
+    "name": "zhaoshuyuan",
     "author": "vBook",
-    "version": 8,
-    "source": "https://www.uukanshu.net",
-    "regexp": "(www.)?((uukanshu.(com|net)/b/[^/]+/?)|(sj.uukanshu.(com|net)/book.aspx.id=\\d+))",
+    "version": 9,
+    "source": "https://www.zhaoshuyuan.com",
+    "regexp": "(www.)?(((uukanshu|zhaoshuyuan).(com|net)/b/[^/]+/?)|(sj.(uukanshu|zhaoshuyuan).(com|net)/book.aspx.id=.*?))",
     "description": "Đọc truyện trên trang uukanshu.net",
     "locale": "zh_CN",
     "language": "javascript",
