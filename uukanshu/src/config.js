@@ -1,4 +1,4 @@
-let BASE_URL = "uukanshu.net";
+let BASE_URL = "zhaoshuyuan.com";
 try {
     if (CONFIG_URL) {
         BASE_URL = CONFIG_URL;
