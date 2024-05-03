@@ -1,12 +1,31 @@
 function execute() {
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth() + 1;
     return Response.success([
-        {title: "Mới cập nhật", script: "gen.js", input: "https://metruyencv.com/truyen?"},
-        {title: "Chọn lọc", script: "gen.js", input: "https://metruyencv.com/truyen?sort_by=new_chap_at&props=1"},
-        {title: "Thịnh hành", script: "rank.js", input: "https://metruyencv.com/bang-xep-hang/tuan/thinh-hanh"},
-        {title: "Đọc nhiều", script: "rank.js", input: "https://metruyencv.com/bang-xep-hang/tuan/doc-nhieu"},
-        {title: "Tặng thưởng", script: "rank.js", input: "https://metruyencv.com/bang-xep-hang/tuan/tang-thuong"},
-        {title: "Đề cử", script: "rank.js", input: "https://metruyencv.com/bang-xep-hang/tuan/de-cu"},
-        {title: "Yêu thích", script: "rank.js", input: "https://metruyencv.com/bang-xep-hang/tuan/yeu-thich"},
-        {title: "Thảo luận", script: "rank.js", input: "https://metruyencv.com/bang-xep-hang/tuan/thao-luan"}
+        {
+            title: "Truyện chọn lọc",
+            script: "book.js",
+            input: "/api/books?filter%5Bgender%5D=1&filter%5Bkind%5D=1&filter%5Bstate%5D=published&filter%5Btype%5D=picked&include=author%2Cgenres%2Ccreator&sort=-new_chap_at"
+        },
+        {
+            title: "Bảng xếp hạng lượt đọc",
+            script: "rank.js",
+            input: "/api/books/ranking?gender=1&kind=1&month=" + currentMonth + "&type=view&year=" + currentYear
+        },
+        {
+            title: "Bảng xếp hạng đề cử",
+            script: "rank.js",
+            input: "/api/books/ranking?gender=1&kind=1&month=" + currentMonth + "&type=vote&year=" + currentYear
+        },
+        {
+            title: "Truyện mới cập nhật",
+            script: "book.js",
+            input: "/api/books?filter%5Bgender%5D=1&filter%5Bkind%5D=1&filter%5Bstate%5D=published&include=author%2Cgenres%2Ccreator&sort=-new_chap_at"
+        },
+        {
+            title: "Truyện hoàn thành full",
+            script: "book.js",
+            input: "/api/books?filter%5Bgender%5D=1&filter%5Bkind%5D=1&filter%5Bstate%5D=published&filter%5Bstatus%5D=2&include=author%2Cgenres%2Ccreator&sort=-new_chap_at"
+        },
     ]);
 }

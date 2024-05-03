@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "name": "Mê Truyện CV",
+    "name": "MTC",
     "author": "vBook",
-    "version": 20,
+    "version": 21,
     "source": "https://metruyencv.com",
     "regexp": "(www.)?(metruyenchu|mtccv|metruyencv).com/truyen/[a-zA-Z0-9-]+/?$",
     "description": "Đọc truyện trên trang Mê Truyện CV",

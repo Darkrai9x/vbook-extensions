@@ -14,10 +14,10 @@ function execute(url, page) {
         let next = json.pagination.next + "";
         json.data.forEach(book => {
             novelList.push({
-                name: book.book.name,
-                link: book.book.link,
-                description: book.book.author.name,
-                cover: book.book.poster['default'],
+                name: book.name,
+                link: book.link,
+                description: book.author.name,
+                cover: book.poster['default'],
                 host: BASE_URL
             })
         });

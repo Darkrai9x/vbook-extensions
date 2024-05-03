@@ -260,11 +260,11 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Mê Truyện Chữ",
+      "name": "MTC",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/plugin.zip",
-      "version": 20,
-      "source": "https://metruyenchu.com",
+      "version": 21,
+      "source": "https://metruyencv.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ",
       "type": "novel",

@@ -1,16 +1,23 @@
-load("config.js");
+load("config.js")
 
-function execute(key, page) {
+function execute(url, page) {
     if (!page) page = '1';
-    let searchUrl = BASE_URL.replace("https://", "https://backend.") + "/api/books/search";
 
-    let response = fetch(searchUrl, {
+    let id = /ho-so\/(\d+)\/?/.exec(url)[1];
+    let filterUrl = BASE_URL.replace("https://", "https://backend.") + "/api/books";
+    let response = fetch(filterUrl, {
         headers: {
             "X-App": "MeTruyenChu"
         },
         queries: {
-            "keyword": key,
+            "filter[creator": id,
+            "filter[gender]": "1",
+            "filter[kind]": "1",
+            "filter[state]": "published",
+            "include": "author,genres,creator",
+            "limit": "5",
             "page": page,
+            "sort": "-new_chap_at"
         }
     });
     if (response.ok) {
