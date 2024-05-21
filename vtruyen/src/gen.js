@@ -1,30 +1,50 @@
+load("config.js")
+
 function execute(url, page) {
-    if (!page) page = '1';
-    var browser = Engine.newBrowser();
+    let novelList = [];
+    let next = "";
+    if (!page) {
+        let browser = Engine.newBrowser();
 
-    browser.block([".*?api.truyen.onl/v2/books?sort_by.*?"]);
+        browser.block([".*?api/books*?"]);
 
-    browser.launch(url + "&page=" + page, 1000);
-    browser.waitUrl(".*?api.truyen.onl/v2/books?sort_by.*?", 10000);
-    browser.close()
+        browser.launch(url, 1000);
+        browser.waitUrl(".*?api/books.*?", 10000);
+        browser.close();
 
-    var urls = JSON.parse(browser.urls());
-    var novelList = [];
-    var next = "";
-    urls.forEach(requestUrl => {
-        if (requestUrl.indexOf("api.truyen.onl/v2/books") >= 0) {
-            var response = JSON.parse(Http.get(requestUrl).string());
-            next = response._extra._pagination._next;
-            response._data.forEach(book => {
-                novelList.push({
-                    name: book.name,
-                    link: "/truyen/" + book.slug,
-                    description: book.author_name,
-                    cover: book['poster']['default'],
-                    host: "https://vtruyen.com"
-                })
-            });
+        let urls = JSON.parse(browser.urls());
+
+        urls.forEach(requestUrl => {
+            if (requestUrl.indexOf("api/books") >= 0) {
+                let response = fetch(requestUrl).json();
+                if (response.pagination && response.pagination.next) {
+                    next = requestUrl.replace(/page=\d+/i, "page=" + response.pagination.next);
+                }
+                response.data.forEach(book => {
+                    novelList.push({
+                        name: book.name,
+                        link: book.link,
+                        description: book.author.name,
+                        cover: book.poster['default'],
+                        host: BASE_URL
+                    })
+                });
+            }
+        });
+    } else {
+        let response = fetch(page).json();
+        if (response.pagination && response.pagination.next) {
+            next = page.replace(/page=\d+/i, "page=" + response.pagination.next);
         }
-    });
+        response.data.forEach(book => {
+            novelList.push({
+                name: book.name,
+                link: book.link,
+                description: book.author.name,
+                cover: book.poster['default'],
+                host: BASE_URL
+            })
+        });
+    }
     return Response.success(novelList, next);
 }

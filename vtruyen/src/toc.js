@@ -1,26 +1,30 @@
+load("config.js");
+
 function execute(url) {
-    var browser = Engine.newBrowser();
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
-    browser.block([".*?api.truyen.onl/v2.*?"]);
+    let response = fetch(url);
+    if (response.ok) {
+        let bookId = /"id":(\d+)/.exec(response.html().html())[1];
+        let tocUrl = API_URL.replace("https://", "https://backend.") + "/api/chapters?filter%5Bbook_id%5D=" + bookId + "&filter%5Btype%5D=published";
 
-    browser.launch(url, 10000);
-    browser.callJs("document.getElementById('nav-tab-chap').click();", 500);
-    browser.waitUrl(".*?api.truyen.onl/v2.*?", 10000);
-    browser.close()
+        response = fetch(tocUrl, {
+            headers: {
+                "X-App": "vTruyen.Com"
+            }
+        }).json();
 
-    var urls = JSON.parse(browser.urls());
-    var chapters = [];
-    urls.forEach(requestUrl => {
-        if (requestUrl.indexOf("api.truyen.onl/v2/chapters") >= 0) {
-            var response = JSON.parse(Http.get(requestUrl).string());
-            response._data.chapters.forEach(chapter => {
-                chapters.push({
-                    name: chapter.name,
-                    url: "chuong-" + chapter.index,
-                    host: url
-                })
-            });
-        }
-    });
-    return Response.success(chapters);
+        let chapters = [];
+        response.data.forEach(chapter => {
+            chapters.push({
+                name: chapter.name,
+                url: "chuong-" + chapter.index,
+                host: url,
+                lock: chapter.is_locked === true
+            })
+        });
+        return Response.success(chapters);
+    }
+
+    return null;
 }

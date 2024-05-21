@@ -1,4 +1,5 @@
 load("config.js");
+
 function execute(url, page) {
     if (!page) page = '1';
     let tocUrl = API_URL.replace("https://", "https://backend.") + url + "&limit=20&page=" + page;
@@ -14,16 +15,18 @@ function execute(url, page) {
         let next = json.pagination.next + "";
         json.data.forEach(book => {
             let description = "";
-            if (book.book.author) {
-                description = book.book.author.name;
+            if (book.author) {
+                description = book.author.name;
+            } else if (book.creator) {
+                description = book.creator.name;
             }
             novelList.push({
-                name: book.book.name,
-                link: book.book.link,
+                name: book.name,
+                link: book.link,
                 description: description,
-                cover: book.book.poster['default'],
+                cover: book.poster['default'],
                 host: BASE_URL
-            });
+            })
         });
         return Response.success(novelList, next);
     }

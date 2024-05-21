@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Cứu Truyện",
     "author": "vBook",
-    "version": 3,
-    "source": "https://cuutruyent9sv7.xyz",
-    "regexp": "(www.)?(cuutruyen|cuutruyent9sv7|hetcuutruyen).(net|xyz)/mangas/\\d+/?",
+    "version": 4,
+    "source": "https://nettrom.com",
+    "regexp": "(www.)?(cuutruyen|cuutruyent9sv7|hetcuutruyen|nettrom).(net|xyz|com)/mangas/\\d+/?",
     "description": "Đọc truyện trên trang Cứu Truyện",
     "local": "vi-VN",
     "language": "javascript",
