@@ -273,6 +273,7 @@ browser.close() // Đóng browser khi đã xử lý xong
 ```javascript
 Console.log() // Log data in tab logcat
 load('filename.js') // Load file js
+sleep(10000) // Delay 10 giây
 ```
 
 # Test extension
