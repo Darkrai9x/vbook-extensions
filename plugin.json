@@ -127,17 +127,6 @@
       "description": "Đọc truyện trên trang Truyện QQ"
     },
     {
-      "name": "Net Truyện",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/plugin.zip",
-      "version": 32,
-      "type": "comic",
-      "locale": "vi_VN",
-      "source": "https://www.nettruyenvv.com",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/nettruyen/icon.png",
-      "description": "Đọc truyện trên trang Net Truyện"
-    },
-    {
       "name": "Truyện VN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
@@ -359,17 +348,6 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Ngôn Phong",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ngonphong/plugin.zip",
-      "version": 3,
-      "source": "https://www.ngonphong.com",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ngonphong/icon.png",
-      "description": "Đọc truyện trên trang ngonphong.com",
-      "type": "comic",
-      "locale": "vi_VN"
-    },
-    {
       "name": "Luvevaland",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lustaveland/plugin.zip",
@@ -443,17 +421,6 @@
       "source": "https://nettrom.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/cuutruyen/icon.png",
       "description": "Đọc truyện trên trang Cứu Truyện",
-      "type": "comic",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "Ổ Cú Mèo",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ocumoe/plugin.zip",
-      "version": 1,
-      "source": "https://www.ocumoe.com",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ocumoe/icon.png",
-      "description": "Đọc truyện trên trang Ổ Cú Mèo",
       "type": "comic",
       "locale": "vi_VN"
     },
