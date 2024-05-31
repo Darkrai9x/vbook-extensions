@@ -11,7 +11,7 @@ function execute(url, page) {
             comiclist.push({
                 name: e.select("h3 a").text(),
                 link: e.select("h3 a").attr("href"),
-                cover: e.select("img.img-responsive").attr("data-src") || e.select("img.img-responsive").attr("src"),
+                cover: e.select("img.img-responsive").attr("data-lazy-src") || e.select("img.img-responsive").attr("data-src"),
                 description: e.select('.chapter').first().text(),
                 host: BASE_URL
             });

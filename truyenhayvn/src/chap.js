@@ -1,6 +1,7 @@
+load('config.js');
 function execute(url) {
-    url = url.replace(/(www.)?truyenhayvn.com/g, "1.truyenhayvn.com");
-    var response = fetch(url);
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+    let response = fetch(url);
      if (response.ok) {
         let doc = response.html();
         doc.select("noscript").remove();
@@ -9,7 +10,7 @@ function execute(url) {
         doc.select("div.ads-responsive").remove();
         doc.select("[style=font-size.0px;]").remove();
         doc.select("a").remove();
-        var txt = doc.select("div.chap-detail").html().replace(/&nbsp;/g, "");
+         let txt = doc.select("div.chap-detail").html().replace(/&nbsp;/g, "");
         return Response.success(txt);
     }
     return null;

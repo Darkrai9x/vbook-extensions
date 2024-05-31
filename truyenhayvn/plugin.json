@@ -2,9 +2,9 @@
   "metadata": {
     "name": "TruyenHayVN",
     "author": "vBook",
-    "version": 2,
-    "source": "https://1.truyenhayvn.com",
-    "regexp": "(www.|1.)?truyenhayvn.com/[^/]+/?$",
+    "version": 3,
+    "source": "https://truyenhay.com",
+    "regexp": "(www.|1.)?truyenhay(vn)?.com/[^/]+/?$",
     "description": "Đọc truyện trên trang TruyenHayVN",
     "locale": "vi-VN",
     "language": "javascript",
