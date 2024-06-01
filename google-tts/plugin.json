@@ -1,0 +1,14 @@
+{
+  "metadata": {
+    "name": "Google TTS",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.google.com",
+    "description": "Nghe truyện bằng Google TTS",
+    "type": "tts"
+  },
+  "script": {
+    "detail": "detail.js",
+    "tts": "tts.js"
+  }
+}
