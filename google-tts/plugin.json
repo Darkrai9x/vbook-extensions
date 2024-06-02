@@ -8,7 +8,7 @@
     "type": "tts"
   },
   "script": {
-    "detail": "detail.js",
+    "config": "config.js",
     "tts": "tts.js"
   }
 }
