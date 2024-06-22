@@ -5,8 +5,12 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let imgs = [];
+        doc.select("noscript").remove();
         doc.select(".reading-content img[id^=image]").forEach(e => {
             let url = e.attr("data-src").trim();
+            if (!url) {
+                url = e.attr("data-lazy-src").trim();
+            }
             if (!url) {
                 url = e.attr("src").trim();
             }
