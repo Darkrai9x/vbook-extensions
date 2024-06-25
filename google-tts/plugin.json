@@ -8,7 +8,13 @@
     "type": "tts"
   },
   "script": {
-    "config": "config.js",
+    "voice": "voice.js",
     "tts": "tts.js"
+  },
+  "config": {
+    "preload_size": 3,
+    "max_length": 200,
+    "required_api_key": false,
+    "support_url": ""
   }
 }

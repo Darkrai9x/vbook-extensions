@@ -1,16 +1,20 @@
-load("voice.js");
+load("voice_list.js");
 
 function execute(text, voice) {
     let voiceInfo = voices.find(function (e) {
         return e.id == voice;
     });
+    let lang = "vi";
+    if (voiceInfo) {
+        lang = voiceInfo.language;
+    }
     let response = fetch("https://translate.google.com/_/TranslateWebserverUi/data/batchexecute", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
             "Cookie": "",
         },
-        body: "f.req=" + encodeURIComponent(getPayloadData(text, "vi"))
+        body: "f.req=" + encodeURIComponent(getPayloadData(text, lang))
     });
     if (response.ok) {
         let data = response.text().replace(/^\)\]\}'/, '').trim();
