@@ -13,6 +13,16 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-tts/icon.png",
       "description": "Nghe truyện bằng Google TTS",
       "type": "tts"
+    },
+    {
+      "name": "Bing TTS",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://www.bing.com/translator",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bing-tts/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bing-tts/icon.png",
+      "description": "Nghe truyện bằng Bing TTS",
+      "type": "tts"
     }
   ]
 }

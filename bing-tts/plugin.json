@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Bing TTS",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.bing.com/translator",
+    "description": "Nghe truyện bằng Bing TTS",
+    "type": "tts"
+  },
+  "script": {
+    "voice": "voice.js",
+    "tts": "tts.js"
+  },
+  "config": {
+    "preload_size": 3,
+    "preload_parallel": false,
+    "max_length": 600,
+    "required_api_key": false,
+    "support_url": ""
+  }
+}
