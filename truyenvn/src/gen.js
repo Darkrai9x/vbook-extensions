@@ -1,4 +1,5 @@
 load('config.js');
+
 function execute(url, page) {
     if (!page) page = '1';
     let response = fetch(url + "/page/" + page);
@@ -8,10 +9,13 @@ function execute(url, page) {
         let next = /page\/(\d+)/.exec(doc.select(".nextpostslink").attr('href'));
         if (next) next = next[1];
         doc.select(".page-item-detail").forEach(e => {
+            let cover = e.select("img").first().attr("src")
+                || e.select("img").first().attr("data-lazy-src")
+                || e.select("img").first().attr("data-src");
             comiclist.push({
                 name: e.select("h3 a").text(),
                 link: e.select("h3 a").attr("href"),
-                cover: e.select("img.img-responsive").attr("data-lazy-src") || e.select("img.img-responsive").attr("data-src"),
+                cover: cover,
                 description: e.select('.chapter').first().text(),
                 host: BASE_URL
             });
