@@ -15,6 +15,7 @@ function createHeaders(path) {
     return {
         "Api-Key": API_KEY,
         "Signature": signature,
-        "Request-Time": time
+        "Request-Time": time,
+        "User-Agent": "okhttp/3.12.1"
     }
 }

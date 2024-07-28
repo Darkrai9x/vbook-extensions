@@ -8,9 +8,9 @@ function execute(url, page) {
 
     let path = "";
     if (url.endsWith("?")) {
-        path = url + "page=" + page + "&count=10"
+        path = url + "page=" + page + "&count=20"
     } else {
-        path = url + "&page=" + page + "&count=10"
+        path = url + "&page=" + page + "&count=20"
     }
     let response = fetch(BASE_URL + path, {
         headers: createHeaders(path)

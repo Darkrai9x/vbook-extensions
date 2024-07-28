@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Wikidich App",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://api.truyenreview.com",
     "regexp": "(www.)?api.truyenreview.com/book/[^/]+/?$",
     "description": "Đọc truyện trên App Wiki Dịch",
