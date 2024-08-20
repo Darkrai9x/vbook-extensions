@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Thích Đọc Truyện",
     "author": "vBook",
-    "version": 5,
-    "source": "https://thichdoctruyen.vip",
-    "regexp": "(www.)?thichdoctruyen.vip/doc-truyen/[^/]+\\d+$",
+    "version": 6,
+    "source": "https://thichdoctruyen.net",
+    "regexp": "(www.)?thichdoctruyen.[a-z]+/doc-truyen/[^/]+\\d+$",
     "description": "Đọc truyện trên trang Thích Đọc Truyện",
     "locale": "vi_VN",
     "type": "novel",
