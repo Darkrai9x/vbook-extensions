@@ -1,4 +1,5 @@
 load("config.js");
+load('bypass.js');
 
 function execute(url) {
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
@@ -7,9 +8,10 @@ function execute(url) {
         let doc = response.html();
 
         if (doc.select("[name=code]").length > 0) {
-            return Response.error("Bạn phải nhập mã eden để có thể đọc.");
+            bypass(url, response.request.headers.cookie);
+            return Response.error("Bạn phải vào trang nguồn đăng nhập để có thể đọc.");
         } else if (doc.select("[data-action=login]").length > 0) {
-            return Response.error("Bạn phải đăng nhập để có thể đọc.");
+            return Response.error("Bạn phải vào trang nguồn đăng nhập để có thể đọc.");
         }
         let comments = [];
         let genres = [];

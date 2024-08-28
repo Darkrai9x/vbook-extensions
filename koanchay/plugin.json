@@ -2,8 +2,8 @@
   "metadata": {
     "name": "Koanchay",
     "author": "vBook",
-    "version": 9,
-    "source": "https://koanchay.org",
+    "version": 10,
+    "source": "https://koanchay.info",
     "regexp": "(www.)?koanchay.(com|net|info|org)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Koanchay",
     "locale": "vi_VN",

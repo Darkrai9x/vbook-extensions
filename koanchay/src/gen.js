@@ -1,4 +1,5 @@
 load("config.js");
+load('bypass.js');
 
 function execute(url, page) {
     if (!page) page = '0';
@@ -11,7 +12,8 @@ function execute(url, page) {
         let doc = response.html()
 
         if (doc.select("[name=code]").length > 0) {
-            return Response.error("Bạn phải nhập mã eden để có thể đọc.");
+            bypass(url, response.request.headers.cookie);
+            return Response.error("Bạn phải đăng nhập để có thể đọc.");
         } else if (doc.select("[data-action=login]").length > 0) {
             return Response.error("Bạn phải đăng nhập để có thể đọc.");
         }
