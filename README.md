@@ -261,6 +261,7 @@ Response.error(message) // Trả về response thất bại với nội dung l�
 
 ```javascript
 var browser = Engine.newBrowser() // Khởi tạo browser
+browser.setUserAgent(UserAgent.android()) // Tùy chỉnh user agent
 browser.launch(url, timeout) // Mở trang web với timeout, trả về Document object
 browser.callJs(script, waitTime) // Gọi Javascript function trên trang với waitTime, trả về Document object
 browser.urls() // Trả về các url đã request trên trang
@@ -273,6 +274,7 @@ browser.close() // Đóng browser khi đã xử lý xong
 ```javascript
 Console.log() // Log data in tab logcat
 load('filename.js') // Load file js
+sleep(10000) // Delay 10 giây
 ```
 
 # Test extension
