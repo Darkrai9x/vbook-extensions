@@ -2,8 +2,8 @@
   "metadata": {
     "name": "HentaiVN",
     "author": "vBook",
-    "version": 26,
-    "source": "https://hentaiayame.com",
+    "version": 27,
+    "source": "https://hentaiayame.net",
     "regexp": "(www.)?hen(tai)?(vn|ayame).[a-z]+/\\d+-[^/]+.html$",
     "description": "Đọc truyện trên trang HentaiVN",
     "locale": "vi_VN",
