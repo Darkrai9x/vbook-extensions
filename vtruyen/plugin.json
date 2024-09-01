@@ -2,13 +2,14 @@
   "metadata": {
     "name": "vTruyện",
     "author": "vBook",
-    "version": 9,
+    "version": 10,
     "source": "https://vtruyen.com",
     "regexp": "(www.)?vtruyen.com/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang vTruyện",
     "locale": "vi_VN",
     "type": "novel",
-    "language": "javascript"
+    "language": "javascript",
+    "encrypt": true
   },
   "script": {
     "detail": "detail.js",
