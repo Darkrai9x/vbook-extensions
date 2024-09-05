@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "author": "vBook",
+    "description": ""
+  },
+  "data": [
+    {
+      "name": "Edge Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://www.bing.com/translator",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/edge-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/edge-translate/icon.png",
+      "description": "Dịch truyện bằng Edge Translate",
+      "type": "translate"
+    }
+  ]
+}
