@@ -20,7 +20,7 @@ function translateContent(text, from, to, retryCount) {
             "to": to,
             "api-version": "3.0"
         }
-    }
+    };
     let response = fetch("https://api-edge.cognitive.microsofttranslator.com/translate", {
         method: "POST",
         queries: queries,
@@ -40,8 +40,8 @@ function translateContent(text, from, to, retryCount) {
             return Response.success(trans.trim());
         }
     }
+    localStorage.setItem("authorization", "");
     return translateContent(text, from, to, retryCount + 1);
-
 }
 
 function getAuthorizationToken() {
