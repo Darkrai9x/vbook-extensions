@@ -12,7 +12,9 @@
     "translate": "translate.js"
   },
   "config": {
-    "max_length": 20000,
+    "support_auto_detect": true,
+    "max_line": 1000,
+    "max_length": 50000,
     "required_api_key": false,
     "support_url": ""
   }
