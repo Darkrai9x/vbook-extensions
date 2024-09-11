@@ -1,18 +1,18 @@
+load('config.js');
+
 function execute(url) {
-    url = url.replace("m.qiushubang.me", "www.qiushubang.me");
-    let response = fetch(url +"/");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+    let response = fetch(url + "/");
     if (response.ok) {
-        let doc = response.html('gbk');
+        let doc = response.html();
         let chapList = [];
-        let el = doc.select(".chapterCon a");
-        for (let i = el.length - 1; i >= 0; i--) {
-            var e = el.get(i);
+        doc.select(".section-list").last().select("a").forEach(e => {
             chapList.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "http://www.qiushubang.me"
+                host: BASE_URL
             })
-        }
+        })
         return Response.success(chapList);
     }
     return null;

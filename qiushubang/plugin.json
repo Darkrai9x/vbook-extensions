@@ -2,18 +2,18 @@
   "metadata": {
     "name": "qiushubang",
     "author": "vBook",
-    "version": 3,
-    "source": "http://www.qiushubang.me",
-    "regexp": "(www.|m.)qiushubang(.com|.me)/\\d+/?$",
+    "version": 4,
+    "source": "https://www.qiushubang.me",
+    "regexp": "(www.|m.)qiushubang(.com|.me)/index/\\d+/?$",
     "description": "Đọc truyện trên trang qiushubang.me",
-    "local": "zh-CN",
+    "locale": "zh-CN",
     "language": "javascript",
     "type": "chinese_novel"
   },
   "script": {
     "home": "home.js",
-    "genre": "genre.js",
     "detail": "detail.js",
+    "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }
