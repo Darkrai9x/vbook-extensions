@@ -2,9 +2,9 @@
     "metadata": {
         "name": "Bạch Ngọc Sách",
         "author": "vBook",
-        "version": 9,
-        "source": "https://bachngocsach.com.vn/reader",
-        "regexp": "(bachngocsach.com|truyenbns.com|bachngocsach.com.vn)/reader/[^/]+/?$",
+        "version": 10,
+        "source": "https://bachngoc.net/reader",
+        "regexp": "(bachngocsach.com|truyenbns.com|bachngocsach.com.vn|bachngoc.net)/reader/[^/]+/?$",
         "description": "Đọc truyện trên trang bachngocsach.com.vn/reader",
         "locale": "vi_VN",
         "type": "novel",

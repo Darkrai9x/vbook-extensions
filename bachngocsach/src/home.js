@@ -5,7 +5,6 @@ function execute() {
         {title: "Dịch", input: BASE_URL + "/reader/recent-bns", script: "tab.js"},
         {title: "Convert", input: BASE_URL + "/reader/recent-cv", script: "tab.js"},
         {title: "Sáng Tác", input: BASE_URL + "/reader/recent-sangtac", script: "tab.js"},
-        {title: "Sưu tầm", input: BASE_URL + "/reader/recent-st", script: "tab.js"},
         {title: "Hoàn thành", input: BASE_URL + "/reader/recent-hoanthanh", script: "tab.js"}
     ]);
 }
