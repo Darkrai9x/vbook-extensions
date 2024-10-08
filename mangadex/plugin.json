@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "MangaDex",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://mangadex.org",
+    "regexp": "mangadex.org/title/.*?",
+    "description": "Đọc truyện trên trang MangaDex",
+    "locale": "global",
+    "language": "javascript",
+    "type": "comic"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
