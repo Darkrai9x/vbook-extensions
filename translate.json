@@ -13,6 +13,16 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/edge-translate/icon.png",
       "description": "Dịch truyện bằng Edge Translate",
       "type": "translate"
+    },
+    {
+      "name": "Baidu Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://fanyi.baidu.com",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/baidu-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/baidu-translate/icon.png",
+      "description": "Dịch truyện bằng Baidu Translate",
+      "type": "translate"
     }
   ]
 }

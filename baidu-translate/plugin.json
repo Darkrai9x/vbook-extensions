@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Baidu Translate",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://fanyi.baidu.com",
+    "description": "Dịch truyện bằng Baidu Translate",
+    "type": "translate"
+  },
+  "script": {
+    "language": "language.js",
+    "translate": "translate.js"
+  },
+  "config": {
+    "support_auto_detect": true,
+    "max_length": 9500,
+    "required_api_key": false,
+    "support_url": "https://fanyi.baidu.com"
+  }
+}
