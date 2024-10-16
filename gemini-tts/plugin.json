@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "name": "Bing TTS",
+    "name": "Gemini TTS",
     "author": "vBook",
     "version": 1,
-    "source": "https://www.bing.com/translator",
-    "description": "Nghe truyện bằng Bing TTS",
+    "source": "https://gemini.google.com",
+    "description": "Nghe truyện bằng Gemini TTS",
     "type": "tts"
   },
   "script": {
@@ -13,8 +13,8 @@
   },
   "config": {
     "preload_size": 3,
-    "max_length": 600,
+    "max_length": 1000,
     "required_api_key": false,
-    "support_url": ""
+    "support_url": "https://gemini.google.com"
   }
 }

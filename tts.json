@@ -15,6 +15,16 @@
       "type": "tts"
     },
     {
+      "name": "Gemini TTS",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://gemini.google.com",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-tts/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-tts/icon.png",
+      "description": "Nghe truyện bằng Gemini TTS",
+      "type": "tts"
+    },
+    {
       "name": "Bing TTS",
       "author": "vBook",
       "version": 1,

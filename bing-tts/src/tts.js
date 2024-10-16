@@ -5,7 +5,7 @@ function execute(text, voice) {
     let voiceGender = voicePart[1];
     let voiceLangPart = voicePart[0].split("-");
     let voiceLang = voiceLangPart[0] + "-" + voiceLangPart[1];
-    let tokenData = findBingData(fetch("https://www.bing.com/translator").text());
+    let tokenData = findBingData();
     let response = fetch("https://www.bing.com/tfettts?isVertical=1&&IG=" + tokenData.IG + "&IID=" + tokenData.IID, {
         method: "POST",
         headers: {
@@ -23,7 +23,8 @@ function execute(text, voice) {
     return null;
 }
 
-function findBingData(html) {
+function findBingData() {
+    let html = fetch("https://www.bing.com/translator").text();
     let token = /var params_AbusePreventionHelper\s?=\s?(\[.*?]);/.exec(html)[1];
     let jsonToken = JSON.parse(token);
     return {
