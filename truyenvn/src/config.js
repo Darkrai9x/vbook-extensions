@@ -1,4 +1,4 @@
-let BASE_URL = "https://truyenvn.blog";
+let BASE_URL = "https://truyenvn.wiki";
 try {
     if (CONFIG_URL) {
         BASE_URL = CONFIG_URL;
