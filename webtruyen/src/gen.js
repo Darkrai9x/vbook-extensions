@@ -1,3 +1,5 @@
+load('config.js');
+
 function execute(url, page) {
     if (!page) page = '1';
     const doc = Http.get(url + "/" + page).html();
@@ -14,7 +16,7 @@ function execute(url, page) {
             link: e.select(".info h3 a").first().attr("href"),
             cover: e.select(".thumb img").first().attr("data-layzr"),
             description: e.select(".last-chapter").first().text(),
-            host: "https://dtruyen.com"
+            host: BASE_URL
         })
     }
 

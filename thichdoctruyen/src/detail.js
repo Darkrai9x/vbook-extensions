@@ -11,7 +11,7 @@ function execute(url) {
             host: BASE_URL,
             author: doc.select("a[itemprop=author]").text(),
             description: doc.select("div#viewtomtat2").html(),
-            detail: doc.select("div#thongtintruyen1 .truyenp1").html(),
+            detail: doc.select("div.thongtintruyen1 .truyenp1").html(),
             ongoing: doc.select(".truyenp1").html().indexOf(" Còn Tiếp...") >= 0
         });
     }

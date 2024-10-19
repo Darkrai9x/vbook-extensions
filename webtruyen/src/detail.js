@@ -1,5 +1,7 @@
+load('config.js');
+
 function execute(url) {
-    url = url.replace("webtruyen.com", "dtruyen.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     var doc = Http.get(url).html().select("#story-detail");
 
     return Response.success({
@@ -8,7 +10,7 @@ function execute(url) {
         author: doc.select("a[itemprop=author]").text(),
         description: doc.select(".description").html(),
         detail: doc.select(".infos").html(),
-        host: "https://dtruyen.com",
+        host: BASE_URL,
         ongoing: doc.select(".infos").html().indexOf("Đang cập nhật") >= 0
     });
 }

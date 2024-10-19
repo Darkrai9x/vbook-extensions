@@ -1,5 +1,6 @@
+load('config.js');
 function execute(url) {
-    url = url.replace("webtruyen.com", "dtruyen.com");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     var doc = Http.get(url).html();
     var title = doc.select(".chapter-title").first().text();
     doc.select("#chapter-content script,a,.text-webtruyen").remove();

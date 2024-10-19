@@ -6,7 +6,7 @@ function execute(url, page) {
     if (response.ok) {
         let doc = response.html();
         let comiclist = [];
-        let next = /page\/(\d+)/.exec(doc.select(".nextpostslink").attr('href'));
+        let next = /page\/(\d+)/.exec(doc.select(".nav-links > .nav-previous a").attr('href'));
         if (next) next = next[1];
         doc.select(".page-item-detail").forEach(e => {
             let cover = e.select("img").first().attr("src")
