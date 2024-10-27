@@ -1,5 +1,7 @@
+load('config.js');
+
 function execute(url) {
-    url = url.replace("lustaveland.com", "luvevaland.co");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
 
     if (response.ok) {
@@ -9,7 +11,7 @@ function execute(url) {
             doc.select("#chapter-content img").forEach(e => {
                 var imgUrl = e.attr("src");
                 if (!imgUrl.startsWith("http")) {
-                    imgUrl = "https://luvevaland.co" + imgUrl;
+                    imgUrl = BASE_URL + imgUrl;
                 }
                 imgs.push(imgUrl);
             });

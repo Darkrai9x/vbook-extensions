@@ -1,5 +1,7 @@
+load('config.js');
+
 function execute(url) {
-    url = url.replace("lustaveland.com", "luvevaland.co");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     let response = fetch(url);
 
     if (response.ok) {
@@ -10,7 +12,7 @@ function execute(url) {
             chapList.push({
                 name: e.text(),
                 url: e.attr("href"),
-                host: "https://luvevaland.co"
+                host: BASE_URL
             })
         })
         return Response.success(chapList);

@@ -1,5 +1,7 @@
+load('config.js');
+
 function execute(key, page) {
-    let response = fetch("https://luvevaland.co/tim-kiem?s=" + key.replace(" ", "+"));
+    let response = fetch(BASE_URL + "/tim-kiem?s=" + key.replace(" ", "+"));
 
     if (response.ok) {
 
@@ -12,7 +14,7 @@ function execute(key, page) {
                 link: e.select(".book__list-name a").first().attr("href"),
                 cover: e.select(".book__list-image img").first().attr("data-src"),
                 description: e.select(".book__list-author a").text(),
-                host: "https://luvevaland.co"
+                host: BASE_URL
             })
         });
 
