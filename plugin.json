@@ -130,10 +130,10 @@
       "name": "Truyện VN",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
-      "version": 37,
+      "version": 38,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "https://truyenvn.wiki",
+      "source": "https://truyenvn.vin",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
       "description": "Đọc truyện trên trang Truyện VN"
     },
