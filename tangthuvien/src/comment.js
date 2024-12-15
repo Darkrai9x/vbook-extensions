@@ -11,9 +11,13 @@ function execute(input, next) {
         let doc = response.html();
         let comments = [];
         doc.select("li").forEach(e => {
+            let content = e.select(".read-all").text();
+            if (!content) {
+                content = e.select(".text").text();
+            }
             comments.push({
                 name: e.select(".users a").text(),
-                content: e.select(".text ").text(),
+                content: content,
                 description: e.select(".info .mr20").first().text()
             });
         });

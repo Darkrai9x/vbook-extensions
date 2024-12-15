@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Tàng Thư Viện",
     "author": "vBook",
-    "version": 6,
+    "version": 7,
     "source": "https://truyen.tangthuvien.net",
-    "regexp": "(www.)?(m.)?(truyen|ngontinh).tangthuvien.[a-z]+/doc-truyen/[^/]+$",
+    "regexp": "(www.)?(m.)?(truyen|ngontinh)?.tangthuvien.[a-z]+/doc-truyen/[^/]+$",
     "description": "Đọc truyện trên trang Tàng Thư Viện",
     "locale": "vi_VN",
     "type": "novel",
