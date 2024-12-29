@@ -2,22 +2,26 @@ load('config.js');
 function execute(key, page) {
     if (!page) page = '1';
 
-    let response = fetch(BASE_URL + "/tim-kiem?tukhoa=" + key.replace(/ /g, "+") + "&page=" + page);
+    let response = fetch(BASE_URL + "/api/book-search", {
+        method: 'POST',
+        body: {
+            keyword: key,
+        }
+    });
 
     if (response.ok) {
-        let doc = response.html();
+        let json = response.json();
         let novelList = [];
-        let next = doc.select(".pagination > li.active + li").last().text();
-        doc.select(".list-truyen div[itemscope]").forEach(e => {
+        json.data.forEach(e => {
             novelList.push({
-                name: e.select(".truyen-title > a").text(),
-                link: e.select(".truyen-title > a").first().attr("href"),
-                description: e.select(".author").text(),
-                cover: e.select("[data-classname=cover]").first().attr("data-image"),
+                name: e.name,
+                link: e.slug,
+                description: e.author,
+                cover: e.coverUrl,
                 host: BASE_URL,
             });
         });
-        return Response.success(novelList, next);
+        return Response.success(novelList);
     }
     return null;
 }

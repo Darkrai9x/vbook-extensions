@@ -13,7 +13,7 @@ function execute(url, page) {
         let novelList = [];
         let next = doc.select("[aria-current=page] + a").attr("href").match(/page=(\d+)/);
         if (next) next = next[1];
-        doc.select("dt[itemscope]").forEach(e => {
+        doc.select("div[itemscope]").forEach(e => {
             novelList.push({
                 name: e.select("a[itemProp=url]").first().text(),
                 link: e.select("a[itemProp=url]").first().attr("href"),

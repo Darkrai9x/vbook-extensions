@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Truyện Chữ",
     "author": "vBook",
-    "version": 4,
-    "source": "https://truyenchu.vn",
-    "regexp": "(www.)?(truyenchu.vn)/[^/]+/?$",
+    "version": 5,
+    "source": "https://metruyenchu.vn",
+    "regexp": "(www.)?(truyenchu|metruyenchu).vn)/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện Chữ",
     "locale": "vi_VN",
     "type": "novel",
