@@ -1,6 +1,10 @@
 load('config.js');
 function execute(url) {
     let response = fetch(url);
+    if (!response.ok) {
+        sleep(500)
+        response = fetch(url);
+    }
     if (response.ok) {
         let json = response.json();
         let doc = Html.parse(json.chap_list);

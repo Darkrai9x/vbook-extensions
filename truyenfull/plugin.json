@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Truyện Full",
     "author": "vBook",
-    "version": 8,
+    "version": 9,
     "source": "https://truyenfull.bio",
     "regexp": "(www.)?truyenfull.(vn|net|io|bio)/[^/]+/?$",
     "description": "Đọc truyện trên trang Truyện Full",
