@@ -7,7 +7,7 @@ function execute(url) {
             return Response.error("Bạn cần trả phí chương này để có thể đọc.")
         }
 
-        return Response.success(doc.select("#chapter-content .s-content"));
+        return Response.success(doc.select("#chapter-content .s-content").html());
     }
     return null;
 }
