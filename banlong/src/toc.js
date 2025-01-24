@@ -1,7 +1,7 @@
 load("config.js");
 
 function execute(url) {
-    let response = fetch(BASE_URL.replace("https://", "https://api.") + url);
+    let response = fetch(BASE_URL.replace("https://", "https://api.") + "/" + url);
     if (response.ok) {
         let json = response.json();
         let chapters = [];
