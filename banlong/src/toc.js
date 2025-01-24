@@ -1,14 +1,15 @@
 load("config.js");
 
 function execute(url) {
-    let response = fetch(BASE_URL + url);
+    let response = fetch(BASE_URL.replace("https://", "https://api.") + url);
     if (response.ok) {
-        let doc = response.html();
+        let json = response.json();
         let chapters = [];
-        doc.select(".table-list__chapter a").forEach(e => {
+        json.data.forEach(e => {
             chapters.push({
-                name: e.text(),
-                url: e.attr("href"),
+                name: e.name,
+                url: e.url,
+                pay: e.is_vip,
                 host: BASE_URL,
             });
         });

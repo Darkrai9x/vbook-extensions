@@ -5,11 +5,11 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let storyId = doc.select("input[name=story]").first().attr("value");
-        let firstDoc = fetch(BASE_URL + "/load-list-chapter?story=" + storyId + "&new=0").html();
-        let lastPage = parseInt(firstDoc.select(".jum-box").attr("data-lastpage"));
+        let json = fetch(BASE_URL.replace("https://", "https://api.") + "/v1/chapter_list/" + storyId + "?page=1&new=0").json();
+        let lastPage = json.total_page;
         let pages = [];
         for (let i = 1; i <= lastPage; i++) {
-            pages.push("/load-list-chapter?story=" + storyId + "&page=" + i);
+            pages.push(BASE_URL.replace("https://", "https://api.") + "/v1/chapter_list/" + storyId + "?page=" + i + "&new=0");
         }
 
         return Response.success(pages);
