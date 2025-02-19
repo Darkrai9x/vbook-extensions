@@ -1,1 +1,1 @@
-const BASE_URL = "https://truyenfull.bio"
+const BASE_URL = "https://truyenfull.vision"
