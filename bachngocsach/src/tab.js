@@ -5,6 +5,9 @@ function execute(url, page) {
     let response = fetch(url + "/?page=" + page);
     if (response.ok) {
         let doc = response.html();
+        if (doc.select("title").text().includes("Đăng nhập để đọc truyện")) {
+            return Response.error("Bạn cần đăng nhập hoặc tạo tài khoản mới để tiếp tục đọc truyện.");
+        }
         let next = doc.select(".pager-next").last().select("a").attr("href").match(/page=(\d+)/);
         if (next) next = next[1];
 

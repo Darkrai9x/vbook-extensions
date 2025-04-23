@@ -5,6 +5,9 @@ function execute(url) {
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
+        if (doc.select("title").text().includes("Đăng nhập để đọc truyện")) {
+            return Response.error("Bạn cần đăng nhập hoặc tạo tài khoản mới để tiếp tục đọc truyện.");
+        }
         let genres = [];
         doc.select("#theloai a").forEach(e => {
             genres.push({
