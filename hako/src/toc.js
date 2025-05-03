@@ -1,5 +1,8 @@
+load('config.js');
+
 function execute(url) {
-    url = url.replace("ln.hako.re","ln.hako.vn");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -16,7 +19,7 @@ function execute(url) {
                 list.push({
                     name: name,
                     url: chapter.select(".chapter-name").select("a").first().attr("href"),
-                    host: "https://ln.hako.vn"
+                    host: BASE_URL
                 });
 
             }

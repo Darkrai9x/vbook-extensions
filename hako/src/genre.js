@@ -1,5 +1,7 @@
+load('config.js');
+
 function execute(url, page) {
-    let response = fetch("https://ln.hako.vn/danh-sach");
+    let response = fetch(BASE_URL+"/danh-sach");
     if (response.ok) {
         let doc = response.html();
         const data = [];
