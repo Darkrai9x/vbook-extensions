@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Hako Novel",
     "author": "vBook",
-    "version": 10,
-    "source": "https://ln.hako.vn",
-    "regexp": "(www.)?(ln.hako.vn|ln.hako.re|docln.net)/[^/]+/[^/]+/?$",
+    "version": 11,
+    "source": "https://docln.sbs",
+    "regexp": "(www.)?(ln.hako.vn|ln.hako.re|docln.net|docln.sbs)/[^/]+/[^/]+/?$",
     "description": "Đọc truyện trên trang Hako",
     "locale": "vi_VN",
     "type": "novel",
