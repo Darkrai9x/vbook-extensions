@@ -1,7 +1,9 @@
 # Cấu trúc của extension
 
 ## Thông tin extension
+
 - Tạo một tệp với tên `plugin.json` vào thư mục của extensions, cấu trúc của tệp có dạng như sau
+
 ```json
 {
   "metadata": {
@@ -26,21 +28,22 @@
   }
 }
 ```
+
 ## Icon extension
+
 - Tạo một ảnh `icon.png` trong thư mục của extension
+
 ## Script extension
+
 - Tạo các tệp script đặt tại thư mục `src` của extension
 
 # Cấu trúc script
 
 ```javascript
-
 // home trả về các tab hiển thị ở phần khám phá
 // home.js
 function execute() {
-    return Response.success([
-        {title, input, script},
-    ]);
+  return Response.success([{ title, input, script }]);
 }
 // title: Tiêu đề hiển thị
 // script: script dùng để lấy content
@@ -51,9 +54,7 @@ function execute() {
 // page = <rỗng>
 // homecontent.js - page đầu
 function execute(url, page) {
-    return Response.success([
-        { name, link, host, cover, description }
-    ], next);
+  return Response.success([{ name, link, host, cover, description }], next);
 }
 // name: Tên truyện
 // link: url của truyện
@@ -66,9 +67,7 @@ function execute(url, page) {
 // page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
 // homecontent.js - page 2
 function execute(url, page) {
-    return Response.success([
-        { name, link, host, cover, description }
-    ], next);
+  return Response.success([{ name, link, host, cover, description }], next);
 }
 ```
 
@@ -76,9 +75,7 @@ function execute(url, page) {
 // genre trả về danh sách các thể loại
 // genre.js
 function execute() {
-    return Response.success([
-        {title, input, script},
-    ]);
+  return Response.success([{ title, input, script }]);
 }
 // title: Tiêu đề hiển thị
 // script: script dùng để lấy content
@@ -89,9 +86,7 @@ function execute() {
 // page = <rỗng>
 // genrecontent.js - page đầu
 function execute(url, page) {
-    return Response.success([
-        { name, link, host, cover, description }
-    ], next);
+  return Response.success([{ name, link, host, cover, description }], next);
 }
 // name: Tên truyện
 // link: url của truyện
@@ -104,9 +99,7 @@ function execute(url, page) {
 // page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
 // genrecontent.js - page 2
 function execute(url, page) {
-    return Response.success([
-        { name, link, host, cover, description }
-    ], next);
+  return Response.success([{ name, link, host, cover, description }], next);
 }
 ```
 
@@ -115,20 +108,18 @@ function execute(url, page) {
 // detail.js
 // url: url của truyện, url sẽ tự động được bỏ ký tự / ở cuối
 function execute(url) {
-    return Response.success(
-        {
-            name,
-            cover,
-            host,
-            author,
-            description,
-            detail,
-            ongoing,
-            genres: [{ title, input, script }],
-            suggests: [{ title, input, script }],
-            comments: [{ title, input, script }],
-        }
-    );
+  return Response.success({
+    name,
+    cover,
+    host,
+    author,
+    description,
+    detail,
+    ongoing,
+    genres: [{ title, input, script }],
+    suggests: [{ title, input, script }],
+    comments: [{ title, input, script }],
+  });
 }
 // name: Tên truyện
 // cover: Url cover
@@ -146,7 +137,6 @@ function execute(url) {
 //         {name, content, description}
 //     ], next);
 // }
-
 ```
 
 ```javascript
@@ -156,9 +146,7 @@ function execute(url) {
 // page = <rỗng>
 // search.js - page đầu
 function execute(key, page) {
-    return Response.success([
-        { name, link, host, cover, description }
-    ], next);
+  return Response.success([{ name, link, host, cover, description }], next);
 }
 // name: Tên truyện
 // link: url của truyện
@@ -171,11 +159,8 @@ function execute(key, page) {
 // page = next trả về từ page đầu, trường hợp next = <rỗng> hoặc null sẽ dừng load
 // search.js - page 2
 function execute(key, page) {
-    return Response.success([
-        { name, link, host, cover, description }
-    ], next);
+  return Response.success([{ name, link, host, cover, description }], next);
 }
-
 ```
 
 ```javascript
@@ -183,9 +168,8 @@ function execute(key, page) {
 // page.js
 // url = url truyện giống detail
 function execute(url) {
-    return Response.success([page1, page2]);
+  return Response.success([page1, page2]);
 }
-
 ```
 
 ```javascript
@@ -193,9 +177,7 @@ function execute(url) {
 // toc.js
 // url: path trả về từ page, nếu không có page thì url là url giống ở detail
 function execute(url) {
-    return Response.success([
-        { name, url, host }
-    ]);
+  return Response.success([{ name, url, host }]);
 }
 // name: Tên chương
 // url: url của chương
@@ -207,44 +189,45 @@ function execute(url) {
 // chap.js
 // url: url trả về từ toc
 function execute(url) {
-    return Response.success(content);
+  return Response.success(content);
 }
 ```
 
 # Các function bổ trợ
 
 ## Javascript
+
 - Http request
 
 ```javascript
-var response = fetch(url) // GET equest http return Response
+var response = fetch(url); // GET equest http return Response
 var response = fetch(url, {
   method: "POST", // GET, POST, PUT, DELETE, PATCH
   headers: {
-    "aaa": "xxx",
-    "bbb": "yyy"
+    aaa: "xxx",
+    bbb: "yyy",
   },
   body: {
-    "aaa": "xxx",
-    "bbb": "yyy"
-  }
-}) // Full request http với options return Response
+    aaa: "xxx",
+    bbb: "yyy",
+  },
+}); // Full request http với options return Response
 let status = response.status; // Http status code
 let isSuccess = response.ok; // Check request success (status >= 200 && status < 300)
 let headers = response.headers; // Trả về header của response
 
-let doc = response.html() // Trả về response request dạng Document object
-let doc = response.html(charset) // Trả về response request dạng Document object
-let text = response.text() // Trả về response request dạng string
-let text = response.text(charset) // Trả về response request dạng string
-let json = response.json() // Trả về response request dạng JSONObject
+let doc = response.html(); // Trả về response request dạng Document object
+let doc = response.html(charset); // Trả về response request dạng Document object
+let text = response.text(); // Trả về response request dạng string
+let text = response.text(charset); // Trả về response request dạng string
+let json = response.json(); // Trả về response request dạng JSONObject
 ```
 
 - Html parse
 
 ```javascript
-Html.parse(text) // Chuyển html text sang Document object
-Html.clean(text, ["div", "p"]) // Clean html trừ các thẻ được liệt kê
+Html.parse(text); // Chuyển html text sang Document object
+Html.clean(text, ["div", "p"]); // Clean html trừ các thẻ được liệt kê
 ```
 
 Document selector using [jsoup](https://jsoup.org/cookbook/extracting-data/selector-syntax)
@@ -252,37 +235,40 @@ Document selector using [jsoup](https://jsoup.org/cookbook/extracting-data/selec
 - Response
 
 ```javascript
-Response.success(data) // Trả về response thành công với data
-Response.success(data, data2) // Trả về response thành công với data, data2
-Response.error(message) // Trả về response thất bại với nội dung lỗi
+Response.success(data); // Trả về response thành công với data
+Response.success(data, data2); // Trả về response thành công với data, data2
+Response.error(message); // Trả về response thất bại với nội dung lỗi
 ```
 
 -- Browser
 
 ```javascript
-var browser = Engine.newBrowser() // Khởi tạo browser
-browser.setUserAgent(UserAgent.android()) // Tùy chỉnh user agent
-browser.launch(url, timeout) // Mở trang web với timeout, trả về Document object
-browser.callJs(script, waitTime) // Gọi Javascript function trên trang với waitTime, trả về Document object
-browser.urls() // Trả về các url đã request trên trang
-browser.waitUrl(urls,  timeout) // Đợi urls load với timeout
-browser.html() // Trả về Document object của trang web
-browser.close() // Đóng browser khi đã xử lý xong
+var browser = Engine.newBrowser(); // Khởi tạo browser
+browser.setUserAgent(UserAgent.android()); // Tùy chỉnh user agent
+browser.launch(url, timeout); // Mở trang web với timeout, trả về Document object
+browser.callJs(script, waitTime); // Gọi Javascript function trên trang với waitTime, trả về Document object
+browser.urls(); // Trả về các url đã request trên trang
+browser.waitUrl(urls, timeout); // Đợi urls load với timeout
+browser.html(); // Trả về Document object của trang web
+browser.close(); // Đóng browser khi đã xử lý xong
 ```
 
 -- Other
+
 ```javascript
-Console.log() // Log data in tab logcat
-load('filename.js') // Load file js
-sleep(10000) // Delay 10 giây
+Console.log(); // Log data in tab logcat
+load("filename.js"); // Load file js
+sleep(10000); // Delay 10 giây
 ```
 
 # Test extension
+
 - PC cài Java phiên bản 1.8 trở lên
 - Kết nối điện thoại và PC cùng 1 mạng lan.
 - Trên điện thoại chạm 7 lần vào tên phiên bản để mở tính năng nhà phát triển
-  
+
   ![Version app](tutorial/1.jpg)
+
 - Bật `chế độ nhà phát triển` để lấy IP của điện thoại.
 
 ![IP](tutorial/2.jpg)
@@ -290,3 +276,15 @@ sleep(10000) // Delay 10 giây
 - Nhập IP vào tool trên PC
 
 ![IP](tutorial/3.png)
+
+# Cách test extension với VSCode:
+
+- Cài [extension](https://github.com/faea726/vbook-extension-maker/releases/latest) vào VSCode
+
+- Mở một script bất kỳ
+
+- Chuột phải và chọn mục tương ứng.
+
+- Nhập thông tin khi có input box yêu cầu.
+
+![IP](tutorial/4.png)
