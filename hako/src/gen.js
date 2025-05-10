@@ -1,5 +1,10 @@
+
+load('config.js');
+
 function execute(url, page) {
-    url = url.replace("ln.hako.re","ln.hako.vn");
+    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+
+
     if (!page) page = '1';
     let response = fetch(url, {
         method: "GET",
