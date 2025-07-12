@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Bàn Long",
     "author": "vBook",
-    "version": 4,
-    "source": "https://banlong.us",
-    "regexp": "(www.)?banlong.us/truyen/[0-9a-z-]+/?",
+    "version": 5,
+    "source": "https://banlong.vip",
+    "regexp": "(www.)?banlong.vip/truyen/[0-9a-z-]+/?",
     "description": "Đọc truyện trên banlong.us",
     "locale": "vi-VN",
     "language": "javascript",
