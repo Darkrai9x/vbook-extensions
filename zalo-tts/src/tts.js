@@ -11,7 +11,7 @@ function execute(text, voice) {
     if (voiceInfo) {
         lang = voiceInfo.language;
     }
-    const asyncUrl = getAsyncSpeakUrl(voiceInfo.id, '1.0', 'mp3');
+    const asyncUrl = getAsyncSpeakUrl(text, voiceInfo.id, '1.0', 'mp3');
 
     if (asyncUrl) {
 
