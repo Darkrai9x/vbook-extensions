@@ -1,16 +1,15 @@
 load("voice_list.js");
 
-let apiKeys = (api_keys || "").split("\n");
+let apiKeys = [];
 let index = 0;
+try {
+    apiKeys = (api_keys || "").split("\n").filter(k => k !== "");
+} catch (e) {}
 
 function execute(text, voice) {
     let voiceInfo = voices.find(function (e) {
         return e.id == voice;
     });
-    let lang = "vi";
-    if (voiceInfo) {
-        lang = voiceInfo.language;
-    }
     const asyncUrl = getAsyncSpeakUrl(text, voiceInfo.id, '1.0', 'mp3');
 
     if (asyncUrl) {
