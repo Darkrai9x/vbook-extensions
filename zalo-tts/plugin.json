@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "Zalo AI TTS",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://ai.zalo.cloud/docs/api/getting-started",
+    "description": "Nghe truyện bằng Zalo AI TTS",
+    "type": "tts"
+  },
+  "script": {
+    "voice": "voice.js",
+    "tts": "tts.js"
+  },
+  "config": {
+    "preload_size": 3,
+    "max_length": 500,
+    "support_url": "https://ai.zalo.cloud/docs/api/getting-started",
+    "api_keys": {
+      "title": "API Keys",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}
