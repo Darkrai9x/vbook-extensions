@@ -22,7 +22,7 @@ function execute(url) {
     }
 
     function getChapterInPage(currentPage) {
-        return Http.get("https://koanchay.info/book/index").params({
+        return Http.get(BASE_URL + "/book/index").params({
             bookId: bookId,
             signKey: signKey,
             sign: genSign(signKey, currentPage, size),
@@ -43,7 +43,7 @@ function execute(url) {
             data.push({
                 name: e.text(),
                 url: link,
-                host: "https://koanchay.info"
+                host: BASE_URL
             })
         }
 
