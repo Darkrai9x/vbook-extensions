@@ -11,9 +11,9 @@ function execute(text, voice) {
         .replace(/&/g, 'and');
 
     // let cookie = "";
-    // if (!cookie || !cookie.includes("sessionid=")) {
-    //     return Response.error("Bạn phải vào Tiktok đăng nhập trên trình duyệt để có thể đọc.");
-    // }
+    if (!cookie || !cookie.includes("sessionid=")) {
+        return Response.error("Bạn phải vào Tiktok đăng nhập trên trình duyệt để có thể đọc.");
+    }
 
     let response = fetch("https://api16-normal-c-useast1a.tiktokv.com/media/api/text/speech/invoke/", {
         method: 'POST',
@@ -25,7 +25,6 @@ function execute(text, voice) {
         },
         headers: {
             'User-Agent': 'com.zhiliaoapp.musically/2022600030 (Linux; U; Android 7.1.2; es_ES; SM-G988N; Build/NRD90M;tt-ok/3.12.13.1)',
-            'Cookie': cookie,
             'Accept-Encoding': 'gzip,deflate,compress',
         }
     });
