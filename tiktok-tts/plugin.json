@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "name": "Tiktok TTS",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.tiktok.com",
+    "description": "Nghe truyện bằng Tiktok TTS",
+    "type": "tts"
+  },
+  "script": {
+    "voice": "voice.js",
+    "tts": "tts.js"
+  },
+  "config": {
+    "preload_size": 3,
+    "max_length": 500,
+    "support_url": "https://www.tiktok.com/login",
+  }
+}
