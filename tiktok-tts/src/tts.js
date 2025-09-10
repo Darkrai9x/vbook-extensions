@@ -10,11 +10,6 @@ function execute(text, voice) {
         .replace(/\s+/g, '+')
         .replace(/&/g, 'and');
 
-    // let cookie = "";
-    if (!cookie || !cookie.includes("sessionid=")) {
-        return Response.error("Bạn phải vào Tiktok đăng nhập trên trình duyệt để có thể đọc.");
-    }
-
     let response = fetch("https://api16-normal-c-useast1a.tiktokv.com/media/api/text/speech/invoke/", {
         method: 'POST',
         queries: {
@@ -28,6 +23,11 @@ function execute(text, voice) {
             'Accept-Encoding': 'gzip,deflate,compress',
         }
     });
+
+     let cookie = response.request.headers.cookie;
+    if (!cookie || !cookie.includes("sessionid=")) {
+        return Response.error("Bạn phải vào Tiktok đăng nhập trên trình duyệt để có thể đọc.");
+    }
 
     let resultText = response.text();
 

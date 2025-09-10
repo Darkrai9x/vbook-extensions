@@ -1,6 +1,6 @@
 load("language_list.js");
 
-function execute(text, from, to, apiKey) {
+function execute(text, from, to) {
     return translateContent(text, from, to, 0);
 }
 
