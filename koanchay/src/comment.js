@@ -2,6 +2,7 @@ load('config.js');
 function execute(input, next) {
     if (!next) next = "0"
     let response = fetch(input, {
+        headers: {"user-agent": UserAgent.system()},
         queries: {
             start: (parseInt(next) * 10) + ""
         }

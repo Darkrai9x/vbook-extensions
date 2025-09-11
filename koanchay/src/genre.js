@@ -1,7 +1,11 @@
 load("config.js");
 
 function execute() {
-    let response = fetch(BASE_URL + '/bang-xep-hang');
+    let response = fetch(BASE_URL + '/bang-xep-hang', {
+        headers: {
+            "user-agent": UserAgent.system()
+        },
+    });
     if (response.ok) {
         let doc = response.html();
         const data = [];

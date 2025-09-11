@@ -4,6 +4,7 @@ function execute(key, page) {
     if (!page) page = '0';
     let response = fetch(BASE_URL + '/tim-kiem', {
         method: "GET",
+        headers: {"user-agent": UserAgent.system()},
         queries: {"q": key, "start": page, "vo": 1}
     });
 

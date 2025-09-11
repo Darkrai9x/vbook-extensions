@@ -2,7 +2,9 @@ load("config.js");
 
 function execute(url) {
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
-    var doc = Http.get(url).html();
+    var doc = fetch(url, {
+        headers: {"user-agent": UserAgent.system()},
+    }).html();
 
     var bookId = doc.select("input#bookId").attr("value");
     var html = doc.html();
@@ -22,12 +24,15 @@ function execute(url) {
     }
 
     function getChapterInPage(currentPage) {
-        return Http.get(BASE_URL + "/book/index").params({
-            bookId: bookId,
-            signKey: signKey,
-            sign: genSign(signKey, currentPage, size),
-            size: size,
-            start: currentPage.toFixed(0)
+        return fetch(BASE_URL + "/book/index", {
+            headers: {"user-agent": UserAgent.system()},
+            queries: {
+                bookId: bookId,
+                signKey: signKey,
+                sign: genSign(signKey, currentPage, size),
+                size: size,
+                start: currentPage.toFixed(0)
+            }
         }).html()
     }
 

@@ -5,6 +5,9 @@ function execute(url, page) {
     if (!page) page = '0';
     let response = fetch(url, {
         method: "GET",
+        headers: {
+            "user-agent": UserAgent.system()
+        },
         queries: {"start": page, "vo": 1}
     });
 
