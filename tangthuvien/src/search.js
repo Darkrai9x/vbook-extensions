@@ -2,7 +2,7 @@ load("config.js");
 function execute(key, page) {
     if (!page) page = '1';
     let response = fetch(BASE_URL + "/ket-qua-tim-kiem", {
-        method: "GET",
+        headers: {"user-agent": UserAgent.chrome()},
         queries: {
             term: key,
             page: page

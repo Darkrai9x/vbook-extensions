@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Tàng Thư Viện",
     "author": "vBook",
-    "version": 10,
+    "version": 11,
     "source": "https://tangthuvien.net",
     "regexp": "(www.)?(m.)?(truyen.|ngontinh.)?tangthuvien.[a-z]+/doc-truyen/[^/]+$",
     "description": "Đọc truyện trên trang Tàng Thư Viện",

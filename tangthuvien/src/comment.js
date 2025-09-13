@@ -6,7 +6,9 @@ function execute(input, next) {
     } else {
         url += "/story/comments?story_id=" + input + "&new_web=1";
     }
-    let response = fetch(url);
+    let response = fetch(url, {
+        headers: {"user-agent": UserAgent.chrome()},
+    });
     if (response.ok) {
         let doc = response.html();
         let comments = [];

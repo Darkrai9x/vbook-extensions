@@ -2,7 +2,9 @@ load('config.js');
 function execute(url, page) {
     if (!page) page = '1';
 
-    let response = fetch(url + "&page=" + page);
+    let response = fetch(url + "&page=" + page, {
+        headers: {"user-agent": UserAgent.chrome()},
+    });
 
     if (response.ok) {
         let doc = response.html();
