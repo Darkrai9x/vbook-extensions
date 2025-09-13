@@ -4,7 +4,7 @@ function execute(url, page) {
     if (!page) page = '1';
 
     let id = /ho-so\/(\d+)\/?/.exec(url)[1];
-    let filterUrl = BASE_URL.replace("https://", "https://backend.") + "/api/books";
+    let filterUrl = BASE_URL2.replace("https://", "https://backend.") + "/api/books";
     let response = fetch(filterUrl, {
         headers: {
             "X-App": "MeTruyenChu"

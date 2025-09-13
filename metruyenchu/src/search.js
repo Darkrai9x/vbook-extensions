@@ -2,7 +2,7 @@ load("config.js");
 
 function execute(key, page) {
     if (!page) page = '1';
-    let searchUrl = BASE_URL.replace("https://", "https://backend.") + "/api/books/search";
+    let searchUrl = BASE_URL2.replace("https://", "https://backend.") + "/api/books/search";
 
     let response = fetch(searchUrl, {
         headers: {
