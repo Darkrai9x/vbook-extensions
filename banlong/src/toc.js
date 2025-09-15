@@ -4,12 +4,10 @@ function execute(url) {
     try {
         // URL đã có format "v1/chapter_list/storyId?page=X&new=0"
         let apiUrl = BASE_URL.replace("https://", "https://api.") + "/" + url;
-        console.log("Fetching URL: " + apiUrl); // Debug log
         
         let response = fetch(apiUrl);
         if (response.ok) {
             let json = response.json();
-            console.log("Response JSON: " + JSON.stringify(json)); // Debug log
             
             // Kiểm tra cấu trúc response - có thể là success hoặc code
             if (!json || (!json.success && json.code !== 0)) {

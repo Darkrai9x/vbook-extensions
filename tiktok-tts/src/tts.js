@@ -1,6 +1,10 @@
 load("voice_list.js");
 
 function execute(text, voice) {
+    let cookie = localCookie.getCookie();
+    if (!cookie || !cookie.includes("sessionid=")) {
+        return Response.error("Bạn phải vào Tiktok đăng nhập trên trình duyệt để có thể đọc.");
+    }
     let voiceInfo = voices.find(function (e) {
         return e.id == voice;
     });
@@ -23,11 +27,6 @@ function execute(text, voice) {
             'Accept-Encoding': 'gzip,deflate,compress',
         }
     });
-
-     let cookie = response.request.headers.cookie;
-    if (!cookie || !cookie.includes("sessionid=")) {
-        return Response.error("Bạn phải vào Tiktok đăng nhập trên trình duyệt để có thể đọc.");
-    }
 
     let resultText = response.text();
 
