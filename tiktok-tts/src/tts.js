@@ -8,17 +8,12 @@ function execute(text, voice) {
     let voiceInfo = voices.find(function (e) {
         return e.id == voice;
     });
-    let formattedText = text
-        .replace(/\+/g, 'plus')
-        .replace(/\n/g, '. ')
-        .replace(/\s+/g, '+')
-        .replace(/&/g, 'and');
 
     let response = fetch("https://api16-normal-c-useast1a.tiktokv.com/media/api/text/speech/invoke/", {
         method: 'POST',
         queries: {
             "text_speaker": voiceInfo.id,
-            "req_text": formattedText,
+            "req_text": text,
             "speaker_map_type": "0",
             "aid": "1233"
         },
