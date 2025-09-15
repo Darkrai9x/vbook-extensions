@@ -25,6 +25,7 @@ function execute(text, voice) {
         headers: {
             'User-Agent': 'com.zhiliaoapp.musically/2022600030 (Linux; U; Android 7.1.2; es_ES; SM-G988N; Build/NRD90M;tt-ok/3.12.13.1)',
             'Accept-Encoding': 'gzip,deflate,compress',
+            'Cookie': cookie,
         }
     });
 
