@@ -3,10 +3,7 @@ function execute(url, page) {
         page = "1";
     }
 load('config.js');
-    if(!url.includes(BASE_URL)){
-        url = BASE_URL + url;
-    }
-    let response = fetch(url + "?page=" + page);
+    let response = fetch(BASE_URL + url + "?page=" + page);
 
     if (response.ok) {
         let doc = response.html();
