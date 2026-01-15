@@ -7,12 +7,12 @@ function execute(url) {
         doc.select("div.booktitle").remove();
         return Response.success({
             name: doc.select("h1.page-title").text(),
-            cover: doc.select("div.imagesach img").attr("src"),
+            cover: doc.select("div.detailsach img").attr("src"),
             host: BASE_URL,
             author: doc.select("div.field-name-field-author a").first().text(),
-            description: doc.select("div.field-type-text-with-summary").html(),
-            detail: doc.select(".field-sach .field").html(),
-            ongoing: doc.select(".field-name-field-status").html().indexOf("Đang ra") >= 0
+            description: doc.select("div.field-item[property='content:encoded']").html(),
+            detail: "<b>Mục sách:</b> " + doc.select("div.field-name-field-mucsach .field-items").text() + "<br><b>Tình trạng:</b> " + doc.select("div.field-name-field-status .field-items").text() + "<br><b>Từ khóa:</b> " + doc.select("div.field-name-field-tag .field-items").text(),
+            ongoing: doc.select(".field-name-field-status").text().indexOf("Đang ra") >= 0
         });
     }
     return null;

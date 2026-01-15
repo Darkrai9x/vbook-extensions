@@ -1,4 +1,4 @@
-let BASE_URL = "https://banlong.live";
+let BASE_URL = "https://blhvip.vn";
 try {
     if (CONFIG_URL) {
         BASE_URL = CONFIG_URL;
