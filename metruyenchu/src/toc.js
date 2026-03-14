@@ -1,30 +1,48 @@
 load("config.js");
 
 function execute(url) {
-    url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
+    var authorization = getToken();
+    if (!authorization) return Response.error(ERROR_MESSAGE);
 
-    let response = fetch(url);
-    if (response.ok) {
-        let bookId = /"id":(\d+)/.exec(response.html().html())[1];
-        let tocUrl = BASE_URL2.replace("https://", "https://backend.") + "/api/chapters?filter%5Bbook_id%5D=" + bookId + "&filter%5Btype%5D=published";
 
-        response = fetch(tocUrl, {
-            headers: {
-                "X-App": "MeTruyenChu"
-            }
-        }).json();
+    var slugMatch = url.match(/\/truyen\/([^/?#]+)/);
+    if (!slugMatch) return Response.error("Không tìm thấy slug từ URL: " + url);
+    var slug = slugMatch[1];
 
-        let chapters = [];
-        response.data.forEach(chapter => {
-            chapters.push({
-                name: chapter.name,
-                url: "chuong-" + chapter.index,
-                host: url,
-                lock: chapter.is_locked === true
-            })
-        });
-        return Response.success(chapters);
+
+    var searchRes = fetch(API_HOST + "/api/books/search?keyword=" + encodeURIComponent(slug), {
+        headers: apiHeaders(authorization)
+    });
+    if (!searchRes.ok) return Response.error(ERROR_MESSAGE);
+    var searchJson = searchRes.json();
+    if (!searchJson.data || searchJson.data.length === 0) return Response.error("Không tìm thấy truyện: " + slug);
+
+    var books = searchJson.data;
+    var bookId = null;
+    for (var i = 0; i < books.length; i++) {
+        if (books[i].slug === slug) {
+            bookId = books[i].id;
+            break;
+        }
     }
+    if (!bookId) bookId = books[0].id;
 
-    return null;
+
+    var tocRes = fetch(API_HOST + "/api/chapters?filter[book_id]=" + bookId, {
+        headers: apiHeaders(authorization)
+    });
+    if (!tocRes.ok) return Response.error(ERROR_MESSAGE);
+    var tocJson = tocRes.json();
+    if (!tocJson.data) return Response.error(ERROR_MESSAGE);
+
+    var chapters = [];
+    tocJson.data.forEach(function (chapter) {
+        chapters.push({
+            name: chapter.name,
+            url: String(chapter.id),  // truyền chapter ID để chap.js dùng thẳng
+            host: "https://metruyencv.com/"
+        });
+    });
+
+    return Response.success(chapters);
 }
