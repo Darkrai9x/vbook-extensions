@@ -3,11 +3,6 @@ function execute() {
     let currentMonth = new Date().getMonth() + 1;
     return Response.success([
         {
-            title: "Truyện chọn lọc",
-            script: "book.js",
-            input: "/api/books?filter%5Bgender%5D=1&filter%5Bkind%5D=1&filter%5Bstate%5D=published&filter%5Btype%5D=picked&include=author%2Cgenres%2Ccreator&sort=-new_chap_at"
-        },
-        {
             title: "Truyện đã bookmark",
             script: "bookmark.js",
             input: "/tai-khoan/tu-truyen"
