@@ -2,29 +2,27 @@ load("config.js");
 
 function execute(url, page) {
     if (!page) page = '1';
-    let res = fetch(BASE_URL + url)
-    let cookie = res.request.headers.cookie
-    let accessToken = cookie.match(/accessToken(.*?);/g)[0].replace(";", "").replace("accessToken=", "")
-    let authorization = "Bearer " + accessToken;
-    let response = fetch(BASE_URL2.replace("https://", "https://backend.") + "/api/bookmarks?filter[gender]=1&limit=15&page=" + page, {
-        "headers": {
-            "authorization": authorization,
-        }
+    var authorization = getToken();
+    if (!authorization) return Response.error(ERROR_MESSAGE);
+    var response = fetch(API_HOST + "/api/bookmarks?filter[gender]=1&limit=15&page=" + page, {
+        headers: apiHeaders(authorization)
     });
     if (response.ok) {
-        let json = response.json();
-        let novelList = [];
-        let next = json.pagination.next + "";
-        json.data.forEach(e => {
+        var json = response.json();
+        console.log(JSON.stringify(json));
+        var novelList = [];
+        var next = json.pagination ? json.pagination.next + "" : "";
+        if (!json.data[0] || !json.data[0].book.name || !json.data[0].book.link) return Response.error(ERROR_MESSAGE);
+        json.data.forEach(function (e) {
             novelList.push({
                 name: e.book.name,
-                link: e.book.link,
+                link: e.book.link + "/" + e.book.id,
                 cover: e.book.poster['default'],
                 host: BASE_URL
-            })
+            });
         });
-        if (novelList.length == 0) {
-            return Response.error("Chưa có truyên đã bookmark");
+        if (novelList.length === 0) {
+            return Response.error("Chưa có truyện đã bookmark");
         }
         return Response.success(novelList, next);
     }

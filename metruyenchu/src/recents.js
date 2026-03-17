@@ -4,10 +4,14 @@ function execute(url, page) {
     if (!page) page = '1';
 
     let id = /ho-so\/(\d+)\/?/.exec(url)[1];
+    let authorization = getToken();
+    if (!authorization) return Response.error(ERROR_MESSAGE);
     let filterUrl = BASE_URL2.replace("https://", "https://backend.") + "/api/books";
     let response = fetch(filterUrl, {
         headers: {
-            "X-App": "MeTruyenChu"
+            "X-App": "MeTruyenChu",
+            "authorization": authorization
+            ,
         },
         queries: {
             "filter[creator": id,
