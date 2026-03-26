@@ -60,17 +60,6 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Truyện YY",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/plugin.zip",
-      "version": 15,
-      "source": "https://truyenyy.xyz",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenyy/icon.png",
-      "description": "Đọc truyện trên trang Truyện YY",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
       "name": "Wiki Dịch",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/plugin.zip",
@@ -245,17 +234,6 @@
       "source": "https://metruyencv.biz",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu/icon.png",
       "description": "Đọc truyện trên trang Mê Truyện Chữ",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "vTruyện",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/plugin.zip",
-      "version": 10,
-      "source": "https://vtruyen.com",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/vtruyen/icon.png",
-      "description": "Đọc truyện trên trang vTruyện",
       "type": "novel",
       "locale": "vi_VN"
     },
