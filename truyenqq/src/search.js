@@ -2,7 +2,7 @@ load('bypass.js');
 load('config.js');
 function execute(key, page) {
     if (!page) page = '1';
-    var url = BASE_URL +"/tim-kiem/trang-" + page + ".html?q=" + key;
+    var url = BASE_URL +"/tim-kiem/trang-" + page + "?q=" + key;
     var doc = bypass(url, fetch(url).html());
 
     if (doc) {
