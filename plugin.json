@@ -49,17 +49,6 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Tàng Thư Viện",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/plugin.zip",
-      "version": 11,
-      "source": "https://tangthuvien.net",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/tangthuvien/icon.png",
-      "description": "Đọc truyện trên trang Tàng Thư Viện",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
       "name": "Wiki Dịch",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich/plugin.zip",
@@ -236,18 +225,6 @@
       "description": "Đọc truyện trên trang Mê Truyện Chữ",
       "type": "novel",
       "locale": "vi_VN"
-    },
-    {
-      "name": "HentaiVN",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/plugin.zip",
-      "version": 28,
-      "type": "comic",
-      "locale": "vi_VN",
-      "source": "https://hentaihvn.tv",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hentaivn/icon.png",
-      "description": "Đọc truyện trên trang HentaiVN",
-      "tag": "nsfw"
     },
     {
       "name": "iSach",
