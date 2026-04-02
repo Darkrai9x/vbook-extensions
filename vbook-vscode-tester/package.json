@@ -1,0 +1,53 @@
+{
+  "name": "vbook-vscode-tester",
+  "displayName": "vBook Tester",
+  "description": "Test, build, and install vBook extensions from VS Code.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vbookTester.openPanel",
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vbookTester.openPanel",
+        "title": "vBook: Open Tester",
+        "icon": {
+          "light": "media/icon-light.svg",
+          "dark": "media/icon-dark.svg"
+        }
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "vbookTester.openPanel",
+          "group": "navigation@100",
+          "when": "resourceLangId == javascript || resourceLangId == javascriptreact || resourceLangId == typescript || resourceLangId == typescriptreact"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "vBook Tester",
+      "properties": {
+        "vbookTester.defaultServerUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8080",
+          "description": "Default vBook server URL used by the tester panel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "echo No lint configured"
+  },
+  "devDependencies": {}
+}
