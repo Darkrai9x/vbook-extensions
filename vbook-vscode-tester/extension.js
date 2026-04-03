@@ -80,7 +80,8 @@ function getDefaultState(context) {
     language: "vi",
     folderPath: "",
     script: "",
-    argsText: ""
+    argsText: "",
+    argsValues: []
   };
 }
 
@@ -120,6 +121,23 @@ function getCachedArgsText(context, folderPath, script) {
   return entry ? String(entry.argsText || "") : "";
 }
 
+function getCachedArgsValues(context, folderPath, script) {
+  if (!folderPath || !script) {
+    return [];
+  }
+
+  const cache = getStoredFormCache(context);
+  const entry = cache[createFormCacheKey(folderPath, script)];
+  return entry ? parseStoredArgsValues(entry.argsValues) : [];
+}
+
+function parseStoredArgsValues(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => String(item ?? ""));
+  }
+  return [];
+}
+
 async function saveState(context, patch) {
   const nextState = { ...getStoredState(context), ...patch };
   await context.globalState.update(STATE_KEY, nextState);
@@ -135,7 +153,8 @@ async function saveArgsCache(context, form) {
   const nextCache = {
     ...cache,
     [createFormCacheKey(form.folderPath, form.script)]: {
-      argsText: String(form.argsText || "")
+      argsText: String(form.argsText || ""),
+      argsValues: parseStoredArgsValues(form.argsValues)
     }
   };
   await context.globalState.update(FORM_CACHE_KEY, nextCache);
@@ -226,7 +245,8 @@ async function collectExtensionFolders() {
         path: root,
         name: path.basename(root),
         label: pluginInfo.displayName || path.basename(root),
-        scripts: pluginInfo.scripts
+        scripts: pluginInfo.scripts,
+        scriptParams: pluginInfo.scriptParams
       });
     }
     const entries = await fs.readdir(root, { withFileTypes: true });
@@ -243,10 +263,39 @@ async function collectExtensionFolders() {
         path: folderPath,
         name: entry.name,
         label: pluginInfo.displayName || entry.name,
-        scripts: pluginInfo.scripts
+        scripts: pluginInfo.scripts,
+        scriptParams: pluginInfo.scriptParams
       });
     }
   }
+
+  if (folders.length === 0 && (vscode.workspace.workspaceFolders || []).length === 1) {
+    const workspaceRoot = vscode.workspace.workspaceFolders[0].uri.fsPath;
+    const parentRoot = path.dirname(workspaceRoot);
+    if (parentRoot && parentRoot !== workspaceRoot) {
+      const entries = await fs.readdir(parentRoot, { withFileTypes: true });
+      for (const entry of entries) {
+        if (!entry.isDirectory()) {
+          continue;
+        }
+
+        const folderPath = path.join(parentRoot, entry.name);
+        if (!(await isExtensionFolder(folderPath))) {
+          continue;
+        }
+
+        const pluginInfo = await readPluginInfo(folderPath);
+        folders.push({
+          path: folderPath,
+          name: entry.name,
+          label: pluginInfo.displayName || entry.name,
+          scripts: pluginInfo.scripts,
+          scriptParams: pluginInfo.scriptParams
+        });
+      }
+    }
+  }
+
   folders.sort((a, b) => a.name.localeCompare(b.name));
   return folders;
 }
@@ -264,8 +313,34 @@ async function readPluginInfo(folderPath) {
 
   return {
     displayName: parsed.metadata && parsed.metadata.name ? parsed.metadata.name : "",
-    scripts: await collectScriptFiles(srcPath)
+    scripts: await collectScriptFiles(srcPath),
+    scriptParams: await collectScriptParams(srcPath)
   };
+}
+
+async function collectScriptParams(srcDir) {
+  try {
+    const entries = await fs.readdir(srcDir, { withFileTypes: true });
+    const output = {};
+
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        continue;
+      }
+
+      const filePath = path.join(srcDir, entry.name);
+      try {
+        const source = await fs.readFile(filePath, "utf8");
+        output[entry.name] = extractExecuteParams(source);
+      } catch {
+        output[entry.name] = [];
+      }
+    }
+
+    return output;
+  } catch {
+    return {};
+  }
 }
 
 async function readSourceMap(srcDir, prefix = "") {
@@ -346,6 +421,115 @@ function parseArgsText(argsText) {
     .filter(Boolean);
 }
 
+function splitTopLevelParams(paramsSource) {
+  const parts = [];
+  let current = "";
+  let depthParen = 0;
+  let depthBrace = 0;
+  let depthBracket = 0;
+  let quote = "";
+
+  for (let index = 0; index < paramsSource.length; index += 1) {
+    const char = paramsSource[index];
+    const prev = paramsSource[index - 1];
+
+    if (quote) {
+      current += char;
+      if (char === quote && prev !== "\\") {
+        quote = "";
+      }
+      continue;
+    }
+
+    if (char === "'" || char === '"' || char === "`") {
+      quote = char;
+      current += char;
+      continue;
+    }
+
+    if (char === "(") {
+      depthParen += 1;
+      current += char;
+      continue;
+    }
+    if (char === ")") {
+      depthParen = Math.max(0, depthParen - 1);
+      current += char;
+      continue;
+    }
+    if (char === "{") {
+      depthBrace += 1;
+      current += char;
+      continue;
+    }
+    if (char === "}") {
+      depthBrace = Math.max(0, depthBrace - 1);
+      current += char;
+      continue;
+    }
+    if (char === "[") {
+      depthBracket += 1;
+      current += char;
+      continue;
+    }
+    if (char === "]") {
+      depthBracket = Math.max(0, depthBracket - 1);
+      current += char;
+      continue;
+    }
+
+    if (char === "," && depthParen === 0 && depthBrace === 0 && depthBracket === 0) {
+      parts.push(current.trim());
+      current = "";
+      continue;
+    }
+
+    current += char;
+  }
+
+  if (current.trim()) {
+    parts.push(current.trim());
+  }
+
+  return parts;
+}
+
+function normalizeParamName(rawParam, index) {
+  const withoutDefault = rawParam.split("=")[0].trim();
+  const withoutRest = withoutDefault.replace(/^\.\.\./, "").trim();
+  const matched = withoutRest.match(/[A-Za-z_$][\w$]*/);
+  if (matched) {
+    return matched[0];
+  }
+  return `arg${index + 1}`;
+}
+
+function extractExecuteParams(source) {
+  const patterns = [
+    /\basync\s+function\s+execute\s*\(([\s\S]*?)\)/,
+    /\bfunction\s+execute\s*\(([\s\S]*?)\)/,
+    /\b(?:const|let|var)\s+execute\s*=\s*async\s*\(([\s\S]*?)\)\s*=>/,
+    /\b(?:const|let|var)\s+execute\s*=\s*\(([\s\S]*?)\)\s*=>/,
+    /\b(?:module\.)?exports\.execute\s*=\s*async\s*function\s*\(([\s\S]*?)\)/,
+    /\b(?:module\.)?exports\.execute\s*=\s*function\s*\(([\s\S]*?)\)/,
+    /\b(?:module\.)?exports\.execute\s*=\s*async\s*\(([\s\S]*?)\)\s*=>/,
+    /\b(?:module\.)?exports\.execute\s*=\s*\(([\s\S]*?)\)\s*=>/
+  ];
+
+  for (const pattern of patterns) {
+    const matched = source.match(pattern);
+    if (!matched) {
+      continue;
+    }
+
+    return splitTopLevelParams(matched[1])
+      .filter(Boolean)
+      .map((param, index) => normalizeParamName(param, index));
+  }
+
+  return [];
+}
+
 function normalizeLogLines(value) {
   if (Array.isArray(value)) {
     return value.map((item) => String(item ?? "")).filter(Boolean);
@@ -354,6 +538,14 @@ function normalizeLogLines(value) {
     return value.split(/\r?\n/).map((item) => item.trim()).filter(Boolean);
   }
   return [];
+}
+
+function normalizeTestInputArg(value) {
+  const text = String(value ?? "");
+  if (!/^https?:\/\//i.test(text)) {
+    return text;
+  }
+  return text.replace(/\/+$/, "");
 }
 
 function collectResponseLogs(result) {
@@ -405,6 +597,7 @@ function createRunRecord(form) {
     folderPath: form.folderPath,
     script: form.script,
     argsText: form.argsText,
+    argsValues: parseStoredArgsValues(form.argsValues),
     at: new Date().toISOString()
   };
 }
@@ -511,7 +704,7 @@ function getWebviewHtml(webview) {
       margin-bottom: 4px;
       font-weight: 600;
     }
-    input, select, textarea {
+    input, select {
       width: 100%;
       border: 1px solid var(--vscode-input-border, transparent);
       background: var(--vscode-input-background);
@@ -520,17 +713,17 @@ function getWebviewHtml(webview) {
       padding: 6px 8px;
       font: inherit;
     }
-    input:focus, select:focus, textarea:focus {
+    input:focus, select:focus {
       outline: 1px solid var(--vscode-focusBorder);
       outline-offset: -1px;
-    }
-    textarea {
-      min-height: 96px;
-      resize: vertical;
     }
     .row {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .argsGrid {
+      display: grid;
       gap: 8px;
     }
     .actions {
@@ -580,19 +773,19 @@ function getWebviewHtml(webview) {
       flex-wrap: wrap;
     }
     .iconButton {
-      width: 30px;
-      height: 30px;
-      min-width: 30px;
-      padding: 0;
+      min-height: 30px;
+      padding: 6px 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      gap: 6px;
+      white-space: nowrap;
     }
     .iconButton svg,
     .iconButton .spinner {
       width: 16px;
       height: 16px;
+      flex: 0 0 16px;
     }
     .iconButton svg {
       fill: currentColor;
@@ -607,19 +800,14 @@ function getWebviewHtml(webview) {
     .iconButton.loading svg {
       display: none;
     }
+    .iconButton.loading .buttonLabel {
+      opacity: 0.8;
+    }
     .iconButton.loading .spinner {
       display: block;
     }
-    .srOnly {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    .buttonLabel {
+      line-height: 1;
     }
     @keyframes spin {
       to {
@@ -711,9 +899,9 @@ function getWebviewHtml(webview) {
     </div>
 
     <div class="field">
-      <label id="argsTextLabel" for="argsText">Tham số</label>
-      <textarea id="argsText" placeholder="Mỗi dòng một input"></textarea>
-      <div id="argsTextHint" class="hint">Mỗi input trên 1 dòng.</div>
+      <label id="argsTextLabel" for="argsContainer">Tham số</label>
+      <div id="argsContainer" class="argsGrid"></div>
+      <div id="argsTextHint" class="hint">Tự động tạo theo hàm execute(...).</div>
     </div>
 
     <div class="field">
@@ -729,17 +917,17 @@ function getWebviewHtml(webview) {
         <button id="runBtn" class="primary iconButton" type="button" title="Chạy" aria-label="Chạy">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5v11l9-5.5-9-5.5Z"></path></svg>
           <span class="spinner" aria-hidden="true"></span>
-          <span class="srOnly">Chạy</span>
+          <span class="buttonLabel">Chạy</span>
         </button>
         <button id="buildBtn" class="iconButton" type="button" title="Đóng gói" aria-label="Đóng gói">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 1 1 4v8l5.5 3 5.5-3V4L6.5 1Zm0 1.4L10.4 4 6.5 5.98 2.6 4 6.5 2.4Zm-4 3 3.5 1.9v4.3l-3.5-1.9V5.4Zm8 4.3-3.5 1.9V7.3l3.5-1.9v4.3Z"></path></svg>
           <span class="spinner" aria-hidden="true"></span>
-          <span class="srOnly">Đóng gói</span>
+          <span class="buttonLabel">Đóng gói</span>
         </button>
         <button id="installBtn" class="iconButton" type="button" title="Cài đặt" aria-label="Cài đặt">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.75 1.5v6.19l2.22-2.22 1.03 1.06L8 10.5 4 6.53l1.03-1.06 2.22 2.22V1.5h1.5ZM2 11h12v3H2v-3Z"></path></svg>
           <span class="spinner" aria-hidden="true"></span>
-          <span class="srOnly">Cài đặt</span>
+          <span class="buttonLabel">Cài đặt</span>
         </button>
       </div>
     </div>
@@ -762,7 +950,7 @@ function getWebviewHtml(webview) {
     const languageEnBtn = document.getElementById("languageEnBtn");
     const folderPathEl = document.getElementById("folderPath");
     const scriptEl = document.getElementById("script");
-    const argsTextEl = document.getElementById("argsText");
+    const argsContainerEl = document.getElementById("argsContainer");
     const recentRunEl = document.getElementById("recentRun");
     const responseResultEl = document.getElementById("responseResult");
     const runBtn = document.getElementById("runBtn");
@@ -783,8 +971,8 @@ function getWebviewHtml(webview) {
         folderPath: "Thư mục extension",
         script: "Script",
         args: "Tham số",
-        argsPlaceholder: "Mỗi dòng một input",
-        argsHint: "Mỗi input trên 1 dòng.",
+        argsPlaceholder: "Nhập giá trị",
+        argsHint: "Tự động tạo theo hàm execute(...).",
         recentRun: "Input gần đây",
         recentRunPlaceholder: "Chọn input đã dùng...",
         response: "Phản hồi",
@@ -801,8 +989,8 @@ function getWebviewHtml(webview) {
         folderPath: "Extension Folder",
         script: "Script",
         args: "Arguments",
-        argsPlaceholder: "One arg per line",
-        argsHint: "One input per line.",
+        argsPlaceholder: "Enter value",
+        argsHint: "Generated from the execute(...) signature.",
         recentRun: "Recent Inputs",
         recentRunPlaceholder: "Select recent input...",
         response: "Response",
@@ -813,13 +1001,31 @@ function getWebviewHtml(webview) {
       }
     };
 
+    function splitArgsText(argsText) {
+      return String(argsText || "")
+        .replaceAll(String.fromCharCode(13), "")
+        .split(String.fromCharCode(10));
+    }
+
+    function getCurrentParamNames() {
+      const folder = state.folders.find((item) => item.path === folderPathEl.value);
+      const scriptParams = folder && folder.scriptParams ? folder.scriptParams : {};
+      return Array.isArray(scriptParams[scriptEl.value]) ? scriptParams[scriptEl.value] : [];
+    }
+
+    function getArgsValues() {
+      return Array.from(argsContainerEl.querySelectorAll("input[data-arg-index]")).map((input) => input.value);
+    }
+
     function currentForm() {
+      const argsValues = getArgsValues();
       return {
         serverUrl: serverUrlEl.value.trim(),
         language: state.language || "vi",
         folderPath: folderPathEl.value,
         script: scriptEl.value,
-        argsText: argsTextEl.value
+        argsText: argsValues.join(String.fromCharCode(10)),
+        argsValues
       };
     }
 
@@ -834,7 +1040,7 @@ function getWebviewHtml(webview) {
     function setActionButtonText(button, text) {
       button.title = text;
       button.setAttribute("aria-label", text);
-      const label = button.querySelector(".srOnly");
+      const label = button.querySelector(".buttonLabel");
       if (label) {
         label.textContent = text;
       }
@@ -863,11 +1069,32 @@ function getWebviewHtml(webview) {
       if (!scriptEl.value && scripts.length > 0) {
         scriptEl.value = scripts[0];
       }
+      renderArgsInputs(getCurrentParamNames(), []);
+    }
+
+    function renderArgsInputs(paramNames, values) {
+      const names = Array.isArray(paramNames) ? paramNames : [];
+      const nextValues = Array.isArray(values) ? values : [];
+      const count = Math.max(names.length, nextValues.length);
+
+      if (count === 0) {
+        argsContainerEl.innerHTML = "";
+        return;
+      }
+
+      argsContainerEl.innerHTML = Array.from({ length: count }, (_, index) => {
+        const label = names[index] || ('arg' + (index + 1));
+        const value = nextValues[index] || "";
+        return '<input data-arg-index="' + index + '" placeholder="' + escapeAttr(label) + '" value="' + escapeAttr(value) + '" />';
+      }).join("");
     }
 
     function renderRecentRuns(items) {
       recentRunEl.innerHTML = '<option value=""></option>' + items.map((item, index) => {
-        const label = [item.script || "-", item.folderPath ? item.folderPath.split(/[\\\\/]/).pop() : "-", item.serverUrl || "-"].join(" | ");
+        const folderName = item.folderPath
+          ? item.folderPath.replaceAll(String.fromCharCode(92), "/").split("/").pop()
+          : "-";
+        const label = [item.script || "-", folderName, item.serverUrl || "-"].join(" | ");
         return '<option value="' + index + '">' + escapeHtml(label) + "</option>";
       }).join("");
       applyLanguage(state.language || "vi");
@@ -891,7 +1118,7 @@ function getWebviewHtml(webview) {
       serverUrlEl.value = run.serverUrl || "";
       folderPathEl.value = run.folderPath || "";
       renderScripts(folderPathEl.value, run.script || "");
-      argsTextEl.value = run.argsText || "";
+      renderArgsInputs(getCurrentParamNames(), Array.isArray(run.argsValues) ? run.argsValues : splitArgsText(run.argsText));
     }
 
     function applyLanguage(language) {
@@ -906,7 +1133,11 @@ function getWebviewHtml(webview) {
       document.getElementById("argsTextHint").textContent = dict.argsHint;
       document.getElementById("recentRunLabel").textContent = dict.recentRun;
       document.getElementById("responseTitle").textContent = dict.response;
-      argsTextEl.placeholder = dict.argsPlaceholder;
+      Array.from(argsContainerEl.querySelectorAll("input[data-arg-index]")).forEach((input) => {
+        if (!input.placeholder) {
+          input.placeholder = dict.argsPlaceholder;
+        }
+      });
       setActionButtonText(runBtn, dict.run);
       setActionButtonText(buildBtn, dict.build);
       setActionButtonText(installBtn, dict.install);
@@ -929,7 +1160,7 @@ function getWebviewHtml(webview) {
         renderServerHistory(message.history.serverUrls || []);
         renderFolders(message.folders || [], message.state.folderPath || "");
         renderScripts(folderPathEl.value, message.state.script || "");
-        argsTextEl.value = message.state.argsText || "";
+        renderArgsInputs(getCurrentParamNames(), Array.isArray(message.state.argsValues) ? message.state.argsValues : splitArgsText(message.state.argsText));
         renderRecentRuns(message.history.recentRuns || []);
         applyLanguage(state.language);
         responseResultEl.textContent = (i18n[state.language] || i18n.vi).noResponse;
@@ -965,6 +1196,7 @@ function getWebviewHtml(webview) {
     });
 
     scriptEl.addEventListener("change", () => {
+      renderArgsInputs(getCurrentParamNames(), []);
       vscode.postMessage({
         type: "saveState",
         form: currentForm()
@@ -988,7 +1220,7 @@ function getWebviewHtml(webview) {
       applyRun(run);
     });
 
-    argsTextEl.addEventListener("input", () => {
+    argsContainerEl.addEventListener("input", () => {
       vscode.postMessage({
         type: "cacheArgs",
         form: currentForm()
@@ -1059,7 +1291,10 @@ async function checkConnection(serverUrl, logger, language) {
 }
 
 async function runTest(form, logger) {
-  const inputArgs = parseArgsText(form.argsText);
+  const inputArgs = (parseStoredArgsValues(form.argsValues).length > 0
+    ? parseStoredArgsValues(form.argsValues)
+    : parseArgsText(form.argsText))
+    .map(normalizeTestInputArg);
   const url = new URL("/extension/test", form.serverUrl).toString();
   logger.show();
   logger.clear();
@@ -1134,9 +1369,22 @@ class VbookTesterPanel {
     this.panel = undefined;
   }
 
+  async lockPanelGroup() {
+    if (!this.panel) {
+      return;
+    }
+
+    try {
+      await vscode.commands.executeCommand("workbench.action.lockEditorGroup");
+    } catch (error) {
+      this.logger.log(`[PANEL] Failed to lock editor group: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
+
   async open() {
     if (this.panel) {
       this.panel.reveal(vscode.ViewColumn.Beside, true);
+      await this.lockPanelGroup();
       await this.syncToActiveEditor();
       return;
     }
@@ -1154,6 +1402,7 @@ class VbookTesterPanel {
     );
 
     this.panel.webview.html = getWebviewHtml(this.panel.webview);
+    await this.lockPanelGroup();
     this.panel.onDidDispose(() => {
       this.panel = undefined;
     });
@@ -1268,15 +1517,22 @@ class VbookTesterPanel {
       || (selectedFolder && selectedFolder.scripts.includes(savedState.script) ? savedState.script : "")
       || (selectedFolder && selectedFolder.scripts[0])
       || "";
+    const argsValues = getCachedArgsValues(this.context, folderPath, script);
     const argsText = getCachedArgsText(this.context, folderPath, script)
       || (savedState.folderPath === folderPath && savedState.script === script
         ? String(savedState.argsText || "")
         : "");
+    const nextArgsValues = argsValues.length > 0
+      ? argsValues
+      : (savedState.folderPath === folderPath && savedState.script === script
+        ? parseStoredArgsValues(savedState.argsValues)
+        : []);
 
     const state = await saveState(this.context, {
       folderPath,
       script,
-      argsText
+      argsText,
+      argsValues: nextArgsValues
     });
 
     await this.panel.webview.postMessage({

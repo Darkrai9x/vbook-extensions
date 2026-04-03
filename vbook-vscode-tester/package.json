@@ -2,7 +2,7 @@
   "name": "vbook-vscode-tester",
   "displayName": "vBook Tester",
   "description": "Test, build, and install vBook extensions from VS Code.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "local",
   "engines": {
     "vscode": "^1.88.0"
