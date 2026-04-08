@@ -27,17 +27,6 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Truyện Chữ",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenchu/plugin.zip",
-      "version": 6,
-      "source": "https://metruyenchu.vn",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenchu/icon.png",
-      "description": "Đọc truyện trên trang Truyện Chữ",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
       "name": "Truyện TR",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/plugin.zip",
@@ -67,29 +56,6 @@
       "source": "https://truyenwikidich.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich-app/icon.png",
       "description": "Đọc truyện trên trang app Wiki Dịch",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "Koanchay",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/plugin.zip",
-      "version": 12,
-      "source": "https://koanchay.net",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/koanchay/icon.png",
-      "description": "Đọc truyện trên trang Koanchay",
-      "tag": "nsfw",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "SS Truyện",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/plugin.zip",
-      "version": 6,
-      "source": "https://sstruyen.vn",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/sstruyen/icon.png",
-      "description": "Đọc truyện trên trang SS Truyện",
       "type": "novel",
       "locale": "vi_VN"
     },
@@ -182,17 +148,6 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Blog Truyện",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/plugin.zip",
-      "version": 7,
-      "type": "comic",
-      "locale": "vi_VN",
-      "source": "https://blogtruyen.vn",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/blogtruyen/icon.png",
-      "description": "Đọc truyện trên trang Blog Truyện"
-    },
-    {
       "name": "TruyệnHD",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenhd/plugin.zip",
@@ -201,17 +156,6 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenhd/icon.png",
       "description": "Đọc truyện trên trang TruyệnHD",
       "tag": "nsfw",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "Gác Sách",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/plugin.zip",
-      "version": 9,
-      "source": "https://gacsach.online",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gacsach/icon.png",
-      "description": "Đọc truyện trên trang Gác Sách",
       "type": "novel",
       "locale": "vi_VN"
     },
@@ -292,28 +236,6 @@
       "description": "Đọc truyện trên trang TruyenHayVN",
       "type": "novel",
       "locale": "vi_VN"
-    },
-    {
-      "name": "LightNovel Reader",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lightnovelreader/plugin.zip",
-      "version": 4,
-      "source": "https://readlightnovel.app",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/lightnovelreader/icon.png",
-      "description": "Read novel",
-      "type": "novel",
-      "locale": "en_US"
-    },
-    {
-      "name": "ReadManga.Org",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/readmanga/plugin.zip",
-      "version": 1,
-      "source": "https://readmanga.org",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/readmanga/icon.png",
-      "description": "Read manga",
-      "type": "comic",
-      "locale": "en_US"
     },
     {
       "name": "E Hentai",
