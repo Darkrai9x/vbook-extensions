@@ -1,53 +1,69 @@
 # vBook VSCode Tester
 
-VS Code extension for testing, building, and installing a vBook extension against a local vBook server.
+![vBook Tester](media/vbooktester.png)
 
-## Features
+Tiện ích mở rộng VS Code để kiểm thử, đóng gói và cài đặt extension vBook trực tiếp từ môi trường phát triển.
 
-- Open the tester from the editor title bar when the active file is `js`, `jsx`, `ts`, or `tsx`
-- Show the tester in a panel beside the current editor
-- Auto-detect the current vBook extension folder from the active file
-- Auto-select the current script when the active file is inside `src/`
-- Cache arguments by `extension + script`, so switching files restores the matching input
-- Keep recent server URLs and recent runs
-- Send requests to `/extension/test`, `/extension/build`, and `/extension/install`
-- Print connection status, logs, and results to a dedicated VS Code terminal
+## Tổng quan
 
-## How It Works
+`vBook VSCode Tester` cung cấp một giao diện sidebar nhỏ gọn, cho phép bạn:
 
-The tester treats a folder as a valid vBook extension when it contains:
+- chọn thư mục extension trong workspace
+- chọn script từ thư mục `src/`
+- cấu hình server URL của vBook local API
+- truyền tham số vào script
+- xem phản hồi JSON trực tiếp
+- lưu lại lịch sử các lần chạy gần nhất
+- build và cài đặt extension từ VS Code
 
-- `plugin.json`
-- `src/`
+## Tính năng chính
 
-When the panel is open and you switch to another file, the tester refreshes automatically:
+- Mở được panel `vBook Tester` trong sidebar của VS Code
+- Quét workspace để tìm tất cả thư mục extension hợp lệ (có `plugin.json` và `src/`)
+- Hiển thị các script tồn tại trong `src/` để chọn nhanh
+- Tự động sinh form tham số từ chữ ký `execute(...)` nếu có
+- Chạy script theo hai chế độ API: `Cũ` hoặc `Mới`
+- Bật/tắt tự động mở Terminal khi chạy
+- Gọi các thao tác:
+  - `Run` để thực thi script và hiển thị response
+  - `TestAll` để chạy kiểm tra toàn bộ
+  - `Build` để tạo `plugin.zip`
+  - `Install` để cài extension lên server
+- Ghi nhớ server URL, thư mục, script và các input đã dùng
 
-- the extension folder changes with the active file
-- the script changes with the active file in `src/`
-- the cached argument list changes with that `extension + script`
+## Cách sử dụng
 
-## Run Locally
+1. Trong cửa sổ mới, mở workspace chứa extension vBook của bạn.
+2. Mở `vBook Tester` từ Activity Bar hoặc chạy lệnh `vBook: Open Tester`.
+3. Trong panel:
+   - Nhập `Server` là địa chỉ vBook API (mặc định `http://127.0.0.1:8080`).
+   - Chọn `Thư mục` extension cần kiểm thử.
+   - Chọn `Script` trong danh sách file nguồn.
+   - Nhập tham số vào phần `Tham số`.
+   - Chọn từ `Lịch sử` nếu muốn dùng lại input trước đó.
+4. Nhấn `Chạy` để thực hiện script và xem kết quả ở khung phản hồi.
+5. Dùng `Gói` để xuất `plugin.zip`, hoặc `Cài` để cài extension lên điện thoại.
 
-1. Open [vbook-extensions](D:/Projects/vbook-extensions) or [vbook-vscode-tester](D:/Projects/vbook-extensions/vbook-vscode-tester) in VS Code.
-2. Press `F5` to launch an Extension Development Host.
-3. In the new window, open a workspace that contains one or more vBook extension folders.
-4. Open a `js`, `jsx`, `ts`, or `tsx` file inside the target extension.
-5. Click the `vBook Test` icon in the editor title bar.
-6. Use the panel on the right to run, build, or install the extension.
+## Các nút chức năng
 
-## Package Locally
+- `Term`: mở Terminal riêng để xem log chi tiết
+- `TestAll`: chạy toàn bộ bước kiểm thử (one-click)
+- `Gói`: build package `plugin.zip` từ thư mục extension
+- `Cài`: cài extension lên server vBook
+- `Chạy`: gửi request thực thi script và trả về dữ liệu
 
-Build a local `.vsix` package with:
+## Cấu hình
 
-```powershell
-npx @vscode/vsce package --allow-missing-repository --no-rewrite-relative-links --skip-license
-```
+Bạn có thể cấu hình trong `Settings` của VS Code:
 
-Then install it from:
+- `vbookTester.defaultServerUrl`: URL mặc định cho server local
+- `vbookTester.showTerminalOnRun`: tự động hiển thị terminal khi chạy
+- `vbookTester.maxHistory`: số lượng lịch sử chạy gần nhất lưu lại
 
-- `Extensions: Install from VSIX...`
+## Ghi chú
 
-## Notes
+- Extension hợp lệ khi thư mục chứa cả `plugin.json` và thư mục `src/`.
+- Nếu có file `icon.png`, extension sẽ gửi icon cùng payload khi build/install.
+- Người dùng có thể chuyển đổi ngôn ngữ hiển thị `VI` / `EN` ngay trên panel.
 
-- `icon.png` is optional and is sent when present in the target extension folder.
-- Build output is saved as `plugin.zip` inside the selected extension folder.
+
