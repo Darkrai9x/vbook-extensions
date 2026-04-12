@@ -279,12 +279,13 @@ sleep(10000); // Delay 10 giây
 
 # Cách test extension với VSCode:
 
-- Cài [extension](https://github.com/faea726/vbook-extension-maker/releases/latest) vào VSCode
-
-- Mở một script bất kỳ
-
+- Bản mới (dùng được cả vbook cũ và vbook beta):
+  - Cài extension local: [vbook-vscode-tester-0.0.4.vsix](vbook-vscode-tester-0.0.4.vsix)
+    ![Vbook vscode tester](vbook-vscode-tester\media\vbooktester.png)
+- Bản cũ:
+  - Cài extension từ: [https://github.com/faea726/vbook-extension-maker/releases/latest](https://github.com/faea726/vbook-extension-maker/releases/latest)
+- Mở một script bất kỳ.
 - Chuột phải và chọn mục tương ứng.
-
 - Nhập thông tin khi có input box yêu cầu.
 
 ![IP](tutorial/4.png)
