@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "author": "vBook",
+    "description": ""
+  },
+  "data": [
+    {
+      "name": "HHTQ Vietsub",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hhtqvietsub/plugin.zip",
+      "version": 1,
+      "source": "https://hhtqvietsub.cc",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/hhtqvietsub/icon.png",
+      "description": "Xem phim hoạt hình Trung Quốc trên HHTQ Vietsub",
+      "locale": "vi_VN",
+      "type": "video"
+    }
+  ]
+}

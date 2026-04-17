@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "HHTQ Vietsub",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://hhtqvietsub.cc",
+    "regexp": "(www\\.)?hhtqvietsub\\.cc/.*",
+    "description": "Xem phim hoạt hình Trung Quốc trên HHTQ Vietsub",
+    "locale": "vi_VN",
+    "type": "video",
+    "language": "javascript"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "track": "track.js"
+  }
+}
