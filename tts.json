@@ -7,8 +7,8 @@
     {
       "name": "Google TTS",
       "author": "vBook",
-      "version": 1,
-      "source": "https://www.google.com",
+      "version": 2,
+      "source": "https://translate.google.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-tts/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-tts/icon.png",
       "description": "Nghe truyện bằng Google TTS",
