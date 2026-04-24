@@ -19,7 +19,7 @@ function execute(url) {
                 });
             }
 
-            for (let i = 0; i < eps.size(); i++) {
+            for (let i = eps.size() - 1; i >= 0; i--) {
                 let e = eps.get(i);
                 let a = e.select("a").first();
                 let span = e.select("span").first();
