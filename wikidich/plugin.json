@@ -2,13 +2,14 @@
   "metadata": {
     "name": "Wiki Dịch",
     "author": "vBook",
-    "version": 23,
+    "version": 24,
     "source": "https://wikicv.net",
     "regexp": "(www.)?(.*?)wikicv(.*?)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
     "locale": "vi_VN",
     "type": "novel",
-    "language": "javascript"
+    "language": "javascript",
+    "encrypt": true
   },
   "script": {
     "home": "home.js",
