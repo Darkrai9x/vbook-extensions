@@ -49,10 +49,10 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Wikidich App",
+      "name": "[APP] Wikidich",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich-app/plugin.zip",
-      "version": 3,
+      "version": 4,
       "source": "https://truyenwikidich.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich-app/icon.png",
       "description": "Đọc truyện trên trang app Wiki Dịch",

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "Wikidich App",
+    "name": "[APP] Wikidich",
     "author": "vBook",
     "version": 3,
     "source": "https://api.truyenreview.com",
@@ -8,6 +8,7 @@
     "description": "Đọc truyện trên App Wiki Dịch",
     "language": "javascript",
     "type": "novel",
+    "encrypt": true,
     "locale": "vi_VN"
   },
   "script": {
