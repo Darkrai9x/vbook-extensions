@@ -43,5 +43,55 @@
     "link": "https://raw.githubusercontent.com/SoulGodEve9x9/Vbook-ext/Nahona/plugin.json",
     "author": "Nahona",
     "description": "Nahona"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/BaoBao666888/ext-vbook-w/main/plugin.json",
+    "author": "QuocBao",
+    "description": ""
+  },
+  {
+    "link": "https://raw.githubusercontent.com/gh369-639/vbook-ext-public/refs/heads/main/plugin.json",
+    "author": "3690",
+    "description": "noDes"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/mizhm/vbook-extensions/refs/heads/main/plugin.json",
+    "author": "mizhm",
+    "description": "Vbook extension made by mizhm"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/Ivan1hai/ext/main/plugin.json",
+    "author": "Ivan1hai",
+    "description": "Vbook extension made by Ivan1hai"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/Gold2k2k2k/HTri-Vbook-Ext/refs/heads/main/plugin.json",
+    "author": "Gold2k2k2k",
+    "description": "Vbook extension made by Gold2k2k2k"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/WillSun28/vbook-extensions/refs/heads/main/plugin.json",
+    "author": "WillSun28",
+    "description": "Will Sun's repository"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/hienpro00123/vbook_MeoU/refs/heads/main/plugin.json",
+    "author": "Meo",
+    "description": "Vbook extension made by Meo"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/Evamirion/vbook-ext/main/plugin.json",
+    "author": "Vearn",
+    "description": "Vearn"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/yae-miko-313/ext-vbook/main/plugin.json",
+    "author": "hieu05",
+    "description": "hieu05"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/kychitoge/vbook-ext/main/plugin.json",
+    "author": "kychi",
+    "description": "ext cá nhân, fix một số lỗi từ các nguồn hay đọc mà các dev chưa fix, đồng thời thêm mới nghịch code"
   }
 ]
