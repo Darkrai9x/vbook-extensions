@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "Truyện VN",
+    "name": "Truyện VN - Kho Truyen",
     "author": "vBook",
-    "version": 48,
-    "source": "https://truyenvn.shop",
-    "regexp": "(www.)?truyenvn(hot|pro|moi|hay)?\\.[a-z]+/truyen-tranh/[^/]+/?$",
-    "description": "Đọc truyện trên trang Truyện VN",
+    "version": 49,
+    "source": "https://khotruyen.ac",
+    "regexp": "(www.)?(khotruyen.ac|truyenvn(hot|pro|moi|hay))?.*?/truyen-tranh/.*?/?$",
+    "description": "Đọc truyện trên trang Truyện VN/ Khotruyen.ac",
     "locale": "vi_VN",
     "language": "javascript",
 	"type": "comic"

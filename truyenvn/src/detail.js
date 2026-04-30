@@ -6,7 +6,7 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let genres = [];
-        doc.select(".genres-content > a").forEach(e => {
+        doc.select(".genres-content a").forEach(e => {
             genres.push({
                 title: e.text(),
                 input: e.attr('href'),
@@ -14,13 +14,13 @@ function execute(url) {
             });
         });
         let cover = doc.select(".summary_image img").first().attr("src")
-            || doc.select(".summary_image img").first().attr("data-lazy-src");
+            || doc.select(".summary_image img").first().attr("data-lazy-src")|| "https://i.postimg.cc/T2WtdmBM/5BdXa90.webp";
         return Response.success({
-            name: doc.select("h1").first().text(),
+            name: doc.select(".post-title h1").first().text(),
             cover: cover,
-            author: doc.select(".author-content").first().text(),
+            author: doc.select(".artist-content").first().text(),
             description: doc.select(".description-summary p").html(),
-            detail: doc.select(".summary-content").first().text() + '<br>Author : ' + doc.select(".author-content").text(),
+            detail: doc.select(".summary-content").first().text() + '<br>Artist : ' + doc.select(".artist-content").text(),
             host: BASE_URL,
             ongoing: doc.select(".post-content_item").text().indexOf("OnGoing") != -1,
             genres: genres,
