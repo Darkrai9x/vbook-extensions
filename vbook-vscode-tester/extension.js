@@ -1220,6 +1220,34 @@ function getWebviewHtml(webview) {
       return Array.from(argsContainerEl.querySelectorAll("input[data-arg-index]")).map((input) => input.value);
     }
 
+    // Restore UI from vscode.getState() — runs after all elements + functions are ready
+    function performRestore() {
+      const prev = vscode.getState();
+      if (!prev || !prev._folders || prev._folders.length === 0) return;
+      
+      state.folders = prev._folders;
+      state.history = prev._history || { recentRuns: [] };
+      state.formCache = prev._formCache || {};
+      state.language = prev.language || 'vi';
+      state.apiMode = prev.apiMode || 'new';
+      state.showTerminal = Boolean(prev.showTerminal);
+      
+      serverUrlEl.value = prev.serverUrl || 'http://127.0.0.1:8080';
+      applyShowTerminal(state.showTerminal);
+      renderFolders(prev._folders, prev.folderPath || '');
+      renderScripts(folderPathEl.value, prev.script || '');
+      
+      const prevArgs = Array.isArray(prev.argsValues) && prev.argsValues.some(v => v) ? prev.argsValues : null;
+      if (prevArgs) {
+        renderArgsInputs(getCurrentParamNames(), prevArgs);
+      } else {
+        fillArgsFromHistory(folderPathEl.value, prev.script || '');
+      }
+      renderRecentRuns(state.history.recentRuns || []);
+      applyLanguage(state.language);
+      applyApiMode(state.apiMode);
+    }
+
     function currentForm() {
       const argsValues = getArgsValues();
       return {
@@ -1377,6 +1405,9 @@ function getWebviewHtml(webview) {
     showTermOnBtn.addEventListener("click", () => handleShowTermChange(true));
     showTermOffBtn.addEventListener("click", () => handleShowTermChange(false));
 
+    // FINAL INIT CALL - RESTORE FROM STATE
+    performRestore();
+
     window.addEventListener("message", (event) => {
       const message = event.data;
       if (message.type === "init") {
@@ -1401,7 +1432,13 @@ function getWebviewHtml(webview) {
         if (!responseResultEl.innerHTML || noRespTexts.includes(responseResultEl.textContent)) {
           responseResultEl.textContent = (i18n[state.language] || i18n.vi).noResponse;
         }
-        vscode.setState(message.state);
+        // Save COMPLETE state so vscode.getState() can restore everything on next open
+        vscode.setState({
+          ...message.state,
+          _folders: message.folders || [],
+          _history: message.history,
+          _formCache: message.formCache || {}
+        });
         vscode.postMessage({ type: "loadParams", folderPath: folderPathEl.value });
         return;
       }
@@ -2090,6 +2127,7 @@ class VbookTesterViewProvider {
       enableScripts: true,
       localResourceRoots: [this.context.extensionUri]
     };
+    webviewView.retainContextWhenHidden = true;
 
     webviewView.webview.html = getWebviewHtml(webviewView.webview);
 
@@ -2097,7 +2135,7 @@ class VbookTesterViewProvider {
       await this.handleMessage(message);
     });
 
-    void this.postInit();
+    this.postInit().catch(() => {});
   }
 
   async handleMessage(message) {
@@ -2282,28 +2320,54 @@ class VbookTesterViewProvider {
       || (selectedFolder && selectedFolder.scripts.includes(savedState.script) ? savedState.script : "")
       || (selectedFolder && selectedFolder.scripts[0])
       || "";
+    // 1. Try formCache (most precise: folder + script)
     const argsValues = getCachedArgsValues(this.context, folderPath, script);
     let argsText = getCachedArgsText(this.context, folderPath, script);
     let nextArgsValues = argsValues.length > 0 ? argsValues : [];
 
+    // 2. Fallback: savedState.argsValues (no strict match required — just use if non-empty)
     if (nextArgsValues.length === 0) {
-      if (savedState.folderPath === folderPath && savedState.script === script) {
-        nextArgsValues = parseStoredArgsValues(savedState.argsValues);
-        if (!argsText) argsText = String(savedState.argsText || "");
+      nextArgsValues = parseStoredArgsValues(savedState.argsValues);
+      if (!argsText) argsText = String(savedState.argsText || "");
+    }
+
+    // 3. Fallback: history — exact folder+script match
+    if (nextArgsValues.length === 0) {
+      const historyState = getStoredHistory(this.context);
+      const normalizedPath = folderPath.toLowerCase().replace(/\\/g, "/");
+      const hasData = (r) => parseStoredArgsValues(r.argsValues).some(v => v) || String(r.argsText || "").trim();
+      const exactMatch = historyState.recentRuns.find((r) => {
+        const rPath = (r.folderPath || "").toLowerCase().replace(/\\/g, "/");
+        return rPath === normalizedPath && r.script === script && hasData(r);
+      });
+      if (exactMatch) {
+        nextArgsValues = parseStoredArgsValues(exactMatch.argsValues);
+        if (!argsText) argsText = String(exactMatch.argsText || "");
+      } else {
+        // 4. Fallback: most recent entry for this folder (any script, has any data)
+        const folderMatch = historyState.recentRuns.find((r) => {
+          const rPath = (r.folderPath || "").toLowerCase().replace(/\\/g, "/");
+          return rPath === normalizedPath && hasData(r);
+        });
+        if (folderMatch) {
+          nextArgsValues = parseStoredArgsValues(folderMatch.argsValues);
+          if (!argsText) argsText = String(folderMatch.argsText || "");
+        }
       }
     }
 
-    if (nextArgsValues.length === 0) {
-      const historyState = getStoredHistory(this.context);
-      const normalizedPath = folderPath.toLowerCase().replace(/\\\\/g, "/");
-      const match = historyState.recentRuns.find((r) => {
-        const rPath = (r.folderPath || "").toLowerCase().replace(/\\\\/g, "/");
-        return rPath === normalizedPath && r.script === script;
-      });
-      if (match) {
-        nextArgsValues = parseStoredArgsValues(match.argsValues);
-        if (!argsText) argsText = String(match.argsText || "");
-      }
+    // Convert argsText → argsValues if argsValues still empty but argsText has content
+    if (nextArgsValues.length === 0 && argsText.trim()) {
+      nextArgsValues = parseArgsText(argsText);
+    }
+
+    // CRITICAL: Protect against self-erasing state. 
+    // If we couldn't find any args in cache/history, but savedState had some, USE THEM.
+    const hasNewArgs = Array.isArray(nextArgsValues) && nextArgsValues.some(v => v);
+    const hasOldArgs = savedState.argsValues && savedState.argsValues.some(v => v);
+    if (!hasNewArgs && hasOldArgs) {
+        nextArgsValues = savedState.argsValues;
+        argsText = savedState.argsText || "";
     }
 
     const finalState = await saveState(this.context, {
