@@ -15,7 +15,7 @@ const HISTORY_KEY = "vbookTester.history";
 const FORM_CACHE_KEY = "vbookTester.formCache";
 function getMaxHistory() {
   const config = vscode.workspace.getConfiguration("vbookTester");
-  return config.get("maxHistory", 30);
+  return config.get("maxHistory", 40);
 }
 
 class TerminalLogger {
@@ -153,7 +153,7 @@ function getStoredState(context) {
 }
 
 function getStoredHistory(context) {
-  const history = context.globalState.get(HISTORY_KEY) || {};
+  const history = context.workspaceState.get(HISTORY_KEY) || {};
   return {
     recentRuns: asArray(history.recentRuns)
   };
@@ -164,7 +164,7 @@ function createFormCacheKey(folderPath, script) {
 }
 
 function getStoredFormCache(context) {
-  const cache = context.globalState.get(FORM_CACHE_KEY);
+  const cache = context.workspaceState.get(FORM_CACHE_KEY);
   return cache && typeof cache === "object" ? cache : {};
 }
 
@@ -214,7 +214,7 @@ async function saveArgsCache(context, form) {
       argsValues: parseStoredArgsValues(form.argsValues)
     }
   };
-  await context.globalState.update(FORM_CACHE_KEY, nextCache);
+  await context.workspaceState.update(FORM_CACHE_KEY, nextCache);
   return nextCache;
 }
 
@@ -228,7 +228,8 @@ async function pushHistory(context, patch) {
   }
   const seen = new Set();
   newRuns = newRuns.filter((r) => {
-    const key = (r.folderPath || "") + "::" + (r.script || "");
+    const fPath = String(r.folderPath || "").replace(/\\/g, "/").toLowerCase();
+    const key = fPath + "::" + (r.script || "");
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -236,7 +237,7 @@ async function pushHistory(context, patch) {
   const next = {
     recentRuns: uniqRecent(newRuns)
   };
-  await context.globalState.update(HISTORY_KEY, next);
+  await context.workspaceState.update(HISTORY_KEY, next);
   return next;
 }
 
@@ -1220,6 +1221,34 @@ function getWebviewHtml(webview) {
       return Array.from(argsContainerEl.querySelectorAll("input[data-arg-index]")).map((input) => input.value);
     }
 
+    // Restore UI from vscode.getState() — runs after all elements + functions are ready
+    function performRestore() {
+      const prev = vscode.getState();
+      if (!prev || !prev._folders || prev._folders.length === 0) return;
+      
+      state.folders = prev._folders;
+      state.history = prev._history || { recentRuns: [] };
+      state.formCache = prev._formCache || {};
+      state.language = prev.language || 'vi';
+      state.apiMode = prev.apiMode || 'new';
+      state.showTerminal = Boolean(prev.showTerminal);
+      
+      serverUrlEl.value = prev.serverUrl || 'http://127.0.0.1:8080';
+      applyShowTerminal(state.showTerminal);
+      renderFolders(prev._folders, prev.folderPath || '');
+      renderScripts(folderPathEl.value, prev.script || '');
+      
+      const prevArgs = Array.isArray(prev.argsValues) && prev.argsValues.some(v => v) ? prev.argsValues : null;
+      if (prevArgs) {
+        renderArgsInputs(getCurrentParamNames(), prevArgs);
+      } else {
+        fillArgsFromHistory(folderPathEl.value, prev.script || '');
+      }
+      renderRecentRuns(state.history.recentRuns || []);
+      applyLanguage(state.language);
+      applyApiMode(state.apiMode);
+    }
+
     function currentForm() {
       const argsValues = getArgsValues();
       return {
@@ -1377,6 +1406,9 @@ function getWebviewHtml(webview) {
     showTermOnBtn.addEventListener("click", () => handleShowTermChange(true));
     showTermOffBtn.addEventListener("click", () => handleShowTermChange(false));
 
+    // FINAL INIT CALL - RESTORE FROM STATE
+    performRestore();
+
     window.addEventListener("message", (event) => {
       const message = event.data;
       if (message.type === "init") {
@@ -1401,7 +1433,13 @@ function getWebviewHtml(webview) {
         if (!responseResultEl.innerHTML || noRespTexts.includes(responseResultEl.textContent)) {
           responseResultEl.textContent = (i18n[state.language] || i18n.vi).noResponse;
         }
-        vscode.setState(message.state);
+        // Save COMPLETE state so vscode.getState() can restore everything on next open
+        vscode.setState({
+          ...message.state,
+          _folders: message.folders || [],
+          _history: message.history,
+          _formCache: message.formCache || {}
+        });
         vscode.postMessage({ type: "loadParams", folderPath: folderPathEl.value });
         return;
       }
@@ -1953,7 +1991,22 @@ async function runOneclickTest(form, logger, onProgress) {
     await checkConnection(form.serverUrl, logger, form.language);
   }
 
+  const runRecords = [];
+  const addRecord = (sName, input) => {
+    const inputArr = Array.isArray(input) ? input.map(String) : [String(input || "")];
+    runRecords.push({
+      serverUrl: form.serverUrl,
+      folderPath: form.folderPath,
+      script: sName,
+      argsText: inputArr.join("\n"),
+      argsValues: inputArr,
+      at: new Date().toISOString()
+    });
+  };
+
   async function exec(scriptName, input) {
+    addRecord(scriptName, input);
+
     if (isLegacy) {
       return await runLegacyScript(scriptName, input, form, logger, localIP, localPort, remote);
     } else {
@@ -1961,119 +2014,163 @@ async function runOneclickTest(form, logger, onProgress) {
     }
   }
 
-  const runRecords = [];
-  const addRecord = (sName, inputStr) => {
-    runRecords.push({
-      serverUrl: form.serverUrl,
-      folderPath: form.folderPath,
-      script: sName,
-      argsText: inputStr,
-      at: new Date().toISOString()
-    });
+  const errOut = (dict, message = "Oneclick aborted") => {
+    logger.log(`[EXCEPTION] ${message}`);
+    return { response: dict, runRecords: runRecords.reverse(), error: message };
   };
 
-  const errOut = (dict) => {
-    logger.log(`[EXCEPTION] Oneclick aborted`);
-    return { response: dict, runRecords: runRecords.reverse() };
-  };
-
-  logger.log("=== home.js ===");
-  addRecord("home.js", "");
-  const homeWrap = await exec("home.js", []);
-  if (onProgress) await onProgress("home", homeWrap);
-  if (homeWrap.log) { logger.log("[LOG] " + homeWrap.log); }
-  if (homeWrap.exception) { return errOut({ home: homeWrap }); }
-  const homeResult = homeWrap.data;
-  if (!homeResult || !homeResult.data || homeResult.data.length === 0) {
-    throw new Error("home.js: No data");
-  }
-  logger.log(formatResult("[home.js]", homeResult));
-
-  const nextScript = homeResult.data[0].script || "gen.js";
-  const homeInput = homeResult.data[0].input;
-  if (!homeInput) { throw new Error("home.js: No input in first item"); }
-  logger.log(`=== ${nextScript} ===`);
-  addRecord(nextScript, homeInput);
-  const genWrap = await exec(nextScript, [homeInput]);
-  if (onProgress) await onProgress(nextScript.replace('.js', ''), genWrap);
-  if (genWrap.log) { logger.log("[LOG] " + genWrap.log); }
-  if (genWrap.exception) { return errOut({ home: homeWrap, gen: genWrap }); }
-  const genResult = genWrap.data;
-  if (!genResult || !genResult.data || genResult.data.length === 0) {
-    throw new Error(`${nextScript}: No data`);
-  }
-  logger.log(formatResult(`[${nextScript}]`, genResult));
-
-  const firstGen = genResult.data[0];
-  let detailInput = typeof firstGen === "string" ? firstGen : (firstGen.url || firstGen.link);
-  if (firstGen && firstGen.host && typeof detailInput === "string" && !detailInput.startsWith("http")) {
-    detailInput = `${firstGen.host}/${detailInput.startsWith("/") ? detailInput.substring(1) : detailInput}`;
-  }
-  logger.log("=== detail.js ===");
-  addRecord("detail.js", detailInput);
-  const detailWrap = await exec("detail.js", [detailInput]);
-  if (onProgress) await onProgress("detail", detailWrap);
-  if (detailWrap.log) { logger.log("[LOG] " + detailWrap.log); }
-  if (detailWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap }); }
-  const detailResult = detailWrap.data;
-  if (!detailResult || !detailResult.data) {
-    throw new Error("detail.js: No data");
-  }
-  logger.log(formatResult("[detail.js]", detailResult));
-
-  let tocInput = detailInput;
-  const pageJsPath = path.join(form.folderPath, "src", "page.js");
-  let pageWrap = null;
-  if (await pathExists(pageJsPath)) {
-    logger.log("=== page.js ===");
-    addRecord("page.js", detailInput);
-    pageWrap = await exec("page.js", [detailInput]);
-    if (onProgress) await onProgress("page", pageWrap);
-    if (pageWrap.log) { logger.log("[LOG] " + pageWrap.log); }
-    if (pageWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap }); }
-    const pageResult = pageWrap.data;
-    if (!pageResult || !pageResult.data || pageResult.data.length === 0) {
-      throw new Error("page.js: No data");
+  try {
+    // ── BƯỚC 1: home.js ──
+    logger.log("=== home.js ===");
+    const homeWrap = await exec("home.js", []);
+    if (onProgress) await onProgress("home", homeWrap);
+    if (homeWrap.log) { logger.log("[LOG] " + homeWrap.log); }
+    if (homeWrap.exception) { return errOut({ home: homeWrap }, homeWrap.exception); }
+    const homeResult = homeWrap.data;
+    if (!homeResult || !homeResult.data || homeResult.data.length === 0) {
+      return errOut({ home: homeWrap }, "home.js: No data");
     }
-    logger.log(formatResult("[page.js]", pageResult));
-    const firstPage = pageResult.data[0];
-    tocInput = typeof firstPage === "string" ? firstPage : (firstPage.url || firstPage.link || detailInput);
-  }
+    logger.log(formatResult("[home.js]", homeResult));
 
-  logger.log("=== toc.js ===");
-  addRecord("toc.js", tocInput);
-  const tocWrap = await exec("toc.js", [tocInput]);
-  if (onProgress) await onProgress("toc", tocWrap);
-  if (tocWrap.log) { logger.log("[LOG] " + tocWrap.log); }
-  if (tocWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap }); }
-  const tocResult = tocWrap.data;
-  if (!tocResult || !tocResult.data || tocResult.data.length === 0) {
-    throw new Error("toc.js: No data");
-  }
-  logger.log(formatResult("[toc.js]", tocResult));
+    // ── BƯỚC 2: gen.js (hoặc script từ homeData[0]) ──
+    const nextScript = homeResult.data[0].script || "gen.js";
+    const homeInput = homeResult.data[0].input;
+    if (!homeInput) { return errOut({ home: homeWrap }, "home.js: No input in first item"); }
+    logger.log(`=== ${nextScript} ===`);
+    const genWrap = await exec(nextScript, [homeInput]);
+    if (onProgress) await onProgress(nextScript.replace('.js', ''), genWrap);
+    if (genWrap.log) { logger.log("[LOG] " + genWrap.log); }
+    if (genWrap.exception) { return errOut({ home: homeWrap, gen: genWrap }, genWrap.exception); }
+    const genResult = genWrap.data;
+    if (!genResult || !genResult.data || genResult.data.length === 0) {
+      return errOut({ home: homeWrap, gen: genWrap }, `${nextScript}: No data`);
+    }
+    logger.log(formatResult(`[${nextScript}]`, genResult));
 
-  const firstToc = tocResult.data[0];
-  let chapInput = typeof firstToc === "string" ? firstToc : (firstToc.url || firstToc.link);
-  if (firstToc && firstToc.host && typeof chapInput === "string" && !chapInput.startsWith("http")) {
-    chapInput = `${firstToc.host}/${chapInput.startsWith("/") ? chapInput.substring(1) : chapInput}`;
-  }
-  logger.log("=== chap.js ===");
-  addRecord("chap.js", chapInput);
-  const chapWrap = await exec("chap.js", [chapInput]);
-  if (onProgress) await onProgress("chap", chapWrap);
-  if (chapWrap.log) { logger.log("[LOG] " + chapWrap.log); }
-  if (chapWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap, chap: chapWrap }); }
-  const chapResult = chapWrap.data;
-  if (!chapResult || !chapResult.data) {
-    throw new Error("chap.js: No data");
-  }
-  logger.log(formatResult("[chap.js]", chapResult));
+    // ── BƯỚC 3: detail.js ──
+    const firstGen = genResult.data[0];
+    let detailInput = typeof firstGen === "string" ? firstGen : (firstGen.url || firstGen.link);
+    if (firstGen && firstGen.host && typeof detailInput === "string" && !detailInput.startsWith("http")) {
+      detailInput = `${firstGen.host}/${detailInput.startsWith("/") ? detailInput.substring(1) : detailInput}`;
+    }
+    logger.log("=== detail.js ===");
+    const detailWrap = await exec("detail.js", [detailInput]);
+    if (onProgress) await onProgress("detail", detailWrap);
+    if (detailWrap.log) { logger.log("[LOG] " + detailWrap.log); }
+    if (detailWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap }, detailWrap.exception); }
+    const detailResult = detailWrap.data;
+    if (!detailResult || !detailResult.data) {
+      return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap }, "detail.js: No data");
+    }
+    logger.log(formatResult("[detail.js]", detailResult));
 
-  logger.log("=== Test All Complete ===");
-  return {
-    response: { home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap, chap: chapWrap },
-    runRecords: runRecords.reverse()
-  };
+    // ── BƯỚC 3b: Sub-scripts từ detail.data (genres, suggests, comments, ...) ──
+    const detailData = detailResult.data;
+    if (detailData && typeof detailData === 'object') {
+      for (const key of Object.keys(detailData)) {
+        const arr = detailData[key];
+        if (!Array.isArray(arr) || arr.length === 0) continue;
+        const item = arr[0];
+        if (typeof item !== "object" || !item || !item.script || item.input === undefined) continue;
+
+        const subScript = item.script;
+        const subInput = String(item.input);
+        logger.log(`=== Sub-script: ${subScript} (từ detail.${key}[0]) ===`);
+        try {
+          const subWrap = await exec(subScript, [subInput]);
+          if (onProgress) await onProgress(`${key}[0]_${subScript.replace('.js','')}`, subWrap);
+          if (subWrap.log) { logger.log("[LOG] " + subWrap.log); }
+          if (subWrap.exception) {
+            logger.log(`[WARN] ${subScript}: ${subWrap.exception}`);
+          } else {
+            logger.log(formatResult(`[${subScript}]`, subWrap.data));
+          }
+        } catch (e) {
+          logger.log(`[WARN] ${subScript} failed: ${e.message}`);
+        }
+      }
+    }
+
+    // ── BƯỚC 4: page.js (nếu có) ──
+    let tocInput = detailInput;
+    const pageJsPath = path.join(form.folderPath, "src", "page.js");
+    let pageWrap = null;
+    if (await pathExists(pageJsPath)) {
+      logger.log("=== page.js ===");
+      pageWrap = await exec("page.js", [detailInput]);
+      if (onProgress) await onProgress("page", pageWrap);
+      if (pageWrap.log) { logger.log("[LOG] " + pageWrap.log); }
+      if (pageWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap }, pageWrap.exception); }
+      const pageResult = pageWrap.data;
+      if (!pageResult || !pageResult.data || pageResult.data.length === 0) {
+        return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap }, "page.js: No data");
+      }
+      logger.log(formatResult("[page.js]", pageResult));
+      const firstPage = pageResult.data[0];
+      tocInput = typeof firstPage === "string" ? firstPage : (firstPage.url || firstPage.link || detailInput);
+    }
+
+    // ── BƯỚC 5: toc.js ──
+    logger.log("=== toc.js ===");
+    const tocWrap = await exec("toc.js", [tocInput]);
+    if (onProgress) await onProgress("toc", tocWrap);
+    if (tocWrap.log) { logger.log("[LOG] " + tocWrap.log); }
+    if (tocWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap }, tocWrap.exception); }
+    const tocResult = tocWrap.data;
+    if (!tocResult || !tocResult.data || tocResult.data.length === 0) {
+      return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap }, "toc.js: No data");
+    }
+    logger.log(formatResult("[toc.js]", tocResult));
+
+    // ── BƯỚC 6: chap.js ──
+    const firstToc = tocResult.data[0];
+    let chapInput = typeof firstToc === "string" ? firstToc : (firstToc.url || firstToc.link);
+    if (firstToc && firstToc.host && typeof chapInput === "string" && !chapInput.startsWith("http")) {
+      chapInput = `${firstToc.host}/${chapInput.startsWith("/") ? chapInput.substring(1) : chapInput}`;
+    }
+    logger.log("=== chap.js ===");
+    const chapWrap = await exec("chap.js", [chapInput]);
+    if (onProgress) await onProgress("chap", chapWrap);
+    if (chapWrap.log) { logger.log("[LOG] " + chapWrap.log); }
+    if (chapWrap.exception) { return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap, chap: chapWrap }, chapWrap.exception); }
+    const chapResult = chapWrap.data;
+    if (!chapResult || !chapResult.data) {
+      return errOut({ home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap, chap: chapWrap }, "chap.js: No data");
+    }
+    logger.log(formatResult("[chap.js]", chapResult));
+
+    // ── BƯỚC 7: track.js (nếu có) ──
+    const trackJsPath = path.join(form.folderPath, "src", "track.js");
+    if (await pathExists(trackJsPath)) {
+      logger.log("=== track.js ===");
+      const firstChap = Array.isArray(chapResult.data) ? chapResult.data[0] : chapResult.data;
+      const trackInput = firstChap?.data;
+      if (!trackInput) {
+        logger.log("[WARN] track.js: No data in chapter result");
+      } else {
+        try {
+          const trackWrap = await exec("track.js", [String(trackInput)]);
+          if (onProgress) await onProgress("track", trackWrap);
+          if (trackWrap.log) { logger.log("[LOG] " + trackWrap.log); }
+          if (trackWrap.exception) {
+            logger.log(`[WARN] track.js: ${trackWrap.exception}`);
+          } else {
+            logger.log(formatResult("[track.js]", trackWrap.data));
+          }
+        } catch (e) {
+          logger.log(`[WARN] track.js failed: ${e.message}`);
+        }
+      }
+    }
+
+    logger.log("=== Test All Complete ===");
+    return {
+      response: { home: homeWrap, gen: genWrap, detail: detailWrap, page: pageWrap, toc: tocWrap, chap: chapWrap },
+      runRecords: runRecords.reverse()
+    };
+  } catch (err) {
+    return errOut({}, err.message);
+  }
 }
 
 class VbookTesterViewProvider {
@@ -2090,6 +2187,7 @@ class VbookTesterViewProvider {
       enableScripts: true,
       localResourceRoots: [this.context.extensionUri]
     };
+    webviewView.retainContextWhenHidden = false;
 
     webviewView.webview.html = getWebviewHtml(webviewView.webview);
 
@@ -2097,7 +2195,7 @@ class VbookTesterViewProvider {
       await this.handleMessage(message);
     });
 
-    void this.postInit();
+    this.postInit().catch(() => {});
   }
 
   async handleMessage(message) {
@@ -2195,6 +2293,9 @@ class VbookTesterViewProvider {
         });
         await this.postHistoryUpdated(history);
         if (this._view) {
+          if (result.error) {
+            await this._view.webview.postMessage({ type: "error", text: result.error });
+          }
           await this._view.webview.postMessage({ type: "oneclickDone" });
         }
         return;
@@ -2282,28 +2383,29 @@ class VbookTesterViewProvider {
       || (selectedFolder && selectedFolder.scripts.includes(savedState.script) ? savedState.script : "")
       || (selectedFolder && selectedFolder.scripts[0])
       || "";
+    // 1. Try formCache (most precise: folder + script)
     const argsValues = getCachedArgsValues(this.context, folderPath, script);
     let argsText = getCachedArgsText(this.context, folderPath, script);
     let nextArgsValues = argsValues.length > 0 ? argsValues : [];
 
+    // 2. Fallback: history — exact folder+script match
     if (nextArgsValues.length === 0) {
-      if (savedState.folderPath === folderPath && savedState.script === script) {
-        nextArgsValues = parseStoredArgsValues(savedState.argsValues);
-        if (!argsText) argsText = String(savedState.argsText || "");
+      const historyState = getStoredHistory(this.context);
+      const normalizedPath = folderPath.toLowerCase().replace(/\\/g, "/");
+      const hasData = (r) => parseStoredArgsValues(r.argsValues).some(v => v) || String(r.argsText || "").trim();
+      const exactMatch = historyState.recentRuns.find((r) => {
+        const rPath = (r.folderPath || "").toLowerCase().replace(/\\/g, "/");
+        return rPath === normalizedPath && r.script === script && hasData(r);
+      });
+      if (exactMatch) {
+        nextArgsValues = parseStoredArgsValues(exactMatch.argsValues);
+        if (!argsText) argsText = String(exactMatch.argsText || "");
       }
     }
 
-    if (nextArgsValues.length === 0) {
-      const historyState = getStoredHistory(this.context);
-      const normalizedPath = folderPath.toLowerCase().replace(/\\\\/g, "/");
-      const match = historyState.recentRuns.find((r) => {
-        const rPath = (r.folderPath || "").toLowerCase().replace(/\\\\/g, "/");
-        return rPath === normalizedPath && r.script === script;
-      });
-      if (match) {
-        nextArgsValues = parseStoredArgsValues(match.argsValues);
-        if (!argsText) argsText = String(match.argsText || "");
-      }
+    // Convert argsText → argsValues if argsValues still empty but argsText has content
+    if (nextArgsValues.length === 0 && argsText.trim()) {
+      nextArgsValues = parseArgsText(argsText);
     }
 
     const finalState = await saveState(this.context, {
