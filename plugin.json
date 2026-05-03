@@ -71,15 +71,15 @@
       "description": "Đọc truyện trên trang Truyện QQ"
     },
     {
-      "name": "Truyện VN",
+      "name": "Truyện VN - Kho Truyen",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
-      "version": 48,
+      "version": 49,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "https://truyenvn.shop",
+      "source": "https://khotruyen.ac",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
-      "description": "Đọc truyện trên trang Truyện VN"
+      "description": "Đọc truyện trên trang Truyện VN/ Khotruyen.ac"
     },
     {
       "name": "Wattpad",
