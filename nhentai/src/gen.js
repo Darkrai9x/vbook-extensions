@@ -12,7 +12,7 @@ function execute(url, page) {
         data.push({
             name: e.select(".caption").first().text(),
             link: e.select("a").first().attr("href"),
-            cover: "https:"+  e.select("img").first().attr("data-src"),
+            cover: (e.select("img").first().attr("data-src") || e.select("img").first().attr("src")),
             description: e.select(".chapter a").first().text(),
             host: "https://nhentai.net"
         })
