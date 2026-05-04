@@ -2,7 +2,7 @@
   "metadata": {
     "name": "nHentai",
     "author": "vBook",
-    "version": 5,
+    "version": 6,
     "source": "https://nhentai.net",
     "regexp": "(www.)?nhentai.net/g/\\d+/?$",
     "description": "Đọc truyện trên trang nHentai",
