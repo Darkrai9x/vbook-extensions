@@ -2,8 +2,8 @@
   "metadata": {
     "name": "Truyện QQ",
     "author": "vBook",
-    "version": 23,
-    "source": "https://truyenqqno.com",
+    "version": 24,
+    "source": "https://truyenqqko.com",
     "regexp": "(www.)?truyenqq.*?/truyen-tranh/[0-9a-z-]+/?$",
     "description": "Đọc truyện trên trang Truyện QQ",
     "locale": "vi_VN",
