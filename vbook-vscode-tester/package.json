@@ -2,7 +2,7 @@
   "name": "vbook-vscode-tester",
   "displayName": "vBook Tester",
   "description": "Test, build, and install vBook extensions from VS Code.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "icon": "icon.png",
   "publisher": "local",
   "engines": {
@@ -15,20 +15,11 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:vbookTester.openPanel",
-    "onView:vbook-tester-view"
-  ],
   "main": "./extension.js",
   "contributes": {
     "configuration": {
       "title": "vBook Tester",
       "properties": {
-        "vbookTester.showTerminalOnRun": {
-          "type": "boolean",
-          "default": false,
-          "description": "Automatically show the output terminal when running tests or builds."
-        },
         "vbookTester.maxHistory": {
           "type": "integer",
           "default": 15,
@@ -55,7 +46,8 @@
         {
           "type": "webview",
           "id": "vbook-tester-view",
-          "name": "vBook Tester"
+          "name": "vBook Tester",
+          "icon": "media/icon.svg"
         }
       ]
     },

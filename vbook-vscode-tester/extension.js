@@ -15,117 +15,33 @@ const HISTORY_KEY = "vbookTester.history";
 const FORM_CACHE_KEY = "vbookTester.formCache";
 function getMaxHistory() {
   const config = vscode.workspace.getConfiguration("vbookTester");
-  return config.get("maxHistory", 40);
+  return config.get("maxHistory", 30);
 }
 
-class TerminalLogger {
+class OutputLogger {
   constructor() {
-    this.writeEmitter = new vscode.EventEmitter();
-    this.closeEmitter = new vscode.EventEmitter();
-    this.onDidWrite = this.writeEmitter.event;
-    this.onDidClose = this.closeEmitter.event;
-    this.terminal = null; // Lazy-init: không tạo terminal cho đến khi cần
-    this._isOpen = false;
-    this._queue = [];
+    this.channel = vscode.window.createOutputChannel("vBook Test");
   }
-
-  _ensureTerminal() {
-    if (!this.terminal) {
-      this.terminal = vscode.window.createTerminal({
-        name: "vBook Test",
-        pty: this
-      });
-      
-      // Auto-clean reference if user kills the terminal panel manually
-      if (!this._terminalCloseDisposable) {
-        this._terminalCloseDisposable = vscode.window.onDidCloseTerminal((t) => {
-          if (t === this.terminal) {
-            this.terminal = null;
-            this._isOpen = false;
-          }
-        });
-      }
-    }
-  }
-
-  open() {
-    this._isOpen = true;
-    if (this._queue.length > 0) {
-      this.writeEmitter.fire(this._queue.join(""));
-      this._queue = [];
-    }
-  }
-
-  close() {
-    this._isOpen = false;
-  }
-
-  handleInput() { }
 
   show() {
-    this._ensureTerminal();
-    this.terminal.show(); // Focus terminal
-    setTimeout(() => {
-      vscode.commands.executeCommand("workbench.action.terminal.focus");
-    }, 50);
+    this.channel.show(true);
   }
 
   clear() {
-    this._ensureTerminal();
-    if (this._isOpen) {
-      this.writeEmitter.fire("\x1b[2J\x1b[3J\x1b[H");
-    } else {
-      this._queue = [];
-    }
+    this.channel.clear();
   }
 
   log(value) {
-    this._ensureTerminal();
-    const text = normalizeTerminalText(value);
-    if (this._isOpen) {
-      this.writeEmitter.fire(text);
-    } else {
-      this._queue.push(text);
-    }
+    this.channel.appendLine(String(value ?? ""));
   }
 
   dispose() {
-    this.writeEmitter.dispose();
-    this.closeEmitter.dispose();
-    if (this._terminalCloseDisposable) {
-      this._terminalCloseDisposable.dispose();
-    }
-    if (this.terminal) {
-      this.terminal.dispose();
-    }
+    this.channel.dispose();
   }
-}
-
-function normalizeTerminalText(value) {
-  const text = String(value ?? "");
-  const lines = text.replace(/\r?\n/g, "\r\n");
-  return lines.endsWith("\r\n") ? lines : `${lines}\r\n`;
 }
 
 function asArray(value) {
   return Array.isArray(value) ? value : [];
-}
-
-function uniqRecent(items) {
-  const seen = new Set();
-  const output = [];
-  for (const item of items) {
-    const key = JSON.stringify(item);
-    if (seen.has(key)) {
-      continue;
-    }
-    seen.add(key);
-    output.push(item);
-    if (output.length >= getMaxHistory()) {
-      break;
-    }
-  }
-  return output;
 }
 
 function getDefaultState(context) {
@@ -138,7 +54,7 @@ function getDefaultState(context) {
     script: "",
     argsText: "",
     argsValues: [],
-    showTerminal: config.get("showTerminalOnRun", false)
+    showTerminal: false
   };
 }
 
@@ -153,7 +69,7 @@ function getStoredState(context) {
 }
 
 function getStoredHistory(context) {
-  const history = context.workspaceState.get(HISTORY_KEY) || {};
+  const history = context.globalState.get(HISTORY_KEY) || {};
   return {
     recentRuns: asArray(history.recentRuns)
   };
@@ -164,7 +80,7 @@ function createFormCacheKey(folderPath, script) {
 }
 
 function getStoredFormCache(context) {
-  const cache = context.workspaceState.get(FORM_CACHE_KEY);
+  const cache = context.globalState.get(FORM_CACHE_KEY);
   return cache && typeof cache === "object" ? cache : {};
 }
 
@@ -214,7 +130,7 @@ async function saveArgsCache(context, form) {
       argsValues: parseStoredArgsValues(form.argsValues)
     }
   };
-  await context.workspaceState.update(FORM_CACHE_KEY, nextCache);
+  await context.globalState.update(FORM_CACHE_KEY, nextCache);
   return nextCache;
 }
 
@@ -226,18 +142,21 @@ async function pushHistory(context, patch) {
   } else if (patch.runRecord) {
     newRuns = [patch.runRecord, ...newRuns];
   }
+  
+  // Lọc trùng lặp dựa trên Thư mục + Script + Các tham số đầu vào
   const seen = new Set();
   newRuns = newRuns.filter((r) => {
-    const fPath = String(r.folderPath || "").replace(/\\/g, "/").toLowerCase();
-    const key = fPath + "::" + (r.script || "");
+    const argsKey = Array.isArray(r.argsValues) ? r.argsValues.join("||") : r.argsText;
+    const key = (r.folderPath || "") + "::" + (r.script || "") + "::" + (argsKey || "");
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
   });
+  
   const next = {
-    recentRuns: uniqRecent(newRuns)
+    recentRuns: newRuns.slice(0, getMaxHistory())
   };
-  await context.workspaceState.update(HISTORY_KEY, next);
+  await context.globalState.update(HISTORY_KEY, next);
   return next;
 }
 
@@ -551,10 +470,12 @@ function normalizeTestInputArg(value) {
 
 function normalizeLogLines(value) {
   if (Array.isArray(value)) {
-    return value.map((item) => String(item ?? "")).filter(Boolean);
+    return value.map((item) => String(item ?? ""));
   }
   if (typeof value === "string") {
-    return value.split(/\r?\n/).map((item) => item.trim()).filter(Boolean);
+    if (!value.trim()) return [];
+    // Bỏ .trim() để giữ nguyên khoảng trắng/căn lề (indentation) của log
+    return value.split(/\r?\n/);
   }
   return [];
 }
@@ -755,13 +676,20 @@ function splitArgsTextHost(argsText) {
   return String(argsText || "").replace(/\r?\n/g, "\n").split("\n");
 }
 
-function shouldShowTerminal() {
-  const config = vscode.workspace.getConfiguration("vbookTester");
-  return config.get("showTerminalOnRun", false);
-}
-
 function formatResult(title, payload) {
-  return `${title}\n${JSON.stringify(payload, null, 2)}`;
+  // Tạo bản sao để ẩn các trường log, tránh in lặp lại log thành 1 cục JSON khổng lồ ở Terminal
+  let toPrint = payload;
+  if (payload && typeof payload === "object") {
+    toPrint = Array.isArray(payload) ? [...payload] : { ...payload };
+    delete toPrint.log;
+    delete toPrint.logs;
+    if (toPrint.data && typeof toPrint.data === "object" && !Array.isArray(toPrint.data)) {
+      toPrint.data = { ...toPrint.data };
+      delete toPrint.data.log;
+      delete toPrint.data.logs;
+    }
+  }
+  return `${title}\n${JSON.stringify(toPrint, null, 2)}`;
 }
 
 function getRuntimeText(language) {
@@ -1070,8 +998,8 @@ function getWebviewHtml(webview) {
         <button id="apiModeNewBtn" type="button">Mới</button>
       </div>
       <div class="chip-group">
-        <button id="showTermOnBtn" type="button" title="Terminal On">T.On</button>
-        <button id="showTermOffBtn" type="button" title="Terminal Off">T.Off</button>
+        <button id="showTermOnBtn" type="button" title="Output On">O.On</button>
+        <button id="showTermOffBtn" type="button" title="Output Off">O.Off</button>
       </div>
     </div>
   </div>
@@ -1080,7 +1008,7 @@ function getWebviewHtml(webview) {
   <div class="formScroll">
 
     <div class="group">
-      <div class="group-label">Kết nối</div>
+      <div class="group-label" id="groupConn">Kết nối</div>
       <div class="field">
         <label id="serverUrlLabel" for="serverUrl">Server</label>
         <input id="serverUrl" autocomplete="off" placeholder="http://127.0.0.1:8080"/>
@@ -1088,7 +1016,7 @@ function getWebviewHtml(webview) {
     </div>
 
     <div class="group">
-      <div class="group-label">Extension</div>
+      <div class="group-label" id="groupExt">Extension</div>
       <div class="row2">
         <div class="field">
           <label id="folderPathLabel" for="folderPath">Thư mục</label>
@@ -1102,13 +1030,13 @@ function getWebviewHtml(webview) {
     </div>
 
     <div class="group">
-      <div class="group-label">Tham số</div>
+      <div class="group-label" id="groupArgs">Tham số</div>
       <div id="argsContainer" class="argsGrid"></div>
       <div id="argsTextHint" class="hint">Tự động tạo theo hàm execute(...).</div>
     </div>
 
     <div class="group">
-      <div class="group-label">Lịch sử</div>
+      <div class="group-label" id="groupHist">Lịch sử</div>
       <div class="field">
         <select id="recentRun">
           <option value="">Chọn input đã dùng...</option>
@@ -1120,15 +1048,10 @@ function getWebviewHtml(webview) {
 
   <!-- Sticky action bar -->
   <div class="actionBar">
-    <button id="terminalBtn" class="btn-icon" type="button" title="Mở Terminal" aria-label="Mở Terminal">
-      <svg viewBox="0 0 16 16"><path d="M1 3v10h14V3H1Zm13 9H2V6h12v6ZM3 7l2 2-2 2 .7.7L6.4 9 3.7 6.3 3 7Z"/></svg>
+    <button id="runBtn" class="btn-icon btn-run" type="button" title="Chạy" aria-label="Chạy">
+      <svg viewBox="0 0 16 16"><path d="M3 2.5v11l9-5.5-9-5.5Z"/></svg>
       <span class="spin" aria-hidden="true"></span>
-      <span class="lbl" id="termLbl">Term</span>
-    </button>
-    <button id="oneclickBtn" class="btn-icon" type="button" title="TestAll" aria-label="TestAll">
-      <svg viewBox="0 0 16 16"><path d="M9.2 1 3 9h4.5L6.8 15 13 7H8.5L9.2 1Z"/></svg>
-      <span class="spin" aria-hidden="true"></span>
-      <span class="lbl">TestAll</span>
+      <span class="lbl">Chạy</span>
     </button>
     <button id="buildBtn" class="btn-icon" type="button" title="Đóng gói" aria-label="Đóng gói">
       <svg viewBox="0 0 16 16"><path d="M6.5 1 1 4v8l5.5 3 5.5-3V4L6.5 1Zm0 1.4L10.4 4 6.5 5.98 2.6 4 6.5 2.4Zm-4 3 3.5 1.9v4.3l-3.5-1.9V5.4Zm8 4.3-3.5 1.9V7.3l3.5-1.9v4.3Z"/></svg>
@@ -1140,10 +1063,15 @@ function getWebviewHtml(webview) {
       <span class="spin" aria-hidden="true"></span>
       <span class="lbl">Cài</span>
     </button>
-    <button id="runBtn" class="btn-icon btn-run" type="button" title="Chạy" aria-label="Chạy">
-      <svg viewBox="0 0 16 16"><path d="M3 2.5v11l9-5.5-9-5.5Z"/></svg>
+    <button id="terminalBtn" class="btn-icon" type="button" title="Mở Output" aria-label="Mở Output">
+      <svg viewBox="0 0 16 16"><path d="M1 3v10h14V3H1Zm13 9H2V6h12v6ZM3 7l2 2-2 2 .7.7L6.4 9 3.7 6.3 3 7Z"/></svg>
       <span class="spin" aria-hidden="true"></span>
-      <span class="lbl">Chạy</span>
+      <span class="lbl" id="termLbl">Out</span>
+    </button>
+    <button id="oneclickBtn" class="btn-icon" type="button" title="TestAll" aria-label="TestAll">
+      <svg viewBox="0 0 16 16"><path d="M9.2 1 3 9h4.5L6.8 15 13 7H8.5L9.2 1Z"/></svg>
+      <span class="spin" aria-hidden="true"></span>
+      <span class="lbl">TestAll</span>
     </button>
   </div>
 
@@ -1179,27 +1107,29 @@ function getWebviewHtml(webview) {
     const buildBtn = document.getElementById("buildBtn");
     const installBtn = document.getElementById("installBtn");
     const actionButtons = { oneclick: oneclickBtn, run: runBtn, build: buildBtn, install: installBtn, term: terminalBtn };
-    const recentRunDefaultOption = recentRunEl.querySelector('option[value=""]');
+    
     const i18n = {
       vi: {
         title: "vBook Test", subtitle: "Chạy script và xem phản hồi.",
+        groupConn: "Kết nối", groupExt: "Extension", groupArgs: "Tham số", groupHist: "Lịch sử",
         serverUrl: "Server", language: "Ngôn ngữ", folderPath: "Thư mục",
         script: "Script", args: "Tham số", argsPlaceholder: "Nhập giá trị",
         argsHint: "Tự động tạo theo hàm execute(...).", recentRun: "Lịch sử",
         recentRunPlaceholder: "Chọn input đã dùng...", response: "Phản hồi",
-        run: "Chạy", oneclick: "TestAll", build: "Gói", install: "Cài", term: "Term",
+        run: "Chạy", oneclick: "TestAll", build: "Gói", install: "Cài", term: "Output",
         apiModeOld: "Cũ", apiModeNew: "Mới", noResponse: "Chưa có phản hồi.",
-        showTermOnHover: "Tự động hiện Terminal", showTermOffHover: "Chạy ngầm Terminal"
+        showTermOnHover: "Tự động hiện Output", showTermOffHover: "Chạy ngầm Output"
       },
       en: {
         title: "vBook Test", subtitle: "Run script and inspect response.",
+        groupConn: "Connection", groupExt: "Extension", groupArgs: "Arguments", groupHist: "History",
         serverUrl: "Server", language: "Language", folderPath: "Folder",
         script: "Script", args: "Arguments", argsPlaceholder: "Enter value",
         argsHint: "Generated from the execute(...) signature.", recentRun: "History",
         recentRunPlaceholder: "Select recent input...", response: "Response",
-        run: "Run", oneclick: "TestAll", build: "Build", install: "Install", term: "Term",
+        run: "Run", oneclick: "TestAll", build: "Build", install: "Install", term: "Output",
         apiModeOld: "Old", apiModeNew: "New", noResponse: "No response yet.",
-        showTermOnHover: "Auto show Terminal", showTermOffHover: "Hide Terminal run"
+        showTermOnHover: "Auto show Output", showTermOffHover: "Hide Output run"
       }
     };
 
@@ -1219,34 +1149,6 @@ function getWebviewHtml(webview) {
 
     function getArgsValues() {
       return Array.from(argsContainerEl.querySelectorAll("input[data-arg-index]")).map((input) => input.value);
-    }
-
-    // Restore UI from vscode.getState() — runs after all elements + functions are ready
-    function performRestore() {
-      const prev = vscode.getState();
-      if (!prev || !prev._folders || prev._folders.length === 0) return;
-      
-      state.folders = prev._folders;
-      state.history = prev._history || { recentRuns: [] };
-      state.formCache = prev._formCache || {};
-      state.language = prev.language || 'vi';
-      state.apiMode = prev.apiMode || 'new';
-      state.showTerminal = Boolean(prev.showTerminal);
-      
-      serverUrlEl.value = prev.serverUrl || 'http://127.0.0.1:8080';
-      applyShowTerminal(state.showTerminal);
-      renderFolders(prev._folders, prev.folderPath || '');
-      renderScripts(folderPathEl.value, prev.script || '');
-      
-      const prevArgs = Array.isArray(prev.argsValues) && prev.argsValues.some(v => v) ? prev.argsValues : null;
-      if (prevArgs) {
-        renderArgsInputs(getCurrentParamNames(), prevArgs);
-      } else {
-        fillArgsFromHistory(folderPathEl.value, prev.script || '');
-      }
-      renderRecentRuns(state.history.recentRuns || []);
-      applyLanguage(state.language);
-      applyApiMode(state.apiMode);
     }
 
     function currentForm() {
@@ -1332,17 +1234,31 @@ function getWebviewHtml(webview) {
     }
 
     function renderRecentRuns(items) {
-      recentRunEl.innerHTML = '<option value=""></option>' + items.map((item, index) => {
-        const safeFolderPath = normalizeSlash(item.folderPath);
-        const folderName = safeFolderPath ? safeFolderPath.split("/").pop() : "-";
-        // Format: detail.js | TruyenFull | https://truyenfull...
+      const currentFolder = normalizeSlash(folderPathEl.value).toLowerCase();
+      const currentScript = scriptEl.value;
+      
+      // Chỉ lấy các lịch sử trùng khớp với Thư mục và Script đang chọn hiện tại
+      const filteredItems = items.map((item, originalIndex) => ({item, originalIndex}))
+        .filter(x => {
+            const rPath = normalizeSlash(x.item.folderPath).toLowerCase();
+            return rPath === currentFolder && x.item.script === currentScript;
+        });
+
+      recentRunEl.innerHTML = '<option value=""></option>' + filteredItems.map((x) => {
+        const item = x.item;
+        const index = x.originalIndex;
         const argsRaw = Array.isArray(item.argsValues) && item.argsValues.some(v => v)
           ? item.argsValues.filter(v => v).join(", ")
           : splitArgsText(item.argsText).filter(Boolean).join(", ");
-        const shortArgs = argsRaw.length > 40 ? argsRaw.slice(0, 40) + "\u2026" : (argsRaw || "-");
-        const label = [item.script || "-", folderName, shortArgs].join(" | ");
-        return '<option value="' + index + '">' + escapeHtml(label) + "</option>";
+        
+        const fullArgs = argsRaw || "-";
+        // Vẫn gọt 50 ký tự đầu và thêm ... ở cuối như bản cũ bạn ưng ý
+        const shortArgs = fullArgs.length > 50 ? fullArgs.slice(0, 50) + "\u2026" : fullArgs;
+        
+        // Hiện bản gọt (shortArgs) nhưng gắn fullArgs vào thẻ title để hover xem đầy đủ
+        return '<option value="' + index + '" title="' + escapeAttr(fullArgs) + '">' + escapeHtml(shortArgs) + "</option>";
       }).join("");
+      
       applyLanguage(state.language || "vi");
     }
 
@@ -1364,6 +1280,10 @@ function getWebviewHtml(webview) {
       const dict = i18n[language] || i18n.vi;
       document.getElementById("titleText").textContent = dict.title;
       document.getElementById("subText").textContent = dict.subtitle;
+      document.getElementById("groupConn").textContent = dict.groupConn;
+      document.getElementById("groupExt").textContent = dict.groupExt;
+      document.getElementById("groupArgs").textContent = dict.groupArgs;
+      document.getElementById("groupHist").textContent = dict.groupHist;
       document.getElementById("serverUrlLabel").textContent = dict.serverUrl;
       document.getElementById("folderPathLabel").textContent = dict.folderPath;
       document.getElementById("scriptLabel").textContent = dict.script;
@@ -1379,10 +1299,17 @@ function getWebviewHtml(webview) {
       setActionButtonText(terminalBtn, dict.term);
       showTermOnBtn.title = dict.showTermOnHover;
       showTermOffBtn.title = dict.showTermOffHover;
-      /* chip labels stay fixed (Cũ/Mới, VI/EN) — do NOT overwrite from i18n */
+      
+      apiModeOldBtn.textContent = dict.apiModeOld;
+      apiModeNewBtn.textContent = dict.apiModeNew;
+
+      /* chip labels stay fixed (VI/EN) — do NOT overwrite from i18n */
       languageViBtn.classList.toggle("active", language === "vi");
       languageEnBtn.classList.toggle("active", language === "en");
-      if (recentRunDefaultOption) recentRunDefaultOption.textContent = dict.recentRunPlaceholder;
+      
+      const currentRecentRunDefault = recentRunEl.querySelector('option[value=""]');
+      if (currentRecentRunDefault) currentRecentRunDefault.textContent = dict.recentRunPlaceholder;
+      
       if (!responseResultEl.textContent || responseResultEl.textContent === i18n.vi.noResponse || responseResultEl.textContent === i18n.en.noResponse) {
         responseResultEl.textContent = dict.noResponse;
       }
@@ -1405,9 +1332,6 @@ function getWebviewHtml(webview) {
 
     showTermOnBtn.addEventListener("click", () => handleShowTermChange(true));
     showTermOffBtn.addEventListener("click", () => handleShowTermChange(false));
-
-    // FINAL INIT CALL - RESTORE FROM STATE
-    performRestore();
 
     window.addEventListener("message", (event) => {
       const message = event.data;
@@ -1433,13 +1357,7 @@ function getWebviewHtml(webview) {
         if (!responseResultEl.innerHTML || noRespTexts.includes(responseResultEl.textContent)) {
           responseResultEl.textContent = (i18n[state.language] || i18n.vi).noResponse;
         }
-        // Save COMPLETE state so vscode.getState() can restore everything on next open
-        vscode.setState({
-          ...message.state,
-          _folders: message.folders || [],
-          _history: message.history,
-          _formCache: message.formCache || {}
-        });
+        vscode.setState(message.state);
         vscode.postMessage({ type: "loadParams", folderPath: folderPathEl.value });
         return;
       }
@@ -1536,13 +1454,17 @@ function getWebviewHtml(webview) {
     });
 
     folderPathEl.addEventListener("change", () => {
-      renderScripts(folderPathEl.value, ""); fillArgsFromHistory(folderPathEl.value, scriptEl.value);
+      renderScripts(folderPathEl.value, ""); 
+      fillArgsFromHistory(folderPathEl.value, scriptEl.value);
+      renderRecentRuns(state.history.recentRuns || []);
       vscode.postMessage({ type: "saveState", form: currentForm() });
       vscode.postMessage({ type: "loadParams", folderPath: folderPathEl.value });
     });
 
     scriptEl.addEventListener("change", () => {
-      renderArgsInputs(getCurrentParamNames(), []); fillArgsFromHistory(folderPathEl.value, scriptEl.value);
+      renderArgsInputs(getCurrentParamNames(), []); 
+      fillArgsFromHistory(folderPathEl.value, scriptEl.value);
+      renderRecentRuns(state.history.recentRuns || []);
       vscode.postMessage({ type: "saveState", form: currentForm() });
     });
 
@@ -1567,7 +1489,10 @@ function getWebviewHtml(webview) {
     apiModeNewBtn.addEventListener("click", () => handleApiModeChange("new"));
 
     recentRunEl.addEventListener("change", () => {
-      const index = Number(recentRunEl.value); const run = state.history.recentRuns[index]; applyRun(run);
+      if (recentRunEl.value === "") return;
+      const index = Number(recentRunEl.value); 
+      const run = state.history.recentRuns[index]; 
+      if (run) applyRun(run);
     });
 
     argsContainerEl.addEventListener("input", () => { vscode.postMessage({ type: "cacheArgs", form: currentForm() }); });
@@ -1586,6 +1511,10 @@ function getWebviewHtml(webview) {
     runBtn.addEventListener("click", () => send("run"));
     buildBtn.addEventListener("click", () => send("build"));
     installBtn.addEventListener("click", () => send("install"));
+
+    window.addEventListener("load", () => {
+      vscode.postMessage({ type: "ready" });
+    });
   </script>
 </body>
 </html>`;
@@ -1666,6 +1595,10 @@ async function runTest(form, logger) {
       logger.log(line);
     }
   }
+  
+  // Đưa toàn bộ log đã format chuẩn về lại object để truyền cho Sidebar (Webview)
+  result.log = logs.join("\n");
+
   logger.log(formatResult("[RESULT]", result));
   return {
     request: { url, body },
@@ -1856,7 +1789,7 @@ async function installExtension(form, logger) {
   const payload = await createPayload(form.folderPath);
   const url = new URL("/extension/install", form.serverUrl).toString();
   const text = getRuntimeText(form.language);
-  if (shouldShowTerminal()) logger.show();
+  if (form.showTerminal) logger.show();
   logger.clear();
   await checkConnection(form.serverUrl, logger, form.language);
   logger.log(`[INSTALL] ${url}`);
@@ -1875,7 +1808,7 @@ async function installExtension(form, logger) {
 }
 
 async function runLegacyTest(form, logger) {
-  if (shouldShowTerminal()) logger.show();
+  if (form.showTerminal) logger.show();
   logger.clear();
   const pluginName = path.basename(form.folderPath);
   const srcRootPath = path.resolve(form.folderPath, "../");
@@ -1894,13 +1827,25 @@ async function runLegacyTest(form, logger) {
   logger.log(`[RUN-LEGACY] ${form.script}`);
   logger.log(`[INPUT] ${JSON.stringify(inputArgs)}`);
   const result = await sendLegacyRequest(remote.host, remote.port, createLegacyHeaders(data, remote.host, remote.port), logger);
+  
+  // In log ra terminal theo từng dòng
+  const logs = collectResponseLogs(result);
+  if (logs.length > 0) {
+    logger.log("[LOG]");
+    for (const line of logs) {
+      logger.log(line);
+    }
+  }
+  // Gom log chuẩn để Sidebar hiển thị
+  result.log = logs.join("\n");
+
   logger.log(formatResult("[RESULT]", result));
   return { request: data, response: result };
 }
 
 async function runLegacyInstall(form, logger) {
   await validatePluginJson(form.folderPath, form.language);
-  if (shouldShowTerminal()) logger.show();
+  if (form.showTerminal) logger.show();
   logger.clear();
   const pluginName = path.basename(form.folderPath);
   const remote = parseHostPort(form.serverUrl.replace(/^https?:\/\//, ""), 8080);
@@ -1957,7 +1902,13 @@ async function runLegacyScript(scriptName, input, form, logger, localIP, localPo
     language: "javascript",
     script: scriptContent
   };
-  return await sendLegacyRequest(remote.host, remote.port, createLegacyHeaders(data, remote.host, remote.port), logger);
+  const res = await sendLegacyRequest(remote.host, remote.port, createLegacyHeaders(data, remote.host, remote.port), logger);
+  
+  // Gom log để sidebar (testall) hiển thị đầy đủ
+  const logs = collectResponseLogs(res);
+  res.log = logs.join("\n");
+  
+  return res;
 }
 
 async function runModernScript(scriptName, input, form, logger) {
@@ -1968,8 +1919,12 @@ async function runModernScript(scriptName, input, form, logger) {
     input: JSON.stringify({ script: scriptName, vararg: input })
   };
   const res = await postJson(url, body);
+  
+  // Gom log chuẩn
+  const logs = collectResponseLogs(res);
+  
   return {
-    log: res.log || "",
+    log: logs.join("\n"),
     exception: res.exception || (res.code && res.code !== 200 ? res.message : ""),
     data: res.data ? res.data : res
   };
@@ -2187,19 +2142,21 @@ class VbookTesterViewProvider {
       enableScripts: true,
       localResourceRoots: [this.context.extensionUri]
     };
-    webviewView.retainContextWhenHidden = false;
 
     webviewView.webview.html = getWebviewHtml(webviewView.webview);
 
     webviewView.webview.onDidReceiveMessage(async (message) => {
       await this.handleMessage(message);
     });
-
-    this.postInit().catch(() => {});
   }
 
   async handleMessage(message) {
     if (!this._view) {
+      return;
+    }
+
+    if (message.type === "ready") {
+      await this.postInit();
       return;
     }
 
@@ -2383,29 +2340,28 @@ class VbookTesterViewProvider {
       || (selectedFolder && selectedFolder.scripts.includes(savedState.script) ? savedState.script : "")
       || (selectedFolder && selectedFolder.scripts[0])
       || "";
-    // 1. Try formCache (most precise: folder + script)
     const argsValues = getCachedArgsValues(this.context, folderPath, script);
     let argsText = getCachedArgsText(this.context, folderPath, script);
     let nextArgsValues = argsValues.length > 0 ? argsValues : [];
 
-    // 2. Fallback: history — exact folder+script match
     if (nextArgsValues.length === 0) {
-      const historyState = getStoredHistory(this.context);
-      const normalizedPath = folderPath.toLowerCase().replace(/\\/g, "/");
-      const hasData = (r) => parseStoredArgsValues(r.argsValues).some(v => v) || String(r.argsText || "").trim();
-      const exactMatch = historyState.recentRuns.find((r) => {
-        const rPath = (r.folderPath || "").toLowerCase().replace(/\\/g, "/");
-        return rPath === normalizedPath && r.script === script && hasData(r);
-      });
-      if (exactMatch) {
-        nextArgsValues = parseStoredArgsValues(exactMatch.argsValues);
-        if (!argsText) argsText = String(exactMatch.argsText || "");
+      if (savedState.folderPath === folderPath && savedState.script === script) {
+        nextArgsValues = parseStoredArgsValues(savedState.argsValues);
+        if (!argsText) argsText = String(savedState.argsText || "");
       }
     }
 
-    // Convert argsText → argsValues if argsValues still empty but argsText has content
-    if (nextArgsValues.length === 0 && argsText.trim()) {
-      nextArgsValues = parseArgsText(argsText);
+    if (nextArgsValues.length === 0) {
+      const historyState = getStoredHistory(this.context);
+      const normalizedPath = folderPath.toLowerCase().replace(/\\\\/g, "/");
+      const match = historyState.recentRuns.find((r) => {
+        const rPath = (r.folderPath || "").toLowerCase().replace(/\\\\/g, "/");
+        return rPath === normalizedPath && r.script === script;
+      });
+      if (match) {
+        nextArgsValues = parseStoredArgsValues(match.argsValues);
+        if (!argsText) argsText = String(match.argsText || "");
+      }
     }
 
     const finalState = await saveState(this.context, {
@@ -2434,7 +2390,7 @@ class VbookTesterViewProvider {
 }
 
 function activate(context) {
-  const logger = new TerminalLogger();
+  const logger = new OutputLogger();
   context.subscriptions.push(logger);
 
   const provider = new VbookTesterViewProvider(context, logger);
