@@ -29,7 +29,10 @@ function execute(text, voice) {
     let payload = [cleanText, lang, null, null, [0]];
     let fReq = JSON.stringify([[[rpcId, JSON.stringify(payload), null, "generic"]]]);
 
-    var body = "f.req=" + encodeURIComponent(fReq) + "&at=" + encodeURIComponent(token.at);
+    var body = "f.req=" + encodeURIComponent(fReq);
+    if (token.at) {
+        body += "&at=" + encodeURIComponent(token.at);
+    }
     let response = fetch("https://translate.google.com/_/TranslateWebserverUi/data/batchexecute?" + query, {
         method: "POST",
         headers: {
@@ -80,9 +83,9 @@ function getGoogleToken() {
 
     var fSid = fSidMatch ? fSidMatch[1] : null;
     var bl = blMatch ? blMatch[1] : null;
-    var at = atMatch ? atMatch[1] : null;
+    var at = atMatch ? atMatch[1] : "";
 
-    if (!fSid || !bl || !at) {
+    if (!fSid || !bl) {
         throw "Failed to parse Google token";
     }
     let newCacheToken = {};

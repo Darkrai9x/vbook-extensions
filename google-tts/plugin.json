@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Google TTS",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://translate.google.com",
     "description": "Nghe truyện bằng Google TTS",
     "type": "tts"

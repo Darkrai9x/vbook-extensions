@@ -7,7 +7,7 @@
     {
       "name": "Google TTS",
       "author": "vBook",
-      "version": 2,
+      "version": 3,
       "source": "https://translate.google.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-tts/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-tts/icon.png",
