@@ -302,6 +302,17 @@
       "description": "Đọc truyện trên trang mangadex.org",
       "type": "comic",
       "locale": "global"
+    },
+    {
+      "name": "TruyenNet",
+      "author": "ToanTNM",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyennet/plugin.zip",
+      "version": 1,
+      "source": "https://truyennet.org",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyennet/icon.png",
+      "description": "Đọc truyện chữ trên TruyenNet",
+      "type": "novel",
+      "locale": "vi_VN"
     }
   ]
 }
