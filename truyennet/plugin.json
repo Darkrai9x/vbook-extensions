@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "TruyenNet",
+    "author": "ToanTNM",
+    "version": 1,
+    "source": "https://truyennet.org",
+    "regexp": "(www\\.)?truyennet\\.org/[a-zA-Z0-9-]+/?$",
+    "description": "Đọc truyện chữ trên TruyenNet",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "page": "page.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
