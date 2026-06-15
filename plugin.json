@@ -313,6 +313,17 @@
       "description": "Đọc truyện chữ trên TruyenNet",
       "type": "novel",
       "locale": "vi_VN"
+    },
+    {
+      "name": "MatoDex",
+      "author": "Suicao",
+      "path": "https://raw.githubusercontent.com/TNTKien/vbook-extensions/master/mato/plugin.zip",
+      "version": 1,
+      "source": "https://mato.suicaodex.com",
+      "icon": "https://raw.githubusercontent.com/TNTKien/vbook-extensions/master/mato/icon.png",
+      "description": "Đọc Mato Seihei no Slave trên MatoDex",
+      "type": "comic",
+      "locale": "vi_VN"
     }
   ]
 }
