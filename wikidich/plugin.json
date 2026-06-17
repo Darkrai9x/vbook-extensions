@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Wiki Dịch",
     "author": "vBook",
-    "version": 24,
+    "version": 25,
     "source": "https://wikicv.net",
     "regexp": "(www.)?(.*?)wikicv(.*?)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
@@ -21,6 +21,6 @@
   },
   "config": {
     "thread_num": 1,
-    "delay": 3000
+    "delay": 4000
   }
 }
