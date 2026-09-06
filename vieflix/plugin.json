@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "VieFlix",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://vieflix.top",
+    "description": "Xem phim online HD Vietsub (VieFlix / phimapi)",
+    "locale": "vi",
+    "regexp": "(vieflix\\.top|phimapi\\.com)/phim/[^/]+",
+    "type": "video",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "home": "home.js",
+    "explore": "explore.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "track": "track.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Trang chủ",
+      "default": "https://vieflix.top",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

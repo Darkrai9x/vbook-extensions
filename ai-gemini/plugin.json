@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "name": "Gemini AI",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://ai.google.dev",
+    "description": "Trợ lý AI dùng Google Gemini (chat, tóm tắt, giải thích...)",
+    "type": "ai"
+  },
+  "script": {
+    "chat": "chat.js",
+    "chatStream": "chat_stream.js"
+  },
+  "config": {
+    "api_key": {
+      "title": "API Keys",
+      "subtitle": "Danh sách Google AI Studio API key (xoay vòng khi hết quota)",
+      "default": "",
+      "mode": "list",
+      "format": "text"
+    },
+    "model": {
+      "title": "Model",
+      "subtitle": "Gemini model id",
+      "default": "gemini-flash-latest",
+      "values": [
+        "gemini-pro-latest",
+        "gemini-flash-latest",
+        "gemini-flash-lite-latest",
+        "gemini-3-pro-preview",
+        "gemini-3-flash-preview",
+        "gemini-2.5-pro",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-2.0-flash",
+        "gemini-2.0-flash-lite"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "thinking_level": {
+      "title": "Thinking",
+      "subtitle": "Mức suy nghĩ (Gemini 3)",
+      "default": "low",
+      "values": [
+        "low",
+        "high"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "temperature": {
+      "title": "Temperature",
+      "subtitle": "0.0 - 2.0",
+      "default": "0.7",
+      "mode": "input",
+      "format": "number"
+    },
+    "top_p": {
+      "title": "Top P",
+      "subtitle": "0.0 - 1.0",
+      "default": "0.95",
+      "mode": "input",
+      "format": "number"
+    },
+    "top_k": {
+      "title": "Top K",
+      "subtitle": "0 - 100",
+      "default": "40",
+      "mode": "input",
+      "format": "number"
+    },
+    "max_output_tokens": {
+      "title": "Max output tokens",
+      "default": "2048",
+      "mode": "input",
+      "format": "number"
+    },
+    "required_api_key": true,
+    "support_url": "https://aistudio.google.com/app/apikey"
+  }
+}

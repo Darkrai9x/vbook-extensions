@@ -36,6 +36,17 @@
       "description": "Xem phim Vietsub, thuyết minh trên Motchill",
       "locale": "vi_VN",
       "type": "video"
+    },
+    {
+      "name": "VieFlix",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/vieflix/plugin.zip",
+      "version": 1,
+      "source": "https://vieflix.top",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/vieflix/icon.png",
+      "description": "Xem phim online HD Vietsub (VieFlix / phimapi)",
+      "locale": "vi",
+      "type": "video"
     }
   ]
 }

@@ -22,7 +22,7 @@
   {
     "link": "https://raw.githubusercontent.com/hajljnopera/vbook-ext/main/plugin.json",
     "author": "hajljnopera",
-    "description": "\uD83D\uDE22\uD83D\uDE22\uD83D\uDE22"
+    "description": "😢😢😢"
   },
   {
     "link": "https://raw.githubusercontent.com/Moleys/vbook-ext/main/plugin.json",
@@ -93,5 +93,10 @@
     "link": "https://raw.githubusercontent.com/kychitoge/vbook-ext/main/plugin.json",
     "author": "kychi",
     "description": "ext cá nhân, fix một số lỗi từ các nguồn hay đọc mà các dev chưa fix, đồng thời thêm mới nghịch code"
+  },
+  {
+    "link": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ai.json",
+    "author": "vBook",
+    "description": "Extension AI (Gemini)"
   }
 ]
