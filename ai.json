@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "author": "vBook",
+    "description": ""
+  },
+  "data": [
+    {
+      "name": "Gemini AI",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/ai-gemini/plugin.zip",
+      "version": 2,
+      "source": "https://ai.google.dev",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/ai-gemini/icon.png",
+      "description": "Trợ lý AI dùng Google Gemini (chat, tóm tắt, giải thích...)",
+      "locale": "global",
+      "type": "ai"
+    }
+  ]
+}
