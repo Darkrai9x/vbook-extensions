@@ -93,10 +93,5 @@
     "link": "https://raw.githubusercontent.com/kychitoge/vbook-ext/main/plugin.json",
     "author": "kychi",
     "description": "ext cá nhân, fix một số lỗi từ các nguồn hay đọc mà các dev chưa fix, đồng thời thêm mới nghịch code"
-  },
-  {
-    "link": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/ai.json",
-    "author": "vBook",
-    "description": "Extension AI (Gemini)"
   }
 ]
