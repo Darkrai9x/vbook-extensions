@@ -5,17 +5,6 @@
   },
   "data": [
     {
-      "name": "Bạch Ngọc Sách",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/plugin.zip",
-      "version": 14,
-      "source": "https://bachngocsach.cc/reader",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/bachngocsach/icon.png",
-      "description": "Đọc truyện trên trang bachngocsach.cc/reader",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
       "name": "Truyện Full",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenfull/plugin.zip",
@@ -23,17 +12,6 @@
       "source": "https://truyenfull.live",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenfull/icon.png",
       "description": "Đọc truyện trên trang Truyện Full",
-      "type": "novel",
-      "locale": "vi_VN"
-    },
-    {
-      "name": "Truyện TR",
-      "author": "vBook",
-      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/plugin.zip",
-      "version": 6,
-      "source": "https://truyenazz.vn/",
-      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyentr/icon.png",
-      "description": "Đọc truyện trên trang Truyện TR",
       "type": "novel",
       "locale": "vi_VN"
     },
@@ -52,7 +30,7 @@
       "name": "[APP] Wikidich",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich-app/plugin.zip",
-      "version": 4,
+      "version": 6,
       "source": "https://truyenwikidich.com",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/wikidich-app/icon.png",
       "description": "Đọc truyện trên trang app Wiki Dịch",
