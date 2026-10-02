@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "name": "Engine Name",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://engine.com",
+    "description": "Translate engine description",
+    "locale": "global",
+    "regexp": "",
+    "type": "translate",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "language": "language.js",
+    "translate": "translate.js"
+  },
+  "config": {
+    "support_auto_detect": {
+      "title": "Support auto-detect source",
+      "default": "false",
+      "mode": "toggle"
+    },
+    "max_line": {
+      "title": "Max lines per request",
+      "default": "",
+      "mode": "input",
+      "format": "number"
+    },
+    "max_length": {
+      "title": "Max chars per request",
+      "default": "",
+      "mode": "input",
+      "format": "number"
+    },
+    "required_api_key": {
+      "title": "Requires API key",
+      "default": "false",
+      "mode": "toggle"
+    },
+    "support_url": {
+      "title": "Help URL",
+      "default": "",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

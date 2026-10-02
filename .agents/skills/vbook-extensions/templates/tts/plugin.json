@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "name": "Engine Name",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://engine.com",
+    "description": "TTS engine description",
+    "locale": "global",
+    "regexp": "",
+    "type": "tts",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "voice": "voice.js",
+    "tts": "tts.js"
+  },
+  "config": {
+    "preload_size": {
+      "title": "Preload sentences",
+      "default": "0",
+      "mode": "input",
+      "format": "number"
+    },
+    "preload_parallel": {
+      "title": "Preload in parallel",
+      "default": "false",
+      "mode": "toggle"
+    },
+    "max_length": {
+      "title": "Max chars per request",
+      "default": "0",
+      "mode": "input",
+      "format": "number"
+    },
+    "required_api_key": {
+      "title": "Requires API key",
+      "default": "false",
+      "mode": "toggle"
+    },
+    "support_url": {
+      "title": "Help URL",
+      "default": "",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

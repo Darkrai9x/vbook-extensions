@@ -23,6 +23,16 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/baidu-translate/icon.png",
       "description": "Dịch truyện bằng Baidu Translate",
       "type": "translate"
+    },
+    {
+      "name": "Gemini Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://ai.google.dev",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/icon.png",
+      "description": "Dịch nội dung bằng Google Gemini API",
+      "type": "translate"
     }
   ]
 }

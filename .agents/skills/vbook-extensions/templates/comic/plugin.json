@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "Site Name",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://site.com",
+    "description": "Extension description",
+    "locale": "vi",
+    "regexp": "site\\.com/truyen-tranh/[^/]+/?$",
+    "type": "comic",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "home": "home.js",
+    "explore": "explore.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "page": "page.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://site.com",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

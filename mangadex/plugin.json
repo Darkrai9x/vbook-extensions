@@ -2,20 +2,38 @@
   "metadata": {
     "name": "MangaDex",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://mangadex.org",
-    "regexp": "mangadex.org/title/.*?",
-    "description": "Đọc truyện trên trang MangaDex",
+    "regexp": "mangadex\\.org/title/.*",
+    "description": "Đọc truyện tranh trên MangaDex (đa ngôn ngữ)",
     "locale": "global",
     "language": "javascript",
-    "type": "comic"
+    "type": "comic",
+    "nsfw": false,
+    "encrypt": true
   },
   "script": {
     "home": "home.js",
+    "explore": "explore.js",
     "genre": "genre.js",
-    "detail": "detail.js",
     "search": "search.js",
+    "detail": "detail.js",
     "toc": "toc.js",
     "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://mangadex.org",
+      "mode": "input",
+      "format": "text"
+    },
+    "LANGUAGE": {
+      "title": "Ngôn ngữ",
+      "subtitle": "Ưu tiên ngôn ngữ chương + tên (phân tách bằng dấu phẩy)",
+      "default": "vi,en,ja-ro,ja",
+      "mode": "input",
+      "format": "text"
+    }
   }
 }
