@@ -320,6 +320,27 @@ function execute() {
   changes, and after any action finishes successfully — so the list can reflect
   what the action just did.
 
+**Running an action:** tapping it opens a sheet with its name and description and a
+**Start** button — nothing runs until the user presses it. The sheet then tracks the run:
+
+- Every `Log.log(...)` / `console.log(...)` line appears live in the sheet's log view
+  (last 500 lines kept).
+- Return `Response.success("message")` to finish with a success status and show the
+  message; `Response.error("message")` finishes as failed. A thrown error also shows
+  as failed with its message. Any other return value counts as success.
+- The user can stop a running action; the script is interrupted.
+
+```js
+function execute() {
+    let toc = localBook.getTableOfContent();
+    toc.forEach(function (chapter, i) {
+        Log.log("Scanning " + (i + 1) + "/" + toc.length);
+        // ...
+    });
+    return Response.success("Scanned " + toc.length + " chapters");
+}
+```
+
 ---
 
 ## Script Templates
@@ -722,6 +743,13 @@ function execute(data) {
                 headers: {},                               // request headers for this track
             }
         ],
+        danmaku: [                           // bullet comments drawn over the video
+            {
+                data: "https://comment.bilibili.com/123456.xml", // URL, data: URI or raw content (required)
+                type: "bilibili",                                // format, see below; "" = auto-detect
+                label: "Bilibili",                               // display name
+            }
+        ],
     });
 }
 ```
@@ -738,6 +766,28 @@ function execute(data) {
 | `timeSkip` | array | Skip ranges `{ fromTime, toTime }` in ms (intro/outro) |
 | `subtitles` | array | `{ data, type, label, language }` — `data` required |
 | `audios` | array | Alternate audio tracks `{ data, type, label, language, headers }` — `data` required |
+| `danmaku` | array | Danmaku (bullet comment) sources `{ data, type, label }` — `data` required. A bare string (or an array of strings) is also accepted |
+
+**Danmaku sources** are read like subtitles: `data` is an `http(s)` URL (fetched with
+the track's `headers`), a `data:…;base64,…` URI, or the comment file's content itself.
+Gzip / zlib / raw-deflate payloads are decompressed automatically (Bilibili serves
+deflated XML). Danmaku loads after playback starts, so a large file never delays the
+video. Supported `type` values — leave it empty to auto-detect:
+
+| `type` | Format |
+|--------|--------|
+| `bilibili` | XML `<d p="time,mode,size,color,…">text</d>` |
+| `bilibili-proto` | Protobuf `DmSegMobileReply` (`seg.so`) |
+| `dandanplay` | JSON `{ comments: [ { p: "time,mode,color,uid", m: "text" } ] }` |
+| `acfun` | JSON `[ [ { c: "time,color,mode,size,…", m: "text" } ] ]` |
+| `niconico` | XML `<chat vpos mail>` or JSON `[ { chat: { vpos, content, mail } } ]` |
+| `dplayer` | JSON `{ data: [ [time, type, color, author, text] ] }` (DPlayer / Artplayer) |
+| `ass` | ASS with `\move` / `\pos` (Danmaku2ASS output) |
+| `json` | JSON `[ { time, text, color, mode } ]` — `time` in seconds (or `timeMs`), `color` `#RRGGBB` or int, `mode` `scroll` / `top` / `bottom` |
+
+Comments are normalised to scrolling / top / bottom lines; scripted effects (Bilibili
+mode 7+, Niconico commands beyond position and colour) are skipped. At most 20,000
+comments per source are kept, thinned evenly across the episode.
 
 Legacy single-value fields are still accepted: `audio` (string), `subtitle` +
 `subtitleType` (strings). Prefer the `audios` / `subtitles` arrays.

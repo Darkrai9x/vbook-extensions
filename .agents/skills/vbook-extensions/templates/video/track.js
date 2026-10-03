@@ -4,6 +4,10 @@ load('config.js');
 // .m3u8/.mp4. Prefer a native direct stream; when it can't be resolved
 // (obfuscated/DRM/token) fall back to "auto" (webview only if auto fails too).
 // Same contract for type "audio" — audio is parsed but has no player yet.
+// If the site exposes bullet comments for this episode, add `danmaku` to the
+// Response.success object: [{ data: commentUrl, type: "bilibili", label: "Bilibili" }].
+// `data` may also be a base64 data URI or raw comment content; leave `type`
+// empty for auto-detection. See reference/extension-api.md for supported types.
 function resolveEmbedToStream(embed) {
     let r = fetch(embed, { headers: { "User-Agent": UserAgent.chrome(), "Referer": BASE_URL } });
     if (!r.ok) return "";

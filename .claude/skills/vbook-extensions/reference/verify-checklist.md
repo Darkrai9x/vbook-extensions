@@ -6,6 +6,7 @@ Shared verification standard for CREATE / FIX / TEST / REFACTOR modes. After a s
 - **`link`/`url`/`cover` are real usable URLs** — absolute, or a `host` field set; not `undefined`, not a lazy-load stub.
 - **Values match the live page** — `name` matches the real title, `cover` points to the real image, list order is correct, `description`/`detail` is real content, not nav/ad boilerplate.
 - **Arrays have the expected count** — 1 item when the page lists 20 is still a failure.
+- **Video danmaku, when returned, has usable sources** — each `data` is a real URL, base64 data URI, or comment content; `type` matches the source format or is empty for auto-detection. Check that the source belongs to the same episode.
 - **No silent domain move** — if `link`/`cover`/`href` come back on a **different host** than `plugin.json.metadata.source`, the site has moved even though the request returned `code:0`. Flag it even on an otherwise-passing script (see FIX mode's Domain swap).
 
 All hold → the script passes. Any fail → read `log`, fix precisely, re-test. After ~3 fix/retest cycles without progress, re-fetch the live page and re-diff selectors before changing anything else.
