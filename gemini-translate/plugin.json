@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Gemini Translate",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://ai.google.dev",
     "description": "Dịch nội dung bằng Google Gemini API",
     "locale": "global",
