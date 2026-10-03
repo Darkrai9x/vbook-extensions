@@ -27,7 +27,7 @@
     {
       "name": "Gemini Translate",
       "author": "vBook",
-      "version": 1,
+      "version": 2,
       "source": "https://ai.google.dev",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/icon.png",
