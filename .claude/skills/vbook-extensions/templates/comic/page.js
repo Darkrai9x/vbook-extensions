@@ -1,9 +1,6 @@
-// page.js — OPTIONAL table-of-contents pagination (any content type). Only
-// needed when a title's chapter/episode list spans multiple TOC pages. Return
-// the list of TOC-page handles; the app calls toc() on each to get that page's
-// entries. It is NOT per-chapter content — the chapter body/images/stream come
-// from chap.js/track.js. If the whole list fits one toc() call, delete this
-// file and drop "page" from plugin.json.script.
+// page.js — OPTIONAL TOC pagination. Declare it only when the site splits one
+// title's chapter list over multiple pages. Return absolute page URLs in order;
+// the app calls toc.js on every returned URL.
 load('config.js');
 function execute(url) {
     url = normalizeUrl(url);
@@ -12,7 +9,7 @@ function execute(url) {
     let doc = response.html();
 
     let pages = doc.select("SELECTOR_TOC_PAGE_LINKS a").map(function (el) {
-        return { name: el.text(), url: el.attr("href") };
+        return el.absUrl("href");
     });
 
     return Response.success(pages);

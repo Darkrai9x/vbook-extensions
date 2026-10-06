@@ -7,17 +7,17 @@ The point is consistency: config.js/`BASE_URL`/`normalizeUrl` conventions, `plug
 ## Phase 0 — baseline (capture current behavior)
 
 1. Get the extension's `plugin.json` + `src/` and its `type`.
-2. **Run the full test chain FIRST and save the outputs** — this is the reference the refactor must not break. Use TEST mode's chain (`modes/test.md`): search → detail → toc → chap/page → track (video: chap→track), plus home/genre/explore/gen/comments as declared.
+2. **Run the full test chain FIRST and save the outputs** — this is the reference the refactor must not break. Use TEST mode's chain (`modes/test.md`): search → detail → optional page → toc → chap → track (audio/video), plus home/genre/explore/gen/comments as declared.
 3. Record each script's `data` (or a summary: field set, first item's `link`/`cover`, array counts). Any script already broken → note it; refactor won't fix it, but must not make it worse (hand off to FIX after if needed).
 
 ## Phase 1 — diff against the template
 
 Compare the ext against `templates/<type>/` and `SKILL.md` constraints. Build a checklist of style gaps — do NOT touch behavior:
 
-- **config.js**: present for novel/comic/video? Hardcodes the site URL as `let BASE_URL = "https://...";`, then overrides via `try { if (DOMAIN) BASE_URL = DOMAIN; } catch {}` + `normalizeUrl`? A top-level `let BASE_URL = DOMAIN;` (throws if `DOMAIN` absent) or an old-contract `CONFIG_URL` shim should become this hardcode-then-override form (keep the same effective URL).
+- **config.js**: present for novel/comic/audio/video? Hardcodes the site URL as `let BASE_URL = "https://...";`, then overrides via `try { if (DOMAIN) BASE_URL = DOMAIN; } catch {}` + `normalizeUrl`? A top-level `let BASE_URL = DOMAIN;` (throws if `DOMAIN` absent) or an old-contract `CONFIG_URL` shim should become this hardcode-then-override form (keep the same effective URL).
 - **`BASE_URL` vs `DOMAIN`**: scripts should `load('config.js')` and use `BASE_URL`, never `DOMAIN` directly (novel/comic/video). `plugin.json.config` key stays `DOMAIN`.
 - **`config.DOMAIN.default` == `metadata.source`** (same URL).
-- **normalizeUrl**: every `url`-receiving script (`detail`/`toc`/`chap`/`page`/`track`) calls `url = normalizeUrl(url)` first — one shared function in config.js, not an inline regex per file.
+- **normalizeUrl**: every site-URL script (`detail`/`page`/`toc`/`chap`) calls `url = normalizeUrl(url)` first — one shared function in config.js, not an inline regex per file. Normalize `track(data)` only when its opaque payload is actually a site URL; never rewrite JSON or a direct third-party media URL.
 - **response.ok**: every `fetch()` is guarded before `.html()`/`.json()`/etc.
 - **next-page token**: `data2` is a string (`.toString()`), `""` for no-more.
 - **detail.js fields**: `tags/genres/suggests/reviews/comments` (not old `genres/suggests/comments`); `type`/`format` present.

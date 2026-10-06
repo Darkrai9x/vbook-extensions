@@ -46,7 +46,7 @@ function execute() {
             subtitle: "Phim vừa cập nhật tập mới",
             type: "grid",
             items: latestItems,
-            more: { type: "list", name: "Danh sách", script: "search.js", input: "/phim-moi-cap-nhat", data: "" }
+            more: { type: "list", name: "Danh sách", script: "search.js", input: "/phim-moi-cap-nhat" }
         },
         {
             id: "ranking",
@@ -54,7 +54,7 @@ function execute() {
             subtitle: "",
             type: "ranking",
             items: rankingItems,
-            more: { type: "list", name: "Danh sách", script: "search.js", input: "/xem-nhieu", data: "" }
+            more: { type: "list", name: "Danh sách", script: "search.js", input: "/xem-nhieu" }
         }
     ]);
 }

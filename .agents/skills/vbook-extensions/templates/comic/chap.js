@@ -1,6 +1,5 @@
-// chap.js — comic chapter content: return the chapter's image URL array. This
-// is where a comic's images live (the app reads chapter content from chap).
-// page.js is unrelated — it's optional TOC pagination, not the image list.
+// chap.js — REQUIRED comic per-chapter content. Return the ordered image URL
+// array; page.js, when declared, only paginates the table of contents.
 load('config.js');
 function execute(url) {
     url = normalizeUrl(url);

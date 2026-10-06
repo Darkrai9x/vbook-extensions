@@ -3,7 +3,6 @@ load('config.js');
 // chap.js) to a playable stream. `data` may be an embed URL or an already-direct
 // .m3u8/.mp4. Prefer a native direct stream; when it can't be resolved
 // (obfuscated/DRM/token) fall back to "auto" (webview only if auto fails too).
-// Same contract for type "audio" — audio is parsed but has no player yet.
 // If the site exposes bullet comments for this episode, add `danmaku` to the
 // Response.success object: [{ data: commentUrl, type: "bilibili", label: "Bilibili" }].
 // `data` may also be a base64 data URI or raw comment content; leave `type`
@@ -26,7 +25,7 @@ function execute(data) {
             type: "native",
             data: data,
             host: BASE_URL,
-            mimeType: "application/x-mpegURL",
+            mimeType: data.indexOf(".mp4") !== -1 ? "video/mp4" : "application/x-mpegURL",
             headers: { "User-Agent": UserAgent.chrome(), "Referer": BASE_URL },
             timeSkip: []
         });
@@ -39,7 +38,7 @@ function execute(data) {
             type: "native",
             data: stream,
             host: BASE_URL,
-            mimeType: "application/x-mpegURL",
+            mimeType: stream.indexOf(".mp4") !== -1 ? "video/mp4" : "application/x-mpegURL",
             headers: { "User-Agent": UserAgent.chrome(), "Referer": data },
             timeSkip: []
         });

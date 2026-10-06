@@ -8,7 +8,7 @@ Standard procedure for diagnosing and repairing one existing extension. Follow p
 2. Identify the symptom class:
    - **Dead/changed domain** — requests fail outright (timeouts, DNS errors, redirect to new host).
    - **Broken selector** — requests succeed but `detail`/`toc`/`chap`/`search`/etc. return empty, wrong, or partially-missing fields.
-   - **Old-contract extension** — written against the prior engine (see `wikidich/`, `truyenqq/` at repo root for examples): flat `config` values, no `explore`, `genres/suggests/comments` instead of `tags/genres/suggests/reviews/comments`, a `let BASE_URL = ...; try { if (CONFIG_URL) ... }` block.
+   - **Old-contract extension** — written against the prior engine (see `wikidich/`, `truyenqq/` at repo root for examples): legacy flat UI `config` values, old detail fields, or a `CONFIG_URL` override block. Do not misclassify the documented bare connection/TTS/translate engine keys as legacy config.
    - Multiple classes can apply at once — handle in the order below regardless.
 3. If unclear, reproduce first (Phase 1).
 
@@ -30,7 +30,7 @@ Standard procedure for diagnosing and repairing one existing extension. Follow p
 A "silent" domain move is easy to miss: the old host still returns 200 because it transparently redirects/proxies to the new one, so fetches succeed and nothing errors. Detect it in Phase 1 — if `link`/`cover`/`href` values in the test result come back on a **different host** than the one in `plugin.json`, the site has moved. Swap to the new host even though the old one still "works"; relying on the redirect breaks the moment the old host is retired.
 
 1. Confirm the new domain (the host the live page actually serves links/covers from, not just whatever still returns 200).
-2. Update `plugin.json.metadata.source`, the `DOMAIN` config's `default` (or the `BASE_URL` constant in an old-contract `config.js`), and widen `metadata.regexp` to match both the new and old hosts (e.g. `hhtq\\.(hair|today)`) so existing library links still resolve. For multiple mirrors, use a `mode:"select"` config entry with `values` (see `reference/extension-api.md`) instead of hardcoding one.
+2. Update `plugin.json.metadata.source`, the `DOMAIN` config's `default` (or the `BASE_URL` constant in an old-contract `config.js`), and widen `metadata.regexp` to whole-match full URLs on both hosts (e.g. `(https?://)?(www\\.)?hhtq\\.(hair|today)/.+`) so existing library links still resolve. For multiple mirrors, use a `mode:"select"` config entry with `values` (see `reference/extension-api.md`) instead of hardcoding one.
 3. Re-test with the new host set as base — confirm the new host serves directly (200 + correct data), not only via the old host's redirect.
 4. Move to Phase 3.
 
@@ -43,7 +43,7 @@ A "silent" domain move is easy to miss: the old host still returns 200 because i
 ### Old → new contract migration
 
 1. Remove any `let X = ...; try { if (CONFIG_URL) ... } catch {}` config-override block.
-2. Convert flat `plugin.json.config` entries to the object form (`title`/`mode`/`format`/`default`).
+2. Convert legacy flat user-facing `plugin.json.config` entries to the object form (`title`/`mode`/`format`/`default`). Preserve recognized bare connection keys and TTS/translate engine keys in the exact number/boolean form documented by the API.
 3. In every `detail.js`: rename `genres`/`suggests`/`comments` to `tags`/`genres`/`suggests`/`reviews`/`comments`, add `type`/`format`.
 4. Add `home`/`explore`/`genre` only if the site supports them and the user wants them.
 5. Move to Phase 3 for every script, not just the one that first failed.

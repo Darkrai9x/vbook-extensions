@@ -46,7 +46,7 @@ function execute() {
             subtitle: "Album vừa phát hành",
             type: "grid",
             items: latestItems,
-            more: { type: "list", name: "Danh sách", script: "search.js", input: "/moi-cap-nhat", data: "" }
+            more: { type: "list", name: "Danh sách", script: "search.js", input: "/moi-cap-nhat" }
         },
         {
             id: "ranking",
@@ -54,7 +54,7 @@ function execute() {
             subtitle: "",
             type: "ranking",
             items: rankingItems,
-            more: { type: "list", name: "Danh sách", script: "search.js", input: "/xem-nhieu", data: "" }
+            more: { type: "list", name: "Danh sách", script: "search.js", input: "/xem-nhieu" }
         }
     ]);
 }

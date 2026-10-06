@@ -2,13 +2,11 @@ load('config.js');
 // chap.js (audio: step 1 of chap->track) — resolve ONE track url to a source
 // handle, which the app passes to track.js.
 //
-// Differences from video's chap.js, both of which bite:
+// Differences from video's chap.js:
 //   1. The audio player does NOT show a server picker. It takes the FIRST entry
 //      only. Put the best source first; extra entries are ignored, not offered.
-//   2. Return an ARRAY or an OBJECT — never a bare URL string. The app parses
-//      this payload as JSON and reads `data`/`url`/`link` off it; a bare string
-//      fails to parse and the raw chapter path is passed to track.js instead.
-//      Return [{ data: "..." }] even when there is exactly one source.
+// Never return one bare URL as the whole Response data: the app reparses it as
+// JSON. Wrap even a single source as [{ title: "Default", data: url }].
 function execute(url) {
     url = normalizeUrl(url);
     let response = fetch(url);

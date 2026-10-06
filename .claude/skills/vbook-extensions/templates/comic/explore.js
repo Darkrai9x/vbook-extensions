@@ -46,7 +46,7 @@ function execute() {
             subtitle: "Truyện tranh vừa cập nhật chương mới",
             type: "grid",
             items: latestItems,
-            more: { type: "list", name: "Danh sách", script: "search.js", input: "/truyen-moi-cap-nhat", data: "" }
+            more: { type: "list", name: "Danh sách", script: "search.js", input: "/truyen-moi-cap-nhat" }
         },
         {
             id: "ranking",
@@ -54,7 +54,7 @@ function execute() {
             subtitle: "",
             type: "ranking",
             items: rankingItems,
-            more: { type: "list", name: "Danh sách", script: "search.js", input: "/top-ngay", data: "" }
+            more: { type: "list", name: "Danh sách", script: "search.js", input: "/top-ngay" }
         }
     ]);
 }

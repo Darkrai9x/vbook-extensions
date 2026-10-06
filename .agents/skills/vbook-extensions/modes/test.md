@@ -18,18 +18,18 @@ If the user names a script (or says "just check X"), use **Test one**. If they s
 
 ## Test all
 
-Scripts feed each other real values (a `search` result's `link` becomes `detail`'s `url`, `detail`'s `toc` url feeds `toc`, `toc`'s chapter url feeds `chap`/`page`/`track`). Testing each script in isolation with a made-up input produces false failures — chain real data forward:
+Scripts feed each other real values (a `search` result's `link` becomes `detail`'s URL, optional `page` returns TOC-page URLs, `toc` returns chapter URLs, and `chap` returns content/tracks). Testing each script in isolation with a made-up input produces false failures — chain real data forward:
 
 1. If `home`/`genre` is declared: run it standalone (no args), take one real `{ input, script }` entry forward.
 2. `search`: run with a real keyword (or the `input` from step 1 if it's a category tab), capture one real item `link`.
 3. `detail`: run with that `link`, capture the canonical `url` (for `toc`) and every referenced `{ input, script }` in `tags`/`genres`/`suggests`/`reviews`/`comments`.
-4. `toc`: run with `detail`'s url, capture one real chapter/episode url.
+4. If `page` is declared, run it with `detail`'s URL and pass one returned absolute URL to `toc`; otherwise run `toc` with the detail URL. Capture one real chapter/episode URL.
 5. per-chapter content:
-   - novel `chap` / comic `page`|`chap`: run with the chapter url.
+   - novel/comic: run `chap` with the chapter URL (comic must return an image array).
    - video/audio: run `chap` with the episode url → capture one server entry's `data` → run `track` with that `data` (the `chap`→`track` chain).
 6. `explore`: run standalone, no chained input needed.
 7. Any script referenced from `detail`'s fields (e.g. `similar.js`, `comments.js`): run with the captured `input`.
-8. `tts`: run `voice` first, capture a real `id`, then run `tts` with it. `translate`: run `language` first, capture a real `id`, then run `translate` with it.
+8. `tts`: run `voice` first, capture a real `id`, then run `tts` with it. `translate`: run `language` plus declared `model`/`style` scripts, then run `translate` with real IDs. `ai`: run `chatStream` with a real messages JSON string and selected model.
 
 If a script in the chain fails and blocks getting real data for the next one, ask the user for a direct sample input for the blocked script instead of guessing — keep testing every other script independently rather than stopping the whole audit.
 
@@ -65,5 +65,5 @@ Run and verify every script in the chain (procedure below), regardless of whethe
    - **FAIL: silent domain move** — `code:0` and fields present, but URLs resolve through a different host than declared.
    - **FAIL: selector** — `code:0` but a field is empty/wrong/garbled, or an exception on a `.attr()`/`.text()` chain into an empty selection.
    - **FAIL: config/load error** — `SyntaxError` or crash at script-load time (config-name collision, bad `load(...)`, missing shared file in `src`).
-   - **FAIL: contract mismatch** — old-contract fields (`genres`/`suggests`/`comments` instead of `tags`/`genres`/`suggests`/`reviews`/`comments`), flat `config` values, or other prior-engine patterns still in place.
+   - **FAIL: contract mismatch** — old-contract fields (`genres`/`suggests`/`comments` instead of `tags`/`genres`/`suggests`/`reviews`/`comments`), legacy flat UI `config` values (excluding documented bare engine/connection keys), or other prior-engine patterns still in place.
 5. Record the exact `log` line or field that triggered the classification — the report must point at specifics, not "detail.js is broken."

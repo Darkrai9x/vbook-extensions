@@ -13,7 +13,7 @@ function execute(url) {
         detail: doc.select("SELECTOR_INFO").html(),
         url: url,
         type: "video",
-        format: "series", // "series" (episodes) or "stream" (live)
+        format: "series", // "series" (episodes), "stream" (live), or "short" (vertical feed)
         ongoing: doc.select("SELECTOR_STATUS").text().indexOf("Hoàn") === -1,
         tags: doc.select("SELECTOR_GENRE_LINKS a").map(function (el) {
             return { title: el.text(), input: el.attr("href"), script: "search.js" };

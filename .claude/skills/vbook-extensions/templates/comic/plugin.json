@@ -18,7 +18,7 @@
     "search": "search.js",
     "detail": "detail.js",
     "toc": "toc.js",
-    "page": "page.js"
+    "chap": "chap.js"
   },
   "config": {
     "DOMAIN": {

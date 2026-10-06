@@ -1,5 +1,5 @@
 // page.js — OPTIONAL TOC pagination. Declare it only when the site splits one
-// title's chapter list over multiple pages. Return absolute page URLs in order;
+// title's episode list over multiple pages. Return absolute page URLs in order;
 // the app calls toc.js on every returned URL.
 load('config.js');
 function execute(url) {

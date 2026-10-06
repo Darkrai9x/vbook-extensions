@@ -17,7 +17,7 @@
     {
       "name": "Baidu Translate",
       "author": "vBook",
-      "version": 2,
+      "version": 3,
       "source": "https://fanyi.baidu.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/baidu-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/baidu-translate/icon.png",
