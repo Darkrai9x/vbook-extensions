@@ -2,9 +2,9 @@
   "metadata": {
     "name": "HHTQ Vietsub",
     "author": "vBook",
-    "version": 9,
-    "source": "https://hhtq.hair",
-    "regexp": "(www\\.)?hhtq\\.(hair|today)/.*",
+    "version": 10,
+    "source": "https://hh3d.boats",
+    "regexp": "(https?://)?(www\\.)?(hhtq\\.(hair|today)|hh3d\\.boats)/.+",
     "description": "Xem phim hoạt hình Trung Quốc trên HHTQ Vietsub",
     "locale": "vi_VN",
     "type": "video",
@@ -20,5 +20,12 @@
     "toc": "toc.js",
     "chap": "chap.js",
     "track": "track.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Trang web",
+      "mode": "input",
+      "default": "https://hh3d.boats"
+    }
   }
 }

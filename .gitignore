@@ -1,10 +1,13 @@
 # Intellij
-.idea/*
+.idea
 *.iml
 *test.json
 data.json
 history.bak
 .DS_Store
-/metruyenchu/src
 .hotswan/
 /vbook-vscode-tester/node_modules
+
+# vbook CLI local server list (per-machine; copy from servers.example.json)
+.claude/skills/vbook-extensions/scripts/servers.json
+.agents/skills/vbook-extensions/scripts/servers.json

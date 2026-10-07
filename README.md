@@ -1,3 +1,14 @@
+# AI skill
+
+Skill phát triển vBook nằm tại `.agents/skills/vbook-extensions/` theo chuẩn Agent
+Skills mở. Codex, Gemini CLI, Cursor và GitHub Copilot có thể tự nhận diện skill từ
+thư mục này. Claude Code dùng entry tương thích tại
+`.claude/skills/vbook-extensions/SKILL.md` và được chuyển về cùng nguồn chuẩn.
+
+Có thể gọi trực tiếp bằng tên `vbook-extensions`, ví dụ: “Dùng skill
+vbook-extensions để sửa extension mangadex”. CLI dùng chung nằm tại
+`.agents/skills/vbook-extensions/scripts/vbook.js`.
+
 # Cấu trúc của extension
 
 ## Thông tin extension
