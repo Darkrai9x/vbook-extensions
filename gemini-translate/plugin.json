@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Gemini Translate",
     "author": "vBook",
-    "version": 6,
+    "version": 9,
     "source": "https://ai.google.dev",
     "description": "Dịch nội dung bằng Google Gemini API",
     "locale": "global",
@@ -20,23 +20,9 @@
     "translate": "translate.js"
   },
   "config": {
-    "support_auto_detect": {
-      "title": "Tự động nhận diện ngôn ngữ",
-      "default": "true",
-      "mode": "toggle"
-    },
-    "max_line": {
-      "title": "Số dòng tối đa mỗi yêu cầu",
-      "default": "200",
-      "mode": "input",
-      "format": "number"
-    },
-    "max_length": {
-      "title": "Số ký tự tối đa mỗi yêu cầu",
-      "default": "12000",
-      "mode": "input",
-      "format": "number"
-    },
+    "support_auto_detect": true,
+    "max_line": 200,
+    "max_length": 12000,
     "support_url": "https://aistudio.google.com/app/apikey"
   }
 }
