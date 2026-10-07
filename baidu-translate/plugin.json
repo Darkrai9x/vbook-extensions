@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Baidu Translate",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://fanyi.baidu.com",
     "description": "Dịch truyện bằng Baidu Translate",
     "type": "translate"
@@ -13,8 +13,6 @@
   },
   "config": {
     "support_auto_detect": true,
-    "max_length": 9500,
-    "required_api_key": false,
-    "support_url": "https://fanyi.baidu.com"
+    "max_length": 9500
   }
 }
