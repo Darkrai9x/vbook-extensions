@@ -1,54 +1,41 @@
 # REFACTOR mode
 
-Standard procedure for aligning an existing, working extension to the current template style **without changing what it does**. Behavior-preserving only — every script must return the same data before and after. Not for fixing bugs (use FIX) or adding features.
+Align a working extension with current conventions without changing behavior. Read
+`reference/runtime.md`, `reference/type-contracts.md`, relevant API sections,
+`reference/cli.md`, and `reference/verify-checklist.md`. Broken behavior belongs in FIX.
 
-The point is consistency: config.js/`BASE_URL`/`normalizeUrl` conventions, `plugin.json` shape (`encrypt`, config-key names, field contract), stripped teaching comments, `native`→`auto`→`webview` track order — so the ext matches `templates/<type>/` and the constraints in `SKILL.md`.
+## 1. Capture baseline
 
-## Phase 0 — baseline (capture current behavior)
+Run TEST mode's complete real-input chain first. Save each script's fields, representative
+values, hosts, and array counts. Record pre-existing failures; do not silently repair
+them during refactoring.
 
-1. Get the extension's `plugin.json` + `src/` and its `type`.
-2. **Run the full test chain FIRST and save the outputs** — this is the reference the refactor must not break. Use TEST mode's chain (`modes/test.md`): search → detail → optional page → toc → chap → track (audio/video), plus home/genre/explore/gen/comments as declared.
-3. Record each script's `data` (or a summary: field set, first item's `link`/`cover`, array counts). Any script already broken → note it; refactor won't fix it, but must not make it worse (hand off to FIX after if needed).
+## 2. Build a template diff
 
-## Phase 1 — diff against the template
+Compare with `templates/<type>/` and list only convention gaps, including:
 
-Compare the ext against `templates/<type>/` and `SKILL.md` constraints. Build a checklist of style gaps — do NOT touch behavior:
+- hardcoded fallback BASE_URL plus optional DOMAIN override
+- shared normalizeUrl on site-URL inputs
+- guarded fetch responses and string pagination tokens
+- current detail/type/format fields
+- correct chap→track chain and playback order
+- manifest/file consistency, `metadata.encrypt: true`, and current config shapes
+- Rhino compatibility and removal of teaching comments
 
-- **config.js**: present for novel/comic/audio/video? Hardcodes the site URL as `let BASE_URL = "https://...";`, then overrides via `try { if (DOMAIN) BASE_URL = DOMAIN; } catch {}` + `normalizeUrl`? A top-level `let BASE_URL = DOMAIN;` (throws if `DOMAIN` absent) or an old-contract `CONFIG_URL` shim should become this hardcode-then-override form (keep the same effective URL).
-- **`BASE_URL` vs `DOMAIN`**: scripts should `load('config.js')` and use `BASE_URL`, never `DOMAIN` directly (novel/comic/video). `plugin.json.config` key stays `DOMAIN`.
-- **`config.DOMAIN.default` == `metadata.source`** (same URL).
-- **normalizeUrl**: every site-URL script (`detail`/`page`/`toc`/`chap`) calls `url = normalizeUrl(url)` first — one shared function in config.js, not an inline regex per file. Normalize `track(data)` only when its opaque payload is actually a site URL; never rewrite JSON or a direct third-party media URL.
-- **response.ok**: every `fetch()` is guarded before `.html()`/`.json()`/etc.
-- **next-page token**: `data2` is a string (`.toString()`), `""` for no-more.
-- **detail.js fields**: `tags/genres/suggests/reviews/comments` (not old `genres/suggests/comments`); `type`/`format` present.
-- **video chap→track**: `chap.js` lists servers `[{title,data}]`, `track.js` resolves; track fallback order `native` → `auto` → `webview` (not `webview` first).
-- **plugin.json**: `metadata.encrypt: true`; `script` keys match the files present; no dangling key without a file, no file that should be declared but isn't.
-- **teaching comments**: none of the template's placeholder/explainer comments left in (this is a real ext).
-- **Rhino/jsoup constraints** (`SKILL.md`): no arrow functions/template literals/`?.`/`??`/spread if the ext used them — but only rewrite these if they're actually present; don't churn working code for pure taste.
+Keep legitimate site-specific request, selector, player, signing, and pagination logic.
+Adding new data or capability is a feature and requires approval.
 
-## Phase 2 — apply, one concern at a time
+## 3. Change and prove parity
 
-Work through the checklist in small, isolated edits. After **each** change that touches a script's runtime path, re-run that script (Phase 3) before moving on — a refactor that silently breaks output is worse than no refactor.
+Apply one concern at a time. After every runtime-path change, rerun the same baseline
+input. Fields, equivalent values, counts, and URL hosts must match except for an explicit
+contract-only correction. Revert unintended divergence. Shared-config edits require the
+whole dependent chain to be retested.
 
-- Prefer mechanical, provably-equivalent edits: extracting the domain-normalize regex into `normalizeUrl`, aliasing `DOMAIN`→`BASE_URL`, renaming detail fields, adding `encrypt`.
-- Do NOT change selectors, request URLs, pagination logic, or response shape unless a template-contract field is genuinely missing (e.g. `avatar`/`replies` a real site supports but the ext omits — adding is a feature, ask first).
-- If a site-specific script legitimately diverges from the template (custom player resolve, ajax pagination, signed requests), **keep its logic** — only align the surrounding conventions (config load, BASE_URL, response.ok). Don't force it into the template shape.
+## 4. Finish
 
-## Phase 3 — verify parity (before == after)
+Bump `metadata.version` once, summarize the convention changes and baseline parity, then
+ask before build/install.
 
-For every script touched:
-
-1. Re-run `vbook.js test <ext-dir> <script>.js <same args as Phase 0>`.
-2. **Compare against the Phase 0 baseline** — same field set, same/equivalent values, same array counts, same `link`/`cover`/`url` hosts. `code:0` alone is not a pass; the data must match what it produced before (the field-rigor bar is the shared standard in `reference/verify-checklist.md`, but here parity with baseline is the pass condition, not just validity).
-3. Any divergence from baseline that isn't an intended contract fix → revert that edit, it changed behavior.
-4. Re-run dependent scripts too (a config.js change touches every script that loads it — re-test the whole chain, not just the edited file).
-
-## Phase 4 — close out
-
-1. Bump `plugin.json.metadata.version` by 1.
-2. Summarize the style changes made and confirm behavior is unchanged (baseline matched).
-3. Ask before `vbook.js build`/`install`.
-
-## Done criteria
-
-Every script's output matches its Phase 0 baseline (behavior unchanged), the ext follows the `templates/<type>/` conventions and `SKILL.md` constraints, teaching comments stripped, `version` bumped.
+Done means output behavior matches the baseline and current template/runtime conventions
+hold.
