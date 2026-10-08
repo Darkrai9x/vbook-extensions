@@ -2,13 +2,16 @@
   "metadata": {
     "name": "Gemini AI",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://ai.google.dev",
     "description": "Trợ lý AI dùng Google Gemini (chat, tóm tắt, giải thích...)",
-    "type": "ai"
+    "locale": "global",
+    "regexp": "",
+    "type": "ai",
+    "nsfw": false,
+    "encrypt": true
   },
   "script": {
-    "chat": "chat.js",
     "chatStream": "chat_stream.js"
   },
   "config": {
