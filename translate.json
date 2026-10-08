@@ -73,6 +73,16 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-translate/icon.png",
       "description": "Dịch truyện bằng Google Translate, không cần API key",
       "type": "translate"
+    },
+    {
+      "name": "DeepL Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://www.deepl.com",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/deepl-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/deepl-translate/icon.png",
+      "description": "Dịch nội dung bằng DeepL API Free hoặc Pro",
+      "type": "translate"
     }
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "name": "DeepL Translate",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.deepl.com",
+    "description": "Dịch nội dung bằng DeepL API Free hoặc Pro",
+    "locale": "global",
+    "regexp": "",
+    "type": "translate",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "language": "language.js",
+    "model": "model.js",
+    "style": "style.js",
+    "translate": "translate.js"
+  },
+  "config": {
+    "support_auto_detect": true,
+    "max_line": 500,
+    "max_length": 30000,
+    "DEEPL_API_KEY": {
+      "title": "API key",
+      "subtitle": "Tạo key tại tài khoản DeepL API",
+      "mode": "input",
+      "default": ""
+    },
+    "DEEPL_API_URL": {
+      "title": "Gói DeepL API",
+      "mode": "select",
+      "default": "https://api-free.deepl.com",
+      "values": [
+        "https://api-free.deepl.com",
+        "https://api.deepl.com"
+      ]
+    }
+  }
+}
