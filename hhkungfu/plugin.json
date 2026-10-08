@@ -2,7 +2,7 @@
   "metadata": {
     "name": "HHKungFu",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://hhkungfu.ee/",
     "regexp": "(www\\.)?hhkungfu\\.ee/.*",
     "description": "Xem phim hoạt hình Trung Quốc trên HHKungFu",
