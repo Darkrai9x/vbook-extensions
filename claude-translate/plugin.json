@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "name": "Claude Translate",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://platform.claude.com",
+    "description": "Dịch nội dung bằng Anthropic Claude API",
+    "locale": "global",
+    "regexp": "",
+    "type": "translate",
+    "nsfw": false,
+    "encrypt": false
+  },
+  "script": {
+    "config": "config.js",
+    "action": "action.js",
+    "language": "language.js",
+    "model": "model.js",
+    "style": "style.js",
+    "translate": "translate.js"
+  },
+  "config": {
+    "support_auto_detect": true,
+    "max_line": 200,
+    "max_length": 12000,
+    "support_url": "https://platform.claude.com/settings/keys"
+  }
+}

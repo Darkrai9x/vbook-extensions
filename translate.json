@@ -33,6 +33,36 @@
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/icon.png",
       "description": "Dịch nội dung bằng Google Gemini API",
       "type": "translate"
+    },
+    {
+      "name": "DeepSeek Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://platform.deepseek.com",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/deepseek-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/deepseek-translate/icon.png",
+      "description": "Dịch nội dung bằng DeepSeek API",
+      "type": "translate"
+    },
+    {
+      "name": "ChatGPT Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://platform.openai.com",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chatgpt-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chatgpt-translate/icon.png",
+      "description": "Dịch nội dung bằng OpenAI ChatGPT API",
+      "type": "translate"
+    },
+    {
+      "name": "Claude Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://platform.claude.com",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/icon.png",
+      "description": "Dịch nội dung bằng Anthropic Claude API",
+      "type": "translate"
     }
   ]
 }
