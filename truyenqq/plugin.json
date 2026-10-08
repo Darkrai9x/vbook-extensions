@@ -2,13 +2,14 @@
   "metadata": {
     "name": "Truyện QQ",
     "author": "vBook",
-    "version": 24,
+    "version": 25,
     "source": "https://truyenqqko.com",
-    "regexp": "(www.)?truyenqq.*?/truyen-tranh/[0-9a-z-]+/?$",
+    "regexp": "(https?://)?(www\\.)?truyenqq[a-z0-9]*\\.[a-z.]+/truyen-tranh/(?![0-9a-z-]*-chap-[0-9.-]+/?$)[0-9a-z-]+/?",
     "description": "Đọc truyện trên trang Truyện QQ",
     "locale": "vi_VN",
     "language": "javascript",
-    "type": "comic"
+    "type": "comic",
+    "nsfw": false
   },
   "script": {
     "home": "home.js",
@@ -17,5 +18,13 @@
     "search": "search.js",
     "toc": "toc.js",
     "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://truyenqqko.com",
+      "mode": "input",
+      "format": "text"
+    }
   }
 }

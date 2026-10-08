@@ -2,13 +2,13 @@
   "metadata": {
     "name": "MatoDex",
     "author": "Suicao",
-    "version": 1,
+    "version": 2,
     "source": "https://mato.suicaodex.com",
-    "regexp": "mato\\.suicaodex\\.com/?",
+    "regexp": "(https?://)?(www\\.)?mato\\.suicaodex\\.com/?",
     "description": "Đọc Mato Seihei no Slave trên MatoDex",
-    "locale": "vi_VN",
-    "language": "javascript",
-    "type": "comic"
+    "locale": "vi",
+    "type": "comic",
+    "nsfw": false
   },
   "script": {
     "home": "home.js",
@@ -16,5 +16,13 @@
     "search": "search.js",
     "toc": "toc.js",
     "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://mato.suicaodex.com",
+      "mode": "input",
+      "format": "text"
+    }
   }
 }

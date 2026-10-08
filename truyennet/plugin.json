@@ -2,21 +2,29 @@
   "metadata": {
     "name": "TruyenNet",
     "author": "ToanTNM",
-    "version": 1,
+    "version": 2,
     "source": "https://truyennet.org",
-    "regexp": "(www\\.)?truyennet\\.org/[a-zA-Z0-9-]+/?$",
     "description": "Đọc truyện chữ trên TruyenNet",
-    "locale": "vi_VN",
-    "language": "javascript",
-    "type": "novel"
+    "locale": "vi",
+    "regexp": "(https?://)?(www\\.)?truyennet\\.org/[a-zA-Z0-9-]+/?",
+    "type": "novel",
+    "nsfw": false
   },
   "script": {
     "home": "home.js",
     "genre": "genre.js",
-    "detail": "detail.js",
     "search": "search.js",
+    "detail": "detail.js",
     "page": "page.js",
     "toc": "toc.js",
     "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://truyennet.org",
+      "mode": "input",
+      "format": "text"
+    }
   }
 }

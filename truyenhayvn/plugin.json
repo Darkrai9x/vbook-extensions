@@ -2,21 +2,28 @@
   "metadata": {
     "name": "TruyenHayVN",
     "author": "vBook",
-    "version": 3,
+    "version": 4,
     "source": "https://truyenhay.com",
-    "regexp": "(www.|1.)?truyenhay(vn)?.com/[^/]+/?$",
-    "description": "Đọc truyện trên trang TruyenHayVN",
-    "locale": "vi-VN",
-    "language": "javascript",
-    "type": "novel"
+    "description": "Đọc truyện trên trang TruyenHayVN (truyenhay.com)",
+    "locale": "vi",
+    "regexp": "(https?://)?(www\\.)?truyenhay(vn)?\\.com/[^/]+\\.html/?",
+    "type": "novel",
+    "nsfw": false
   },
   "script": {
     "home": "home.js",
     "genre": "genre.js",
-    "detail": "detail.js",
     "search": "search.js",
-    "page": "page.js",
+    "detail": "detail.js",
     "toc": "toc.js",
     "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://truyenhay.com",
+      "mode": "input",
+      "format": "text"
+    }
   }
 }
