@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Google Translate",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://translate.google.com",
+    "description": "Dịch truyện bằng Google Translate, không cần API key",
+    "locale": "global",
+    "regexp": "",
+    "type": "translate",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "language": "language.js",
+    "translate": "translate.js"
+  },
+  "config": {
+    "support_auto_detect": true,
+    "max_length": 5000
+  }
+}

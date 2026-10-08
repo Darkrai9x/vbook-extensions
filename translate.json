@@ -27,7 +27,7 @@
     {
       "name": "Gemini Translate",
       "author": "vBook",
-      "version": 6,
+      "version": 10,
       "source": "https://ai.google.dev",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/icon.png",
@@ -62,6 +62,16 @@
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/icon.png",
       "description": "Dịch nội dung bằng Anthropic Claude API",
+      "type": "translate"
+    },
+    {
+      "name": "Google Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://translate.google.com",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/google-translate/icon.png",
+      "description": "Dịch truyện bằng Google Translate, không cần API key",
       "type": "translate"
     }
   ]
