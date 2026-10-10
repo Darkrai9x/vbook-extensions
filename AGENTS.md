@@ -6,7 +6,7 @@ For any task that creates, fixes, tests, audits, refactors, builds, or installs 
 
 1. Read `SKILL.md` completely before changing an extension.
 2. Read only the matching mode file under `.agents/skills/vbook-extensions/modes/` (`create`, `fix`, `test`, `audit`, or `refactor`).
-3. Treat `extension-api.md` and `.agents/skills/vbook-extensions/reference/extension-api.md` as the current API contract. When the upstream file at `D:\Projects\vBook\docs\extension-api.md` changes, copy it byte-for-byte to both locations, then update the skill guidance and templates if the contract changed.
+3. Treat `extension-api.md` and `.agents/skills/vbook-extensions/reference/extension-api.md` as the current API contract. Keep the two files identical; when the contract changes, update both, then the skill guidance and templates.
 4. Test, build, and install only through `.agents/skills/vbook-extensions/scripts/vbook.js`; follow its connection and verification rules from the skill.
 5. `.agents/skills/vbook-extensions` is the only canonical skill source. `.claude/skills/vbook-extensions/SKILL.md` is only a compatibility pointer that tells Claude Code to read the canonical skill; do not copy references, modes, templates, or scripts into `.claude`.
 

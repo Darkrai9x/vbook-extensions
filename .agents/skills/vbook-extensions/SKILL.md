@@ -35,8 +35,8 @@ and the choice would change behavior, ask.
   placeholders and remove teaching comments before shipping.
 
 The repo-root `extension-api.md` and `reference/extension-api.md` are the same current
-contract. When upstream `D:\Projects\vBook\docs\extension-api.md` changes, copy it
-byte-for-byte to both, then update affected guidance/templates.
+contract. Keep them identical; when the contract changes, update both, then the
+affected guidance and templates.
 
 ## Non-negotiable invariants
 
