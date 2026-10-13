@@ -47,6 +47,17 @@
       "description": "Xem phim online HD Vietsub (VieFlix / phimapi)",
       "locale": "vi",
       "type": "video"
+    },
+    {
+      "name": "AllShorts",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/allshorts/plugin.zip",
+      "version": 2,
+      "source": "https://allshorts.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/allshorts/icon.png",
+      "description": "Xem phim ngắn từ nhiều nguồn qua AllShorts",
+      "locale": "vi",
+      "type": "video"
     }
   ]
 }
