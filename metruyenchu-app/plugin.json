@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "name": "[APP] MTC",
+    "author": "vBook",
+    "version": 4,
+    "source": "https://android.lonoapp.net",
+    "regexp": "(https?://)?android\\.lonoapp\\.net/api/books/\\d+/?",
+    "description": "Đọc truyện trên App MTC (Novel Fever)",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "novel",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://android.lonoapp.net",
+      "mode": "input",
+      "format": "text"
+    },
+    "EMAIL": {
+      "title": "Email đăng nhập MTC (để xem truyện convert và chương đã mua)",
+      "default": "",
+      "mode": "input",
+      "format": "text"
+    },
+    "PASSWORD": {
+      "title": "Mật khẩu",
+      "default": "",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

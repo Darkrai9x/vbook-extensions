@@ -127,6 +127,17 @@
       "locale": "vi_VN"
     },
     {
+      "name": "[APP] MTC",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu-app/plugin.zip",
+      "version": 4,
+      "source": "https://android.lonoapp.net",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/metruyenchu-app/icon.png",
+      "description": "Đọc truyện trên App MTC (Novel Fever)",
+      "type": "novel",
+      "locale": "vi_VN"
+    },
+    {
       "name": "iSach",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/isach/plugin.zip",
