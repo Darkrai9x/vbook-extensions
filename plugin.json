@@ -52,10 +52,10 @@
       "name": "Truyện VN - Kho Truyen",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/plugin.zip",
-      "version": 49,
+      "version": 50,
       "type": "comic",
       "locale": "vi_VN",
-      "source": "https://khotruyen.ac",
+      "source": "https://truyenvn.my",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/truyenvn/icon.png",
       "description": "Đọc truyện trên trang Truyện VN/ Khotruyen.ac"
     },
