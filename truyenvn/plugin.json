@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "name": "Truyện VN - Kho Truyen",
+    "name": "TruyenVN",
     "author": "vBook",
-    "version": 50,
+    "version": 52,
     "source": "https://truyenvn.my",
     "regexp": "(https?://)?(www\\.)?(khotruyen\\.ac|truyenvn[a-z]*\\.[a-z]+)/truyen-tranh/[^/]+/?",
-    "description": "Đọc truyện trên trang Truyện VN/ Khotruyen.ac",
+    "description": "Đọc truyện tranh trên trang TruyenVN",
     "locale": "vi_VN",
     "language": "javascript",
     "type": "comic"
