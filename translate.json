@@ -65,6 +65,16 @@
       "type": "translate"
     },
     {
+      "name": "Grok Translate",
+      "author": "vBook",
+      "version": 1,
+      "source": "https://console.x.ai",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/grok-translate/plugin.zip",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/grok-translate/icon.png",
+      "description": "Dịch nội dung bằng xAI Grok API",
+      "type": "translate"
+    },
+    {
       "name": "Google Translate",
       "author": "vBook",
       "version": 1,
