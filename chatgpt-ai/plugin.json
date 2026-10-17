@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "name": "ChatGPT AI",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://platform.openai.com",
+    "description": "Trợ lý AI dùng OpenAI ChatGPT (chat, tóm tắt, giải thích...)",
+    "locale": "global",
+    "regexp": "",
+    "type": "ai",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "chatStream": "chat_stream.js"
+  },
+  "config": {
+    "api_key": {
+      "title": "API Keys",
+      "subtitle": "Danh sách OpenAI API key (xoay vòng khi hết quota)",
+      "default": "",
+      "mode": "list",
+      "format": "text"
+    },
+    "model": {
+      "title": "Model",
+      "subtitle": "OpenAI model id",
+      "default": "gpt-6-luna",
+      "values": [
+        "gpt-6-luna",
+        "gpt-6.1-sol",
+        "gpt-6-astra",
+        "gpt-5.5",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.2",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-4o",
+        "gpt-4o-mini"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "reasoning_effort": {
+      "title": "Mức suy luận",
+      "subtitle": "auto: mức thấp nhất model hỗ trợ; không áp dụng cho GPT-4.1/GPT-4o",
+      "default": "auto",
+      "values": [
+        "auto",
+        "low",
+        "medium",
+        "high"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "temperature": {
+      "title": "Temperature",
+      "subtitle": "0.0 - 2.0; chỉ áp dụng cho GPT-4.1/GPT-4o",
+      "default": "0.7",
+      "mode": "input",
+      "format": "number"
+    },
+    "max_output_tokens": {
+      "title": "Max output tokens",
+      "default": "8192",
+      "mode": "input",
+      "format": "number"
+    },
+    "required_api_key": true,
+    "support_url": "https://platform.openai.com/api-keys"
+  }
+}

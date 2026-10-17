@@ -1,0 +1,71 @@
+{
+  "metadata": {
+    "name": "Claude AI",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://platform.claude.com",
+    "description": "Trợ lý AI dùng Anthropic Claude (chat, tóm tắt, giải thích...)",
+    "locale": "global",
+    "regexp": "",
+    "type": "ai",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "chatStream": "chat_stream.js"
+  },
+  "config": {
+    "api_key": {
+      "title": "API Keys",
+      "subtitle": "Danh sách Claude API key (xoay vòng khi hết quota)",
+      "default": "",
+      "mode": "list",
+      "format": "text"
+    },
+    "model": {
+      "title": "Model",
+      "subtitle": "Claude model id",
+      "default": "claude-opus-5",
+      "values": [
+        "claude-opus-5",
+        "claude-fable-5-1",
+        "claude-fable-5",
+        "claude-opus-4-8",
+        "claude-opus-4-7",
+        "claude-opus-4-6",
+        "claude-sonnet-5",
+        "claude-sonnet-4-6",
+        "claude-haiku-4-5"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "claude_effort": {
+      "title": "Mức nỗ lực (effort)",
+      "subtitle": "low: nhanh, rẻ; high: kỹ nhất nhưng chậm và tốn token. Không áp dụng cho Haiku 4.5",
+      "default": "medium",
+      "values": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "temperature": {
+      "title": "Temperature",
+      "subtitle": "0.0 - 1.0; chỉ áp dụng cho Opus 4.6, Sonnet 4.6 và Haiku 4.5",
+      "default": "0.7",
+      "mode": "input",
+      "format": "number"
+    },
+    "max_output_tokens": {
+      "title": "Max output tokens",
+      "default": "8192",
+      "mode": "input",
+      "format": "number"
+    },
+    "required_api_key": true,
+    "support_url": "https://platform.claude.com/settings/keys"
+  }
+}

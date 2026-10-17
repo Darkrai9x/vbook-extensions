@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "name": "Grok AI",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://console.x.ai",
+    "description": "Trợ lý AI dùng xAI Grok (chat, tóm tắt, giải thích...)",
+    "locale": "global",
+    "regexp": "",
+    "type": "ai",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "chatStream": "chat_stream.js"
+  },
+  "config": {
+    "api_key": {
+      "title": "API Keys",
+      "subtitle": "Danh sách xAI API key (xoay vòng khi hết quota)",
+      "default": "",
+      "mode": "list",
+      "format": "text"
+    },
+    "model": {
+      "title": "Model",
+      "subtitle": "xAI Grok model id",
+      "default": "grok-4.20-0309-non-reasoning",
+      "values": [
+        "grok-4.20-0309-non-reasoning",
+        "grok-4.20-0309-reasoning",
+        "grok-4.3",
+        "grok-4.5",
+        "grok-4.6",
+        "grok-4.7"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "reasoning_effort": {
+      "title": "Mức suy luận",
+      "subtitle": "Chỉ áp dụng cho Grok 4.5, 4.6, 4.7",
+      "default": "low",
+      "values": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "temperature": {
+      "title": "Temperature",
+      "subtitle": "0.0 - 2.0; không áp dụng cho Grok 4.5 trở lên",
+      "default": "0.7",
+      "mode": "input",
+      "format": "number"
+    },
+    "max_output_tokens": {
+      "title": "Max output tokens",
+      "default": "8192",
+      "mode": "input",
+      "format": "number"
+    },
+    "required_api_key": true,
+    "support_url": "https://console.x.ai"
+  }
+}

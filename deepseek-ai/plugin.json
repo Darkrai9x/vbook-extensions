@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "name": "DeepSeek AI",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://platform.deepseek.com",
+    "description": "Trợ lý AI dùng DeepSeek (chat, tóm tắt, giải thích...)",
+    "locale": "global",
+    "regexp": "",
+    "type": "ai",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "chatStream": "chat_stream.js"
+  },
+  "config": {
+    "api_key": {
+      "title": "API Keys",
+      "subtitle": "Danh sách DeepSeek API key (xoay vòng khi hết quota hoặc hết số dư)",
+      "default": "",
+      "mode": "list",
+      "format": "text"
+    },
+    "model": {
+      "title": "Model",
+      "subtitle": "Bản Thinking suy nghĩ trước khi trả lời",
+      "default": "deepseek-flash",
+      "values": [
+        "deepseek-flash",
+        "deepseek-flash-thinking",
+        "deepseek-v4-pro",
+        "deepseek-v4-pro-thinking"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "temperature": {
+      "title": "Temperature",
+      "subtitle": "0.0 - 2.0; bị bỏ qua với các model Thinking",
+      "default": "0.7",
+      "mode": "input",
+      "format": "number"
+    },
+    "max_output_tokens": {
+      "title": "Max output tokens",
+      "default": "8192",
+      "mode": "input",
+      "format": "number"
+    },
+    "required_api_key": true,
+    "support_url": "https://platform.deepseek.com/api_keys"
+  }
+}
