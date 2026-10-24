@@ -241,7 +241,7 @@
       "name": "MangaDex",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/mangadex/plugin.zip",
-      "version": 1,
+      "version": 3,
       "source": "https://mangadex.org",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/mangadex/icon.png",
       "description": "Đọc truyện trên trang mangadex.org",

@@ -2,7 +2,7 @@
   "metadata": {
     "name": "MangaDex",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://mangadex.org",
     "regexp": "mangadex\\.org/title/.*",
     "description": "Đọc truyện tranh trên MangaDex (đa ngôn ngữ)",
