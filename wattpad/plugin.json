@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Wattpad",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://www.wattpad.com",
     "regexp": "(www\\.)?wattpad\\.com/story/\\d+.*",
     "description": "Đọc truyện trên trang Wattpad",
@@ -42,8 +42,9 @@
   },
   "script": {
     "home": "home.js",
-    "detail": "detail.js",
+    "genre": "genre.js",
     "search": "search.js",
+    "detail": "detail.js",
     "toc": "toc.js",
     "chap": "chap.js"
   }
