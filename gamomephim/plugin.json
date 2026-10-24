@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "Gà Mờ Mê Phim",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://gamomephim.com",
+    "description": "Xem phim ngắn, phim tổng tài Vietsub và Thuyết minh trên Gà Mờ Mê Phim",
+    "locale": "vi",
+    "regexp": "(https?://)?(www\\.)?gamomephim\\.com/phim/[^/?#]+/?",
+    "type": "video",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "track": "track.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://gamomephim.com",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

@@ -58,6 +58,17 @@
       "description": "Xem phim ngắn từ nhiều nguồn qua AllShorts",
       "locale": "vi",
       "type": "video"
+    },
+    {
+      "name": "Gà Mờ Mê Phim",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/gamomephim/plugin.zip",
+      "version": 1,
+      "source": "https://gamomephim.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/gamomephim/icon.png",
+      "description": "Xem phim ngắn, phim tổng tài Vietsub và Thuyết minh trên Gà Mờ Mê Phim",
+      "locale": "vi",
+      "type": "video"
     }
   ]
 }
