@@ -2,13 +2,43 @@
   "metadata": {
     "name": "Wattpad",
     "author": "vBook",
-    "version": 3,
-    "source": "https://wattpad.com",
-    "regexp": "(www.)?wattpad.com/story/\\d+.*?/?$",
+    "version": 4,
+    "source": "https://www.wattpad.com",
+    "regexp": "(www\\.)?wattpad\\.com/story/\\d+.*",
     "description": "Đọc truyện trên trang Wattpad",
     "locale": "global",
     "language": "javascript",
-    "type": "novel"
+    "type": "novel",
+    "encrypt": true
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://www.wattpad.com",
+      "mode": "input",
+      "format": "text"
+    },
+    "LANGUAGE": {
+      "title": "Ngôn ngữ tìm kiếm",
+      "mode": "select",
+      "default": "Tiếng Việt",
+      "values": [
+        "Tiếng Việt",
+        "English",
+        "简体中文",
+        "繁體中文",
+        "日本語",
+        "한국어",
+        "Bahasa Indonesia",
+        "ภาษาไทย",
+        "Filipino",
+        "Español",
+        "Français",
+        "Deutsch",
+        "Português",
+        "Русский"
+      ]
+    }
   },
   "script": {
     "home": "home.js",
