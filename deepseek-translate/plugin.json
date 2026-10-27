@@ -2,7 +2,7 @@
   "metadata": {
     "name": "DeepSeek Translate",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://platform.deepseek.com",
     "description": "Dịch nội dung bằng DeepSeek API",
     "locale": "global",

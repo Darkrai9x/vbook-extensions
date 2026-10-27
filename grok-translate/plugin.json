@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Grok Translate",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://console.x.ai",
     "description": "Dịch nội dung bằng xAI Grok API",
     "locale": "global",

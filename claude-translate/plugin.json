@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Claude Translate",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://platform.claude.com",
     "description": "Dịch nội dung bằng Anthropic Claude API",
     "locale": "global",
