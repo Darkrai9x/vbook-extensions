@@ -2,7 +2,7 @@
   "metadata": {
     "name": "ChatGPT Translate",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://platform.openai.com",
     "description": "Dịch nội dung bằng OpenAI ChatGPT API",
     "locale": "global",

@@ -27,7 +27,7 @@
     {
       "name": "Gemini Translate",
       "author": "vBook",
-      "version": 12,
+      "version": 13,
       "source": "https://ai.google.dev",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/icon.png",
@@ -37,7 +37,7 @@
     {
       "name": "DeepSeek Translate",
       "author": "vBook",
-      "version": 2,
+      "version": 3,
       "source": "https://platform.deepseek.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/deepseek-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/deepseek-translate/icon.png",
@@ -47,7 +47,7 @@
     {
       "name": "ChatGPT Translate",
       "author": "vBook",
-      "version": 2,
+      "version": 3,
       "source": "https://platform.openai.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chatgpt-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chatgpt-translate/icon.png",
@@ -57,7 +57,7 @@
     {
       "name": "Claude Translate",
       "author": "vBook",
-      "version": 2,
+      "version": 3,
       "source": "https://platform.claude.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/icon.png",
@@ -67,7 +67,7 @@
     {
       "name": "Grok Translate",
       "author": "vBook",
-      "version": 2,
+      "version": 3,
       "source": "https://console.x.ai",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/grok-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/grok-translate/icon.png",
