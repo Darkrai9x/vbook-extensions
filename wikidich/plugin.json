@@ -2,14 +2,14 @@
   "metadata": {
     "name": "Wiki Dịch",
     "author": "vBook",
-    "version": 27,
+    "version": 28,
     "source": "https://wikicv.org",
     "regexp": "(www.)?(.*?)wikicv(.*?)/truyen/[^/]+/?$",
     "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
     "locale": "vi_VN",
     "type": "novel",
-    "language": "javascript",
-    "encrypt": true
+    "encrypt": true,
+    "nsfw": false
   },
   "script": {
     "home": "home.js",
@@ -20,6 +20,12 @@
     "chap": "chap.js"
   },
   "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://wikicv.org",
+      "mode": "input",
+      "format": "text"
+    },
     "thread_num": 1,
     "delay": 4000
   }
