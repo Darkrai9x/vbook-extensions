@@ -730,16 +730,17 @@ function execute(url) {
         ongoing: true,
         nsfw: false,
         locale: "vi",
-        // Each of tags/genres/suggests/reviews/comments is { title, input, script }
+        // Each of genres/tags/suggests/reviews/comments is { title, input, script }
         // where `script` is called with `input` as args[0] to fetch that list.
-        tags: doc.select(".tag").map(function(el) {
+        // The detail screen shows `genres` as chips; `tags` is not displayed.
+        genres: doc.select(".tag").map(function(el) {
             return {
                 title: el.text(),
                 input: el.attr("href"),
                 script: "genre_items.js",
             };
         }),
-        genres: [],
+        tags: [],
         suggests: [],
         reviews: [],
         comment: null,       // single comment source, or omit
@@ -773,8 +774,8 @@ function execute(url) {
 | `ongoing` | boolean | `true` if ongoing, `false` if completed. Default `true` |
 | `nsfw` | boolean | Adult content flag. Default `false` |
 | `locale` | string | ISO language code |
-| `tags` | array | List of `{ title, input, script }` |
-| `genres` | array | List of `{ title, input, script }` |
+| `tags` | array | List of `{ title, input, script }`. Translated but **not displayed** on the detail screen — put the links users should see in `genres` |
+| `genres` | array | List of `{ title, input, script }`, shown as genre/tag chips on the detail screen; tapping one opens its list |
 | `suggests` | array | Similar items `{ title, input, script }` |
 | `reviews` | array | Review items `{ title, input, script }` |
 | `comment` | object | A single comment source `{ title, input, script }` (shown before `comments`) |
@@ -1719,7 +1720,7 @@ function execute(url) {
         type: "novel",
         format: "novel",
         ongoing: doc.select(".info").text().indexOf("Ongoing") !== -1,
-        tags: doc.select(".genre a").map(function(el) {
+        genres: doc.select(".genre a").map(function(el) {
             return {
                 title: el.text(),
                 input: el.attr("href"),

@@ -19,12 +19,10 @@ function execute(url) {
         type: "audio",
         format: "album", // "album" (playlist) or "audio" (single track)
         ongoing: false,
-        tags: doc.select("SELECTOR_GENRE_LINKS a").map(function (el) {
+        // Genre/tag chips. The detail screen renders `genres` only — `tags` is not shown.
+        genres: doc.select("SELECTOR_GENRE_LINKS a").map(function (el) {
             return { title: el.text(), input: el.attr("href"), script: "search.js" };
         }),
-        genres: [
-            { title: "Cùng thể loại", input: doc.select("SELECTOR_GENRE_LINKS a").first().attr("href"), script: "search.js" }
-        ],
         suggests: [
             { title: "Có thể bạn thích", input: doc.select("SELECTOR_SIMILAR_WIDGET").html(), script: "similar.js" }
         ],

@@ -48,7 +48,8 @@ non-empty response for a non-streaming provider.
 
 ## Shared navigation/detail notes
 
-- Detail uses the current `tags`, `genres`, `suggests`, `reviews`, and `comments` fields,
+- Detail genre/tag links go in `genres` — the only one of the two the detail screen
+  renders (`tags` is translated but not shown). Detail uses the current `genres`, `tags`, `suggests`, `reviews`, and `comments` fields,
   plus the documented `type` and `format`.
 - `similar.js`/`comments.js` may be referenced dynamically from detail fields.
 - `search.js` may serve home/genre tabs when its input contract supports both paths and

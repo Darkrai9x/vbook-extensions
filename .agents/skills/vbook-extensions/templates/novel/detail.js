@@ -15,13 +15,10 @@ function execute(url) {
         type: "novel",
         format: "novel",
         ongoing: doc.select("SELECTOR_STATUS").text().indexOf("Hoàn") === -1,
-        tags: doc.select("SELECTOR_GENRE_LINKS a").map(function (el) {
+        // Genre/tag chips. The detail screen renders `genres` only — `tags` is not shown.
+        genres: doc.select("SELECTOR_GENRE_LINKS a").map(function (el) {
             return { title: el.text(), input: el.attr("href"), script: "search.js" };
         }),
-        // "Same genre" suggestion tab — reuses search.js with a category path.
-        genres: [
-            { title: "Cùng thể loại", input: doc.select("SELECTOR_GENRE_LINKS a").first().attr("href"), script: "search.js" }
-        ],
         // Similar/related books — often rendered as a widget on the same page.
         suggests: [
             { title: "Có thể bạn thích", input: doc.select("SELECTOR_SIMILAR_WIDGET").html(), script: "similar.js" }
