@@ -55,3 +55,6 @@ non-empty response for a non-streaming provider.
   keywords; otherwise use dedicated listing scripts.
 - Explore section headers use `more`, list actions use `type: "list"`, and stream/short
   item types are only for navigation that intentionally bypasses detail.
+- Explore sections use static `items` or dynamic `script`/`input` to match the site, and
+  image hosts that reject the default `Referer` need `referrerpolicy`; see
+  `reference/runtime.md`.

@@ -428,6 +428,23 @@ a host — the item's `host`, else the extension `source`. Anything starting wit
 `http` counts as absolute; protocol-relative `//cdn…` URLs are **not** recognised —
 prefix them with `https:`.
 
+A `cover` is fetched with `Referer` set to the book's page (the item's `link`, or the
+detail URL). Where an image host wants otherwise, give the item (explore / list / search
+items, `detail.js`) a `referrerpolicy` beside its `cover`, as on an HTML `<img>`:
+
+```javascript
+{
+    name: el.select("a").text(),
+    link: el.select("a").attr("href"),
+    cover: el.select("img").attr("src"),
+    referrerpolicy: "no-referrer"   // or "origin": send only the site, e.g. https://example.com/
+}
+```
+
+The policy can also go straight into the URL — handy for a plain string, e.g. a comic
+image: `"https://cdn.example.com/1.jpg#referrerpolicy=no-referrer"`. The part after `#`
+is never sent to the server; where both are given, the attribute wins.
+
 ### home.js
 
 Returns a list of tabs. Each tab has a title and a list script (ignored when
@@ -505,6 +522,59 @@ function execute() {
 | `items` | array | no | List of explore items |
 | `shape` | string | no | Card shape of the items: `book` (2:3, default), `square`, `circle`, `movie` (16:9), `short` (9:16) |
 | `more` | object | no | "See more" action on the section header (an action, see below — normally `type: "list"`) |
+| `script` | string | no | Load the section's items on their own, after the page shows — see [Sections that load on their own](#sections-that-load-on-their-own). Ignored when `items` is given |
+| `input` | string | no | Passed to `script` as `query` (`args[0]`) |
+
+#### Sections that load on their own
+
+A page that joins several APIs takes as long as all of them one after another: a script
+runs its `fetch` calls in turn. Instead, give a section a `script` (and `input`) in place
+of `items`. `explore.js` then returns at once with just the outline; the app shows the
+page, with a placeholder in each such section, and runs the sections' scripts side by side
+(a few at a time, top first), filling each in as it answers.
+
+```js
+// explore.js — the outline only, nothing slow
+function execute() {
+    return Response.success([
+        { id: "banner", type: "banner", script: "banner.js" },
+        { id: "hot", type: "horizontal_list", title: "Hot", script: "hot.js" },
+        {
+            id: "latest", type: "grid", title: "Latest Updates",
+            script: "latest.js", input: "",          // the "see more" list script, reused
+            more: { type: "list", name: "Latest Updates", script: "latest.js", input: "" },
+        },
+    ]);
+}
+```
+
+The section's script is called like the first page of a list script —
+`execute(query, page)` with `query` = the section's `input` and `page` = `""` — and returns
+its items as `data`, in the explore item format below (`action`, `type` and the rest
+apply). `data2` is ignored. So the list script behind a section's "see more" can serve its
+items as well, with no extra file:
+
+```js
+// hot.js
+function execute(query, page) {
+    let doc = fetch("https://example.com/hot").html();
+    return Response.success(doc.select(".item").map(function(el) {
+        return {
+            name: el.select(".title").text(),
+            cover: el.select("img").attr("src"),
+            link: el.select("a").attr("href"),
+        };
+    }));
+}
+```
+
+- A section whose script returns no items is hidden; one that fails shows a retry.
+- Sections with `items` and sections with a `script` mix freely: put what the first
+  request already has straight in `items`.
+- Pull to refresh runs `explore.js` again, then the sections' scripts.
+- The web reader loads these sections server-side and gets the page whole.
+- App versions before this show such a section empty — require a recent app if a page
+  depends on it.
 
 **Section `type` values:**
 
@@ -835,6 +905,7 @@ entries are URL strings, or objects for more control:
 | `fallback` | string[] | Alternative URLs tried when `link` fails |
 | `width` / `height` | number | Known size, lets the reader lay out before loading |
 | `script` | string | Script file (in `src/`) that loads this image: `execute(link)` returns the image bytes as a **bare base64 string** (not `Response`, no `data:` prefix) — e.g. to unscramble tiles. Used only for `http(s)` links |
+| `referrerpolicy` | string | As on an HTML `<img>`: `no-referrer` (no `Referer`) or `origin` (only the site). Default: `Referer` is the chapter URL. Applies to `fallback` too. A plain string entry can carry it in the URL instead: `"…/1.jpg#referrerpolicy=no-referrer"` |
 
 ```js
 // Novel

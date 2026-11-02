@@ -2,13 +2,14 @@
   "metadata": {
     "name": "E Hentai",
     "author": "vBook",
-    "version": 2,
+    "version": 3,
     "source": "https://e-hentai.org",
-    "regexp": "(www.)?e-hentai.org/g/\\d+/[a-z0-9]+/?",
+    "regexp": "(https?://)?(www\\.)?e-hentai\\.org/g/\\d+/[a-z0-9]+/?",
     "description": "Đọc truyện trên trang e-hentai.org",
-    "language": "javascript",
     "type": "comic",
-    "tag": "nsfw"
+    "nsfw": true,
+    "encrypt": true,
+    "encryptVersion": 1
   },
   "script": {
     "home": "home.js",
@@ -16,5 +17,13 @@
     "search": "search.js",
     "toc": "toc.js",
     "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://e-hentai.org",
+      "mode": "input",
+      "format": "text"
+    }
   }
 }

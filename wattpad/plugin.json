@@ -2,14 +2,15 @@
   "metadata": {
     "name": "Wattpad",
     "author": "vBook",
-    "version": 5,
+    "version": 6,
     "source": "https://www.wattpad.com",
     "regexp": "(www\\.)?wattpad\\.com/story/\\d+.*",
     "description": "Đọc truyện trên trang Wattpad",
     "locale": "global",
     "language": "javascript",
     "type": "novel",
-    "encrypt": true
+    "encrypt": true,
+    "encryptVersion": 1
   },
   "config": {
     "DOMAIN": {

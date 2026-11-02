@@ -1,5 +1,8 @@
 load('config.js');
 // explore.js — sectioned discover page: a banner carousel + one or more rows.
+// Per section, pick static or dynamic to match the site: data already in this
+// response → `items`; data needing its own page/API → `script`/`input`.
+// Banner/latest below are static, ranking is dynamic; switch either way as needed.
 function execute() {
     let response = fetch(BASE_URL);
     if (!response.ok) return Response.error("HTTP " + response.status);
@@ -20,15 +23,6 @@ function execute() {
             link: el.select("SELECTOR_ITEM_LINK a").attr("href"),
             description: el.select("SELECTOR_ITEM_LAST_CHAP").text(),
             tag: el.select("SELECTOR_ITEM_STATUS").text()
-        };
-    });
-
-    let rankingItems = doc.select("SELECTOR_RANKING_ITEMS").map(function (el) {
-        return {
-            name: el.select("SELECTOR_ITEM_NAME").text(),
-            cover: el.select("SELECTOR_ITEM_COVER img").attr("src"),
-            link: el.select("SELECTOR_ITEM_LINK a").attr("href"),
-            description: el.select("SELECTOR_ITEM_LAST_CHAP").text()
         };
     });
 
@@ -53,7 +47,10 @@ function execute() {
             title: "Xem nhiều",
             subtitle: "",
             type: "ranking",
-            items: rankingItems,
+            // Dynamic: the app calls search.js as execute(input, "") after the page shows.
+            // If this data is on the homepage, parse it above and use `items` instead.
+            script: "search.js",
+            input: "/top-ngay",
             more: { type: "list", name: "Danh sách", script: "search.js", input: "/top-ngay" }
         }
     ]);

@@ -9,6 +9,8 @@ function execute(url) {
 
     let images = doc.select("SELECTOR_PAGE_IMAGES img").map(function (el) {
         // Many comic sites lazy-load — prefer data-src over src.
+        // Images load with Referer = chapter URL; if the CDN rejects that, return
+        // { link: url, referrerpolicy: "no-referrer" } (or "origin") instead.
         return el.attr("data-src") || el.attr("src");
     });
 

@@ -12,6 +12,8 @@ Run one failing script with a known-good real input:
 - Success with empty, partial, or garbled data → selector/parser.
 - Returned URLs use another host → silent domain move.
 - Syntax/config load failure or legacy fields → contract/config migration.
+- Data correct but covers/comic images blank → image referrer; curl the image with the
+  page `Referer`, none, and origin only.
 
 Do not classify from the symptom description alone.
 
@@ -27,6 +29,16 @@ For real mirrors use a select config. Confirm the new host serves directly.
 
 Fetch the exact failing page and compare it with current selectors. Change only the
 broken extraction/request logic; preserve unrelated response shape and scripts.
+
+### Image referrer
+
+Set `referrerpolicy` to the value curl proved works (see `reference/runtime.md`) on the
+items/detail/image objects that need it; do not change URLs or selectors.
+
+### Slow explore
+
+When `explore.js` times out or is slow because it chains requests, move those sections to
+`script`/`input` (see `reference/runtime.md`) instead of dropping them.
 
 ### Old contract
 

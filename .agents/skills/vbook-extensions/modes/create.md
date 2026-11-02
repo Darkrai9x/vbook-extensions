@@ -28,7 +28,8 @@ Use live responses and real chained inputs. Typical order:
 2. optional page → toc
 3. chap; then track for audio/video
 4. search
-5. home, genre, explore
+5. home, genre, explore (per section, static `items` or dynamic `script`/`input` to match
+   the site; test each section script with its `input` and page `""`)
 6. dynamically referenced similar/comments
 7. provider chain: voice→tts, language/model/style→translate, or chatStream
 

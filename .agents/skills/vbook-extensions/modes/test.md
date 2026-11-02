@@ -24,7 +24,8 @@ Chain real outputs rather than inventing inputs:
 3. detail → canonical URL and dynamic-field inputs
 4. optional page → toc → real chapter/episode
 5. chap; chap→track for audio/video
-6. explore and dynamically referenced scripts
+6. explore, each section `script` (with its `input` and page `""`), and dynamically
+   referenced scripts
 7. provider chains for TTS/translate/AI
 
 Continue independent scripts when one chain is blocked. Without a real downstream input,

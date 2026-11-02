@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "name": "ShortMax",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.shorttv.live",
+    "description": "Xem phim ngắn (short drama) Vietsub/lồng tiếng từ ShortMax",
+    "locale": "vi",
+    "regexp": "(https?://)?(www\\.)?shorttv\\.live/vi/(?:drama|episodes)/[^/?#]*\\d+/?|(https?://)?(www\\.)?shorttv\\.live/vi/episode/[^/?#]*\\d+-\\d+/?",
+    "type": "video",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "explore": "explore.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "track": "track.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://www.shorttv.live",
+      "mode": "input",
+      "format": "text"
+    },
+    "thread_num": 2,
+    "delay": 0
+  }
+}

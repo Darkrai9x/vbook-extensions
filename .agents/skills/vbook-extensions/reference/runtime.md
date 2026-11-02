@@ -71,6 +71,37 @@ Keep one shared `normalizeUrl` in `config.js`. Every site-URL script (`detail`, 
 `config.DOMAIN.default` and `metadata.source` must match. Use a select setting for real
 mirrors rather than scattering alternate hosts through scripts.
 
+## Images and referrer
+
+Covers load with `Referer` set to the item's `link` (or the detail URL); comic images
+use the chapter URL. When a CDN rejects that (403, placeholder, hotlink image), set
+`referrerpolicy: "no-referrer"` or `"origin"` beside `cover` on explore/list/search items
+and detail, or on a comic image object (it also covers `fallback`). For a plain string
+URL append `#referrerpolicy=no-referrer`; the fragment is never sent, and an attribute
+wins over the fragment. Confirm with curl which referrer the host accepts before
+choosing; do not proxy or re-host images.
+
+## Explore section data: static or dynamic
+
+Each explore section gets its items one of two ways; choose per section from how the
+site serves that data, not by default:
+
+- **Static — `items`:** the data is already in the response `explore.js` fetched (one
+  homepage holding banner + rows). Parse it there; no extra request.
+- **Dynamic — `script` (+ `input`):** the data needs its own request (another page or
+  API). Script `fetch` calls run sequentially, so chaining them in `explore.js` makes
+  the whole page wait; a section script lets `explore.js` return the outline at once
+  while the app runs section scripts in parallel (a few at a time, top first).
+
+Static and dynamic sections mix freely on one page.
+
+- A section script is called like a list script's first page: `execute(input, "")`,
+  and returns items as `data`; `data2` is ignored. Reuse the section's `more` list
+  script when it accepts the same input.
+- `items` wins when both are set. An empty result hides the section; a failure shows
+  retry. Pull to refresh reruns `explore.js`, then the section scripts.
+- Apps older than this feature show dynamic sections empty.
+
 ## Packaging and actions
 
 - Optional files referenced dynamically from detail fields (for example `similar.js`
