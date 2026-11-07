@@ -27,7 +27,7 @@
     {
       "name": "Gemini Translate",
       "author": "vBook",
-      "version": 14,
+      "version": 15,
       "source": "https://ai.google.dev",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/gemini-translate/icon.png",
@@ -47,7 +47,7 @@
     {
       "name": "ChatGPT Translate",
       "author": "vBook",
-      "version": 4,
+      "version": 5,
       "source": "https://platform.openai.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chatgpt-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/chatgpt-translate/icon.png",
@@ -57,7 +57,7 @@
     {
       "name": "Claude Translate",
       "author": "vBook",
-      "version": 4,
+      "version": 5,
       "source": "https://platform.claude.com",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/plugin.zip",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/master/claude-translate/icon.png",

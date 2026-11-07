@@ -2,7 +2,7 @@
   "metadata": {
     "name": "ChatGPT AI",
     "author": "vBook",
-    "version": 1,
+    "version": 2,
     "source": "https://platform.openai.com",
     "description": "Trợ lý AI dùng OpenAI ChatGPT (chat, tóm tắt, giải thích...)",
     "locale": "global",
@@ -29,6 +29,7 @@
       "values": [
         "gpt-6-luna",
         "gpt-6.1-sol",
+        "gpt-6.1-terra",
         "gpt-6-astra",
         "gpt-5.5",
         "gpt-5.4",
