@@ -956,6 +956,50 @@ function execute(url) {
 }
 ```
 
+#### Paragraph comments (novel)
+
+To show a comment count after a paragraph (tap opens its comments, with translation,
+paging and replies), put a `<comment>` tag at the end of that paragraph in the chapter HTML:
+
+```html
+<p>平江城。<comment count="757" input="pid=123" script="para_comment.js"></comment></p>
+```
+
+| Attribute | Description |
+|-----------|-------------|
+| `script` | Script file (in `src/`) that loads the comments. Required — a tag without it is ignored |
+| `input` | Passed to `script` as the first argument |
+| `count` | Number drawn in the bubble (`1.2k` from 1000). Required: missing or `0` means no comments, no bubble |
+
+- A tag between paragraphs belongs to the paragraph above it. One bubble per paragraph.
+- The tag is only read by the reader: TTS, search, word count, export and batch translate
+  see the text without it. Users can hide the bubbles in the reader settings.
+- The chapter is cached with its HTML, so counts are as fresh as the cached chapter.
+
+`script` works like a detail `comments` source: `execute(input, next)` returns a page of
+comments, and a non-empty `data2` is the `next` token of the following page.
+
+```js
+function execute(input, next) {
+    let json = fetch("https://site/comments?" + input + "&page=" + (next || 1)).json();
+    let comments = json.items.map(function(c) {
+        return {
+            name: c.user,
+            avatar: c.avatar,
+            content: c.text,                      // HTML is flattened to plain text
+            description: c.time,                  // small line under the comment
+            replies: [],                          // replies given in full (or a preview)
+            reply: { input: c.id, script: "para_reply.js" }, // optional: replies page by page
+            reply_count: c.replyCount,            // optional: shown before they are loaded
+        };
+    });
+    return Response.success(comments, json.hasNext ? String((next || 1) + 1) : "");
+}
+```
+
+`reply` loads a comment's replies with the same format and paging, from the first page;
+once loaded they take the place of `replies`.
+
 ```js
 // Comic (return array of image URLs)
 function execute(url) {

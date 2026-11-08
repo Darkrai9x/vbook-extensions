@@ -9,6 +9,9 @@ optional scripts.
 Both use detail → optional page → toc → chap. `page` is TOC pagination and returns one
 or more absolute TOC-page URLs; omit it when the TOC is not paginated. Comic images come
 from `chap`, never `page`; comic `chap` returns an image array.
+A novel `chap` may end a paragraph with `<comment count="N" input="..." script="x.js"></comment>`
+to show a comment bubble; `count` and `script` are required, and `script` is `execute(input, next)`
+returning comments like a detail `comments` source.
 
 ## Video
 
