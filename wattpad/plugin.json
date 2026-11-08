@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Wattpad",
     "author": "vBook",
-    "version": 9,
+    "version": 11,
     "source": "https://www.wattpad.com",
     "regexp": "(www\\.)?wattpad\\.com/story/\\d+.*",
     "description": "Đọc truyện trên trang Wattpad",
