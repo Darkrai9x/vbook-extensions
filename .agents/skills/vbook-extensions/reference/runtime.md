@@ -9,7 +9,9 @@ verified against the real Rhino/ScriptExecutor/jsoup runtime.
   must not load another file. `crypto.js` always resolves to bundled CryptoJS.
 - Never declare a variable with the same name as an injected static config key. Static
   settings and bare connection keys are injected as strings. Parse them explicitly.
-  Dynamic `config.js` values use `localConfig`; `mode: "database"` uses `localDatabase`.
+  Dynamic `config.js` values use `localConfig.getItem(key, defaultValue)`; older apps
+  ignore `defaultValue` and return `null`, so keep `|| fallback` where they matter.
+  `mode: "database"` uses `localDatabase`.
 - `thread_num`, `delay`, and `ignore` are bare number/boolean connection settings.
   `timeout` is not: put it in `fetch(..., { timeout: ms })`.
 - Every positional `execute(...)` argument is a string. Scripts without positional

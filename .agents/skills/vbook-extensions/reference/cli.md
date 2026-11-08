@@ -23,8 +23,10 @@ Resolution order:
 3. `scripts/servers.json` (`{"servers":[...]}`), first responding server
 
 Do not guess hosts. Missing config means copy `servers.example.json` and fill the device
-URL. If no configured server responds, tell the user to enable vBook debug/dev mode and
-verify its IP/port. Every command calls `/connect` first and prints the device; verify it
+URL. If no configured server responds and the target is the desktop app on this machine,
+start it with `vBook dev start` (macOS: `/Applications/vBook.app/Contents/MacOS/vBook dev
+start`) and `vBook dev stop` it when done; otherwise tell the user to enable vBook
+debug/dev mode and verify its IP/port. Every command calls `/connect` first and prints the device; verify it
 before a mutating build/install.
 
 ## Test arguments and results

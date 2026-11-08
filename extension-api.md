@@ -315,12 +315,49 @@ function execute() {
 ```
 
 Dynamic values are stored in a separate extension-setting table and are **not**
-injected as constants — read them with `localConfig.getItem(key)` (`null` when the
-user never set one; the `default` is not returned). The script owns the key
+injected as constants — read them with `localConfig.getItem(key, defaultValue?)`:
+it returns `defaultValue` when the user never set one, else `null` (the schema's
+`default` is not stored, so pass it here). Older app versions ignore the second
+argument and return `null`; keep a `|| fallback` if the extension must run on them.
+The script owns the key
 namespace, so it can distinguish global, source, or other scopes without a native
 `bookId` field. `config.js` runs when the extension detail screen opens and again
 after a **dynamic** value changes (debounced 300 ms) so dependent fields can change;
 changing a static value does not re-run it.
+
+Scripts of a `translate` extension (including actions) can also read what the user
+picked for that extension through reserved keys:
+
+| Key | Value |
+|-----|-------|
+| `translate_model` | Selected model `id` |
+| `translate_style` | Selected style `id` |
+| `translate_from_language` | Source language `id` |
+| `translate_to_language` | Target language `id` |
+
+The value follows the same order as a translation: the book's setting, then its
+source's, then the global one; a book or source set to another engine is skipped.
+Nothing selected returns `defaultValue` (or `null`), so always keep a fallback, which
+also covers older app versions. A setting of your own under one of these keys wins.
+
+```js
+let model = localConfig.getItem("translate_model") || DEFAULT_MODEL;
+```
+
+Scripts of a `tts` extension get the same for the reader's TTS settings of that
+extension. Dub and audio export jobs pick their own voice, passed to `tts.js` as
+`voiceId`, so keep using that parameter for synthesis.
+
+| Key | Value |
+|-----|-------|
+| `tts_voice` | Selected voice `id` |
+| `tts_language` | Selected language tag |
+| `tts_speed` | Speech rate, e.g. `"1.0"` |
+| `tts_pitch` | Pitch, e.g. `"1.0"` |
+| `tts_volume` | Volume, e.g. `"1.0"` |
+
+`tts_speed`, `tts_pitch` and `tts_volume` are never empty: the app's default `"1.0"` is
+returned until the user changes them.
 
 If a dynamic item uses the same key as a static one, the settings UI shows the
 dynamic item and saves into the dynamic table; the injected constant keeps the static
@@ -1153,6 +1190,11 @@ fails it embeds the page — the absolute iframe `src` when there is one, else t
 HTML. The JSON `host` is only the base URL for HTML without an absolute iframe; the
 embedded page uses the top-level `host` as its base.
 
+Give the JSON an `embed` page URL when the page only plays inside its own player, for
+example when the media URLs carry session tokens. The app then embeds that page at once
+with the episode URL as `Referer`, skipping the headless attempt. Apps before this ignore
+`embed` and use `data`, so keep `data` playable there.
+
 ```js
 function execute(data) {
     let payload = JSON.parse(data);   // encoded by chap.js
@@ -1324,8 +1366,8 @@ let cached = cacheStorage.getItem("key");
 cacheStorage.removeItem("key");
 cacheStorage.clear();
 
-// Dynamic (config.js) setting values; null when unset. Static values are constants.
-let setting = localConfig.getItem("settingKey");
+// Dynamic (config.js) setting values; defaultValue (or null) when unset. Static values are constants.
+let setting = localConfig.getItem("settingKey", "fallback");
 
 // Cookies for the extension's source domain
 localCookie.setCookie("name=value; path=/");
@@ -2214,10 +2256,31 @@ The tool loop runs entirely inside the extension — the app does not orchestrat
 
 ## Developer Server
 
-The app's developer server (started from the app; it shows its `http://<ip>:<port>`
-address) lets tools test, package and install an extension without building a ZIP by
+The app's developer server (started from the app or a [terminal](#starting-it-from-a-terminal-desktop);
+it shows its `http://<ip>:<port>` address) lets tools test, package and install an extension without building a ZIP by
 hand. Every routed request answers HTTP 200 with a JSON body; the real result is the
 body's `code` (`200` = ok, `403` = failure). Unknown routes answer HTTP 404.
+
+### Starting it from a terminal (desktop)
+
+An AI agent or script can start the server itself instead of asking for the switch in
+the app. Call the app's executable: `/Applications/vBook.app/Contents/MacOS/vBook` on
+macOS, `vBook.exe` in the install folder on Windows.
+
+```bash
+vBook dev start [--port 8080]   # prints http://<ip>:<port>, exit code 0
+vBook dev status                # prints the address, exit code 1 when off or app closed
+vBook dev stop
+```
+
+- `start` opens the app with its window if it isn't running (up to a minute), turns
+  developer mode on, and does nothing if the server already runs on that port. Without
+  `--port` it uses the saved port; a port that worked is saved.
+- Use the printed address as the base URL. It fails with exit code 1 and a message on
+  stderr when the port is taken.
+- On Windows `vBook.exe` is a GUI program: run it through `start /wait` so the terminal
+  waits for it.
+- The server has no token and listens on the whole local network: `stop` it when done.
 
 ### Payload
 
