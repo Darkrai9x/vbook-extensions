@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Gemini AI",
     "author": "vBook",
-    "version": 4,
+    "version": 5,
     "source": "https://ai.google.dev",
     "description": "Trợ lý AI dùng Google Gemini (chat, tóm tắt, giải thích...)",
     "locale": "global",
@@ -38,14 +38,16 @@
         "gemini-pro-latest",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
-        "gemini-2.5-pro"
+        "gemini-2.5-pro",
+        "gemma-4-31b-it",
+        "gemma-4-26b-a4b-it"
       ],
       "mode": "select",
       "format": "single"
     },
     "thinking_level": {
       "title": "Thinking",
-      "subtitle": "Mức suy nghĩ (Gemini 3 trở lên)",
+      "subtitle": "Mức suy nghĩ (Gemini 3 trở lên; Gemma 4: low = tắt)",
       "default": "low",
       "values": [
         "low",
