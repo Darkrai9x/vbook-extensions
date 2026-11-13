@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "PineDrama",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://pinedrama.com",
+    "description": "Xem phim ngắn (short drama) miễn phí từ PineDrama, phụ đề tiếng Anh (một số phim có thêm Nga, Indonesia, Bồ Đào Nha...)",
+    "locale": "en",
+    "regexp": "(https?://)?(www\\.)?pinedrama\\.com/(?:(?:es|id|pt|ru|th)/)?dramas/[a-z0-9-]+(?:/ep\\d+)?/?(?:\\?lang=[a-z,]+)?",
+    "type": "video",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "explore": "explore.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "track": "track.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://pinedrama.com",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}
