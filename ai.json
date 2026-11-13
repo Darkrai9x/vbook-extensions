@@ -8,7 +8,7 @@
       "name": "Gemini AI",
       "author": "vBook",
       "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/gemini-ai/plugin.zip",
-      "version": 5,
+      "version": 6,
       "source": "https://ai.google.dev",
       "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/gemini-ai/icon.png",
       "description": "Trợ lý AI dùng Google Gemini (chat, tóm tắt, giải thích...)",

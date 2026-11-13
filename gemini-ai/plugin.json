@@ -2,14 +2,14 @@
   "metadata": {
     "name": "Gemini AI",
     "author": "vBook",
-    "version": 5,
+    "version": 6,
     "source": "https://ai.google.dev",
     "description": "Trợ lý AI dùng Google Gemini (chat, tóm tắt, giải thích...)",
     "locale": "global",
     "regexp": "",
     "type": "ai",
     "nsfw": false,
-    "encrypt": true
+    "encrypt": false
   },
   "script": {
     "chatStream": "chat_stream.js"
@@ -30,7 +30,9 @@
         "gemini-3.5-flash-lite",
         "gemini-3.6-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "gemini-3-flash-preview",
         "gemini-3.1-pro-preview",
         "gemini-3.1-flash-lite",
