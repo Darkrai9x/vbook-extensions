@@ -2,7 +2,7 @@
   "metadata": {
     "name": "HHTQ Vietsub",
     "author": "vBook",
-    "version": 11,
+    "version": 12,
     "source": "https://hhtq.press",
     "regexp": "(https?://)?(www\\.)?(hhtq\\.(hair|today|press)|hh3d\\.boats)/.+",
     "description": "Xem phim hoạt hình Trung Quốc trên HHTQ Vietsub",
