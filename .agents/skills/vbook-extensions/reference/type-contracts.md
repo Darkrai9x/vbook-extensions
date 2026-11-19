@@ -26,6 +26,18 @@ Formats are `series`, `stream`, and `short`. Stream/short list items can bypass 
 with matching item types; short sections use `shape: "short"`. When available, return
 episode-matched `danmaku` sources in `track` using the formats documented by the API.
 
+## News and forum
+
+Read-only types with no detail page: a list item (from `home`/`explore`/`genre`/`search`,
+at least one required) opens the reader directly. `news` requires `article(url)`; `forum`
+requires `posts(url, page)` and returns one page of posts as `data` with the next page
+token as `data2` (empty at the end). To show page numbers and allow jumping, return
+`data` as `{ posts, page, total_pages }` and make the token a page number. Both skip `detail`/`toc`/`chap`; see the
+"News & Forum Extensions" section of `extension-api.md` for the fields.
+Their explore sections use `news_hero`, `news_list`, `board_list`, `thread_list`. The
+reader's text-to-speech reads `content`, a forum thread one page at a time, so write
+`content` as real paragraphs.
+
 ## Audio
 
 Audio also requires `chap` → `track`, but the app uses the first non-blank chap entry and

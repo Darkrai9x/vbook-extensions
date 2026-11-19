@@ -8,7 +8,9 @@ Extensions are JavaScript files that tell vBook how to fetch content from websit
 2. [Extension package](#extension-package) — structure, `plugin.json`, `metadata`, `script`, required scripts
 3. [Settings](#settings) — static config, dynamic `config.js`, connection limits, actions
 4. [Script templates](#script-templates) — `home`, `explore`, `genre`, list scripts, `detail`, `page`, `toc`, `chap`, `track`
+   (news / forum: `article`, `posts` — see [News & forum extensions](#news--forum-extensions))
 5. [Video & audio playback](#video--audio-playback) — pipeline, `chap` track list, resolvers (`native` / `auto` / `webview`)
+   · [News & forum extensions](#news--forum-extensions) — `article`, `posts`, list item fields, section types
 6. [Available JS APIs](#available-js-apis) — fetch, HTML, storage, database, book, browser, graphics, WebSocket, QT, crypto, `load`
 7. [Complete examples](#complete-example-novel-extension) — novel, comic, video (+ short feed), TTS, translate, AI
 8. [Developer server](#developer-server) — `/extension/docs`, `/extension/test`, `/extension/build`, `/extension/install`
@@ -132,12 +134,14 @@ produce encrypted scripts. A script that fails to decrypt is used as plain text.
 | `comic` | Image-based comics (manga, manhwa, manhua) |
 | `video` | Video content (series, anime, short dramas). Playable formats: `series`, `stream`, `short` |
 | `audio` | Audio content (music, audiobook, podcast). Playable formats: `audio` (single track), `album` (playlist) |
+| `news` | News site reader: a list of articles, each opening straight in the reader (no detail page). See [News & forum extensions](#news--forum-extensions) |
+| `forum` | Forum reader: a list of threads, each opening straight in the reader as paginated posts (no detail page) |
 | `tts` | Text-to-speech engine |
 | `translate` | Translation engine |
 | `ai` | AI assistant provider (see [AI Assistant Engine](#complete-example-ai-assistant-engine)) |
 
-`ebook` and `news` are not extension types — they are values of `detail`'s
-[`type`](#detailjs) field.
+`ebook` is not an extension type — it is a value of `detail`'s [`type`](#detailjs)
+field. (`news` is both: an extension type, and the legacy value a detail can still return.)
 
 ### script
 
@@ -157,6 +161,8 @@ positionally:
 | `toc` | Chapter list (of one TOC page) | `execute(url)` |
 | `chap` | Chapter content | `execute(url)` |
 | `track` | Video / audio track | `execute(data)` |
+| `article` | News article (`news` type) | `execute(url)` |
+| `posts` | One page of a forum thread's posts (`forum` type) | `execute(url, page)` |
 | `page` | Optional TOC pagination: list of TOC page URLs | `execute(url)` |
 | `voice` | TTS voice + language list | `execute()` |
 | `tts` | TTS synthesis | `execute(text, voiceId)` |
@@ -180,24 +186,26 @@ passed unchanged.
 `plugin.json` must exist in `src/`; scripts the app never calls for a type can be
 omitted from both.
 
-| Script | `novel` | `comic` | `audio` | `video` | `tts` | `translate` | `ai` |
-|--------|:------:|:------:|:------:|:------:|:----:|:----------:|:--:|
-| `search` (+ the scripts it references) | ✓ | ✓ | ✓ | ✓ | — | — | — |
-| `detail` | ✓ | ✓ | ✓ | ✓ | — | — | — |
-| `toc` | ✓ | ✓ | ✓ | ✓ | — | — | — |
-| `chap` | ✓ | ✓ | ✓² | ✓² | — | — | — |
-| `page` | ○¹ | ○¹ | ○¹ | ○¹ | — | — | — |
-| `track` | — | — | ✓ | ✓ | — | — | — |
-| `home` | ○ | ○ | ○ | ○ | — | — | — |
-| `explore` | ○ | ○ | ○ | ○ | — | — | — |
-| `genre` | ○ | ○ | ○ | ○ | — | — | — |
-| `voice` | — | — | — | — | ✓ | — | — |
-| `tts` | — | — | — | — | ✓ | — | — |
-| `language` | — | — | — | — | — | ✓ | — |
-| `model` | — | — | — | — | — | ○ | — |
-| `style` | — | — | — | — | — | ○ | — |
-| `translate` | — | — | — | — | — | ✓ | — |
-| `chatStream` | — | — | — | — | — | — | ✓ |
+| Script | `novel` | `comic` | `audio` | `video` | `news` | `forum` | `tts` | `translate` | `ai` |
+| -------- | :------: | :------: | :------: | :------: | :----: | :----: | :----: | :----------: | :--: |
+| `search` (+ the scripts it references) | ✓ | ✓ | ✓ | ✓ | ○ | ○ | — | — | — |
+| `detail` | ✓ | ✓ | ✓ | ✓ | — | — | — | — | — |
+| `toc` | ✓ | ✓ | ✓ | ✓ | — | — | — | — | — |
+| `chap` | ✓ | ✓ | ✓² | ✓² | — | — | — | — | — |
+| `page` | ○¹ | ○¹ | ○¹ | ○¹ | — | — | — | — | — |
+| `track` | — | — | ✓ | ✓ | — | — | — | — | — |
+| `home` | ○ | ○ | ○ | ○ | ○ | ○ | — | — | — |
+| `explore` | ○ | ○ | ○ | ○ | ○ | ○ | — | — | — |
+| `genre` | ○ | ○ | ○ | ○ | ○ | ○ | — | — | — |
+| `voice` | — | — | — | — | — | — | ✓ | — | — |
+| `tts` | — | — | — | — | — | — | ✓ | — | — |
+| `language` | — | — | — | — | — | — | — | ✓ | — |
+| `model` | — | — | — | — | — | — | — | ○ | — |
+| `style` | — | — | — | — | — | — | — | ○ | — |
+| `translate` | — | — | — | — | — | — | — | ✓ | — |
+| `chatStream` | — | — | — | — | — | — | — | — | ✓ |
+| `article` | — | — | — | — | ✓ | — | — | — | — |
+| `posts` | — | — | — | — | — | ✓ | — | — | — |
 
 ¹ `page` paginates the table of contents, for sites that split the chapter list over
 several pages. It receives the book URL and returns the TOC page URLs; `toc` is then
@@ -215,6 +223,11 @@ playable tracks, then `track` to resolve the chosen one (see
   those sections. If both `explore` and `home` are declared, `explore` wins and
   `home` is ignored. `search` powers search only (search screen, migration, the short
   feed); list screens run the `script` named by `home` / `genre` / `explore` entries.
+- **`news`** (articles): `article` plus at least one list source (`home`, `explore`, `genre` or
+  `search`). No `detail` / `toc` / `chap`: a tap on a list item runs `article`. See
+  [News & forum extensions](#news--forum-extensions).
+- **`forum`** (threads): `posts` plus at least one list source. No `detail` / `toc` / `chap`: a tap
+  on a thread runs `posts`, page by page.
 - **`tts`** (engine, not a content source): required `voice` (voice + language
   list) and `tts` (synthesize a sentence → base64 audio in `data`). It does **not**
   use the fetch scripts (`search`/`detail`/`toc`/…).
@@ -490,12 +503,18 @@ Returns a list of tabs. Each tab has a title and a list script (ignored when
 ```js
 function execute() {
     return Response.success([
+        { title: "For you", input: "", script: "foryou.js", type: "explore" },
         { title: "Latest", input: "", script: "latest.js" },
         { title: "Popular", input: "", script: "popular.js" },
         { title: "Completed", input: "", script: "completed.js" },
     ]);
 }
 ```
+
+A tab with `type: "explore"` is an explore page rather than a list: its `script` is called
+as `execute(input)` and returns sections in the [explore.js](#explorejs) format (layouts,
+`more`, sections that load on their own — all of it). Without `type` the tab is a list, as
+before. The browser's developer web page leaves explore tabs out.
 
 ### explore.js
 
@@ -588,8 +607,8 @@ function execute() {
 The section's script is called like the first page of a list script —
 `execute(query, page)` with `query` = the section's `input` and `page` = `""` — and returns
 its items as `data`, in the explore item format below (`action`, `type` and the rest
-apply). `data2` is ignored. So the list script behind a section's "see more" can serve its
-items as well, with no extra file:
+apply). `data2` is ignored — except on the last section, see below. So the list script
+behind a section's "see more" can serve its items as well, with no extra file:
 
 ```js
 // hot.js
@@ -603,6 +622,24 @@ function execute(query, page) {
         };
     }));
 }
+```
+
+**The last section scrolls on.** When the page's **last** section loads on its own, is laid
+out top to bottom (`grid`, `list`, `news_hero`, `news_list`, `thread_list`, `board_list`) and
+its script returns a non-empty `data2`, the page keeps going: scrolled to the end, the app
+calls the script again as `execute(input, data2)` and adds the items to that section, until
+`data2` comes back empty (or repeats the token it was given, or the page adds nothing new).
+Items whose `link` is already in the section are dropped. Other sections — and the last one
+when it is a row, banner, chips… — show their first page only. A short feed opened from that
+section goes on through the same pages.
+
+```js
+// explore.js — rows on top, an endless "Latest" grid at the bottom
+return Response.success([
+    { id: "hot", type: "horizontal_list", title: "Hot", script: "hot.js" },
+    { id: "latest", type: "grid", title: "Latest Updates", script: "latest.js", input: "" },
+]);
+// latest.js returns Response.success(items, nextPage) as any list script
 ```
 
 - A section whose script returns no items is hidden; one that fails shows a retry.
@@ -623,21 +660,26 @@ function execute(query, page) {
 | `list` | Vertical list layout |
 | `ranking` | Numbered ranking list |
 | `chip` | Tag/chip buttons row |
+| `news_hero` | News: the first item as a wide picture card, the rest as article rows |
+| `news_list` | News: article rows (picture on the right; text only without one) |
+| `board_list` | Forum: board (category) rows |
+| `thread_list` | Forum: thread rows |
 
 **Action fields** (used in both section `more` and item `action`):
 
 | Field | Type | Description |
 |-------|------|-------------|
 | `type` | string | Action type (see below). Without it the action is dropped — an item then falls back to `link` → detail |
-| `name` | string | Title of the list screen opened by a `list` action |
-| `script` | string | JS filename to execute (e.g. `latest.js`) — `list` only |
-| `input` | string | `list`: passed as `query` (`args[0]`) to the script, which is paged like `search.js`. `detail`: the item URL |
+| `name` | string | Title of the screen opened by a `list` / `explore` action |
+| `script` | string | JS filename to execute (e.g. `latest.js`) — `list` / `explore` only |
+| `input` | string | `list`: passed as `query` (`args[0]`) to the script, which is paged like `search.js`. `explore`: passed as `execute(input)`. `detail`: the item URL |
 
 **Action `type` values:**
 
 | Value | Description |
 |-------|-------------|
 | `list` | Open a paginated item list (script is called to fetch items). Used for "See all" |
+| `explore` | Open a screen showing an explore page: `script` is called as `execute(input)` and returns sections, as `explore.js` |
 | `detail` | Open book/item detail page. `input` is the item URL |
 
 Unknown action types are ignored (the tap does nothing).
@@ -675,6 +717,9 @@ function execute() {
     return Response.success(genres);
 }
 ```
+
+Add `type: "explore"` to a genre whose `script` returns explore sections (called as
+`execute(input)`, same format as `explore.js`): it opens as an explore page instead of a list.
 
 ### search.js / latest.js / popular.js / genre_items.js
 
@@ -736,6 +781,7 @@ Applies to list/search items and explore items alike (case-insensitive).
 | *(empty or any other value)* | The detail page (`link` → `detail.js`) |
 | `stream` | The video player directly, skipping detail. The book is saved to history first |
 | `short` | The vertical **short-video feed** (TikTok style), starting at the tapped item. See [Short video feed](#short-video-feed) |
+| `news` / `forum` | The reader directly (no detail page). Items of a `news` / `forum` extension always get this, whatever `type` the script declares. See [News & forum extensions](#news--forum-extensions) |
 
 In explore, `stream` / `short` only take effect through a `detail` action — the
 default one created from `link`, or an explicit `{ type: "detail" }`. Any other
@@ -812,7 +858,7 @@ function execute(url) {
 | `nsfw` | boolean | Adult content flag. Default `false` |
 | `locale` | string | ISO language code |
 | `tags` | array | List of `{ title, input, script }`. Translated but **not displayed** on the detail screen — put the links users should see in `genres` |
-| `genres` | array | List of `{ title, input, script }`, shown as genre/tag chips on the detail screen; tapping one opens its list |
+| `genres` | array | List of `{ title, input, script }`, shown as genre/tag chips on the detail screen; tapping one opens its list. Add `type: "explore"` when `script` returns explore sections (opens as an explore page) |
 | `suggests` | array | Similar items `{ title, input, script }` |
 | `reviews` | array | Review items `{ title, input, script }` |
 | `comment` | object | A single comment source `{ title, input, script }` (shown before `comments`) |
@@ -971,7 +1017,9 @@ paging and replies), put a `<comment>` tag at the end of that paragraph in the c
 | `input` | Passed to `script` as the first argument |
 | `count` | Number drawn in the bubble (`1.2k` from 1000). Required: missing or `0` means no comments, no bubble |
 
-- A tag between paragraphs belongs to the paragraph above it. One bubble per paragraph.
+- A tag right after an image (`<img …><comment …></comment>`) is the image's: an "N comments"
+  pill is drawn on its bottom right corner.
+- A tag between paragraphs belongs to the paragraph (or image) above it. One bubble per paragraph.
 - The tag is only read by the reader: TTS, search, word count, export and batch translate
   see the text without it. Users can hide the bubbles in the reader settings.
 - The chapter is cached with its HTML, so counts are as fresh as the cached chapter.
@@ -1258,6 +1306,154 @@ must be rendered (custom HTML, injected iframe, or `auto` can't find the media) 
 `webview`.
 
 ---
+
+## News & Forum Extensions
+
+`"type": "news"` and `"type": "forum"` are read-only sources with **no detail page**: a list item opens
+the reader at once. The app saves the item to history first (its `name` and `cover` come from the list
+item), so the reader's script only has to return the rest.
+
+```
+home / explore / genre / search  ──►  list of items  ──tap──►  article.js  (news)
+                                                       └─tap──►  posts.js, page by page  (forum)
+```
+
+Both types use the same list scripts as every other type (`home`, `explore`, `genre`, `search`, list
+scripts: [search.js](#searchjs--latestjs--popularjs--genre_itemsjs) for the contract, `data2` = next page
+token). The reader's text settings (font, size, spacing, theme, margins) apply to the reading screens, and
+the reader's translation works on them like on a novel.
+
+### List item fields
+
+The usual `name`, `cover`, `link`, `description`, `tag`, plus these (all optional, all strings unless noted):
+
+| Field | `news` | `forum` (thread) | `forum` (board) | Description |
+|-------|:--:|:--:|:--:|-------------|
+| `author` | ✓ | ✓ | | Author name |
+| `time` | ✓ | ✓ | | Display text (`"2 hours ago"`, `"12/03/2025 10:30"`) or an epoch in seconds / milliseconds (formatted in the device locale) |
+| `avatar` | | ✓ | | Author avatar URL |
+| `replies`, `views` | | ✓ | | Counts, as text you want shown (`"1.2K"`) |
+| `board` | | ✓ | | Board name |
+| `last_post` | | ✓ | | `{ user, time }` of the latest post |
+| `pinned`, `locked`, `hot` | | ✓ | | Booleans (`true` shows a pin / lock mark, or the reply count in red) |
+| `threads`, `posts` | | | ✓ | Counts of a board, as text |
+
+`description` is the lead of an article or the description of a board. Put pinned threads first yourself.
+A board item's `link` / `action` normally opens a thread list (`{ type: "list", ... }`).
+
+Explore sections of these types use the section types `news_hero`, `news_list` (articles) and `board_list`,
+`thread_list` (forum); `chip` and the others work as usual.
+
+### article.js (news)
+
+`execute(url)` — `url` is the item's `link`. Return the article and where its comments are:
+
+```js
+function execute(url) {
+    let doc = fetch(url).html();
+    return Response.success({
+        name: doc.select("h1").text(),
+        author: doc.select(".author").text(),
+        cover: doc.select("meta[property='og:image']").attr("content"),
+        time: doc.select("time").attr("datetime"),         // display text or epoch
+        edited_time: "",
+        source_name: "Example News",
+        tags: doc.select(".tags a").map(function(a) { return a.text(); }),
+        content: doc.select("article").html(),             // HTML, or Markdown (see content_format)
+        content_format: "html",                            // "html" (default) | "markdown"
+        comments: [                                        // optional; like detail's `comments`
+            { title: "Comments", input: "id=" + url, script: "comments.js" }
+        ]
+    });
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `name`, `author`, `cover`, `time`, `edited_time`, `source_name` | Header of the article. `name` / `cover` default to the list item's |
+| `tags` | Array of strings |
+| `content` | The article body (HTML or Markdown). Images, tables, lists, quotes, code and embeds are drawn by the app |
+| `content_format` | `html` (default) or `markdown` |
+| `comments` | Array of `{ title, input, script }`; each is a comment source, exactly like [`comments` in detail.js](#detailjs): `script` is called as `execute(input, next)`, a non-empty `data2` is the next page's token |
+
+### posts.js (forum)
+
+`execute(url, page)` — `url` is the thread's `link`, `page` the token the previous call returned as
+`data2` (empty on the first call). Return **one page of posts** as `data`, and the next page token as
+`data2` (empty at the end, or when the token would be the one you were given).
+
+To show page numbers and let the user jump to a page, return `data` as an object instead of the bare array,
+and make `page` a **page number** (`"1"`, `"2"`…; the first call's empty `page` means 1): the app then calls
+`posts(url, "7")` to jump to page 7.
+
+```js
+return Response.success({ posts: posts, page: 3, total_pages: 12 }, hasNext ? "4" : "");
+```
+
+Without `total_pages` the app only loads page after page (no page number, no jump).
+
+```js
+function execute(url, page) {
+    page = page || "1";
+    let doc = fetch(url + "?page=" + page).html();
+    let posts = doc.select(".post").map(function(el) {
+        return {
+            id: el.attr("data-id"),
+            floor: el.select(".floor").text(),
+            url: el.select(".permalink").attr("href"),
+            is_op: el.hasClass("op"),
+            time: el.select("time").attr("datetime"),
+            user: {
+                id: el.attr("data-user"),
+                name: el.select(".user-name").text(),
+                avatar: el.select(".avatar img").attr("src"),
+                link: el.select(".user-name a").attr("href"),
+                title: el.select(".user-title").text(),
+                role: el.select(".user-role").text(),
+                badges: el.select(".badge").map(function(b) { return b.text(); }),
+                joined: el.select(".joined").text(),
+                posts_count: parseInt(el.select(".post-count").text()) || 0,
+                reputation: el.select(".reputation").text(),
+                online: el.select(".online").size() > 0
+            },
+            content: el.select(".message").html(),
+            content_format: "html",
+            signature: el.select(".signature").html(),
+            edited: { time: el.select(".edited time").attr("datetime"), by: el.select(".edited .by").text(), reason: "" },
+            likes: parseInt(el.select(".likes").text()) || 0,
+            reactions: [{ type: "👍", count: 3 }],
+            reply_to: { floor: el.select(".quote").attr("data-floor"), user: el.select(".quote cite").text() },
+            attachments: [{ type: "image", link: el.select(".attach a").attr("href"), name: "photo.jpg", size: "120 KB" }]
+        };
+    });
+    let hasNext = doc.select(".pagination .next").size() > 0;
+    return Response.success(posts, hasNext ? String(parseInt(page) + 1) : "");
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `id`, `floor`, `url`, `is_op` | Identity of the post (`id`, else `floor`, tells posts apart across pages: a post seen twice is shown once), its number (`#12`), its link, whether it is the thread starter's |
+| `time` | Display text or epoch |
+| `user` | `id`, `name`, `avatar`, `link`, `title`, `role`, `badges` (array of strings), `joined`, `posts_count` (number), `reputation`, `online` (boolean). All optional except `name` |
+| `content`, `content_format` | The post body, HTML or Markdown |
+| `signature`, `signature_format` | Optional signature, same formats |
+| `edited` | `{ time, by, reason }`, omitted when the post was not edited |
+| `likes`, `dislikes`, `reactions` | Counts; `reactions` is `[{ type, count }]` (`type` is text, e.g. an emoji) |
+| `reply_to` | `{ floor, user }`: the post this one answers |
+| `attachments` | `[{ type, link, name, size }]`; tapping opens the link |
+
+The app does not post, like or reply: these sources are read-only.
+
+### Reading aloud
+
+Both types can be read by the app's text-to-speech (the headphones button), with the reader's voice and
+translation settings. A news article is read as one chapter. A forum thread is read **one page at a time**:
+the posts of the page on screen, each as "author: post", and it stops at the end of the page. The sentence
+being spoken is highlighted in the reader (when the text read is the text shown: a translation made by the
+reader's own paragraph translation can differ from the one the voice reads, and then nothing is highlighted),
+and a forum thread scrolls to the post being read. Write `content` as real paragraphs: that is what the
+voice reads.
 
 ## Available JS APIs
 

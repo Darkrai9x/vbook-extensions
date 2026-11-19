@@ -57,7 +57,7 @@ affected guidance and templates.
 
 ## Resources
 
-- `templates/novel`, `comic`, `audio`, `video`, `tts`, `translate`, `ai`: complete
+- `templates/novel`, `comic`, `audio`, `video`, `news`, `forum`, `tts`, `translate`, `ai`: complete
   scaffolds for each supported type.
 - `scripts/vbook.js`: connection-aware REST CLI.
 - `scripts/servers.example.json`: local server-list example; `servers.json` is

@@ -102,6 +102,12 @@ Static and dynamic sections mix freely on one page.
   script when it accepts the same input.
 - `items` wins when both are set. An empty result hides the section; a failure shows
   retry. Pull to refresh reruns `explore.js`, then the section scripts.
+- When the **last** section loads on its own, is laid out top to bottom (`grid`, `list`,
+  `news_hero`, `news_list`, `thread_list`, `board_list`) and its script returns a
+  non-empty `data2`, the page scrolls on: the app calls it again as `execute(input, data2)`
+  until `data2` is empty or repeats. Return a stable `link` per item (duplicates drop).
+- A `home` tab or a `genre` entry with `type: "explore"` opens an explore page instead
+  of a list: its `script` is `execute(input)` and returns sections like `explore.js`.
 - Apps older than this feature show dynamic sections empty.
 
 ## Packaging and actions

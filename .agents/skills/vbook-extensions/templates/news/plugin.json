@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "name": "Site Name",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://site.com",
+    "description": "Extension description",
+    "locale": "vi",
+    "regexp": "site\\.com/[^/]+/[^/]+\\.html$",
+    "type": "news",
+    "nsfw": false,
+    "encrypt": true
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "search": "search.js",
+    "article": "article.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://site.com",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}
