@@ -53,5 +53,8 @@ function execute() {
             input: "/top-ngay",
             more: { type: "list", name: "Danh sách", script: "search.js", input: "/top-ngay" }
         }
+        // Optional endless feed: a LAST section laid out top to bottom (grid/list) that loads on
+        // its own and whose script returns a non-empty data2 keeps loading as the user scrolls:
+        // { id: "feed", type: "grid", title: "Gợi ý", script: "search.js", input: "/moi-cap-nhat" }
     ]);
 }

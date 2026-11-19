@@ -1,7 +1,8 @@
 load('config.js');
 // posts.js — `url` is the thread's `link`; `page` is the token returned last time as
 // data2 (empty on the first call). Return ONE page of posts as data, the next token as
-// data2 (empty at the end).
+// data2 (empty at the end). To show page numbers and let users jump, return
+// { posts, page, total_pages } as data (see the bottom) and keep the token a page number.
 function execute(url, page) {
     url = normalizeUrl(url);
     page = page || "1";
@@ -29,5 +30,7 @@ function execute(url, page) {
     });
 
     let hasNext = !doc.select("SELECTOR_NEXT_PAGE").isEmpty();
+    // With a known page count (optional; delete if the site hides it):
+    // return Response.success({ posts: posts, page: parseInt(page), total_pages: TOTAL }, next);
     return Response.success(posts, hasNext ? String(parseInt(page) + 1) : "");
 }
