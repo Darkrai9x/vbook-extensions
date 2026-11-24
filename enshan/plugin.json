@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "Enshan",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.right.com.cn/forum",
+    "description": "恩山无线论坛",
+    "locale": "zh",
+    "regexp": "right\\.com\\.cn/forum/(?:thread-\\d+-\\d+-\\d+\\.html|forum\\.php\\?mod=viewthread&tid=\\d+.*)$",
+    "type": "forum",
+    "nsfw": false,
+    "encrypt": false
+  },
+  "script": {
+    "home": "home.js",
+    "posts": "posts.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://www.right.com.cn/forum",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

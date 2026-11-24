@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "name": "Voz",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://voz.vn",
+    "description": "Diễn đàn Voz.vn",
+    "locale": "vi",
+    "regexp": "voz\\.vn/t/[^/?#]+(?:/page-\\d+)?/?(?:[?#].*)?$",
+    "type": "forum",
+    "nsfw": false,
+    "encrypt": false
+  },
+  "script": {
+    "home": "home.js",
+    "posts": "posts.js",
+    "config": "settings.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://voz.vn",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

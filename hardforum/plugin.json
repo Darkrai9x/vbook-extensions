@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "HardForum",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://hardforum.com",
+    "description": "HardForum",
+    "locale": "en",
+    "regexp": "hardforum\\.com/threads/[^/?#]+/?(?:(?:page|post)-\\d+/?)?(?:\\?[^#]*)?(?:#.*)?$",
+    "type": "forum",
+    "nsfw": false,
+    "encrypt": false
+  },
+  "script": {
+    "home": "home.js",
+    "posts": "posts.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://hardforum.com",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

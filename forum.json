@@ -1,0 +1,96 @@
+{
+  "metadata": {
+    "author": "vBook",
+    "description": ""
+  },
+  "data": [
+    {
+      "name": "Otofun",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/otofun/plugin.zip",
+      "version": 1,
+      "source": "https://www.otofun.net.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/otofun/icon.png",
+      "description": "Diễn đàn Otofun",
+      "locale": "vi",
+      "type": "forum"
+    },
+    {
+      "name": "Voz",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/voz/plugin.zip",
+      "version": 1,
+      "source": "https://voz.vn",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/voz/icon.png",
+      "description": "Diễn đàn Voz.vn",
+      "locale": "vi",
+      "type": "forum"
+    },
+    {
+      "name": "Sufficient Velocity",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/sufficientvelocity/plugin.zip",
+      "version": 1,
+      "source": "https://forums.sufficientvelocity.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/sufficientvelocity/icon.png",
+      "description": "Sufficient Velocity forums",
+      "locale": "en",
+      "type": "forum"
+    },
+    {
+      "name": "HardForum",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/hardforum/plugin.zip",
+      "version": 1,
+      "source": "https://hardforum.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/hardforum/icon.png",
+      "description": "HardForum",
+      "locale": "en",
+      "type": "forum"
+    },
+    {
+      "name": "V2EX",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/v2ex/plugin.zip",
+      "version": 1,
+      "source": "https://www.v2ex.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/v2ex/icon.png",
+      "description": "V2EX - 创意工作者的社区",
+      "locale": "zh",
+      "type": "forum"
+    },
+    {
+      "name": "Enshan",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/enshan/plugin.zip",
+      "version": 1,
+      "source": "https://www.right.com.cn/forum",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/enshan/icon.png",
+      "description": "恩山无线论坛",
+      "locale": "zh",
+      "type": "forum"
+    },
+    {
+      "name": "Questionable Questing",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/questionablequesting/plugin.zip",
+      "version": 1,
+      "source": "https://forum.questionablequesting.com",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/questionablequesting/icon.png",
+      "description": "Questionable Questing forums",
+      "locale": "en",
+      "type": "forum"
+    },
+    {
+      "name": "PTT",
+      "author": "vBook",
+      "path": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/ptt/plugin.zip",
+      "version": 1,
+      "source": "https://www.ptt.cc",
+      "icon": "https://raw.githubusercontent.com/Darkrai9x/vbook-extensions/refs/heads/master/ptt/icon.png",
+      "description": "PTT 批踢踢實業坊 - Đài Loan",
+      "locale": "zh",
+      "type": "forum"
+    }
+  ]
+}

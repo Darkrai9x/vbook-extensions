@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "name": "Sufficient Velocity",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://forums.sufficientvelocity.com",
+    "description": "Sufficient Velocity forums",
+    "locale": "en",
+    "regexp": "sufficientvelocity\\.com/threads/[^/?#]+/?(?:(?:page|post)-\\d+/?)?(?:\\?[^#]*)?(?:#.*)?$",
+    "type": "forum",
+    "nsfw": false,
+    "encrypt": false
+  },
+  "script": {
+    "home": "home.js",
+    "search": "search.js",
+    "posts": "posts.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://forums.sufficientvelocity.com",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

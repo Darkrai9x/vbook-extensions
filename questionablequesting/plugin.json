@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "Questionable Questing",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://forum.questionablequesting.com",
+    "description": "Questionable Questing forums",
+    "locale": "en",
+    "regexp": "questionablequesting\\.com/threads/[^/?#]+/?(?:(?:page|post)-\\d+/?)?(?:\\?[^#]*)?(?:#.*)?$",
+    "type": "forum",
+    "nsfw": false,
+    "encrypt": false
+  },
+  "script": {
+    "home": "home.js",
+    "posts": "posts.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://forum.questionablequesting.com",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}

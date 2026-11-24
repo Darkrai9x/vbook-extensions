@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "PTT",
+    "author": "vBook",
+    "version": 1,
+    "source": "https://www.ptt.cc",
+    "description": "PTT 批踢踢實業坊 - Đài Loan",
+    "locale": "zh",
+    "regexp": "ptt\\.cc/bbs/[^/]+/M\\.\\d+\\.A\\.[A-Z0-9]+\\.html",
+    "type": "forum",
+    "nsfw": false,
+    "encrypt": false
+  },
+  "script": {
+    "home": "home.js",
+    "posts": "posts.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://www.ptt.cc",
+      "mode": "input",
+      "format": "text"
+    }
+  }
+}
