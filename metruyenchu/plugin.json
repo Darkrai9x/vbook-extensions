@@ -2,21 +2,145 @@
   "metadata": {
     "name": "MTC",
     "author": "vBook",
-    "version": 51,
+    "version": 53,
     "source": "https://metruyencv.com",
-    "regexp": "(www.)?(metruyenchu|mtccv|metruyencv).[a-z]+/truyen/[a-zA-Z0-9-]+/?$",
-    "description": "Đọc truyện trên trang Mê Truyện CV",
+    "regexp": "(?:https?://)?(?:www\\.)?(metruyenchu|mtccv|metruyencv)\\.[a-z]+/truyen/[a-zA-Z0-9-]+(?:/\\d+)?/?$",
+    "description": "Đọc truyện trên trang Mê Truyện CV\n\nmob by @kychi",
     "locale": "vi_VN",
     "language": "javascript",
     "type": "novel",
     "encrypt": true
   },
   "script": {
-    "detail": "detail.js",
-    "toc": "toc.js",
-    "chap": "chap.js",
     "home": "home.js",
     "genre": "genre.js",
-    "search": "search.js"
+    "search": "search.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "DOMAIN": {
+      "title": "Domain",
+      "default": "https://metruyencv.com",
+      "mode": "input",
+      "format": "text"
+    },
+    "EMAIL": {
+      "title": "Email đăng nhập MTC (tùy chọn, dùng thay cho đăng nhập web)",
+      "default": "",
+      "mode": "input",
+      "format": "text"
+    },
+    "PASSWORD": {
+      "title": "Mật khẩu",
+      "default": "",
+      "mode": "input",
+      "format": "text"
+    },
+    "GENDER": {
+      "title": "Giới tính truyện",
+      "default": "Tất cả",
+      "values": [
+        "Tất cả",
+        "Nam",
+        "Nữ"
+      ],
+      "mode": "select"
+    },
+    "KIND": {
+      "title": "Loại truyện",
+      "default": "Tất cả",
+      "values": [
+        "Tất cả",
+        "Chuyển ngữ",
+        "Sáng tác"
+      ],
+      "mode": "select"
+    },
+    "BOOK_STATUS": {
+      "title": "Tình trạng truyện",
+      "default": "Tất cả",
+      "values": [
+        "Tất cả",
+        "Còn tiếp",
+        "Hoàn thành",
+        "Tạm dừng"
+      ],
+      "mode": "select"
+    },
+    "BOOK_TYPE": {
+      "title": "Thuộc tính / Gói đọc",
+      "default": "Tất cả",
+      "values": [
+        "Tất cả",
+        "Chọn lọc",
+        "Chất lượng cao",
+        "Miễn phí",
+        "Thu phí"
+      ],
+      "mode": "select"
+    },
+    "CHAPTER_RANGE": {
+      "title": "Số chương",
+      "default": "Tất cả",
+      "values": [
+        "Tất cả",
+        "< 300 chương",
+        "300 - 600 chương",
+        "600 - 1000 chương",
+        "> 1000 chương"
+      ],
+      "mode": "select"
+    },
+    "DEFAULT_SORT": {
+      "title": "Sắp xếp mặc định (Thể loại)",
+      "default": "Mới lên chương",
+      "values": [
+        "Mới lên chương",
+        "Mới đăng",
+        "Lượt đọc tuần",
+        "Lượt đọc tổng",
+        "Đề cử tuần",
+        "Đề cử tổng",
+        "Đánh dấu nhiều",
+        "Điểm đánh giá"
+      ],
+      "mode": "select"
+    },
+    "PAGE_SIZE": {
+      "title": "Số truyện mỗi trang",
+      "default": "20",
+      "values": [
+        "15",
+        "20",
+        "30",
+        "40"
+      ],
+      "mode": "select"
+    },
+    "SHOW_TAGS_IN_GENRE": {
+      "title": "Hiện thêm Tags trong mục Thể loại",
+      "subtitle": "Tắt để chỉ hiện Thể loại chính (Nam/Nữ)",
+      "default": "true",
+      "mode": "toggle"
+    },
+    "CLEAN_CHAPTER_TITLE": {
+      "title": "Ẩn tiêu đề chương lặp ở đầu nội dung",
+      "subtitle": "Tự động bỏ dòng đầu khi trùng tên chương",
+      "default": "true",
+      "mode": "toggle"
+    },
+    "LIBRARY_SORT": {
+      "title": "Sắp xếp Tủ truyện & Đánh dấu",
+      "default": "Mặc định (Gần đây)",
+      "values": [
+        "Mặc định (Gần đây)",
+        "Ưu tiên có chương mới",
+        "Mới lên chương",
+        "Đọc xong / Gần hoàn thành"
+      ],
+      "mode": "select"
+    }
   }
 }
