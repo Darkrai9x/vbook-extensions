@@ -2,7 +2,7 @@
   "metadata": {
     "name": "MTC",
     "author": "vBook",
-    "version": 53,
+    "version": 54,
     "source": "https://metruyencv.com",
     "regexp": "(?:https?://)?(?:www\\.)?(metruyenchu|mtccv|metruyencv)\\.[a-z]+/truyen/[a-zA-Z0-9-]+(?:/\\d+)?/?$",
     "description": "Đọc truyện trên trang Mê Truyện CV\n\nmob by @kychi",
