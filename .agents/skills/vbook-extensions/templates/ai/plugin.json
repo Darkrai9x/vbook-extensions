@@ -6,7 +6,6 @@
     "source": "https://api.openai.com/v1",
     "description": "AI assistant provider",
     "locale": "global",
-    "regexp": "",
     "type": "ai",
     "nsfw": false,
     "encrypt": true

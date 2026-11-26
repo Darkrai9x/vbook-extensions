@@ -6,14 +6,13 @@
     "source": "https://site.com",
     "description": "Extension description",
     "locale": "vi",
-    "regexp": "site\\.com/album/[^/]+/?$",
+    "regexp": "(https?://)?(www\\.)?site\\.com/album/[^/]+/?",
     "type": "audio",
     "nsfw": false,
     "encrypt": true
   },
   "script": {
     "home": "home.js",
-    "explore": "explore.js",
     "genre": "genre.js",
     "search": "search.js",
     "detail": "detail.js",

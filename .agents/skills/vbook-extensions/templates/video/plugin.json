@@ -6,14 +6,13 @@
     "source": "https://site.com",
     "description": "Extension description",
     "locale": "vi",
-    "regexp": "site\\.com/phim/[^/]+/?$",
+    "regexp": "(https?://)?(www\\.)?site\\.com/phim/[^/]+/?",
     "type": "video",
     "nsfw": false,
     "encrypt": true
   },
   "script": {
     "home": "home.js",
-    "explore": "explore.js",
     "genre": "genre.js",
     "search": "search.js",
     "detail": "detail.js",

@@ -1,45 +1,32 @@
 # Runtime rules
 
-Read before creating or editing extension JavaScript or `plugin.json`. These rules are
-verified against the real Rhino/ScriptExecutor/jsoup runtime.
+Read before editing extension JS or `plugin.json`. Verified against the real Rhino/ScriptExecutor/jsoup runtime.
 
 ## Script and config contract
 
-- `load('file.js');` requires a literal filename and is not recursive. A loaded library
-  must not load another file. `crypto.js` always resolves to bundled CryptoJS.
-- Never declare a variable with the same name as an injected static config key. Static
-  settings and bare connection keys are injected as strings. Parse them explicitly.
-  Dynamic `config.js` values use `localConfig.getItem(key, defaultValue)`; older apps
-  ignore `defaultValue` and return `null`, so keep `|| fallback` where they matter.
-  `mode: "database"` uses `localDatabase`.
-- `thread_num`, `delay`, and `ignore` are bare number/boolean connection settings.
-  `timeout` is not: put it in `fetch(..., { timeout: ms })`.
-- Every positional `execute(...)` argument is a string. Scripts without positional
-  arguments read context from bridges such as `localBook`, `localConfig`, and
-  `localDatabase`.
-- `Response.success(items, next)` requires a string next token. Use `""` for the end,
-  never `null`, `0`, or a number.
-- Uncaught exceptions kill the call. Guard optional selections/bridge returns and use
-  `Response.error(...)` for expected failures.
-- Normal app execution removes a trailing `/` from URL arguments; `/extension/test`
-  does not. Restore it when the source requires it.
-- `metadata.regexp` matches the whole URL. Test it against a real detail URL; a bare
-  host regex does not route.
+- `load('file.js')` = text substitution before the script runs (API "Loading other scripts — `load()`"): literal filename only; file at top level of `src/`; missing file → silently nothing (later code sees undefined names); not recursive (a loaded library must not `load`); matched anywhere, so a commented-out `load()` still expands.
+- `crypto.js` always = bundled CryptoJS (crypto-js 4.2.0). WordArray `.toString()` is hex → always pass an encoder: `CryptoJS.enc.Utf8` for text, `CryptoJS.enc.Base64` for binary. Decrypting binary data with CryptoJS is fine.
+- Two `config.js` meanings — never mix:
+  - shared site library (`BASE_URL`, `normalizeUrl`) via `load('config.js')`;
+  - dynamic settings script `plugin.json.script.config` → give it another filename (e.g. `settings.js`) when `config.js` is the shared library.
+- Never declare a variable named like an injected static config key. Static settings and bare connection keys are injected as strings → parse explicitly.
+- Dynamic setting values: `localConfig.getItem(key, defaultValue)` (not injected). `mode: "database"` uses `localDatabase`.
+- `thread_num`, `delay`, `ignore` = bare number/boolean connection settings. `timeout` is not → `fetch(..., { timeout: ms })`.
+- Every positional `execute(...)` argument is a string. Scripts without positional args read context from `localBook`, `localConfig`, `localDatabase`.
+- `Response.success(items, next)`: `next` is a string; `""` ends paging — never `null`, `0`, or a number.
+- Uncaught exception kills the call. Guard optional selections/bridge returns; `Response.error(...)` for expected failures.
+- App strips a trailing `/` from URL arguments; `/extension/test` does not → restore it when the source requires it.
+- `metadata.regexp` (novel/comic/audio/video only) matches the whole URL; test on a real detail URL. Bare host regex never routes.
 
 ## Rhino ES6 limits
 
-Do not use `async`/`await`, arrow functions, template literals, optional chaining,
-nullish coalescing, object/array spread, `flat`/`flatMap`, numeric separators, named
-regex groups, lookbehind, or Java interop. Use ordinary functions, string concatenation,
-loops, `Object.assign`, and plain capture groups.
+Forbidden: `async`/`await`, arrow functions, template literals, optional chaining, nullish coalescing, object/array spread, `flat`/`flatMap`, numeric separators, named regex groups, lookbehind, Java interop. Use functions, string concatenation, loops, `Object.assign`, plain capture groups.
 
-Coerce bridge values with `String`, `Number`, or `parseInt`; do not rely on `typeof`
-across the host boundary. A failing iOS bridge may return `undefined`. WebSocket binary
-messages are unavailable on iOS, and actions cannot be interrupted there.
+Coerce bridge values with `String`/`Number`/`parseInt`; don't rely on `typeof` across the host boundary. iOS: failing bridge may return `undefined`; no WebSocket binary messages; actions can't be interrupted.
 
 ## Fetching and parsing
 
-Always check `response.ok` before `.html()`, `.json()`, `.text()`, or `.base64()`:
+Check `response.ok` before `.html()`/`.json()`/`.text()`/`.base64()`:
 
 ```js
 let response = fetch(url);
@@ -47,75 +34,47 @@ if (!response.ok) return Response.error("HTTP " + response.status);
 let doc = response.html();
 ```
 
-Use jsoup selectors before regex over HTML. Regex is appropriate only for values outside
-the DOM: embedded JSON/RSC state, inline scripts, encoded attributes, or player stream
-URLs. Select the smallest node first, unescape once in a shared helper, and comment why
-regex is necessary.
+jsoup selectors before regex. Regex only for values outside the DOM (embedded JSON/RSC state, inline scripts, encoded attributes, player stream URLs): select the smallest node first, unescape once in a shared helper, comment why.
 
-jsoup specifics:
+jsoup:
 
-- It uses jsoup selectors, not browser CSS/XPath (`:visible` is unsupported).
-- It inserts implied elements and auto-closes markup; inspect `doc.html()` when needed.
-- `attr()` returns `""` when absent; `first()` returns `null` on an empty selection.
-- A collection's `attr()` reads its first element while `text()` concatenates all.
-- `attr("href")` is raw; resolve it or use `absUrl("href")` with a base URI.
+- jsoup selectors, not browser CSS/XPath (`:visible` unsupported).
+- Inserts implied elements, auto-closes markup → inspect `doc.html()` when unsure.
+- `get`/`first`/`last` on empty selection → empty element (methods return `""`), never `null`: test `.size()`, `.attr()`, or `.text()`, not `!el`.
+- `attr()` → `""` when absent. Collection `attr()` reads the first element that has it; `text()` concatenates all.
+- `attr("href")` is raw → resolve it or `absUrl("href")` with a base URI.
 
 ## URLs and site config
 
-For novel/comic/audio/video, `config.js` must start with a working hardcoded `BASE_URL`,
-then optionally override it from injected `DOMAIN` inside `try/catch`. Never initialize
-`BASE_URL` directly from possibly-absent `DOMAIN`.
+Novel/comic/audio/video/news/forum:
 
-Keep one shared `normalizeUrl` in `config.js`. Every site-URL script (`detail`, `page`,
-`toc`, `chap`) loads config and normalizes incoming hosts before fetching. Normalize
-`track(data)` only when `data` is a site URL, never opaque JSON or a third-party stream.
-
-`config.DOMAIN.default` and `metadata.source` must match. Use a select setting for real
-mirrors rather than scattering alternate hosts through scripts.
+- `config.js` (shared library): working hardcoded `BASE_URL` first, then optional override from injected `DOMAIN` inside `try/catch`. Never initialize `BASE_URL` directly from possibly-absent `DOMAIN`.
+- One shared `normalizeUrl` in `config.js`. Every site-URL script (`detail`, `page`, `toc`, `chap`, `article`, `posts`) loads config and normalizes the incoming host before fetching. Normalize `track(data)` only when `data` is a site URL, never opaque JSON or a third-party stream.
+- `config.DOMAIN.default == metadata.source`. Real mirrors → a select setting, not alternate hosts scattered through scripts.
+- Returned URLs: relative → joined with `host`/`source`; protocol-relative `//cdn…` not resolved → prefix `https:`.
 
 ## Images and referrer
 
-Covers load with `Referer` set to the item's `link` (or the detail URL); comic images
-use the chapter URL. When a CDN rejects that (403, placeholder, hotlink image), set
-`referrerpolicy: "no-referrer"` or `"origin"` beside `cover` on explore/list/search items
-and detail, or on a comic image object (it also covers `fallback`). For a plain string
-URL append `#referrerpolicy=no-referrer`; the fragment is never sent, and an attribute
-wins over the fragment. Confirm with curl which referrer the host accepts before
-choosing; do not proxy or re-host images.
+- Covers load with `Referer` = item `link` (or detail URL); comic images use the chapter URL.
+- CDN rejects that (403, placeholder, hotlink image) → `referrerpolicy: "no-referrer"` or `"origin"` beside `cover` on explore/list/search items and detail, or on a comic image object (also covers `fallback`). Plain string URL → append `#referrerpolicy=no-referrer` (fragment never sent; attribute wins over fragment). Prove the accepted referrer with curl first; never proxy or re-host images.
+- Bytes scrambled/encrypted (not an image until the site's JS undoes them) → cover URL `…#script=cover.js` (combine: `#referrerpolicy=no-referrer&script=cover.js`). App calls `cover.js` as `execute(url)` with the URL minus its fragment; expects a bare base64 string (not `Response`, no `data:` prefix); `null`/empty = cover fails. For covers and cover-like images (avatars), not chapter images (they have their own `script` field).
 
-## Explore section data: static or dynamic
+## Explore section data
 
-Each explore section gets its items one of two ways; choose per section from how the
-site serves that data, not by default:
+Per section, by how the site serves it (static and dynamic mix freely):
 
-- **Static — `items`:** the data is already in the response `explore.js` fetched (one
-  homepage holding banner + rows). Parse it there; no extra request.
-- **Dynamic — `script` (+ `input`):** the data needs its own request (another page or
-  API). Script `fetch` calls run sequentially, so chaining them in `explore.js` makes
-  the whole page wait; a section script lets `explore.js` return the outline at once
-  while the app runs section scripts in parallel (a few at a time, top first).
+- **Static `items`:** data already in the response `explore.js` fetched; no extra request.
+- **Dynamic `script` (+ `input`):** data needs its own request. Script `fetch` calls are sequential → chaining in `explore.js` blocks the page; section scripts run in parallel (a few at a time, top first).
 
-Static and dynamic sections mix freely on one page.
+Rules:
 
-- A section script is called like a list script's first page: `execute(input, "")`,
-  and returns items as `data`; `data2` is ignored. Reuse the section's `more` list
-  script when it accepts the same input.
-- `items` wins when both are set. An empty result hides the section; a failure shows
-  retry. Pull to refresh reruns `explore.js`, then the section scripts.
-- When the **last** section loads on its own, is laid out top to bottom (`grid`, `list`,
-  `news_hero`, `news_list`, `thread_list`, `board_list`) and its script returns a
-  non-empty `data2`, the page scrolls on: the app calls it again as `execute(input, data2)`
-  until `data2` is empty or repeats. Return a stable `link` per item (duplicates drop).
-- A `home` tab or a `genre` entry with `type: "explore"` opens an explore page instead
-  of a list: its `script` is `execute(input)` and returns sections like `explore.js`.
-- Apps older than this feature show dynamic sections empty.
+- Section script = list script first page: `execute(input, "")`, items in `data`; `data2` ignored. Reuse the section's `more` list script when it takes the same input.
+- Both set → `items` wins. Empty result hides the section; failure shows retry. Pull to refresh reruns `explore.js`, then section scripts.
+- **Last** section + dynamic + top-to-bottom layout (`grid`, `list`, `news_hero`, `news_list`, `thread_list`, `board_list`) + non-empty `data2` → infinite scroll: `execute(input, data2)` until `data2` is empty or repeats. Stable `link` per item (duplicates drop).
+- `home` tab or `genre` entry with `type: "explore"` opens an explore page: its `script` is `execute(input)`, returns sections like `explore.js`.
 
 ## Packaging and actions
 
-- Optional files referenced dynamically from detail fields (for example `similar.js`
-  and `comments.js`) need not be declared in `plugin.json.script`.
-- Static and dynamic actions run only after the user presses Start. Log progress with
-  `Log.log` or `console.log`, then return a final `Response`. Book actions use
-  `localBook`; they receive no positional book argument.
-- Strip template teaching comments before build/install; retain only comments that
-  explain genuinely non-obvious source behavior.
+- Files referenced dynamically from detail fields (`similar.js`, `comments.js`) need not be declared in `plugin.json.script`.
+- Static/dynamic actions run only after the user presses Start. Log with `Log.log`/`console.log`; return a final `Response`. Book actions use `localBook` (no positional book argument).
+- Strip template teaching comments before build/install; keep only comments explaining non-obvious source behavior.

@@ -1,47 +1,36 @@
 # CREATE mode
 
-Create and verify one extension end to end. Before editing, read
-`reference/runtime.md`, `reference/type-contracts.md`, the relevant API sections, and
-the selected `templates/<type>/`. Before testing, read `reference/cli.md` and
-`reference/verify-checklist.md`.
+Create and verify one extension end to end. Reads: see SKILL.md › Load.
 
 ## 1. Scope
 
-1. Fetch the target and determine its type.
-2. Obtain a real detail URL and a reachable chapter/episode URL. Provider engines need
-   no content pages. If only a homepage is given, follow it to a real detail page or ask.
-3. Identify required and genuinely-supported optional scripts from the API contract.
+1. Fetch the target; determine its type.
+2. Get a real detail URL and a reachable chapter/episode URL (news/forum: a real list item `link`; provider engines: none). Homepage only → follow to a real page or ask.
+3. Pick required + genuinely supported optional scripts from the API contract.
 
 ## 2. Scaffold
 
-1. Copy only `templates/<type>/` to the target directory.
-2. Fill metadata with real values. Verify `metadata.regexp` against a complete detail
-   URL. For content sources, keep `config.DOMAIN.default == metadata.source`.
-3. Remove unsupported optional scripts; keep `page` only for paginated TOCs.
-4. Use a real provider/site icon when supplied and keep it decodable and under 5 MB.
+1. Copy the whole `templates/<type>/` folder to `<ext-dir>/` (`plugin.json` at root, scripts in `src/`; API "Extension Package"). `icon.png` at root if used.
+2. Fill metadata with real values; replace all placeholders. Content sources: `metadata.regexp` and DOMAIN rules per runtime.md › Script and config contract / URLs and site config.
+3. Remove unsupported optional scripts from `src/` and `plugin.json.script`; keep `page` only for paginated TOCs.
+4. Real provider/site icon when supplied; decodable, < 5 MB.
 
 ## 3. Implement and test incrementally
 
-Use live responses and real chained inputs. Typical order:
+Typical order, live responses, real chained inputs:
 
 1. detail
 2. optional page → toc
-3. chap; then track for audio/video (news: article; forum: posts, replacing 1–3)
+3. chap; then track for audio/video (news: article; forum: posts — replace 1–3)
 4. search
-5. home, genre, explore (per section, static `items` or dynamic `script`/`input` to match
-   the site; test each section script with its `input` and page `""`)
-6. dynamically referenced similar/comments
+5. home, genre, explore (per section static `items` or dynamic `script`/`input`: runtime.md › Explore section data)
+6. dynamically referenced similar/comments; cover.js if covers are scrambled
 7. provider chain: voice→tts, language/model/style→translate, or chatStream
 
-For each script: write from observed markup/API data, save, run `vbook.js test`, and
-verify the returned shape and content. Do not move on while it fails. After roughly
-three unproductive cycles, re-fetch the page, check trailing-slash behavior and
-client-rendering, then reassess instead of stacking speculative fixes.
+Per script: write from observed markup/API data, save, `vbook.js test`, verify shape + content; don't move on while it fails. No progress → verify-checklist.md › final paragraph.
 
 ## 4. Finish
 
-Strip template teaching comments, verify all retained scripts and dependent chains, and
-summarize supported/unsupported behavior. Ask before build or install.
+Strip teaching comments (runtime.md › Packaging), verify all retained scripts and chains, summarize supported/unsupported behavior. Ask before build/install.
 
-Done means every declared script passes with correct live data and all runtime/type
-contracts hold.
+Done = every declared script passes with correct live data and all runtime/type contracts hold.

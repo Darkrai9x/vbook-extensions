@@ -6,7 +6,6 @@
     "source": "https://site.com",
     "description": "Extension description",
     "locale": "vi",
-    "regexp": "site\\.com/threads/[^/]+/?$",
     "type": "forum",
     "nsfw": false,
     "encrypt": true

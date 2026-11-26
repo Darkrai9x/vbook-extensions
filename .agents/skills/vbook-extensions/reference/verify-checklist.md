@@ -1,18 +1,20 @@
 # Verify checklist — `code:0` alone is not a pass
 
-Shared verification standard for CREATE / FIX / TEST / REFACTOR modes. After a script returns `code:0`, check its `data` against `reference/extension-api.md`'s field table for that script:
+Check each script's `data` against its field table in `reference/extension-api.md`; rules behind each check live in runtime.md / type-contracts.md.
 
-- **Every documented field present, right type.** No field silently empty/null that shouldn't be.
-- **`link`/`url`/`cover` are real usable URLs** — absolute, or a `host` field set; not `undefined`, not a lazy-load stub.
-- **Values match the live page** — `name` matches the real title, `cover` points to the real image, list order is correct, `description`/`detail` is real content, not nav/ad boilerplate.
-- **Arrays have the expected count** — 1 item when the page lists 20 is still a failure.
-- **Routing and pagination are usable** — `metadata.regexp` matches a real full detail URL; when `page` is declared it returns at least one absolute TOC-page URL and `toc` returns chapters for every page tested.
-- **Comic `chap` returns an image array** — every entry is a URL string or a valid image object with non-empty `link`; `page` is never used for comic images.
-- **Audio/video `chap` returns valid tracks** — wrap even one source in an array/object, and give every non-blank `data` a unique non-empty title so server selection can be restored.
-- **Video danmaku, when returned, has usable sources** — each `data` is a real URL, base64 data URI, or comment content; `type` matches the source format or is empty for auto-detection. Check that the source belongs to the same episode.
-- **Explore/list navigation matches the declared behavior** — section headers use `more` (not the removed `action` field), list actions have `type: "list"`, and item `type: "stream"` / `"short"` is used only when tapping should bypass detail. Short-video sections use `shape: "short"` and contain real 9:16 items. A section with `script` instead of `items` must be tested by running that script with the section's `input` and page `""`; it returns real items as `data`.
-- **Images load with the referrer the host expects** — if a cover/comic image only loads without a `Referer` (or with just the origin), the item/detail/image carries `referrerpolicy` or the URL ends with `#referrerpolicy=…`.
-- **No silent domain move** — if `link`/`cover`/`href` come back on a **different host** than `plugin.json.metadata.source`, the site has moved even though the request returned `code:0`. Flag it even on an otherwise-passing script (see FIX mode's Domain swap).
-- **AI streaming completes cleanly** — `chatStream` emits tokens (or returns one complete non-empty string), checks HTTP errors, and returns success after the stream ends.
+- **Fields:** every documented field present, right type; none silently empty/null.
+- **URLs:** `link`/`url`/`cover` absolute (or `host` set); not `undefined`, not a lazy-load stub; no protocol-relative `//…`.
+- **Values match the live page:** real `name`, real cover image, correct list order, real `description`/`detail`/`content` (no nav/ad boilerplate).
+- **Counts:** arrays match the page (1 item when the page lists 20 = fail).
+- **Routing/pagination:** `metadata.regexp` matches a real full detail URL; declared `page` returns ≥1 absolute TOC-page URL; `toc` returns chapters for every page tested.
+- **Comic `chap`:** image array; each entry a URL string or image object with non-empty `link`.
+- **Audio/video `chap`:** tracks wrapped in an array/object; every non-blank `data` has a unique non-empty title (server selection restore).
+- **Video danmaku (if returned):** each `data` a real URL, base64 data URI, or comment content; `type` matches the format or is empty (auto-detect); same episode.
+- **News `article` / forum `posts`:** run with a real list item `link`; output meets type-contracts.md › News and forum (post `id`/`floor`, `user.name`, `{ posts, page, total_pages }` numeric tokens, `data2` `""` at end, embeds kept, unsupported iframes → links).
+- **Explore/list navigation:** meets type-contracts.md › Shared navigation/detail (`more` headers, not removed `action`; valid action `type`; stream/short only to bypass detail); short sections `shape: "short"` with real 9:16 items; each `script` section tested with its `input` and page `""`, returning real items as `data`.
+- **Image referrer:** image that loads only without `Referer` (or with origin only) has `referrerpolicy` or `#referrerpolicy=…`.
+- **Cover script:** `#script=cover.js` cover returns bare base64 (no `data:`, not `Response`) decoding to a real image.
+- **No silent domain move:** `link`/`cover`/`href` on a host other than `metadata.source` = site moved, even on an otherwise passing script (FIX › Domain move).
+- **AI streaming:** `chatStream` emits tokens (or returns one complete non-empty string), checks HTTP errors, returns success after the stream ends.
 
-All hold → the script passes. Any fail → read `log`, fix precisely, re-test. After ~3 fix/retest cycles without progress, re-fetch the live page and re-diff selectors before changing anything else.
+All hold → pass. Any fail → read `log`, fix precisely, re-test. ~3 cycles without progress → re-fetch the live page, re-diff selectors, check trailing-slash behavior and client rendering, reconsider the diagnosis before changing anything else (don't broaden the edit).

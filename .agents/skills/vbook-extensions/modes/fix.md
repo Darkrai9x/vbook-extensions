@@ -1,60 +1,39 @@
 # FIX mode
 
-Repair one existing extension. Read `reference/runtime.md` and relevant API/type sections
-before editing; read `reference/cli.md` and `reference/verify-checklist.md` before tests.
-Reproduce before changing code.
+Repair one existing extension. Reads: see SKILL.md › Load. Reproduce before changing code.
 
 ## 1. Reproduce and classify
 
-Run one failing script with a known-good real input:
+Run one failing script with a known-good real input. Never classify from the symptom description alone.
 
-- Request/DNS/timeout failure → connectivity or domain.
-- Success with empty, partial, or garbled data → selector/parser.
-- Returned URLs use another host → silent domain move.
-- Syntax/config load failure or legacy fields → contract/config migration.
-- Data correct but covers/comic images blank → image referrer; curl the image with the
-  page `Referer`, none, and origin only.
-
-Do not classify from the symptom description alone.
+| Observation | Class |
+|---|---|
+| Request/DNS/timeout failure | connectivity or domain |
+| Success with empty/partial/garbled data | selector/parser |
+| Returned URLs on another host | silent domain move |
+| Syntax/config load failure or legacy fields | old contract |
+| Data correct, covers/comic images blank | image referrer — curl the image with page `Referer`, none, origin only |
+| Image bytes scrambled/encrypted (curl returns non-image data) | cover script |
 
 ## 2. Apply the narrow fix
 
-### Domain move
-
-Confirm the host serving real links, then update `metadata.source`, DOMAIN default, and
-the whole-URL regexp (retain old-host matching when existing library links need it).
-For real mirrors use a select config. Confirm the new host serves directly.
-
-### Selector/parser
-
-Fetch the exact failing page and compare it with current selectors. Change only the
-broken extraction/request logic; preserve unrelated response shape and scripts.
-
-### Image referrer
-
-Set `referrerpolicy` to the value curl proved works (see `reference/runtime.md`) on the
-items/detail/image objects that need it; do not change URLs or selectors.
-
-### Slow explore
-
-When `explore.js` times out or is slow because it chains requests, move those sections to
-`script`/`input` (see `reference/runtime.md`) instead of dropping them.
-
-### Old contract
-
-Remove obsolete CONFIG_URL shims, convert user-facing config to current objects while
-preserving documented bare keys, migrate detail fields to the current contract, and add
-type/format. Add optional features only when requested and supported.
+- **Domain move:** confirm the host serving real links → update `metadata.source`, DOMAIN default, whole-URL regexp (keep old-host matching when existing library links need it). Real mirrors → select config. Confirm the new host serves directly.
+- **Selector/parser:** fetch the exact failing page, compare with current selectors, change only the broken extraction/request logic.
+- **Image referrer:** set `referrerpolicy` to the value curl proved on the items/detail/image objects that need it; prefix protocol-relative `//` with `https:`; don't change selectors (runtime.md › Images and referrer).
+- **Cover script:** add `#script=cover.js` to the cover URL + `src/cover.js` that fetches, undoes the site's transform, returns bare base64 (runtime.md › Images and referrer).
+- **Slow explore:** `explore.js` slow/timing out from chained requests → move those sections to `script`/`input` (runtime.md › Explore section data); don't drop them.
+- **Old contract:**
+  - remove obsolete CONFIG_URL shims; convert user-facing config to current objects, preserving documented bare keys;
+  - migrate detail fields to current contract; add `type`/`format`;
+  - bare `CryptoJS...decrypt(...).toString()` (old shim returned text) → `.toString(CryptoJS.enc.Utf8)`;
+  - add optional features only when requested and supported.
 
 ## 3. Verify dependencies
 
-Retest every touched script against live data, then its dependents in chain order. A
-`code:0` result with wrong/empty data is still failure. After repeated no-progress
-attempts, re-fetch and reconsider the diagnosis rather than broadening the edit.
+Retest every touched script on live data, then dependents in chain order (verify-checklist.md). No progress → re-fetch and reconsider the diagnosis; don't broaden the edit.
 
 ## 4. Finish
 
-Bump `metadata.version` once, summarize cause and repair, and ask before build/install.
-Do not refactor unrelated code.
+Bump `metadata.version` once, summarize cause + repair, ask before build/install. Don't refactor unrelated code.
 
-Done means the reported behavior and dependent chain pass with verified data.
+Done = reported behavior and dependent chain pass with verified data.

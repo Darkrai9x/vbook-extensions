@@ -6,14 +6,13 @@
     "source": "https://site.com",
     "description": "Extension description",
     "locale": "vi",
-    "regexp": "site\\.com/truyen-tranh/[^/]+/?$",
+    "regexp": "(https?://)?(www\\.)?site\\.com/truyen-tranh/[^/]+/?",
     "type": "comic",
     "nsfw": false,
     "encrypt": true
   },
   "script": {
     "home": "home.js",
-    "explore": "explore.js",
     "genre": "genre.js",
     "search": "search.js",
     "detail": "detail.js",

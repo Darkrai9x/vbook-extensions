@@ -495,6 +495,31 @@ The policy can also go straight into the URL — handy for a plain string, e.g. 
 image: `"https://cdn.example.com/1.jpg#referrerpolicy=no-referrer"`. The part after `#`
 is never sent to the server; where both are given, the attribute wins.
 
+**Covers the server only serves scrambled or encrypted.** Put a `script` in the same `#`
+fragment and the app loads the cover through that script instead of requesting it:
+`"https://cdn.example.com/1.jpg#script=cover.js"`. `cover.js` (a file in `src/`) is called as
+`execute(url)` with the URL without the fragment, and returns the image bytes as a **bare
+base64 string** (not `Response`, no `data:` prefix), like the `script` of a comic image. It
+runs once per cover: the result is kept in the image cache, and, for a book in the library,
+as the book's cover. `referrerpolicy` and `script` can be combined with `&`
+(`#referrerpolicy=no-referrer&script=cover.js`). It applies to a `cover` and to the other
+image fields the app draws as covers (e.g. an avatar), not to chapter images, which have
+their own `script` field.
+
+```javascript
+// cover.js — fetch the bytes, undo what the site did to them, return them as base64
+function execute(url) {
+    let response = fetch(url);
+    if (!response.ok) return null;          // null / empty = the cover fails to load
+    let base64 = response.base64();
+    // ... decode `base64`, decrypt / unscramble the bytes, encode them back to base64 ...
+    return base64;
+}
+```
+
+An encrypted image can be decrypted with `CryptoJS.AES.decrypt(...).toString(CryptoJS.enc.Base64)`
+(see [Crypto](#crypto) for the app version it needs).
+
 ### home.js
 
 Returns a list of tabs. Each tab has a title and a list script (ignored when
@@ -1341,6 +1366,12 @@ The usual `name`, `cover`, `link`, `description`, `tag`, plus these (all optiona
 `description` is the lead of an article or the description of a board. Put pinned threads first yourself.
 A board item's `link` / `action` normally opens a thread list (`{ type: "list", ... }`).
 
+A thread `name` may be html with labels, for a prefix such as "review" or "discussion", anywhere in the title:
+`<tag bg="#ffcc00" color="#000000">review</tag> Title`, `Title <tag>solved</tag>`. `bg` is the label's fill and
+`color` its text (`#RRGGBB` or `#AARRGGBB`, both optional: the app's accent when missing). The thread list draws each
+label as a chip inline with the title; elsewhere the name is shown as given, so use this only when the labels are
+worth that. Escape `&`, `<` and `>` in the title text.
+
 Explore sections of these types use the section types `news_hero`, `news_list` (articles) and `board_list`,
 `thread_list` (forum); `chip` and the others work as usual.
 
@@ -1439,11 +1470,24 @@ function execute(url, page) {
 | `content`, `content_format` | The post body, HTML or Markdown |
 | `signature`, `signature_format` | Optional signature, same formats |
 | `edited` | `{ time, by, reason }`, omitted when the post was not edited |
-| `likes`, `dislikes`, `reactions` | Counts; `reactions` is `[{ type, count }]` (`type` is text, e.g. an emoji) |
+| `likes`, `dislikes`, `reactions` | Counts; `reactions` is `[{ type, count, icon, users }]`, one entry per kind of reaction. `type` is text (an emoji or the reaction's name), `icon` an optional image url for forums that draw their own (shown instead of `type`), `count` may be `0` when the forum doesn't say, `users` an optional list of who reacted (the first three are shown) |
 | `reply_to` | `{ floor, user }`: the post this one answers |
 | `attachments` | `[{ type, link, name, size }]`; tapping opens the link |
 
 The app does not post, like or reply: these sources are read-only.
+
+### Embeds
+
+Leave embeds in `content` (article or post) as the site has them; the app shows a preview and plays the
+site's own player in place when tapped. Read from:
+
+- `<iframe>` of a known site — `src`, or a lazy `data-src` / `data-s9e-mediaembed-src` (s9e MediaSites, voz),
+  also s9e's `s9e.github.io/iframe/2/<site>.min.html#<id>` frames
+- the sites' blockquotes: `blockquote.twitter-tweet`, `.instagram-media`, `.tiktok-embed`,
+  `.reddit-embed-bq`, `.text-post-media` (Threads); Facebook's `div.fb-post` / `div.fb-video` (`data-href`)
+
+Sites: YouTube (also Shorts, `start` / `t`), Vimeo, Dailymotion, Streamable, TikTok, X / Twitter, Instagram,
+Facebook, Reddit, Threads, Spotify, SoundCloud. Other iframes are dropped — turn them into a link.
 
 ### Reading aloud
 
@@ -1900,22 +1944,21 @@ load('crypto.js');
 let hash = CryptoJS.MD5("text").toString();
 ```
 
-The `CryptoJS` shim provides:
+`CryptoJS` is [crypto-js](https://github.com/brix/crypto-js) 4.2.0 itself — every algorithm,
+encoder, mode, padding, format and KDF, with the same API and the same results (`.toString()` of
+a WordArray is hex, as in crypto-js: use `.toString(CryptoJS.enc.Utf8)` for text). The heavy
+parts run in the app instead of JS, on the whole data at once:
 
-- Hashes `MD5`, `SHA1`, `SHA256`, `SHA512`; `HmacMD5`, `HmacSHA1`, `HmacSHA256`,
-  `HmacSHA512`.
-- Ciphers `AES`, `DES`, `TripleDES`, `RC4` (`RC4Drop`); modes `CBC`, `ECB`, `CFB`,
-  `OFB`, `CTR`; paddings `Pkcs7`, `NoPadding`, `ZeroPadding`. A string key is treated
-  as an OpenSSL passphrase (`Salted__`), a WordArray key as raw bytes.
-- KDFs `PBKDF2` (defaults: hasher SHA256, 250000 iterations, keySize 4) and `EvpKDF`
-  (MD5, 1 iteration, keySize 4). Pass the hasher as `CryptoJS.algo.SHA1` etc.
-- Encoders `enc.Hex`, `enc.Base64`, `enc.Utf8`, `enc.Latin1`, `enc.Utf16`,
-  `enc.Utf16LE`.
-- `Rabbit` throws "not supported".
+- hashes `MD5`, `SHA1`, `SHA256`, `SHA512` (and the HMACs over them);
+- `AES`, `DES`, `TripleDES` in `CBC`, `ECB`, `CFB`, `OFB`, `CTR` (other modes such as
+  `CTRGladman` run in JS); `RC4` / `RC4Drop`;
+- `PBKDF2` / `EvpKDF` over those four hashes (PBKDF2 defaults: SHA256, 250000 iterations), `enc.Base64`,
+  `WordArray.random` (secure random bytes).
 
-WordArray keys, IVs and data are passed to the native side as text, so they only
-round-trip correctly when every byte is < 0x80. For binary keys/IVs prefer hex
-strings where the API accepts them.
+An encryptor / decryptor from `CryptoJS.algo.AES.createEncryptor(...)` returns its output from
+`finalize()` (its `process()` calls return empty WordArrays): the concatenation is the same.
+Up to 1.2.9 the app shipped a partial shim instead: WordArray keys, IVs and data with bytes
+above 0x7F came out wrong there, and `decrypt(...).toString()` gave the text.
 
 **AES-GCM** (authenticated encryption — beyond the stock CryptoJS API):
 
@@ -1939,7 +1982,8 @@ const plain = CryptoJS.AES.decryptGcm(
 - Key: a 32/48/64-char hex string (AES-128/192/256) or a passphrase, zero-padded or
   truncated to 16/24/32 bytes.
 - IV: an even-length hex string is decoded as hex, anything else is used as text
-  (UTF-8); a WordArray IV works only if all bytes are < 0x80. Empty = 12 zero bytes.
+  (UTF-8); a WordArray key / IV is used as its bytes. Empty = 12 zero bytes.
+- `decryptGcm` returns a WordArray.
 - The tag is 128-bit. On iOS a failed tag check returns an empty string instead of
   throwing.
 
@@ -2002,7 +2046,7 @@ function execute(url) {
         type: "novel",
         format: "novel",
         ongoing: doc.select(".info").text().indexOf("Ongoing") !== -1,
-        genres: doc.select(".genre a").map(function(el) {
+        tags: doc.select(".genre a").map(function(el) {
             return {
                 title: el.text(),
                 input: el.attr("href"),

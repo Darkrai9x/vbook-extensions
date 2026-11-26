@@ -6,7 +6,6 @@
     "source": "https://engine.com",
     "description": "Translate engine description",
     "locale": "global",
-    "regexp": "",
     "type": "translate",
     "nsfw": false,
     "encrypt": true

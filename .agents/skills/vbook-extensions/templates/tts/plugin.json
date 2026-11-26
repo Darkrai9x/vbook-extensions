@@ -6,7 +6,6 @@
     "source": "https://engine.com",
     "description": "TTS engine description",
     "locale": "global",
-    "regexp": "",
     "type": "tts",
     "nsfw": false,
     "encrypt": true

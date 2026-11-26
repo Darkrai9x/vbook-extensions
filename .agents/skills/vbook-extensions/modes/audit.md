@@ -1,33 +1,29 @@
 # AUDIT mode
 
-Breadth-first repo health scan, not a deep script audit. Read `reference/cli.md` before
-running `testall`.
+Breadth-first repo health scan, not a deep script audit.
 
 ## Run
 
-Audit all on-disk extension directories or the named subset:
+All on-disk extension directories or the named subset:
 
 ```text
 node .agents/skills/vbook-extensions/scripts/vbook.js testall [ext...] [--query tien] [--timeout 45000] [--json report.json]
 ```
 
-Record the CLI class and follow-up for every extension. The root registries describe the
-published set; on-disk directories describe the testable set. Compare them only when the
-request includes registry coverage.
+Record CLI class + follow-up per extension. Root registries = published set; on-disk directories = testable set. Compare them only when registry coverage is requested.
 
 ## Interpret conservatively
 
-- WORK: no follow-up.
-- MOVED: verify the direct new host, then hand to FIX/domain move.
-- AUTH/MSG: report the access requirement; do not treat it as dead.
-- EMPTY: retry a relevant query/listing and inspect the script contract.
-- CRASH: hand to FIX/config-selector diagnosis.
-- UNREACHABLE: let the device recover and re-run the affected subset.
-- UNKNOWN/NO_SCRIPT/BAD_PLUGIN: inspect manually.
+| Class | Follow-up |
+|---|---|
+| WORK | none |
+| MOVED | verify the direct new host → FIX domain move |
+| AUTH/MSG | report the access requirement; not dead |
+| EMPTY | retry a relevant query/listing; inspect the script contract |
+| CRASH | → FIX config/selector diagnosis |
+| UNREACHABLE | let the device recover, re-run the affected subset (cli.md › Test arguments and results) |
+| UNKNOWN/NO_SCRIPT/BAD_PLUGIN | inspect manually |
 
-Never delete from one probe. For EMPTY, CRASH, or UNREACHABLE, directly confirm the
-source is genuinely dead/parked before proposing removal, and obtain user approval for
-directory plus registry deletion.
+Never delete from one probe. EMPTY/CRASH/UNREACHABLE → directly confirm the source is genuinely dead/parked before proposing removal; get user approval for directory + registry deletion.
 
-Done means every target has a recorded class and specific next action; ambiguous states
-remain flagged for confirmation rather than acted upon.
+Done = every target has a recorded class and specific next action; ambiguous states stay flagged for confirmation, not acted on.
